@@ -16,7 +16,7 @@
  * @deepseek-ai/dsh-client-ui-primitives.
  */
 window.__ModuleLoader__.load({
-  id: 'dsh-better-workspace',
+  id: 'dsh-virtual-workspace',
   factory: (require) => {
     const React = require('react')
     const storeKit = require('@deepseek-ai/dsh-client-store')
@@ -37,6 +37,18 @@ window.__ModuleLoader__.load({
       'empty.search': '没有匹配的结果',
       'session.new': '新会话',
       'group.ungrouped': '未分组',
+      /* virtual directory strings */
+      'session.more': '… 还有 {n} 条历史',
+      'session.more.less': '收起历史',
+      'session.more.title': '只显示最近 7 天内、最多 5 条；点击展开其余 {n} 条',
+      'dir.new.title': '新建虚拟目录',
+      'dir.new.hint': '只创建一个分组，不会在磁盘上建文件夹、也不改动任何工作区',
+      'dir.rename.title': '重命名虚拟目录',
+      'dir.rename.hint': '只改分组名称，真实文件夹与工作区都不受影响',
+      'dir.delete.title': '删除虚拟目录',
+      'dir.delete.body': '删除虚拟目录「{name}」及其全部子目录？里面的真实工作区会回到根层级，文件夹本身不会被删除。',
+      'dir.moveTo': '移动到目录…',
+      'dir.rootLevel': '（根层级）',
       'sessions.expand': '展开 {n} 个会话',
       'sessions.collapse': '收起',
       'time.now': '刚刚',
@@ -159,6 +171,17 @@ window.__ModuleLoader__.load({
       'empty.search': 'No matches',
       'session.new': 'New session',
       'group.ungrouped': 'Ungrouped',
+      'session.more': '… {n} more in history',
+      'session.more.less': 'Collapse history',
+      'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
+      'dir.new.title': 'New virtual folder',
+      'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+      'dir.rename.title': 'Rename virtual folder',
+      'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+      'dir.delete.title': 'Delete virtual folder',
+      'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+      'dir.moveTo': 'Move into folder…',
+      'dir.rootLevel': '(root level)',
       'sessions.expand': 'Show {n} more sessions',
       'sessions.collapse': 'Collapse',
       'time.now': 'now',
@@ -289,6 +312,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'لا توجد نتائج مطابقة',
         'session.new': 'جلسة جديدة',
         'group.ungrouped': 'بلا مجموعة',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': 'عرض {n} جلسات إضافية',
         'sessions.collapse': 'طيّ',
         'time.now': 'الآن',
@@ -399,6 +425,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'لا يمكن أن يكون مسار المجموعة فارغاً',
         'folder.error.exists': 'المجموعة موجودة بالفعل',
         'folder.error.notEmpty': 'لا تزال المجموعة تحتوي على مساحات عمل',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: de */
       'de': {
@@ -411,6 +445,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'Keine Treffer',
         'session.new': 'Neue Sitzung',
         'group.ungrouped': 'Ohne Gruppe',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': '{n} Sitzungen einblenden',
         'sessions.collapse': 'Einklappen',
         'time.now': 'gerade eben',
@@ -521,6 +558,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Der Ordnerpfad darf nicht leer sein',
         'folder.error.exists': 'Ordner existiert bereits',
         'folder.error.notEmpty': 'Der Ordner enthält noch Arbeitsbereiche',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: fr */
       'fr': {
@@ -533,6 +578,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'Aucun résultat',
         'session.new': 'Nouvelle session',
         'group.ungrouped': 'Sans groupe',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': 'Afficher {n} sessions',
         'sessions.collapse': 'Réduire',
         'time.now': 'à l\'instant',
@@ -643,6 +691,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Le chemin du dossier ne doit pas être vide',
         'folder.error.exists': 'Ce dossier existe déjà',
         'folder.error.notEmpty': 'Le dossier contient encore des espaces de travail',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: hi */
       'hi': {
@@ -655,6 +711,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'कोई मेल खाता परिणाम नहीं',
         'session.new': 'नया सत्र',
         'group.ungrouped': 'बिना समूह',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': '{n} सत्र दिखाएँ',
         'sessions.collapse': 'समेटें',
         'time.now': 'अभी-अभी',
@@ -765,6 +824,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'समूह पथ खाली नहीं हो सकता',
         'folder.error.exists': 'समूह पहले से मौजूद है',
         'folder.error.notEmpty': 'समूह में अभी भी कार्यस्थान हैं',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: id */
       'id': {
@@ -777,6 +844,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'Tidak ada hasil yang cocok',
         'session.new': 'Sesi baru',
         'group.ungrouped': 'Tanpa grup',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': 'Tampilkan {n} sesi',
         'sessions.collapse': 'Ciutkan',
         'time.now': 'baru saja',
@@ -887,6 +957,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Jalur folder tidak boleh kosong',
         'folder.error.exists': 'Folder sudah ada',
         'folder.error.notEmpty': 'Folder masih berisi ruang kerja',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: it */
       'it': {
@@ -899,6 +977,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'Nessun risultato',
         'session.new': 'Nuova sessione',
         'group.ungrouped': 'Senza gruppo',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': 'Mostra {n} sessioni',
         'sessions.collapse': 'Comprimi',
         'time.now': 'adesso',
@@ -1009,6 +1090,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Il percorso della cartella non può essere vuoto',
         'folder.error.exists': 'La cartella esiste già',
         'folder.error.notEmpty': 'La cartella contiene ancora aree di lavoro',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: ja */
       'ja': {
@@ -1021,6 +1110,9 @@ window.__ModuleLoader__.load({
         'empty.search': '一致する結果がありません',
         'session.new': '新しいセッション',
         'group.ungrouped': '未分類',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': '{n} 件のセッションを展開',
         'sessions.collapse': '折りたたむ',
         'time.now': 'たった今',
@@ -1131,6 +1223,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'フォルダーのパスを入力してください',
         'folder.error.exists': 'フォルダーはすでに存在します',
         'folder.error.notEmpty': 'フォルダー内にワークスペースが残っています',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: ko */
       'ko': {
@@ -1143,6 +1243,9 @@ window.__ModuleLoader__.load({
         'empty.search': '일치하는 결과가 없습니다',
         'session.new': '새 세션',
         'group.ungrouped': '미분류',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': '세션 {n}개 펼치기',
         'sessions.collapse': '접기',
         'time.now': '방금',
@@ -1253,6 +1356,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '폴더 경로를 입력해야 합니다',
         'folder.error.exists': '폴더가 이미 있습니다',
         'folder.error.notEmpty': '폴더에 워크스페이스가 남아 있습니다',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: nl */
       'nl': {
@@ -1265,6 +1376,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'Geen resultaten',
         'session.new': 'Nieuwe sessie',
         'group.ungrouped': 'Zonder groep',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': '{n} sessies uitklappen',
         'sessions.collapse': 'Inklappen',
         'time.now': 'zojuist',
@@ -1375,6 +1489,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Het mappad mag niet leeg zijn',
         'folder.error.exists': 'Map bestaat al',
         'folder.error.notEmpty': 'De map bevat nog werkruimten',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: pl */
       'pl': {
@@ -1387,6 +1509,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'Brak wyników',
         'session.new': 'Nowa sesja',
         'group.ungrouped': 'Bez grupy',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': 'Pokaż {n} sesji',
         'sessions.collapse': 'Zwiń',
         'time.now': 'przed chwilą',
@@ -1497,6 +1622,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Ścieżka folderu nie może być pusta',
         'folder.error.exists': 'Folder już istnieje',
         'folder.error.notEmpty': 'Folder wciąż zawiera obszary robocze',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: pt */
       'pt': {
@@ -1509,6 +1642,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'Nenhum resultado',
         'session.new': 'Nova sessão',
         'group.ungrouped': 'Sem grupo',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': 'Mostrar {n} sessões',
         'sessions.collapse': 'Recolher',
         'time.now': 'agora mesmo',
@@ -1619,6 +1755,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'O caminho da pasta não pode ficar vazio',
         'folder.error.exists': 'A pasta já existe',
         'folder.error.notEmpty': 'A pasta ainda contém espaços de trabalho',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: ru */
       'ru': {
@@ -1631,6 +1775,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'Ничего не найдено',
         'session.new': 'Новая сессия',
         'group.ungrouped': 'Без группы',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': 'Показать ещё {n} сессий',
         'sessions.collapse': 'Свернуть',
         'time.now': 'только что',
@@ -1741,6 +1888,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Путь папки не может быть пустым',
         'folder.error.exists': 'Папка уже существует',
         'folder.error.notEmpty': 'В папке ещё есть рабочие области',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: sv */
       'sv': {
@@ -1753,6 +1908,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'Inga träffar',
         'session.new': 'Ny session',
         'group.ungrouped': 'Utan grupp',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': 'Visa {n} sessioner',
         'sessions.collapse': 'Fäll ihop',
         'time.now': 'nyss',
@@ -1863,6 +2021,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Mappsökvägen får inte vara tom',
         'folder.error.exists': 'Mappen finns redan',
         'folder.error.notEmpty': 'Mappen innehåller fortfarande arbetsytor',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: th */
       'th': {
@@ -1875,6 +2041,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'ไม่พบผลลัพธ์ที่ตรงกัน',
         'session.new': 'เซสชันใหม่',
         'group.ungrouped': 'ไม่มีกลุ่ม',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': 'แสดงอีก {n} เซสชัน',
         'sessions.collapse': 'ย่อ',
         'time.now': 'เมื่อสักครู่',
@@ -1985,6 +2154,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'เส้นทางกลุ่มต้องไม่ว่าง',
         'folder.error.exists': 'มีกลุ่มนี้อยู่แล้ว',
         'folder.error.notEmpty': 'กลุ่มนี้ยังมีพื้นที่ทำงานอยู่',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: tr */
       'tr': {
@@ -1997,6 +2174,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'Eşleşen sonuç yok',
         'session.new': 'Yeni oturum',
         'group.ungrouped': 'Grubusuz',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': '{n} oturumu göster',
         'sessions.collapse': 'Daralt',
         'time.now': 'az önce',
@@ -2107,6 +2287,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Klasör yolu boş olamaz',
         'folder.error.exists': 'Klasör zaten var',
         'folder.error.notEmpty': 'Klasörde hâlâ çalışma alanları var',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: vi */
       'vi': {
@@ -2119,6 +2307,9 @@ window.__ModuleLoader__.load({
         'empty.search': 'Không có kết quả phù hợp',
         'session.new': 'Phiên mới',
         'group.ungrouped': 'Chưa phân nhóm',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': 'Hiện thêm {n} phiên',
         'sessions.collapse': 'Thu gọn',
         'time.now': 'vừa xong',
@@ -2229,6 +2420,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': 'Đường dẫn nhóm không được để trống',
         'folder.error.exists': 'Nhóm đã tồn tại',
         'folder.error.notEmpty': 'Nhóm vẫn còn không gian làm việc',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: zh-HK */
       'zh-HK': {
@@ -2241,6 +2440,9 @@ window.__ModuleLoader__.load({
         'empty.search': '搵唔到符合嘅結果',
         'session.new': '新對話',
         'group.ungrouped': '未分組',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': '展開 {n} 個對話',
         'sessions.collapse': '收起',
         'time.now': '啱啱',
@@ -2351,6 +2553,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '分組路徑唔可以係空',
         'folder.error.exists': '分組已經存在',
         'folder.error.notEmpty': '分組入面仲有工作區,唔可以刪除',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: zh-MO */
       'zh-MO': {
@@ -2363,6 +2573,9 @@ window.__ModuleLoader__.load({
         'empty.search': '搵唔到符合嘅結果',
         'session.new': '新對話',
         'group.ungrouped': '未分組',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': '展開 {n} 個對話',
         'sessions.collapse': '收起',
         'time.now': '啱啱',
@@ -2473,6 +2686,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '分組路徑唔可以係空',
         'folder.error.exists': '分組已經存在',
         'folder.error.notEmpty': '分組入面仲有工作區,唔可以刪除',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
       /* locale: zh-TW */
       'zh-TW': {
@@ -2485,6 +2706,9 @@ window.__ModuleLoader__.load({
         'empty.search': '沒有相符的結果',
         'session.new': '新工作階段',
         'group.ungrouped': '未分組',
+        'session.more': '… {n} more in history',
+        'session.more.less': 'Collapse history',
+        'session.more.title': 'Shows only the last 7 days, up to 5 items; click to reveal the other {n}',
         'sessions.expand': '展開 {n} 個工作階段',
         'sessions.collapse': '收合',
         'time.now': '剛剛',
@@ -2595,6 +2819,14 @@ window.__ModuleLoader__.load({
         'folder.error.empty': '群組路徑不能為空',
         'folder.error.exists': '群組已存在',
         'folder.error.notEmpty': '群組內還有工作區,無法刪除',
+        'dir.new.title': 'New virtual folder',
+        'dir.new.hint': 'Creates a grouping only — no folder on disk, no workspace touched',
+        'dir.rename.title': 'Rename virtual folder',
+        'dir.rename.hint': 'Renames the group only; real folders and workspaces are untouched',
+        'dir.delete.title': 'Delete virtual folder',
+        'dir.delete.body': 'Delete virtual folder "{name}" and all its subfolders? Real workspaces inside return to the root level; no folder on disk is deleted.',
+        'dir.moveTo': 'Move into folder…',
+        'dir.rootLevel': '(root level)',
       },
     }
 
@@ -3036,6 +3268,18 @@ window.__ModuleLoader__.load({
       '.bw-ctx-item:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.14))}',
       '.bw-ctx-danger{color:var(--dsw-alias-state-error-primary,#f85149)}',
       '.bw-ctx-sep{height:1px;background:var(--dsw-alias-border-l1,rgba(127,127,127,.2));margin:4px 6px}',
+      /* "…" reveal row for the collapsed session tail: row-shaped (so it lines
+         up with the session rows above it) but text-only and unobtrusive. */
+      '.bw-more-row{display:flex;align-items:center;height:22px;border:none;background:transparent;cursor:pointer;font:inherit;text-align:left;border-radius:6px;width:100%}',
+      '.bw-more-row:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12))}',
+      '.bw-more-label{font-size:12px;color:var(--dsw-alias-label-tertiary,#9a9a9a);line-height:1}',
+      '.bw-more-row:hover .bw-more-label{color:var(--dsw-alias-label-secondary,#b8b8b8)}',
+      /* "Move into a directory" picker: the parent row is a label, the child
+         rows are the actual choices. Capped height + scroll so a deep tree
+         stays usable inside a fixed-position menu. */
+      '.bw-ctx-sub{display:flex;flex-direction:column;max-height:260px;overflow-y:auto;margin:2px 0 4px;padding-left:6px;border-left:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.22))}',
+      '.bw-ctx-subitem{height:24px;font-size:12px;color:var(--dsw-alias-label-secondary,#b8b8b8)}',
+      '.bw-ctx-subitem:hover{color:var(--dsw-alias-label-primary,#e6e6e6)}',
       '.bw-settings{display:flex;flex-direction:column;gap:6px;max-width:640px}',
       '.bw-plugin-card{list-style:none;border:1px solid var(--dsw-alias-border-l2,rgba(127,127,127,.18));border-radius:12px;background:var(--dsw-alias-bg-layer-3,rgba(127,127,127,.05));transition:border-color .16s,background .16s}',
       '.bw-plugin-card:hover{border-color:var(--dsw-alias-label-dimmed,#7a7a7a)}',
@@ -3137,8 +3381,139 @@ window.__ModuleLoader__.load({
 
     /* ========================== view store =========================== */
 
+    /* ===================== virtual directory model ====================
+     * The user-facing model of THIS plugin: a real tree of virtual folders
+     * that the user creates, names, nests and reorders freely — with the
+     * real (host) workspaces hanging off it as LEAVES.
+     *
+     * Why a separate model instead of the upstream "/"-in-title projection:
+     *   - upstream derives folders from workspace TITLES, so a group can only
+     *     exist by renaming a real workspace ("web/前端") — the virtual level
+     *     is a side effect of a title edit, and it cannot be created on its
+     *     own;
+     *   - here a folder is a first-class record with its own id/name/parent,
+     *     it is created directly, and workspace titles are NEVER touched.
+     *
+     * Durable shape (both browser-local and cross-device):
+     *   directories: { [dirId]: { id, name, parentId, order } }
+     *   wsDir:       { [workspaceId]: dirId }   // absence ⇒ root
+     * parentId === '' means "hangs off the root". Unknown ids are ignored at
+     * render time, so a stale record can never break the tree.
+     */
+    const ROOT_DIR = ''
+    let dirSeq = 0
+    const newDirId = () => {
+      dirSeq += 1
+      return 'vd' + Date.now().toString(36) + '-' + dirSeq.toString(36)
+    }
+    /** Normalize the persisted maps; tolerate anything (older/missing/corrupt). */
+    const dirMapOf = (state) => (state && state.directories && typeof state.directories === 'object' && !Array.isArray(state.directories) ? state.directories : {})
+    const wsDirMapOf = (state) => (state && state.wsDir && typeof state.wsDir === 'object' && !Array.isArray(state.wsDir) ? state.wsDir : {})
+    /** Direct children of `parentId`, ordered; unknown-parent records surface at root. */
+    const childDirsOf = (directories, parentId) => Object.keys(directories)
+      .map((id) => directories[id])
+      .filter((dir) => dir && typeof dir === 'object' && (dir.parentId || ROOT_DIR) === (parentId || ROOT_DIR))
+      .sort((a, b) => (a.order || 0) - (b.order || 0) || String(a.name || '').localeCompare(String(b.name || ''), 'zh'))
+    /** Walk up from a directory: true when `ancestorId` is an ancestor of (or equal to) `dirId`. */
+    const isDescendantDir = (directories, dirId, ancestorId) => {
+      let cur = dirId
+      let guard = 0
+      while (cur && guard < 512) {
+        if (cur === ancestorId) return true
+        const node = directories[cur]
+        if (!node) return false
+        cur = node.parentId || ROOT_DIR
+        if (cur === ROOT_DIR) return cur === ancestorId
+        guard += 1
+      }
+      return false
+    }
+    /** Sibling order value that appends after the last child of `parentId`. */
+    const nextDirOrder = (directories, parentId) => {
+      const siblings = childDirsOf(directories, parentId)
+      return siblings.length === 0 ? 0 : (siblings[siblings.length - 1].order || 0) + 1
+    }
+    /** Collect a directory's whole subtree id set (for cascade delete). */
+    const subtreeDirIds = (directories, dirId) => {
+      const out = [dirId]
+      for (let i = 0; i < out.length; i++) {
+        for (const child of childDirsOf(directories, out[i])) out.push(child.id)
+      }
+      return out
+    }
+    /** Human-readable path of a directory ("ai/web"), for tooltips and dialogs. */
+    const dirPathOf = (directories, dirId) => {
+      const segs = []
+      let cur = dirId
+      let guard = 0
+      while (cur && guard < 512) {
+        const node = directories[cur]
+        if (!node) break
+        segs.unshift(String(node.name || ''))
+        cur = node.parentId || ROOT_DIR
+        guard += 1
+      }
+      return segs.join('/')
+    }
+    /**
+     * Build the render tree from the virtual model + the host workspace list,
+     * replacing the upstream title-projection buildTree.
+     *
+     * `items` are host workspace entries ({workspaceId, title, path, sessionIds}).
+     * Directories come from the virtual model; each workspace is placed in its
+     * assigned directory, or at the root when unassigned/assigned to a deleted
+     * directory. The node shape mirrors the upstream one ({path, name, folders,
+     * workspaces}) so every existing row component keeps working: `path` is the
+     * directory id here, not a title prefix.
+     *
+     * `useTree` (default true) switches between:
+     *   - true  → the virtual tree (folderId = directory id);
+     *   - false → the upstream behaviour (folderId = title prefix path), which
+     *             keeps the old projection usable as a fallback.
+     */
+    function buildTreeVirtual(items, directories, wsDir, useTree) {
+      const root = { path: '', name: '', folders: [], workspaces: [] }
+      const byId = new Map([[ROOT_DIR, root]])
+      const ensure = (dirId) => {
+        const existing = byId.get(dirId)
+        if (existing) return existing
+        const dir = directories[dirId]
+        if (!dir) return root
+        const parent = ensure(dir.parentId || ROOT_DIR)
+        const node = { path: dirId, name: String(dir.name || ''), folders: [], workspaces: [] }
+        byId.set(dirId, node)
+        parent.folders.push(node)
+        return node
+      }
+      if (useTree !== false) {
+        for (const id of Object.keys(directories)) ensure(id)
+        for (const node of byId.values()) {
+          node.folders.sort((a, b) => {
+            const oa = (directories[a.path] || {}).order || 0
+            const ob = (directories[b.path] || {}).order || 0
+            return oa - ob || String(a.name).localeCompare(String(b.name), 'zh')
+          })
+        }
+        for (const workspace of items || []) {
+          const assigned = wsDir[workspace.workspaceId]
+          const parent = assigned && directories[assigned] ? ensure(assigned) : root
+          parent.workspaces.push({
+            workspaceId: workspace.workspaceId,
+            title: String(workspace.title || ''),
+            path: String(workspace.path || ''),
+            sessionIds: Array.isArray(workspace.sessionIds) ? workspace.sessionIds : [],
+            leaf: String(workspace.title || '') || basename(workspace.path) || String(workspace.workspaceId || ''),
+            folderPath: assigned && directories[assigned] ? assigned : '',
+          })
+        }
+        return root
+      }
+      // ---- fallback: upstream title-projection tree ----
+      return buildTree(items, [])
+    }
+
     const createViewStore = () => storeKit.defineStore({
-      init: () => ({ folders: [], expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, prefs: { compactChains: true }, styling: {} }),
+      init: () => ({ folders: [], directories: {}, wsDir: {}, useTree: true, expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, prefs: { compactChains: true }, styling: {} }),
       // NOTE: hydration REPLACES the state with the persisted whole value —
       // init defaults never merge. Every action must tolerate a missing key
       // (states persisted by older plugin versions lack sessionGroups), and
@@ -3174,6 +3549,13 @@ window.__ModuleLoader__.load({
         setExpanded: (d, key, value) => { if (!d.expanded) d.expanded = {}; d.expanded[key] = value },
         setSessionsExpanded: (d, key, value) => { if (!d.sessionsExpanded) d.sessionsExpanded = {}; d.sessionsExpanded[key] = value },
         setSessionGroupExpanded: (d, key, value) => { if (!d.sessionGroups) d.sessionGroups = {}; d.sessionGroups[key] = value },
+        /**
+         * Reveal state of the "…" tail — DEFAULT COLLAPSED, unlike the maps
+         * above which default to open. An absent key must read as closed, so
+         * the per-workspace flag is stored as a real boolean rather than being
+         * "on unless explicitly false".
+         */
+        setRecentExpanded: (d, key, value) => { if (!d.recentExpanded) d.recentExpanded = {}; d.recentExpanded[key] = value === true },
         setPref: (d, key, value) => { if (!d.prefs) d.prefs = {}; d.prefs[key] = value },
         setStyling: (d, key, value) => { if (!d.styling) d.styling = {}; if (value === null) delete d.styling[key]; else d.styling[key] = value },
         // Browser-local session order (v0.10.2): the fallback channel for
@@ -3202,6 +3584,72 @@ window.__ModuleLoader__.load({
           const next = d.folders.map(f => (f === oldPath ? newPath : (f.startsWith(oo) ? nn + f.slice(oo.length) : f)))
           d.folders = Array.from(new Set(next))
         },
+
+        /* ------------------- virtual directory actions -------------------
+         * All of them take the CURRENT state and return the NEXT one, so the
+         * shared-write wrappers below can compute the host copy from the same
+         * transition (local echo first, durable host write second).
+         */
+        /** Create a directory under `parentId`; returns the new id. */
+        addDirectory: (d, parentId, name, id, order) => {
+          if (!d.directories || typeof d.directories !== 'object') d.directories = {}
+          const parent = parentId && d.directories[parentId] ? parentId : ROOT_DIR
+          const dirId = typeof id === 'string' && id !== '' ? id : newDirId()
+          d.directories[dirId] = {
+            id: dirId,
+            name: String(name || '').trim() || '新建目录',
+            parentId: parent,
+            order: typeof order === 'number' ? order : nextDirOrder(d.directories, parent),
+          }
+          return dirId
+        },
+        renameDirectory: (d, dirId, name) => {
+          const dir = d.directories && d.directories[dirId]
+          if (!dir) return
+          const next = String(name || '').trim()
+          if (next !== '') dir.name = next
+        },
+        /** Re-parent (and optionally re-order) one directory; rejects cycles. */
+        moveDirectory: (d, dirId, parentId, order) => {
+          const dir = d.directories && d.directories[dirId]
+          if (!dir) return
+          const parent = parentId && d.directories[parentId] ? parentId : ROOT_DIR
+          // A directory may never become its own descendant: that would orphan
+          // the whole subtree out of the root walk.
+          if (parent === dirId || isDescendantDir(d.directories, parent, dirId)) return
+          dir.parentId = parent
+          dir.order = typeof order === 'number' ? order : nextDirOrder(d.directories, parent)
+        },
+        /**
+         * Delete a directory subtree. `mode` decides the fate of the real
+         * workspaces inside it (they are never deleted themselves):
+         *   'root'  → detach to the root level (default);
+         *   'keep'  → re-attach to the deleted directory's parent;
+         *   'drop'  → also forget their assignment (same as 'root').
+         */
+        removeDirectory: (d, dirId, mode) => {
+          if (!d.directories || !d.directories[dirId]) return
+          const parentId = d.directories[dirId].parentId || ROOT_DIR
+          const doomed = new Set(subtreeDirIds(d.directories, dirId))
+          for (const id of doomed) delete d.directories[id]
+          if (!d.wsDir || typeof d.wsDir !== 'object') d.wsDir = {}
+          const target = mode === 'keep' ? parentId : ROOT_DIR
+          for (const wsId of Object.keys(d.wsDir)) {
+            if (doomed.has(d.wsDir[wsId])) {
+              if (target) d.wsDir[wsId] = target
+              else delete d.wsDir[wsId]
+            }
+          }
+          if (d.expanded && typeof d.expanded === 'object') for (const id of doomed) delete d.expanded[id]
+        },
+        /** Attach a real workspace to a directory ('' ⇒ back to the root level). */
+        assignWorkspace: (d, workspaceId, dirId) => {
+          if (!d.wsDir || typeof d.wsDir !== 'object') d.wsDir = {}
+          const target = dirId && d.directories && d.directories[dirId] ? dirId : ROOT_DIR
+          if (target === ROOT_DIR) delete d.wsDir[workspaceId]
+          else d.wsDir[workspaceId] = target
+        },
+        setUseTree: (d, value) => { d.useTree = value !== false },
       },
     })
 
@@ -3332,7 +3780,7 @@ window.__ModuleLoader__.load({
     // store), then the durable host write computed from the CURRENT rendered
     // values — after a manual pull the local store already holds the host
     // copy, so host-only entries written on the other surface survive.
-    const makeSharedWrites = (actions, stylingMap, foldersList) => ({
+    const makeSharedWrites = (actions, stylingMap, foldersList, dirsMap, wsDirMap) => ({
       setStyling: (key, value) => {
         if (actions && typeof actions.setStyling === 'function') actions.setStyling(key, value)
         const next = { ...stylingMap }
@@ -3361,6 +3809,61 @@ window.__ModuleLoader__.load({
       setPref: (key, value) => {
         if (actions && typeof actions.setPref === 'function') actions.setPref(key, value)
         scopeSet(key, value)
+      },
+      /* ---------------- virtual directory writes ----------------
+       * Each op computes the NEXT state deterministically from the currently
+       * rendered maps, applies it locally (immediate echo), and mirrors the
+       * same change into the host settings store (cross-device durability).
+       * Directories ride the host as JSON strings — see src/index.js for why.
+       */
+      dirAdd: (parentId, name) => {
+        const dirs = Object.assign({}, dirsMap)
+        const parent = parentId && dirs[parentId] ? parentId : ''
+        const id = newDirId()
+        dirs[id] = { id, name: String(name || '').trim() || '新建目录', parentId: parent, order: nextDirOrder(dirs, parent) }
+        if (actions && typeof actions.addDirectory === 'function') actions.addDirectory(parent, name, id, dirs[id].order)
+        scopeSet('directoriesJson', JSON.stringify(dirs))
+        return id
+      },
+      dirRename: (dirId, name) => {
+        const dirs = Object.assign({}, dirsMap)
+        if (!dirs[dirId]) return
+        const next = String(name || '').trim()
+        if (next === '') return
+        dirs[dirId] = Object.assign({}, dirs[dirId], { name: next })
+        if (actions && typeof actions.renameDirectory === 'function') actions.renameDirectory(dirId, next)
+        scopeSet('directoriesJson', JSON.stringify(dirs))
+      },
+      dirMove: (dirId, parentId) => {
+        const dirs = Object.assign({}, dirsMap)
+        if (!dirs[dirId]) return
+        const parent = parentId && dirs[parentId] ? parentId : ''
+        if (parent === dirId || isDescendantDir(dirs, parent, dirId)) return
+        dirs[dirId] = Object.assign({}, dirs[dirId], { parentId: parent, order: nextDirOrder(dirs, parent) })
+        if (actions && typeof actions.moveDirectory === 'function') actions.moveDirectory(dirId, parent, dirs[dirId].order)
+        scopeSet('directoriesJson', JSON.stringify(dirs))
+      },
+      /** Delete a directory subtree; real workspaces inside are detached to root. */
+      dirRemove: (dirId) => {
+        const dirs = Object.assign({}, dirsMap)
+        if (!dirs[dirId]) return
+        const doomed = new Set(subtreeDirIds(dirs, dirId))
+        for (const id of doomed) delete dirs[id]
+        const nextWs = Object.assign({}, wsDirMap)
+        for (const wsId of Object.keys(nextWs)) if (doomed.has(nextWs[wsId])) delete nextWs[wsId]
+        if (actions && typeof actions.removeDirectory === 'function') actions.removeDirectory(dirId, 'root')
+        scopeSet('directoriesJson', JSON.stringify(dirs))
+        scopeSet('wsDirJson', JSON.stringify(nextWs))
+      },
+      /** Attach/detach a real workspace to a directory ('' ⇒ root level). */
+      wsAssign: (workspaceId, dirId) => {
+        const dirs = dirsMap
+        const target = dirId && dirs[dirId] ? dirId : ''
+        const nextWs = Object.assign({}, wsDirMap)
+        if (target === '') delete nextWs[workspaceId]
+        else nextWs[workspaceId] = target
+        if (actions && typeof actions.assignWorkspace === 'function') actions.assignWorkspace(workspaceId, target)
+        scopeSet('wsDirJson', JSON.stringify(nextWs))
       },
     })
 
@@ -3835,7 +4338,13 @@ window.__ModuleLoader__.load({
       const snapshotItems = typeof useWorkspaces === 'function' ? useWorkspaces(s => s.items) : []
       const storeFolders = typeof useStore === 'function' ? (useStore(s => s.folders) || []) : []
       const storeStyling = typeof useStore === 'function' ? (useStore(s => s.styling) || {}) : {}
-      const shared = makeSharedWrites(actions, storeStyling, storeFolders)
+      // Virtual-directory maps: BetterFlow only creates REAL workspaces, so it
+      // never drives a vdir write itself — but the shared-write wrapper is
+      // built here too, and a missing map would turn a stray call into a
+      // TypeError. Read them for completeness.
+      const storeDirsForWrites = typeof useStore === 'function' ? (useStore(s => dirMapOf(s)) || {}) : {}
+      const storeWsDirForWrites = typeof useStore === 'function' ? (useStore(s => wsDirMapOf(s)) || {}) : {}
+      const shared = makeSharedWrites(actions, storeStyling, storeFolders, storeDirsForWrites, storeWsDirForWrites)
 
       React.useEffect(() => {
         if (!open) {
@@ -4712,9 +5221,18 @@ window.__ModuleLoader__.load({
       const list = useSessions(s => s)
       const pending = useSessionPendingInteraction ? useSessionPendingInteraction(s => s) : null
       const storeFolders = useStore ? (useStore(s => s.folders) || []) : []
+      // Virtual directory model (see buildTreeVirtual): explicit folder
+      // records + a workspace→directory assignment map. `useTree` false keeps
+      // the legacy title-prefix projection available as a fallback.
+      const storeDirs = useStore ? (useStore(s => dirMapOf(s)) || {}) : {}
+      const storeWsDir = useStore ? (useStore(s => wsDirMapOf(s)) || {}) : {}
+      const storeUseTree = useStore ? useStore(s => s.useTree !== false) : true
+      const useTree = storeUseTree
       const expandedMap = useStore ? (useStore(s => s.expanded) || {}) : {}
       const sessionsExpandedMap = useStore ? (useStore(s => s.sessionsExpanded) || {}) : {}
       const sessionGroupsMap = useStore ? (useStore(s => s.sessionGroups) || {}) : {}
+      // Per-workspace "…" reveal state. Absent ⇒ collapsed (see the store action).
+      const recentExpandedMap = useStore ? (useStore(s => s.recentExpanded) || {}) : {}
       const prefsMap = useStore ? (useStore(s => s.prefs) || {}) : {}
       const stylingMap = useStore ? (useStore(s => s.styling) || {}) : {}
       const sessionOrderMap = useStore ? (useStore(s => s.sessionOrder) || {}) : {}
@@ -4722,7 +5240,49 @@ window.__ModuleLoader__.load({
       // store (immediate echo + scope-less fallback) AND the host settings
       // store (durable cross-device copy for the manual pull on the other
       // surface). Computed from the CURRENT rendered values.
-      const shared = makeSharedWrites(actions, stylingMap, storeFolders)
+      const shared = makeSharedWrites(actions, stylingMap, storeFolders, storeDirs, storeWsDir)
+      /**
+       * Self-heal titles mangled by the early 0.1.0 build.
+       *
+       * That build still ran the UPSTREAM drag handler, so dropping a workspace
+       * into a virtual directory called renameWorkspace with the directory ID
+       * as the prefix — leaving e.g. "vdmu3jr9rg-1/mclanscopilot" as a real
+       * workspace title. The bogus prefix is recognisable: it is one of OUR
+       * directory ids, and a uuid-style id is never a legitimate title prefix.
+       * So the repair is unambiguous — strip it and file the workspace into
+       * that very directory, i.e. the assignment the drop intended.
+       *
+       * Runs once per mount through the OFFICIAL rename API: no restart, no
+       * service stop, no hand-editing the registry file. Failures are left for
+       * the next page load to retry.
+       */
+      const healedRef = React.useRef(false)
+      React.useEffect(() => {
+        if (healedRef.current) return
+        healedRef.current = true
+        const dirs = dirMapOf({ directories: storeDirs })
+        const ids = Object.keys(dirs)
+        if (ids.length === 0) return
+        for (const ws of items || []) {
+          const title = String(ws.title || '')
+          const slash = title.indexOf('/')
+          if (slash <= 0) continue
+          const prefix = title.slice(0, slash)
+          if (ids.indexOf(prefix) === -1) continue
+          const real = title.slice(slash + 1)
+          if (real === '') continue
+          Promise.resolve()
+            .then(() => renameWorkspace(ws.workspaceId, real))
+            .then(() => {
+              if (actions && typeof actions.assignWorkspace === 'function') actions.assignWorkspace(ws.workspaceId, prefix)
+            })
+            .catch((error) => {
+              console.warn('[dsh-virtual-workspace] title repair failed for ' + ws.workspaceId, error)
+            })
+        }
+        // Once per mount on purpose: `items` changes on every rename we issue
+        // ourselves, so re-running would fight our own host round-trip.
+      }, [])
       const compactChains = prefsMap.compactChains !== false
       const statusPulse = prefsMap.statusPulse !== false
       const archivedSet = React.useMemo(() => new Set(archivedSessionIds), [archivedSessionIds])
@@ -4797,6 +5357,9 @@ window.__ModuleLoader__.load({
       const [flowOpen, setFlowOpen] = React.useState(false)
       const [flowParent, setFlowParent] = React.useState('') // parent path prefill for the add-workspace flow (context menu entry)
       const [dialog, setDialog] = React.useState(null) // { kind, ... }
+      // Highlighted virtual directory (the row a click last selected). '' means
+      // "no directory selected", matching ROOT_DIR.
+      const [selectedDirId, setSelectedDirId] = React.useState('')
       const [ctx, setCtx] = React.useState(null) // context menu { kind, payload, x, y }
       const [customize, setCustomize] = React.useState(null) // { kind, entryKey, name }
       const [errorText, setErrorText] = React.useState(null)
@@ -4965,10 +5528,21 @@ window.__ModuleLoader__.load({
       // their drop targets live inside workspace rows, which compression merges.
       const draggingWorkspace = drag !== null && drag.kind === 'workspace'
       const tree = React.useMemo(() => {
-        const built = buildTree(items, storeFolders)
+        // Virtual tree first: directories are explicit records, so a folder
+        // EXISTS whether or not it currently holds anything (no bootstrapping
+        // through a real workspace needed).
+        const built = buildTreeVirtual(items, storeDirs, storeWsDir, storeUseTree)
+        if (useTree !== false) {
+          // Chain compression is a display trick of the PREFIX model: a lone
+          // "group/workspace" renders as one merged row, which would hide a
+          // directory the user just created. Under the virtual model a folder
+          // always renders as a folder, so compression stays off — it remains
+          // available only on the legacy fallback path.
+          return built
+        }
         if (!compactChains || draggingWorkspace) return built
         return { ...built, folders: built.folders.map((f) => materializeChain(compressTree(f))), workspaces: built.workspaces }
-      }, [items, storeFolders, compactChains, draggingWorkspace])
+      }, [items, storeDirs, storeWsDir, storeUseTree, storeFolders, compactChains, draggingWorkspace])
 
       /** Browser-local flat session order for one workspace (fallback channel). */
       const sessionOrderOf = (workspaceId) => {
@@ -5084,6 +5658,36 @@ window.__ModuleLoader__.load({
       const folderExpanded = (path) => (expandedMap ? expandedMap[path] !== false : true)
       const sessionsOpenOf = (workspaceId) => (sessionsExpandedMap ? sessionsExpandedMap[workspaceId] !== false : true)
       const sessionGroupOpen = (key) => (sessionGroupsMap ? sessionGroupsMap[key] !== false : true)
+
+      /**
+       * Collapse rule for a workspace's session list: show only what is BOTH
+       * inside the recent window AND within the item cap — meeting EITHER
+       * alone is not enough (a session bumped today still hides once the cap is
+       * reached). The rest goes behind the "…" row, collapsed by default.
+       *
+       * Ordering is by recency, not by the stored display order, so the list is
+       * deterministic and the revealed tail lands in the same order the head
+       * uses (no reshuffle when it opens).
+       */
+      const RECENT_WINDOW_MS = 7 * 24 * 60 * 60 * 1000
+      const RECENT_MAX = 5
+      const sessionStamp = (value) => {
+        const n = typeof value === 'number' ? value : Date.parse(value)
+        return Number.isFinite(n) ? n : 0
+      }
+      const recentExpandedOf = (workspaceId) => (recentExpandedMap ? recentExpandedMap[workspaceId] === true : false)
+      const splitRecentSessions = (rows, workspaceId) => {
+        const cutoff = Date.now() - RECENT_WINDOW_MS
+        const sorted = rows.slice().sort((a, b) => sessionStamp(b.updatedAt) - sessionStamp(a.updatedAt))
+        const visible = []
+        const hidden = []
+        sorted.forEach((row, index) => {
+          const fresh = sessionStamp(row.updatedAt) >= cutoff
+          if (index < RECENT_MAX && fresh) visible.push(row)
+          else hidden.push(row)
+        })
+        return { visible, hidden }
+      }
 
       const openCtx = (kind, payload, e) => {
         if (e) e.preventDefault()
@@ -5201,20 +5805,37 @@ window.__ModuleLoader__.load({
         const index = node.workspaces.findIndex(w => w.workspaceId === workspaceId)
         return index === -1 ? undefined : (node.workspaces[index + 1] ? node.workspaces[index + 1].workspaceId : undefined)
       }
+      /**
+       * Re-file a workspace that was dropped into a row.
+       *
+       * The two folder families need OPPOSITE handling, and conflating them is
+       * what corrupted real workspace titles before:
+       *   - a VIRTUAL directory (`isVDir`) is an id, so the move is a pure
+       *     assignment — the title must NOT be touched;
+       *   - a legacy prefix folder is text, so the upstream behaviour (rewrite
+       *     the title prefix) is still the correct one there.
+       * A target of '' means "the root level".
+       */
+      const moveWorkspaceTo = (workspaceId, leaf, folderId) => {
+        const target = folderId || ''
+        if (target === '' || isVDir(target)) {
+          assignWorkspaceToDir(workspaceId, target)
+          return Promise.resolve()
+        }
+        return Promise.resolve().then(() => renameWorkspace(workspaceId, target + '/' + leaf))
+      }
       const commitWorkspaceDrop = (targetWorkspace, half) => {
         const source = drag.source
         setDrag(null)
         if (source.workspaceId === targetWorkspace.workspaceId) return
-        const sameFolder = (targetWorkspace.folderPath || '') === source.folderPath
+        const target = targetWorkspace.folderPath || ''
+        const sameFolder = target === source.folderPath
         const anchor = half === 'after'
-          ? nextWorkspaceAfter(targetWorkspace.folderPath || '', targetWorkspace.workspaceId)
+          ? nextWorkspaceAfter(target, targetWorkspace.workspaceId)
           : targetWorkspace.workspaceId
         const chain = sameFolder
           ? Promise.resolve()
-          : Promise.resolve().then(() => {
-            const newTitle = (targetWorkspace.folderPath || '') !== '' ? (targetWorkspace.folderPath || '') + '/' + source.leaf : source.leaf
-            return renameWorkspace(source.workspaceId, newTitle)
-          })
+          : moveWorkspaceTo(source.workspaceId, source.leaf, target)
         chain
           .then(() => (anchor !== undefined ? insertWorkspaceBefore(source.workspaceId, anchor) : insertWorkspaceBefore(source.workspaceId)))
           .catch(fail)
@@ -5222,10 +5843,9 @@ window.__ModuleLoader__.load({
       const commitWorkspaceMoveInto = (folderPath) => {
         const source = drag.source
         setDrag(null)
-        if (source.folderPath === folderPath) return
-        const newTitle = folderPath !== '' ? folderPath + '/' + source.leaf : source.leaf
-        Promise.resolve()
-          .then(() => renameWorkspace(source.workspaceId, newTitle))
+        const target = folderPath || ''
+        if ((source.folderPath || '') === target) return
+        moveWorkspaceTo(source.workspaceId, source.leaf, target)
           .then(() => insertWorkspaceBefore(source.workspaceId))
           .catch(fail)
       }
@@ -5319,6 +5939,36 @@ window.__ModuleLoader__.load({
       }
 
       /* --------------------------- actions --------------------------- */
+
+      /* ------------------- virtual directory actions -------------------
+       * These NEVER touch a workspace title or path: a directory is its own
+       * record, and attaching a workspace is one entry in the wsDir map. That
+       * is the whole difference from the upstream prefix model.
+       */
+      /** Create a directory under `parentId` and reveal it (expand + select). */
+      const createDir = (parentId, name) => {
+        try {
+          const id = shared.dirAdd(parentId, name)
+          if (id && typeof actions.setExpanded === 'function') {
+            if (parentId) actions.setExpanded(parentId, true)
+            actions.setExpanded(id, true)
+          }
+          if (id) setSelectedDirId(id)
+        } catch (error) { fail(error) }
+      }
+      const renameDir = (dirId, name) => {
+        try { shared.dirRename(dirId, name) } catch (error) { fail(error) }
+      }
+      const removeDir = (dirId) => {
+        try { shared.dirRemove(dirId) } catch (error) { fail(error) }
+      }
+      /** Attach a real workspace to a directory ('' ⇒ back to the root level). */
+      const assignWorkspaceToDir = (workspaceId, dirId) => {
+        try {
+          shared.wsAssign(workspaceId, dirId)
+          if (dirId && typeof actions.setExpanded === 'function') actions.setExpanded(dirId, true)
+        } catch (error) { fail(error) }
+      }
 
       const submitWorkspaceRename = (workspace, nextTitle) => {
         const title = String(nextTitle || '').trim()
@@ -5431,7 +6081,31 @@ window.__ModuleLoader__.load({
         if (!searching && !sessionsOpenOf(workspace.workspaceId)) return []
         const rows = sessionsOf(workspace)
         if (rows.length === 0) return []
-        return renderSessionNode(buildSessionTree(rows), workspace.workspaceId, depth)
+        // Searching is a lookup, not browsing: collapsing hits would hide the
+        // very thing the user typed a query to find.
+        if (searching) return renderSessionNode(buildSessionTree(rows), workspace.workspaceId, depth)
+        const { visible, hidden } = splitRecentSessions(rows, workspace.workspaceId)
+        const out = []
+        if (visible.length > 0) out.push(...renderSessionNode(buildSessionTree(visible), workspace.workspaceId, depth))
+        if (hidden.length > 0) {
+          const open = recentExpandedOf(workspace.workspaceId)
+          out.push(E('button', {
+            key: 'more-' + workspace.workspaceId,
+            type: 'button',
+            className: 'bw-row bw-more-row',
+            style: { paddingLeft: (8 + depth * 12) + 'px' },
+            title: t('session.more.title', { n: hidden.length }),
+            'aria-expanded': open ? 'true' : 'false',
+            onClick: () => actions.setRecentExpanded(workspace.workspaceId, !open),
+          },
+            E('span', { className: 'bw-more-label' }, open ? t('session.more.less') : t('session.more', { n: hidden.length }))))
+        }
+        // The revealed tail keeps the SAME recency ordering the head uses, so
+        // the list does not reshuffle when it opens.
+        if (hidden.length > 0 && recentExpandedOf(workspace.workspaceId)) {
+          out.push(...renderSessionNode(buildSessionTree(hidden), workspace.workspaceId, depth))
+        }
+        return out
       }
       const searchSessionNode = (node) => {
         const groups = []
@@ -5576,25 +6250,75 @@ window.__ModuleLoader__.load({
 
       /* ------------------------- context menu ------------------------ */
 
+      /** True when a row's `path` is a virtual directory id (not a title prefix). */
+      const isVDir = (path) => !!(path && storeDirs && storeDirs[path])
+
+      /**
+       * Flat "move into directory" list for the context menu: every directory
+       * in the tree, depth-first, ordered and labelled with its full path.
+       * `excludeId` drops the moved subtree itself (a directory may not move
+       * into its own descendant). When the workspace already sits somewhere,
+       * a "root level" entry is prepended so it can be detached again.
+       */
+      const dirMenuItems = (excludeId, includeRoot) => {
+        const out = []
+        if (includeRoot) out.push({ id: 'ws-move-root', label: t('dir.rootLevel') })
+        const walk = (parentId, depth) => {
+          for (const dir of childDirsOf(storeDirs, parentId)) {
+            if (excludeId && dir.id === excludeId) continue
+            out.push({ id: 'ws-move:' + dir.id, label: '  '.repeat(depth) + String(dir.name || ''), dirId: dir.id })
+            walk(dir.id, depth + 1)
+          }
+        }
+        walk('', 0)
+        return out
+      }
+      /**
+       * Folder-row menu. Virtual directories and legacy title-prefix folders
+       * look alike but carry different `path` semantics, so the two families
+       * are separated here: a vdir id gets the virtual-directory actions, a
+       * prefix path keeps the upstream ones untouched.
+       */
+      const folderMenuItems = (path) => {
+        if (isVDir(path)) {
+          const items = [
+            { id: 'dir-new-sub', label: t('menu.newSubfolder') },
+            { id: 'dir-rename', label: t('menu.renameFolder') },
+            { id: 'dir-move', label: t('dir.moveTo'), children: dirMenuItems(path, true) },
+            { id: 'dir-delete', label: t('dir.delete.title'), danger: true },
+            { sep: true },
+            { id: 'customize', label: t('custom.title') },
+          ]
+          return items
+        }
+        const items = [
+          { id: 'new-subfolder', label: t('menu.newSubfolder') },
+          { id: 'new-subworkspace', label: t('menu.newSubWorkspace') },
+          { id: 'rename-folder', label: t('menu.renameFolder') },
+        ]
+        if (storeFolders.includes(path)) items.push({ id: 'remove-folder', label: t('menu.removeFolder'), danger: true })
+        items.push({ sep: true })
+        items.push({ id: 'customize', label: t('custom.title') })
+        return items
+      }
+
       const ctxItems = () => {
         if (ctx === null) return []
-        if (ctx.kind === 'folder') {
-          const items = [
-            { id: 'new-subfolder', label: t('menu.newSubfolder') },
-            { id: 'new-subworkspace', label: t('menu.newSubWorkspace') },
-            { id: 'rename-folder', label: t('menu.renameFolder') },
-          ]
-          if (storeFolders.includes(ctx.payload.path)) items.push({ id: 'remove-folder', label: t('menu.removeFolder'), danger: true })
+        if (ctx.kind === 'folder') return folderMenuItems(ctx.payload.path)
+        if (ctx.kind === 'workspace') {
+          // The entry the upstream plugin never had: file an EXISTING real
+          // workspace into a virtual directory without renaming it. The
+          // workspace keeps its title and its path — only the assignment map
+          // changes, so nothing about the folder on disk is touched.
+          const ws = ctx.payload
+          const items = [{ id: 'rename', label: t('menu.rename') }]
+          const moves = dirMenuItems('', true)
+          if (moves.length > 0) items.push({ id: 'ws-move', label: t('dir.moveTo'), children: moves })
+          items.push({ id: 'delete', label: t('menu.delete'), danger: true })
           items.push({ sep: true })
           items.push({ id: 'customize', label: t('custom.title') })
           return items
         }
-        if (ctx.kind === 'workspace') return [
-          { id: 'rename', label: t('menu.rename') },
-          { id: 'delete', label: t('menu.delete'), danger: true },
-          { sep: true },
-          { id: 'customize', label: t('custom.title') },
-        ]
         if (ctx.kind === 'session') return [
           { id: 'rename', label: t('menu.rename') },
           { id: 'fork', label: t('menu.fork') },
@@ -5621,6 +6345,16 @@ window.__ModuleLoader__.load({
         }
         const { kind, payload } = current
         setCtx(null)
+        /* ---- virtual directory actions (folder rows that are vdirs) ---- */
+        if (id === 'dir-new-sub') { setDialog({ kind: 'dir-new', parentId: payload.path }); return }
+        if (id === 'dir-rename') { setDialog({ kind: 'dir-rename', dirId: payload.path, name: payload.name }); return }
+        if (id === 'dir-delete') { setDialog({ kind: 'dir-delete', dirId: payload.path, name: payload.name }); return }
+        if (id.indexOf('dir-move:') === 0) { shared.dirMove(payload.path, id.slice('dir-move:'.length)); return }
+        if (id === 'dir-move') { shared.dirMove(payload.path, ''); return }
+        /* ---- move a real workspace between directories ---- */
+        if (kind === 'workspace' && id === 'ws-move-root') { assignWorkspaceToDir(payload.workspaceId, ''); return }
+        if (kind === 'workspace' && id.indexOf('ws-move:') === 0) { assignWorkspaceToDir(payload.workspaceId, id.slice('ws-move:'.length)); return }
+        /* ---- upstream title-prefix folder actions ---- */
         if (kind === 'folder' && id === 'new-subfolder') setDialog({ kind: 'folder-new', parentPath: payload.path })
         else if (kind === 'folder' && id === 'new-subworkspace') { setFlowParent(payload.path); setFlowOpen(true) }
         else if (kind === 'folder' && id === 'rename-folder') setDialog({ kind: 'folder-rename', path: payload.path })
@@ -5644,11 +6378,51 @@ window.__ModuleLoader__.load({
           StyleNode(),
           E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('rail.search'), onClick: () => { expandSidebar(); setSearchOpen(true) } }, icon('IconSearchOutline16', 18)),
           E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('rail.add'), onClick: () => { expandSidebar(); setFlowParent(''); setFlowOpen(true) } }, icon('IconProjectAddOutline16', 18)),
+          // The collapsed rail needs its own entry point: the header buttons
+          // only exist in the expanded branch, so without this row the rail is
+          // the one state where no virtual directory can be created at all.
+          E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('dir.new.title'), title: t('dir.new.title'), onClick: () => { expandSidebar(); setDialog({ kind: 'dir-new', parentId: '' }) } }, icon('IconFolderOpenOutline16', 18)),
         )
       }
 
       const dialogElement = (() => {
         if (dialog === null) return null
+        /* ------------------- virtual directory dialogs ------------------- */
+        if (dialog.kind === 'dir-new') return E(TextDialog, {
+          key: 'dir-new',
+          title: t('dir.new.title'),
+          hint: t('dir.new.hint'),
+          initial: '',
+          onConfirm: (v) => {
+            const name = String(v || '').trim()
+            if (name === '') return
+            setDialog(null)
+            createDir(dialog.parentId || '', name)
+          },
+          onClose: () => setDialog(null),
+          t,
+        })
+        if (dialog.kind === 'dir-rename') return E(TextDialog, {
+          key: 'dir-rename',
+          title: t('dir.rename.title'),
+          hint: t('dir.rename.hint'),
+          initial: dialog.name || '',
+          onConfirm: (v) => {
+            const name = String(v || '').trim()
+            setDialog(null)
+            if (name !== '' && name !== dialog.name) renameDir(dialog.dirId, name)
+          },
+          onClose: () => setDialog(null),
+          t,
+        })
+        if (dialog.kind === 'dir-delete') return E(ConfirmDialog, {
+          key: 'dir-delete',
+          title: t('dir.delete.title'),
+          body: t('dir.delete.body', { name: dialog.name || '' }),
+          onConfirm: () => { setDialog(null); removeDir(dialog.dirId) },
+          onClose: () => setDialog(null),
+          t,
+        })
         if (dialog.kind === 'ws-rename') return E(TextDialog, {
           key: 'ws-rename',
           title: t('ws.rename.title'),
@@ -5737,7 +6511,12 @@ window.__ModuleLoader__.load({
             onBlur: () => { if (query === '') setSearchOpen(false) },
           }) : null,
           E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('search.placeholder'), onClick: () => setSearchOpen(v => !v) }, icon('IconSearchOutline16')),
+          // Create a REAL workspace: picks a machine folder, then (optionally)
+          // files it under a virtual directory.
           E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('add'), onClick: () => { setFlowParent(''); setFlowOpen(true) } }, icon('IconProjectAddOutline16')),
+          // Create a VIRTUAL directory: no folder is picked, nothing on disk is
+          // touched, the directory exists only as a grouping record.
+          E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('dir.new.title'), title: t('dir.new.title'), onClick: () => { setSearchOpen(false); setDialog({ kind: 'dir-new', parentId: '' }) } }, icon('IconFolderOpenOutline16')),
         ),
         E('div', { ref: treeRef, className: 'bw-tree', role: 'tree', 'aria-label': t('title') }, bodyRows),
         E(BetterFlow, {
@@ -5771,12 +6550,24 @@ window.__ModuleLoader__.load({
           },
             ctxItems().map((item, index) => item.sep
               ? E('div', { key: 'sep-' + index, className: 'bw-ctx-sep' })
-              : E('button', {
+              /* A `children` list is the "move into a directory" choice: the
+                 parent row labels the group, the child rows are the pickable
+                 rows, indented and scrollable so a deep tree still fits. */
+              : [E('button', {
                 key: item.id,
                 type: 'button',
                 className: cls('bw-ctx-item', item.danger && 'bw-ctx-danger'),
-                onClick: () => handleCtxPick(item.id),
+                onClick: () => (Array.isArray(item.children) ? undefined : handleCtxPick(item.id)),
               }, item.label),
+              Array.isArray(item.children)
+                ? E('div', { key: item.id + '-sub', className: 'bw-ctx-sub' }, item.children.map((child) => E('button', {
+                  key: child.id,
+                  type: 'button',
+                  className: 'bw-ctx-item bw-ctx-subitem',
+                  title: child.label.trim(),
+                  onClick: () => handleCtxPick(child.id),
+                }, child.label.trim())))
+                : null],
             ),
           ),
         ) : null,
@@ -5991,7 +6782,7 @@ window.__ModuleLoader__.load({
     }
 
     return {
-      name: 'dsh-better-workspace',
+      name: 'dsh-virtual-workspace',
       inject: ['slots', 'sessions', 'workspaces', 'locale', 'uiWorkspace', 'settingsScope'],
       apply,
     }

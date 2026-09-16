@@ -1,15 +1,9 @@
 {
-  "name": "dsh-better-workspace",
-  "version": "0.11.4",
-  "description": "DSH web plugin: a hierarchical workspace tree for the sidebar. Workspace titles containing \"/\" group into virtual folders (web/前端 · web/后端); the add-workspace directory flow gains a parent-group popup; renames re-derive the tree; a new-folder button creates empty levels.",
+  "name": "dsh-virtual-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DSH web plugin: a REAL virtual directory tree for the sidebar. Directories are first-class records you create, name, nest and reorder freely; the real (host) workspaces hang off them as leaves and are never renamed — their titles and paths stay exactly as they are. Derived from dsh-better-workspace (MIT), whose title-prefix projection is kept only as a fallback.",
   "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KannaKuron/dsh-better-workspace.git"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
   "main": "src/index.js",
   "exports": {
     ".": "./src/index.js",
@@ -39,30 +33,20 @@
     "src/client.js",
     "cordis.patch.yml",
     "dsh.plugin.json",
-    "README.md",
-    "README_EN.md",
     "LICENSE"
   ],
-  "scripts": {
-    "test": "node --test tests/smoke.mjs",
-    "version": "node -e \"const fs=require('fs');const m=JSON.parse(fs.readFileSync('dsh.plugin.json','utf8'));const v=JSON.parse(fs.readFileSync('package.json','utf8')).version;m.version=v;fs.writeFileSync('dsh.plugin.json',JSON.stringify(m,null,2)+'\\n')\" && git add dsh.plugin.json"
-  },
   "keywords": [
     "dsh",
     "deepseek-harness",
     "dsh-plugin",
     "sidebar",
     "workspace",
-    "dsh-better"
+    "virtual-directory"
   ],
   "license": "MIT",
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.1",
     "@deepseek-ai/dsh-settings": ">=0.1.0-rc.7",
     "@deepseek-ai/schemastery": "^3.18.1"
-  },
-  "homepage": "https://github.com/KannaKuron/dsh-better-workspace",
-  "bugs": {
-    "url": "https://github.com/KannaKuron/dsh-better-workspace/issues"
   }
 }

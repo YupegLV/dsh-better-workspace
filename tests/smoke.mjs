@@ -10,7 +10,7 @@ const read = (p) => readFileSync(join(root, p), 'utf8')
 
 test('package.json declares a dual-face dsh web plugin', () => {
   const pkg = JSON.parse(read('package.json'))
-  assert.equal(pkg.name, 'dsh-better-workspace')
+  assert.equal(pkg.name, 'dsh-virtual-workspace')
   assert.equal(pkg.main, 'src/index.js')
   assert.equal(pkg.exports['./client'], './src/client.js')
   assert.equal(pkg.dsh.bundle.patch, './cordis.patch.yml')
@@ -22,7 +22,7 @@ test('package.json declares a dual-face dsh web plugin', () => {
 test('dsh.plugin.json version matches package.json', () => {
   const pkg = JSON.parse(read('package.json'))
   const manifest = JSON.parse(read('dsh.plugin.json'))
-  assert.equal(manifest.id, 'dsh-external/dsh-better-workspace')
+  assert.equal(manifest.id, 'dsh-external/dsh-virtual-workspace')
   assert.equal(manifest.version, pkg.version)
   assert.equal(manifest.main, './src/index.js')
 })
@@ -30,9 +30,9 @@ test('dsh.plugin.json version matches package.json', () => {
 test('cordis.patch.yml inserts exactly one plugin row', () => {
   const text = read('cordis.patch.yml')
   assert.match(text, /^- insert:/m)
-  assert.match(text, /id: better-workspace/)
-  assert.match(text, /name: 'dsh-better-workspace'/)
-  const insertRows = text.match(/name: 'dsh-better-workspace'/g) || []
+  assert.match(text, /id: virtual-workspace/)
+  assert.match(text, /name: 'dsh-virtual-workspace'/)
+  const insertRows = text.match(/name: 'dsh-virtual-workspace'/g) || []
   assert.equal(insertRows.length, 2) // comment example + real row
 })
 
@@ -45,7 +45,7 @@ test('package.json declares the dsh engine floor (plugin market requirement)', (
 test('client half is a __ModuleLoader__ bundle with baseline requires only', () => {
   const text = read('src/client.js')
   assert.match(text, /window\.__ModuleLoader__\.load\(/)
-  assert.match(text, /id: 'dsh-better-workspace'/)
+  assert.match(text, /id: 'dsh-virtual-workspace'/)
   const requires = [...text.matchAll(/require\('([^']+)'\)/g)].map((m) => m[1])
   const baseline = new Set([
     'react',
@@ -73,7 +73,7 @@ test('client half registers the three expected slots', () => {
 
 test('client plugin exports the cordis plugin triple', () => {
   const text = read('src/client.js')
-  assert.match(text, /name: 'dsh-better-workspace'/)
+  assert.match(text, /name: 'dsh-virtual-workspace'/)
   assert.match(text, /inject: \['slots', 'sessions', 'workspaces', 'locale', 'uiWorkspace', 'settingsScope'\]/)
   assert.match(text, /function apply\(ctx\)/)
 })
@@ -139,7 +139,7 @@ test('quote-on-land effect: blank-born only, user renames pinned, stability wind
 
 test('host half imports cleanly and applies without side effects', async () => {
   const plugin = await import('../src/index.js')
-  assert.equal(plugin.name, 'dsh-better-workspace')
+  assert.equal(plugin.name, 'dsh-virtual-workspace')
   assert.equal(typeof plugin.apply, 'function')
   let logged = ''
   plugin.apply({ logger: { info: (m) => { logged = String(m) } } })
@@ -307,7 +307,7 @@ test('manual cross-device sync: host scope bind, dual writes, pull modes', () =>
   assert.match(text, /ctx\.settingsScope && typeof ctx\.settingsScope\.bind === 'function'/)
   assert.match(text, /bind\(\{ namespace: 'better-workspace' \}\)/)
   // Dual-write wrappers exist and route every preference mutation through them.
-  assert.match(text, /const makeSharedWrites = \(actions, stylingMap, foldersList\)/)
+  assert.match(text, /const makeSharedWrites = \(actions, stylingMap, foldersList, dirsMap, wsDirMap\)/)
   assert.equal((text.match(/shared\.(setStyling|addFolder|removeFolder|renameFolder)\(/g) || []).length, 6,
     'browser (5) + flow (1) preference writes all go through the shared wrappers')
   // Pull modes: overwrite replaces, merge unions with the pulled copy winning.

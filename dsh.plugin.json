@@ -1,8 +1,8 @@
 {
-  "id": "dsh-external/dsh-better-workspace",
-  "version": "0.11.4",
+  "id": "dsh-external/dsh-virtual-workspace",
+  "version": "0.1.0",
   "main": "./src/index.js",
-  "description": "侧边栏工作区层级树:名称中的 / 即虚拟分组(web/前端 · web/后端),添加工作区的目录流附所属分组弹窗,重命名即时重排层级,可新建空分组。Hierarchy tree for the DSH sidebar workspace list.",
+  "description": "侧边栏虚拟目录树：目录是独立的记录，可自由创建/命名/嵌套/排序；真实工作区挂在目录下作为叶子，标题与路径一律不改动。Fork of dsh-better-workspace (MIT) with a first-class virtual-directory model.",
   "engines": {
     "dsh": ">=0.0.1"
   },

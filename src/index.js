@@ -8,7 +8,7 @@
  * (host-persisted folder registry, a settings-page backend) a home. It is
  * intentionally side-effect free.
  */
-export const name = 'dsh-better-workspace'
+export const name = 'dsh-virtual-workspace'
 
 export function apply(ctx) {
   const log = ctx && ctx.logger && typeof ctx.logger.info === 'function'
@@ -64,6 +64,20 @@ export function apply(ctx) {
           // the rest of the prefs. The client half owns the shape, so it stays
           // a permissive dict.
           appearance: Schema.dict(Schema.any()).default({}),
+          // ---- virtual directory model (this plugin's reason to exist) ----
+          // `useTree: false` falls back to the legacy "/"-in-title projection.
+          useTree: Schema.boolean().default(true),
+          // Two dynamic-object payloads. They ride the host settings store as
+          // JSON STRINGS rather than as schemastery dicts: their keys are
+          // runtime-generated ids (timestamp + sequence), and a schemastery
+          // dict built from those keys would keep the union of every id ever
+          // seen — a renamed directory would leak a ghost entry forever.
+          // Schema.string() also removes any need to re-validate ids.
+          //
+          //   directoriesJson: { [dirId]: { id, name, parentId, order } }
+          //   wsDirJson:       { [workspaceId]: dirId }  (absence ⇒ root level)
+          directoriesJson: Schema.string().default('{}'),
+          wsDirJson: Schema.string().default('{}'),
         }))
         log('[dsh-better-workspace] settings namespace registered: better-workspace')
       })
