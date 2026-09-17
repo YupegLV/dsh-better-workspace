@@ -1,6 +1,6 @@
 {
   "name": "dsh-virtual-workspace",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "DSH web plugin: a REAL virtual directory tree for the sidebar. Directories are first-class records you create, name, nest and reorder freely; the real (host) workspaces hang off them as leaves and are never renamed — their titles and paths stay exactly as they are. Derived from dsh-better-workspace (MIT), whose title-prefix projection is kept only as a fallback.",
   "type": "module",
@@ -33,7 +33,8 @@
     "src/client.js",
     "cordis.patch.yml",
     "dsh.plugin.json",
-    "LICENSE"
+    "LICENSE",
+    "tests/smoke.mjs"
   ],
   "keywords": [
     "dsh",
@@ -44,6 +45,9 @@
     "virtual-directory"
   ],
   "license": "MIT",
+  "scripts": {
+    "test": "node --test tests/smoke.mjs"
+  },
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.1",
     "@deepseek-ai/dsh-settings": ">=0.1.0-rc.7",

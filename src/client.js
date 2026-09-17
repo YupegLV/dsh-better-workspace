@@ -3441,6 +3441,31 @@ window.__ModuleLoader__.load({
       }
       return out
     }
+    /**
+     * Pure sibling reorder: returns a NEW `{ id: order }` map placing `dirId`
+     * at `targetOrder` among its current siblings.
+     *
+     * The result is a DENSE 0..n-1 numbering rather than a value wedged between
+     * two neighbours: the tree sorts by `order` and falls back to the NAME when
+     * two orders are equal, so ties silently re-sort alphabetically and a move
+     * would look like it did nothing. Numbering the whole list removes ties by
+     * construction. Unknown ids and no-op moves return the input order as-is.
+     */
+    const reorderDirIds = (directories, dirId, targetOrder) => {
+      const self = directories[dirId]
+      if (!self) return null
+      const parentId = self.parentId || ROOT_DIR
+      const siblings = childDirsOf(directories, parentId)
+      const from = siblings.findIndex((d) => d.id === dirId)
+      if (from === -1) return null
+      const rest = siblings.filter((d) => d.id !== dirId)
+      const to = Math.max(0, Math.min(rest.length, Math.round(targetOrder)))
+      const ordered = rest.slice(0, to).concat([siblings[from]], rest.slice(to))
+      const out = {}
+      ordered.forEach((d, index) => { out[d.id] = index })
+      return out
+    }
+
     /** Human-readable path of a directory ("ai/web"), for tooltips and dialogs. */
     const dirPathOf = (directories, dirId) => {
       const segs = []
@@ -4606,7 +4631,7 @@ window.__ModuleLoader__.load({
       }
     }
 
-    function FolderRow({ node, depth, expanded, onToggle, onContextMenu, dropInto, dragEvents, custStyle, iconMode, pulse, t }) {
+    function FolderRow({ node, depth, expanded, onToggle, onContextMenu, dropInto, dropHalf, dragEvents, custStyle, iconMode, pulse, t }) {
       const total = countWorkspaces(node)
       const iconEl = iconOf(iconMode, expanded)
       // Hidden status dots breathe on the icon; with the icon hidden (mode
@@ -4615,7 +4640,10 @@ window.__ModuleLoader__.load({
         ? E(PulseGlow, { state: pulse }, iconEl || (typeof ui.StateDot === 'function' ? E(ui.StateDot, { state: pulse, size: 10 }) : null))
         : iconEl
       return E('div', {
-        className: cls('bw-row', dropInto && 'bw-drop-into'),
+        // `dropHalf` is the directory-reorder indicator (before/after the row),
+        // `dropInto` the workspace-into-folder highlight; the two never show at
+        // once because they come from different drag kinds.
+        className: cls('bw-row', dropInto && 'bw-drop-into', dropHalf === 'before' && 'bw-drop-before', dropHalf === 'after' && 'bw-drop-after'),
         style: { paddingLeft: 4 + depth * 12, ...(custStyle || {}), ...(pulse ? { '--bw-pulse-color': PULSE_COLORS[pulse] || PULSE_COLORS.ongoing } : null) },
         onClick: onToggle,
         onContextMenu: onContextMenu,
@@ -5370,6 +5398,10 @@ window.__ModuleLoader__.load({
       // source element, and Chromium cancels the whole gesture. dragEnd clears
       // the timer so a same-tick cancel never leaves a ghost drag behind.
       const wsDragArmTimer = React.useRef(null)
+      // Same one-frame arming delay for virtual-directory drags (see
+      // dirDropEvents): moving the dragged row during the very first frame
+      // makes Chromium cancel the gesture.
+      const dirDragArmTimer = React.useRef(null)
       // Quote-on-land eligibility sets (mount-scoped):
       // - blankSeen: ids observed BLANK in any snapshot. A blank row is a
       //   freshly created New Session, so ONLY these may ever receive an
@@ -5732,6 +5764,13 @@ window.__ModuleLoader__.load({
         const over = drag.over
         return over && over.kind === 'workspace' && over.target === workspaceId ? over.half : null
       }
+      /** Before/after indicator while a SIBLING directory is dragged over a folder row. */
+      const dirDropHalf = (path) => {
+        if (!dragMatches('dir')) return null
+        if (drag && drag.source && drag.source.dirId === path) return null
+        const over = drag.over
+        return over && over.kind === 'folder' && over.target === path ? (over.half || 'before') : null
+      }
       const wsDropInto = (path) => dragMatches('workspace') && drag.over && drag.over.kind === 'folder' && drag.over.target === path
       const workspaceDragEvents = (workspace) => ({
         draggable: !searching && canDragWorkspace,
@@ -5797,6 +5836,98 @@ window.__ModuleLoader__.load({
           event.preventDefault()
           event.stopPropagation()
           commitWorkspaceMoveInto(path)
+        },
+      })
+
+      /* ------------------- virtual directory reordering -------------------
+       * A directory is movable exactly like a workspace: grab the row and drop
+       * it on a sibling. Order is persisted per parent, and because the tree
+       * sorts by `order` and only then falls back to the NAME (so equal orders
+       * would silently re-sort alphabetically, making a move look like nothing
+       * happened), every reorder renumbers the whole sibling list 0..n-1 to
+       * match the display order. The renumber therefore runs on BOTH parents
+       * whenever a drop changes the parent.
+       */
+      const siblingDirsOf = (dirId) => {
+        const self = storeDirs[dirId]
+        return childDirsOf(storeDirs, self ? (self.parentId || '') : '')
+      }
+      /** Same-sibling order positions as they are currently displayed. */
+      const reorderDir = (dirId, targetOrder) => {
+        const next = reorderDirIds(storeDirs, dirId, targetOrder)
+        if (!next) return
+        for (const id of Object.keys(next)) {
+          const dir = storeDirs[id]
+          if (!dir || (dir.order || 0) === next[id]) continue
+          shared.dirMove(id, dir.parentId || '', next[id])
+        }
+      }
+      /**
+       * Drop a dragged directory before/after a sibling. `targetOrder` is the
+       * index of the anchor in the CURRENT display list, so a drop "after" it
+       * means that index + 1 (the source itself is excluded from the list the
+       * pure helper rebuilds, so the index needs no further correction).
+       */
+      const commitDirReorder = (sourceId, targetId, half) => {
+        if (!sourceId || !targetId || sourceId === targetId) return
+        const siblings = siblingDirsOf(targetId)
+        const targetIndex = siblings.findIndex((d) => d.id === targetId)
+        if (targetIndex === -1) return
+        reorderDir(sourceId, half === 'after' ? targetIndex + 1 : targetIndex)
+      }
+      const dirDropEvents = (path) => ({
+        draggable: !searching && isVDir(path),
+        onDragStart: (event) => {
+          if (!isVDir(path)) return
+          event.stopPropagation()
+          try {
+            event.dataTransfer.effectAllowed = 'move'
+            event.dataTransfer.setData('text/plain', path)
+          } catch { /* drag payload is best-effort */ }
+          // Armed a frame late for the same reason workspace drags are: moving
+          // the source row out from under the cursor cancels the gesture.
+          if (dirDragArmTimer.current !== null) clearTimeout(dirDragArmTimer.current)
+          dirDragArmTimer.current = setTimeout(() => {
+            dirDragArmTimer.current = null
+            setDrag({ kind: 'dir', source: { dirId: path }, over: null })
+          }, 0)
+        },
+        onDragEnd: () => {
+          if (dirDragArmTimer.current !== null) { clearTimeout(dirDragArmTimer.current); dirDragArmTimer.current = null }
+          setDrag(null)
+        },
+        onDragOver: (event) => {
+          // Two gestures land on a folder row: a workspace being filed INTO it
+          // (handled below, upstream behaviour) and a sibling directory being
+          // reordered around it.
+          if (dragMatches('dir')) {
+            if (drag && drag.source && drag.source.dirId === path) return
+            event.preventDefault()
+            event.stopPropagation()
+            try { event.dataTransfer.dropEffect = 'move' } catch { }
+            const half = rowHalf(event)
+            setDrag(current => (current && current.over && current.over.kind === 'folder' && current.over.target === path && current.over.half === half)
+              ? current
+              : (current ? { ...current, over: { kind: 'folder', target: path, half } } : current))
+            return
+          }
+          // Not a directory drag: the workspace-into-folder gesture keeps its
+          // upstream handler verbatim instead of a second copy of it here.
+          if (!dragMatches('workspace')) return
+          folderDropEvents(path).onDragOver(event)
+        },
+        onDrop: (event) => {
+          if (dragMatches('dir')) {
+            event.preventDefault()
+            event.stopPropagation()
+            if (!drag || !drag.source || drag.source.dirId === path) return
+            const half = drag.over && drag.over.kind === 'folder' && drag.over.target === path ? (drag.over.half || 'before') : rowHalf(event)
+            commitDirReorder(drag.source.dirId, path, half)
+            setDrag(null)
+            return
+          }
+          if (!dragMatches('workspace')) return
+          folderDropEvents(path).onDrop(event)
         },
       })
       const nextWorkspaceAfter = (folderPath, workspaceId) => {
@@ -6196,7 +6327,11 @@ window.__ModuleLoader__.load({
           onToggle: () => { if (!searching) actions.setExpanded(node.path, !expanded) },
           onContextMenu: (e) => openCtx('folder', { path: node.path, name: node.name }, e),
           dropInto: wsDropInto(node.path),
-          dragEvents: folderDropEvents(node.path),
+          dropHalf: dirDropHalf(node.path),
+          // One handler set for both gestures on a folder row: filing a
+          // workspace INTO it (upstream behaviour) and reordering a sibling
+          // directory around it.
+          dragEvents: dirDropEvents(node.path),
           custStyle: rowStyleOf('folder:' + node.path),
           iconMode: (styleEntry('folder:' + node.path) || {}).icon || 'solid',
           pulse: expanded ? null : folderPulseOf(node),

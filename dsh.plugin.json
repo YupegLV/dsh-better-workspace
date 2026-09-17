@@ -1,6 +1,6 @@
 {
   "id": "dsh-external/dsh-virtual-workspace",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "./src/index.js",
   "description": "侧边栏虚拟目录树：目录是独立的记录，可自由创建/命名/嵌套/排序；真实工作区挂在目录下作为叶子，标题与路径一律不改动。Fork of dsh-better-workspace (MIT) with a first-class virtual-directory model.",
   "engines": {

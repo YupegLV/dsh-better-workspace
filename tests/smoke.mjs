@@ -464,6 +464,47 @@ test('icons: retired glyphs resolve to a survivor; the picker follows the host s
  * insertSessionBefore, which used to be the only reorder channel — the browser
  * keeps its own flat order so the gesture keeps working.
  */
+test('virtual directories reorder like workspaces: dense sibling numbering', () => {
+  const text = read('src/client.js')
+  const start = text.indexOf('const childDirsOf = (directories, parentId) =>')
+  const end = text.indexOf('const dirPathOf = (directories, dirId) =>')
+  assert.ok(start !== -1 && end !== -1 && start < end, 'directory helpers not found')
+  const scope = new Function(
+    "const ROOT_DIR = ''\n" + text.slice(start, end) + '\nreturn { childDirsOf, reorderDirIds }',
+  )()
+  const dirs = {
+    a: { id: 'a', name: 'alpha', parentId: '', order: 0 },
+    b: { id: 'b', name: 'beta', parentId: '', order: 1 },
+    c: { id: 'c', name: 'gamma', parentId: '', order: 2 },
+    d: { id: 'd', name: 'delta', parentId: '', order: 3 },
+  }
+  const shown = (orderMap) => {
+    const next = {}
+    for (const id of Object.keys(dirs)) {
+      next[id] = Object.assign({}, dirs[id], { order: orderMap && orderMap[id] !== undefined ? orderMap[id] : dirs[id].order })
+    }
+    return scope.childDirsOf(next, '').map((dir) => dir.name)
+  }
+  assert.deepEqual(shown(scope.reorderDirIds(dirs, 'c', 0)), ['gamma', 'alpha', 'beta', 'delta'], 'to the front')
+  assert.deepEqual(shown(scope.reorderDirIds(dirs, 'c', 3)), ['alpha', 'beta', 'delta', 'gamma'], 'to the end')
+  assert.deepEqual(shown(scope.reorderDirIds(dirs, 'a', 2)), ['beta', 'gamma', 'alpha', 'delta'], 'into the middle')
+  assert.deepEqual(shown(scope.reorderDirIds(dirs, 'a', 0)), ['alpha', 'beta', 'gamma', 'delta'], 'a no-op move keeps the order')
+  assert.deepEqual(shown(scope.reorderDirIds(dirs, 'a', 99)), ['beta', 'gamma', 'delta', 'alpha'], 'an out-of-range index clamps to the end')
+  // Dense 0..n-1: equal orders would make the tree's name tiebreak re-sort the
+  // list alphabetically, so a move would visually do nothing.
+  const map = scope.reorderDirIds(dirs, 'c', 0)
+  assert.deepEqual(Object.keys(map).sort().map((k) => map[k]).sort(), [0, 1, 2, 3], 'orders are renumbered densely')
+  assert.equal(scope.reorderDirIds(dirs, 'missing', 0), null, 'an unknown id is refused')
+  // Siblings only: a move inside one parent must not touch other parents.
+  const nested = {
+    p: { id: 'p', name: 'one', parentId: '', order: 0 },
+    q: { id: 'q', name: 'two', parentId: '', order: 1 },
+    c1: { id: 'c1', name: 'x', parentId: 'p', order: 0 },
+    c2: { id: 'c2', name: 'y', parentId: 'p', order: 1 },
+  }
+  assert.deepEqual(Object.keys(scope.reorderDirIds(nested, 'c2', 0)).sort(), ['c1', 'c2'], 'only the moved directory\'s siblings')
+})
+
 test('session reorder: host action preferred, browser-local order as the fallback (0.10.2)', () => {
   const text = read('src/client.js')
 
