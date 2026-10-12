@@ -65,6 +65,10 @@ window.__ModuleLoader__.load({
       'status.subagents': '{n} 个子任务运行中',
       'schedule.active': '有活动定时任务',
       'menu.rename': '重命名',
+      'menu.openWsFolder': '打开工作区文件夹',
+      'menu.copyPath': '复制路径',
+      'path.copied': '已复制路径',
+      'path.none': '该工作区没有文件夹路径',
       'menu.delete': '删除',
       'menu.fork': '分叉',
       'menu.archive': '归档',
@@ -198,6 +202,10 @@ window.__ModuleLoader__.load({
       'status.subagents': '{n} subagent(s) running',
       'schedule.active': 'Has active scheduled task',
       'menu.rename': 'Rename',
+      'menu.openWsFolder': 'Open workspace folder',
+      'menu.copyPath': 'Copy path',
+      'path.copied': 'Path copied',
+      'path.none': 'This workspace has no folder path',
       'menu.delete': 'Delete',
       'menu.fork': 'Fork',
       'menu.archive': 'Archive',
@@ -331,6 +339,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} من الوكلاء الفرعيين قيد التشغيل',
         'schedule.active': 'توجد مهمة مجدولة نشطة',
         'menu.rename': 'إعادة التسمية',
+        'menu.openWsFolder': 'فتح مجلد مساحة العمل',
+        'menu.copyPath': 'نسخ المسار',
+        'path.copied': 'تم نسخ المسار',
+        'path.none': 'لا يوجد مسار مجلد لمساحة العمل هذه',
         'menu.delete': 'حذف',
         'menu.fork': 'تفريع',
         'menu.archive': 'أرشفة',
@@ -464,6 +476,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} Unteragenten aktiv',
         'schedule.active': 'Aktive geplante Aufgabe',
         'menu.rename': 'Umbenennen',
+        'menu.openWsFolder': 'Arbeitsbereichsordner öffnen',
+        'menu.copyPath': 'Pfad kopieren',
+        'path.copied': 'Pfad kopiert',
+        'path.none': 'Dieser Arbeitsbereich hat keinen Ordnerpfad',
         'menu.delete': 'Löschen',
         'menu.fork': 'Abzweigen',
         'menu.archive': 'Archivieren',
@@ -597,6 +613,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} sous-agents en cours',
         'schedule.active': 'Tâche planifiée active',
         'menu.rename': 'Renommer',
+        'menu.openWsFolder': 'Ouvrir le dossier de l’espace de travail',
+        'menu.copyPath': 'Copier le chemin',
+        'path.copied': 'Chemin copié',
+        'path.none': 'Cet espace de travail n’a pas de chemin de dossier',
         'menu.delete': 'Supprimer',
         'menu.fork': 'Bifurquer',
         'menu.archive': 'Archiver',
@@ -730,6 +750,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} उप-एजेंट चल रहे हैं',
         'schedule.active': 'सक्रिय निर्धारित कार्य मौजूद',
         'menu.rename': 'नाम बदलें',
+        'menu.openWsFolder': 'कार्यस्थान फ़ोल्डर खोलें',
+        'menu.copyPath': 'पथ कॉपी करें',
+        'path.copied': 'पथ कॉपी किया गया',
+        'path.none': 'इस कार्यस्थान का कोई फ़ोल्डर पथ नहीं है',
         'menu.delete': 'हटाएँ',
         'menu.fork': 'शाखा बनाएँ',
         'menu.archive': 'संग्रह करें',
@@ -863,6 +887,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} subagen berjalan',
         'schedule.active': 'Ada tugas terjadwal yang aktif',
         'menu.rename': 'Ganti nama',
+        'menu.openWsFolder': 'Buka folder ruang kerja',
+        'menu.copyPath': 'Salin jalur',
+        'path.copied': 'Jalur disalin',
+        'path.none': 'Ruang kerja ini tidak memiliki jalur folder',
         'menu.delete': 'Hapus',
         'menu.fork': 'Cabangkan',
         'menu.archive': 'Arsipkan',
@@ -996,6 +1024,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} sotto-agenti in esecuzione',
         'schedule.active': 'Attività pianificata attiva',
         'menu.rename': 'Rinomina',
+        'menu.openWsFolder': 'Apri cartella area di lavoro',
+        'menu.copyPath': 'Copia percorso',
+        'path.copied': 'Percorso copiato',
+        'path.none': 'Questa area di lavoro non ha un percorso di cartella',
         'menu.delete': 'Elimina',
         'menu.fork': 'Dirama',
         'menu.archive': 'Archivia',
@@ -1129,6 +1161,10 @@ window.__ModuleLoader__.load({
         'status.subagents': 'サブエージェント {n} 件が実行中',
         'schedule.active': '有効なスケジュールタスクあり',
         'menu.rename': '名前を変更',
+        'menu.openWsFolder': 'ワークスペースのフォルダを開く',
+        'menu.copyPath': 'パスをコピー',
+        'path.copied': 'パスをコピーしました',
+        'path.none': 'このワークスペースにはフォルダパスがありません',
         'menu.delete': '削除',
         'menu.fork': 'フォーク',
         'menu.archive': 'アーカイブ',
@@ -1262,6 +1298,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '하위 에이전트 {n}개 실행 중',
         'schedule.active': '활성 예약 작업 있음',
         'menu.rename': '이름 바꾸기',
+        'menu.openWsFolder': '작업 공간 폴더 열기',
+        'menu.copyPath': '경로 복사',
+        'path.copied': '경로를 복사했습니다',
+        'path.none': '이 작업 공간에는 폴더 경로가 없습니다',
         'menu.delete': '삭제',
         'menu.fork': '포크',
         'menu.archive': '보관',
@@ -1395,6 +1435,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} subagenten actief',
         'schedule.active': 'Actieve geplande taak',
         'menu.rename': 'Naam wijzigen',
+        'menu.openWsFolder': 'Werkruimtemap openen',
+        'menu.copyPath': 'Pad kopiëren',
+        'path.copied': 'Pad gekopieerd',
+        'path.none': 'Deze werkruimte heeft geen mappad',
         'menu.delete': 'Verwijderen',
         'menu.fork': 'Afsplitsen',
         'menu.archive': 'Archiveren',
@@ -1528,6 +1572,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} podagentów w toku',
         'schedule.active': 'Aktywne zadanie zaplanowane',
         'menu.rename': 'Zmień nazwę',
+        'menu.openWsFolder': 'Otwórz folder obszaru roboczego',
+        'menu.copyPath': 'Kopiuj ścieżkę',
+        'path.copied': 'Skopiowano ścieżkę',
+        'path.none': 'Ten obszar roboczy nie ma ścieżki folderu',
         'menu.delete': 'Usuń',
         'menu.fork': 'Rozgałęź',
         'menu.archive': 'Zarchiwizuj',
@@ -1661,6 +1709,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} subagentes em execução',
         'schedule.active': 'Tarefa agendada ativa',
         'menu.rename': 'Renomear',
+        'menu.openWsFolder': 'Abrir pasta da área de trabalho',
+        'menu.copyPath': 'Copiar caminho',
+        'path.copied': 'Caminho copiado',
+        'path.none': 'Esta área de trabalho não tem caminho de pasta',
         'menu.delete': 'Excluir',
         'menu.fork': 'Bifurcar',
         'menu.archive': 'Arquivar',
@@ -1794,6 +1846,10 @@ window.__ModuleLoader__.load({
         'status.subagents': 'Выполняется субагентов: {n}',
         'schedule.active': 'Есть активная задача по расписанию',
         'menu.rename': 'Переименовать',
+        'menu.openWsFolder': 'Открыть папку рабочей области',
+        'menu.copyPath': 'Копировать путь',
+        'path.copied': 'Путь скопирован',
+        'path.none': 'У этой рабочей области нет пути к папке',
         'menu.delete': 'Удалить',
         'menu.fork': 'Ответвить',
         'menu.archive': 'В архив',
@@ -1927,6 +1983,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} underagenter körs',
         'schedule.active': 'Aktiv schemalagd uppgift',
         'menu.rename': 'Byt namn',
+        'menu.openWsFolder': 'Öppna arbetsytans mapp',
+        'menu.copyPath': 'Kopiera sökväg',
+        'path.copied': 'Sökvägen kopierad',
+        'path.none': 'Den här arbetsytan har ingen mappsökväg',
         'menu.delete': 'Ta bort',
         'menu.fork': 'Förgrena',
         'menu.archive': 'Arkivera',
@@ -2060,6 +2120,10 @@ window.__ModuleLoader__.load({
         'status.subagents': 'ตัวแทนย่อย {n} รายกำลังทำงาน',
         'schedule.active': 'มีงานตั้งเวลาใช้งานอยู่',
         'menu.rename': 'เปลี่ยนชื่อ',
+        'menu.openWsFolder': 'เปิดโฟลเดอร์พื้นที่ทำงาน',
+        'menu.copyPath': 'คัดลอกพาธ',
+        'path.copied': 'คัดลอกพาธแล้ว',
+        'path.none': 'พื้นที่ทำงานนี้ไม่มีพาธโฟลเดอร์',
         'menu.delete': 'ลบ',
         'menu.fork': 'แยกสาย',
         'menu.archive': 'เก็บถาวร',
@@ -2193,6 +2257,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} alt ajan çalışıyor',
         'schedule.active': 'Etkin zamanlanmış görev var',
         'menu.rename': 'Yeniden adlandır',
+        'menu.openWsFolder': 'Çalışma alanı klasörünü aç',
+        'menu.copyPath': 'Yolu kopyala',
+        'path.copied': 'Yol kopyalandı',
+        'path.none': 'Bu çalışma alanının klasör yolu yok',
         'menu.delete': 'Sil',
         'menu.fork': 'Çatalla',
         'menu.archive': 'Arşivle',
@@ -2326,6 +2394,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} tác nhân con đang chạy',
         'schedule.active': 'Có tác vụ hẹn giờ đang hoạt động',
         'menu.rename': 'Đổi tên',
+        'menu.openWsFolder': 'Mở thư mục không gian làm việc',
+        'menu.copyPath': 'Sao chép đường dẫn',
+        'path.copied': 'Đã sao chép đường dẫn',
+        'path.none': 'Không gian làm việc này không có đường dẫn thư mục',
         'menu.delete': 'Xóa',
         'menu.fork': 'Tách nhánh',
         'menu.archive': 'Lưu trữ',
@@ -2459,6 +2531,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} 個子任務運行緊',
         'schedule.active': '有進行緊嘅定時任務',
         'menu.rename': '重新命名',
+        'menu.openWsFolder': '開啟工作區資料夾',
+        'menu.copyPath': '複製路徑',
+        'path.copied': '已複製路徑',
+        'path.none': '此工作區沒有資料夾路徑',
         'menu.delete': '刪除',
         'menu.fork': '分叉',
         'menu.archive': '封存',
@@ -2592,6 +2668,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} 個子任務運行緊',
         'schedule.active': '有進行緊嘅定時任務',
         'menu.rename': '重新命名',
+        'menu.openWsFolder': '開啟工作區資料夾',
+        'menu.copyPath': '複製路徑',
+        'path.copied': '已複製路徑',
+        'path.none': '此工作區沒有資料夾路徑',
         'menu.delete': '刪除',
         'menu.fork': '分叉',
         'menu.archive': '封存',
@@ -2725,6 +2805,10 @@ window.__ModuleLoader__.load({
         'status.subagents': '{n} 個子任務執行中',
         'schedule.active': '有進行中的排程工作',
         'menu.rename': '重新命名',
+        'menu.openWsFolder': '開啟工作區資料夾',
+        'menu.copyPath': '複製路徑',
+        'path.copied': '已複製路徑',
+        'path.none': '此工作區沒有資料夾路徑',
         'menu.delete': '刪除',
         'menu.fork': '分支',
         'menu.archive': '封存',
@@ -3401,6 +3485,8 @@ window.__ModuleLoader__.load({
      * render time, so a stale record can never break the tree.
      */
     const ROOT_DIR = ''
+    /** Stable empty root sequence: a fresh [] per render would churn the tree memo. */
+    const EMPTY_ROOT_ORDER = []
     let dirSeq = 0
     const newDirId = () => {
       dirSeq += 1
@@ -3496,7 +3582,66 @@ window.__ModuleLoader__.load({
      *   - false → the upstream behaviour (folderId = title prefix path), which
      *             keeps the old projection usable as a fallback.
      */
-    function buildTreeVirtual(items, directories, wsDir, useTree) {
+    /**
+     * Root-level display sequence: virtual directories and ROOT-LEVEL real
+     * workspaces in ONE ordered list.
+     *
+     * Without it the root level can only be rendered as "every directory, then
+     * every workspace", which pins directories above all workspaces no matter
+     * how they are reordered — a directory could never sit BELOW a workspace,
+     * because the directories' `order` ranks them among directories only and
+     * the workspaces are ordered by the host.
+     *
+     * `rootOrder` is a list of tokens — "dir:<dirId>" / "ws:<workspaceId>" —
+     * naming the entries the user has explicitly positioned. Anything the list
+     * does not mention keeps the historical order (directories by `order`,
+     * then workspaces in host order), so an empty or absent list reproduces the
+     * old layout EXACTLY: existing installs need no migration, and a directory
+     * deleted elsewhere simply drops out of the sequence.
+     */
+    const orderRootEntries = (root, rootOrder) => {
+      const entries = []
+      const usedDir = new Set()
+      const usedWs = new Set()
+      const dirById = new Map((root.folders || []).map((node) => [node.path, node]))
+      const wsById = new Map((root.workspaces || []).map((ws) => [ws.workspaceId, ws]))
+      for (const token of (Array.isArray(rootOrder) ? rootOrder : [])) {
+        if (typeof token !== 'string') continue
+        if (token.startsWith('dir:')) {
+          const id = token.slice(4)
+          const node = dirById.get(id)
+          if (node && !usedDir.has(id)) {
+            usedDir.add(id)
+            entries.push({ kind: 'folder', node })
+          }
+          continue
+        }
+        if (token.startsWith('ws:')) {
+          const id = token.slice(3)
+          const ws = wsById.get(id)
+          if (ws && !usedWs.has(id)) {
+            usedWs.add(id)
+            entries.push({ kind: 'workspace', workspace: ws })
+          }
+        }
+      }
+      // Entries the sequence does not mention keep the historical order: the
+      // directories that were never positioned, then the workspaces. The
+      // directories join the LAST POSITIONED directory rather than the end of
+      // the whole list — creating a directory is this plugin's most common
+      // action, and once a sequence exists it would otherwise appear below
+      // every workspace, looking like it went missing.
+      let dirSlot = 0
+      for (let i = entries.length - 1; i >= 0; i--) {
+        if (entries[i].kind === 'folder') { dirSlot = i + 1; break }
+      }
+      const pendingDirs = (root.folders || []).filter((node) => !usedDir.has(node.path)).map((node) => ({ kind: 'folder', node }))
+      entries.splice(dirSlot, 0, ...pendingDirs)
+      for (const ws of (root.workspaces || [])) if (!usedWs.has(ws.workspaceId)) entries.push({ kind: 'workspace', workspace: ws })
+      return entries
+    }
+
+    function buildTreeVirtual(items, directories, wsDir, useTree, rootOrder) {
       const root = { path: '', name: '', folders: [], workspaces: [] }
       const byId = new Map([[ROOT_DIR, root]])
       const ensure = (dirId) => {
@@ -3531,6 +3676,9 @@ window.__ModuleLoader__.load({
             folderPath: assigned && directories[assigned] ? assigned : '',
           })
         }
+        // Root-level interleaving (see orderRootEntries). Nested levels keep
+        // the historical "sub-directories, then workspaces" shape.
+        root.entries = orderRootEntries(root, rootOrder)
         return root
       }
       // ---- fallback: upstream title-projection tree ----
@@ -3538,7 +3686,7 @@ window.__ModuleLoader__.load({
     }
 
     const createViewStore = () => storeKit.defineStore({
-      init: () => ({ folders: [], directories: {}, wsDir: {}, useTree: true, expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, prefs: { compactChains: true }, styling: {} }),
+      init: () => ({ folders: [], directories: {}, wsDir: {}, rootOrder: [], useTree: true, expanded: {}, sessionsExpanded: {}, sessionGroups: {}, sessionOrder: {}, prefs: { compactChains: true }, styling: {} }),
       // NOTE: hydration REPLACES the state with the persisted whole value —
       // init defaults never merge. Every action must tolerate a missing key
       // (states persisted by older plugin versions lack sessionGroups), and
@@ -3581,6 +3729,12 @@ window.__ModuleLoader__.load({
          * "on unless explicitly false".
          */
         setRecentExpanded: (d, key, value) => { if (!d.recentExpanded) d.recentExpanded = {}; d.recentExpanded[key] = value === true },
+        /**
+         * Root-level display sequence (see orderRootEntries). Whole-list
+         * replacement on purpose: every write materializes the full sequence,
+         * so there is never a partially-ordered root level to reconcile.
+         */
+        setRootOrder: (d, list) => { d.rootOrder = Array.isArray(list) ? list.slice() : [] },
         setPref: (d, key, value) => { if (!d.prefs) d.prefs = {}; d.prefs[key] = value },
         setStyling: (d, key, value) => { if (!d.styling) d.styling = {}; if (value === null) delete d.styling[key]; else d.styling[key] = value },
         // Browser-local session order (v0.10.2): the fallback channel for
@@ -3867,6 +4021,47 @@ window.__ModuleLoader__.load({
         dirs[dirId] = Object.assign({}, dirs[dirId], { parentId: parent, order: nextDirOrder(dirs, parent) })
         if (actions && typeof actions.moveDirectory === 'function') actions.moveDirectory(dirId, parent, dirs[dirId].order)
         scopeSet('directoriesJson', JSON.stringify(dirs))
+      },
+      /**
+       * Apply a whole sibling renumbering in ONE write.
+       *
+       * Drag-to-reorder produces a dense `{ id: order }` map covering every
+       * sibling (see reorderDirIds). Driving that through per-directory
+       * dirMove calls is wrong twice over:
+       *   - dirMove takes NO order argument — it always APPENDS
+       *     (order = nextDirOrder), so every sibling in the batch would end up
+       *     on the same value and the row would only appear to land right
+       *     because equal orders fall back to the NAME tie-break;
+       *   - each call would write a FULL directoriesJson snapshot derived from
+       *     the same render-time dirsMap, so the batch is a lost-update chain
+       *     in which only the last snapshot survives.
+       * One pass over the batch, one local-store action per changed directory
+       * (each carrying its explicit order), one host write.
+       */
+      dirSetOrders: (orders) => {
+        if (!orders || typeof orders !== 'object') return
+        const dirs = Object.assign({}, dirsMap)
+        let changed = false
+        for (const id of Object.keys(orders)) {
+          const dir = dirs[id]
+          const order = orders[id]
+          if (!dir || typeof order !== 'number' || (dir.order || 0) === order) continue
+          dirs[id] = Object.assign({}, dir, { order })
+          changed = true
+          if (actions && typeof actions.moveDirectory === 'function') actions.moveDirectory(id, dir.parentId || '', order)
+        }
+        if (changed) scopeSet('directoriesJson', JSON.stringify(dirs))
+      },
+      /**
+       * Persist the root-level sequence (see orderRootEntries). Tokens rather
+       * than bare ids: one list has to carry directories AND workspaces, whose
+       * id spaces are unrelated. The host copy rides `rootOrderJson` — a JSON
+       * string, same reasoning as directoriesJson/wsDirJson in src/index.js.
+       */
+      rootOrderSet: (list) => {
+        const next = Array.isArray(list) ? list.slice() : []
+        if (actions && typeof actions.setRootOrder === 'function') actions.setRootOrder(next)
+        scopeSet('rootOrderJson', JSON.stringify(next))
       },
       /** Delete a directory subtree; real workspaces inside are detached to root. */
       dirRemove: (dirId) => {
@@ -5253,7 +5448,24 @@ window.__ModuleLoader__.load({
       // records + a workspace→directory assignment map. `useTree` false keeps
       // the legacy title-prefix projection available as a fallback.
       const storeDirs = useStore ? (useStore(s => dirMapOf(s)) || {}) : {}
+      /**
+       * True when a row's `path` is a virtual directory id (not a title prefix).
+       *
+       * Declared HERE, beside the model it reads, and only here. The row
+       * renderers (`renderPlainFolder` → `dirDropEvents`) call it on the very
+       * first render that has a folder row, i.e. while the rest of this
+       * component body is still executing — a declaration placed further down
+       * (as in v0.2.0, next to the context menu) is therefore still in its
+       * temporal dead zone, throws `Cannot access 'isVDir' before
+       * initialization`, and the QuietBoundary silently degrades the WHOLE
+       * sidebar tree to nothing (only when at least one folder row exists,
+       * which is why an empty store never showed it).
+       */
+      const isVDir = (path) => !!(path && storeDirs && storeDirs[path])
       const storeWsDir = useStore ? (useStore(s => wsDirMapOf(s)) || {}) : {}
+      // Root-level sequence (see orderRootEntries). Absent for states persisted
+      // before this field existed — an empty list means the historical layout.
+      const storeRootOrder = useStore ? (useStore(s => s.rootOrder) || EMPTY_ROOT_ORDER) : EMPTY_ROOT_ORDER
       const storeUseTree = useStore ? useStore(s => s.useTree !== false) : true
       const useTree = storeUseTree
       const expandedMap = useStore ? (useStore(s => s.expanded) || {}) : {}
@@ -5563,7 +5775,7 @@ window.__ModuleLoader__.load({
         // Virtual tree first: directories are explicit records, so a folder
         // EXISTS whether or not it currently holds anything (no bootstrapping
         // through a real workspace needed).
-        const built = buildTreeVirtual(items, storeDirs, storeWsDir, storeUseTree)
+        const built = buildTreeVirtual(items, storeDirs, storeWsDir, storeUseTree, storeRootOrder)
         if (useTree !== false) {
           // Chain compression is a display trick of the PREFIX model: a lone
           // "group/workspace" renders as one merged row, which would hide a
@@ -5574,7 +5786,7 @@ window.__ModuleLoader__.load({
         }
         if (!compactChains || draggingWorkspace) return built
         return { ...built, folders: built.folders.map((f) => materializeChain(compressTree(f))), workspaces: built.workspaces }
-      }, [items, storeDirs, storeWsDir, storeUseTree, storeFolders, compactChains, draggingWorkspace])
+      }, [items, storeDirs, storeWsDir, storeRootOrder, storeUseTree, storeFolders, compactChains, draggingWorkspace])
 
       /** Browser-local flat session order for one workspace (fallback channel). */
       const sessionOrderOf = (workspaceId) => {
@@ -5759,10 +5971,62 @@ window.__ModuleLoader__.load({
 
       /* --------------------- workspace drag & drop -------------------- */
 
+      /**
+       * The root level's CURRENT display order, as orderRootEntries tokens.
+       * Falls back to "directories, then workspaces" when the tree carries no
+       * merged entry list (the legacy title-projection mode).
+       *
+       * Declared here, ABOVE every gesture handler that reads it: a helper
+       * defined further down would be in its temporal dead zone for a handler
+       * invoked during the very same render pass (see the `isVDir` note).
+       */
+      const rootTokensNow = () => {
+        if (tree && Array.isArray(tree.entries)) {
+          return tree.entries.map((entry) => (entry.kind === 'folder' ? 'dir:' + entry.node.path : 'ws:' + entry.workspace.workspaceId))
+        }
+        const out = []
+        if (tree) {
+          for (const folder of tree.folders) out.push('dir:' + folder.path)
+          for (const workspace of tree.workspaces) out.push('ws:' + workspace.workspaceId)
+        }
+        return out
+      }
+      /**
+       * Move one root-level token to sit immediately before/after another, and
+       * persist the whole (MATERIALIZED) sequence — every root reorder writes
+       * the complete list, so a later move never has to reason about which
+       * entries were already listed. Returns false when the anchor is not part
+       * of the root level (nothing is written then).
+       */
+      const moveRootToken = (sourceToken, targetToken, half) => {
+        if (!sourceToken || !targetToken || sourceToken === targetToken) return false
+        const tokens = rootTokensNow()
+        if (!tokens.includes(targetToken)) return false
+        const rest = tokens.filter((token) => token !== sourceToken)
+        const at = rest.indexOf(targetToken)
+        if (at === -1) return false
+        const cut = at + (half === 'after' ? 1 : 0)
+        shared.rootOrderSet(rest.slice(0, cut).concat([sourceToken], rest.slice(cut)))
+        return true
+      }
       const wsDropHalf = (workspaceId) => {
         if (!dragMatches('workspace')) return null
         const over = drag.over
         return over && over.kind === 'workspace' && over.target === workspaceId ? over.half : null
+      }
+      /** A row that belongs to the root level (not filed inside a directory). */
+      const isRootLevelWorkspace = (workspace) => !(workspace && workspace.folderPath)
+      /**
+       * Before/after indicator while a DIRECTORY is dragged over a root-level
+       * workspace row — the gesture that lets a directory sit below a
+       * workspace (see orderRootEntries). Workspaces filed inside a directory
+       * are not anchors: filing a directory into another directory stays the
+       * "move to directory…" menu's job.
+       */
+      const dirWsDropHalf = (workspaceId, isRoot) => {
+        if (!isRoot || !dragMatches('dir')) return null
+        const over = drag.over
+        return over && over.kind === 'rootws' && over.target === workspaceId ? (over.half || 'before') : null
       }
       /** Before/after indicator while a SIBLING directory is dragged over a folder row. */
       const dirDropHalf = (path) => {
@@ -5804,6 +6068,20 @@ window.__ModuleLoader__.load({
           setDrag(null)
         },
         onDragOver: (event) => {
+          if (dragMatches('dir')) {
+            // A directory dragged over a ROOT-LEVEL workspace row: before/after
+            // anchors that let the directory land below (or above) a real
+            // workspace. See moveRootToken.
+            if (!isRootLevelWorkspace(workspace)) return
+            event.preventDefault()
+            event.stopPropagation()
+            try { event.dataTransfer.dropEffect = 'move' } catch { }
+            const half = rowHalf(event)
+            setDrag(current => (current && current.over && current.over.kind === 'rootws' && current.over.target === workspace.workspaceId && current.over.half === half)
+              ? current
+              : (current ? { ...current, over: { kind: 'rootws', target: workspace.workspaceId, half } } : current))
+            return
+          }
           if (!dragMatches('workspace')) return
           event.preventDefault()
           event.stopPropagation()
@@ -5814,6 +6092,22 @@ window.__ModuleLoader__.load({
             : (current ? { ...current, over: { kind: 'workspace', target: workspace.workspaceId, half } } : current))
         },
         onDrop: (event) => {
+          if (dragMatches('dir')) {
+            if (!isRootLevelWorkspace(workspace)) return
+            // Only a ROOT-LEVEL directory can be placed here: a nested
+            // sub-directory moving up to the root level is a reparent gesture,
+            // which the "move to directory…" menu owns (its own descendant
+            // check included).
+            const sourceDirId = drag.source && drag.source.dirId
+            const sourceParent = (storeDirs[sourceDirId] && storeDirs[sourceDirId].parentId) || ''
+            if (!sourceDirId || sourceParent !== ROOT_DIR) return
+            event.preventDefault()
+            event.stopPropagation()
+            const half = drag.over && drag.over.kind === 'rootws' && drag.over.target === workspace.workspaceId ? drag.over.half : rowHalf(event)
+            moveRootToken('dir:' + sourceDirId, 'ws:' + workspace.workspaceId, half)
+            setDrag(null)
+            return
+          }
           if (!dragMatches('workspace')) return
           event.preventDefault()
           event.stopPropagation()
@@ -5852,15 +6146,16 @@ window.__ModuleLoader__.load({
         const self = storeDirs[dirId]
         return childDirsOf(storeDirs, self ? (self.parentId || '') : '')
       }
-      /** Same-sibling order positions as they are currently displayed. */
+      /**
+       * Same-sibling order positions as they are currently displayed. The whole
+       * renumbering is handed over as ONE batch (see shared.dirSetOrders): a
+       * per-directory dirMove loop can neither express an order nor keep more
+       * than its own last snapshot.
+       */
       const reorderDir = (dirId, targetOrder) => {
         const next = reorderDirIds(storeDirs, dirId, targetOrder)
         if (!next) return
-        for (const id of Object.keys(next)) {
-          const dir = storeDirs[id]
-          if (!dir || (dir.order || 0) === next[id]) continue
-          shared.dirMove(id, dir.parentId || '', next[id])
-        }
+        shared.dirSetOrders(next)
       }
       /**
        * Drop a dragged directory before/after a sibling. `targetOrder` is the
@@ -5870,6 +6165,20 @@ window.__ModuleLoader__.load({
        */
       const commitDirReorder = (sourceId, targetId, half) => {
         if (!sourceId || !targetId || sourceId === targetId) return
+        // A reorder only ever means "move among my own siblings". Dropping a
+        // directory on a row of a DIFFERENT parent is not a reparent gesture
+        // (the "move to directory…" menu owns that), and renumbering the
+        // source list with an index taken from the target list would misplace
+        // it. Ignore the drop instead of writing a wrong order.
+        const sourceParent = (storeDirs[sourceId] && storeDirs[sourceId].parentId) || ''
+        const targetParent = (storeDirs[targetId] && storeDirs[targetId].parentId) || ''
+        if (sourceParent !== targetParent) return
+        // The root level is governed by the root SEQUENCE — it is the only
+        // ordering that can interleave directories with real workspaces — so a
+        // root-level drop edits that sequence instead of the directories'
+        // `order`. Nested levels have no workspaces of their own in the same
+        // list position, so they keep ranking siblings by `order`.
+        if (sourceParent === ROOT_DIR && moveRootToken('dir:' + sourceId, 'dir:' + targetId, half)) return
         const siblings = siblingDirsOf(targetId)
         const targetIndex = siblings.findIndex((d) => d.id === targetId)
         if (targetIndex === -1) return
@@ -5961,6 +6270,12 @@ window.__ModuleLoader__.load({
         if (source.workspaceId === targetWorkspace.workspaceId) return
         const target = targetWorkspace.folderPath || ''
         const sameFolder = target === source.folderPath
+        // Root-level drags edit the root SEQUENCE as well. The host's
+        // insertWorkspaceBefore below stays authoritative for every other
+        // surface, but once a sequence exists it — not the host order — decides
+        // where a row sits on the root level, so skipping this would make a
+        // workspace reorder look like it did nothing.
+        if (target === ROOT_DIR) moveRootToken('ws:' + source.workspaceId, 'ws:' + targetWorkspace.workspaceId, half)
         const anchor = half === 'after'
           ? nextWorkspaceAfter(target, targetWorkspace.workspaceId)
           : targetWorkspace.workspaceId
@@ -6305,7 +6620,7 @@ window.__ModuleLoader__.load({
           // SEE the new session appear, even if the row was collapsed.
           onStart: () => { actions.setSessionsExpanded(workspace.workspaceId, true); startSession(workspace.workspaceId) },
           onContextMenu: (e) => openCtx('workspace', workspace, e),
-          dropHalf: wsDropHalf(workspace.workspaceId),
+          dropHalf: wsDropHalf(workspace.workspaceId) || dirWsDropHalf(workspace.workspaceId, isRootLevelWorkspace(workspace)),
           dragEvents: workspaceDragEvents(workspace),
           custStyle: rowStyleOf('workspace:' + workspace.workspaceId),
           iconMode: (styleEntry('workspace:' + workspace.workspaceId) || {}).icon || 'solid',
@@ -6371,8 +6686,17 @@ window.__ModuleLoader__.load({
           for (const entry of searched.workspaces) bodyRows.push(...renderWorkspaceEntry(entry, 0))
         }
       } else {
-        for (const folder of tree.folders) bodyRows.push(...renderPlainFolder(folder, 0))
-        for (const workspace of tree.workspaces) bodyRows.push(...renderWorkspaceEntry({ workspace }, 0, wsPulseOf(workspace)))
+        // Root level: ONE merged sequence of directories and root-level
+        // workspaces (see orderRootEntries), so a directory can sit below a
+        // workspace. `tree.entries` exists in tree mode; the legacy title
+        // projection keeps its historical "folders, then workspaces" shape.
+        const rootEntries = (useTree !== false && Array.isArray(tree.entries))
+          ? tree.entries
+          : tree.folders.map((node) => ({ kind: 'folder', node })).concat(tree.workspaces.map((workspace) => ({ kind: 'workspace', workspace })))
+        for (const entry of rootEntries) {
+          if (entry.kind === 'workspace') bodyRows.push(...renderWorkspaceEntry({ workspace: entry.workspace }, 0, wsPulseOf(entry.workspace)))
+          else bodyRows.push(...renderPlainFolder(entry.node, 0))
+        }
         if (ungrouped.length > 0) {
           bodyRows.push(E('div', { key: 'ungrouped-label', className: 'bw-header-title', style: { padding: '10px 6px 2px' } }, t('group.ungrouped')))
           for (const s of ungrouped) bodyRows.push(renderSessionRow(s, 0))
@@ -6385,8 +6709,12 @@ window.__ModuleLoader__.load({
 
       /* ------------------------- context menu ------------------------ */
 
-      /** True when a row's `path` is a virtual directory id (not a title prefix). */
-      const isVDir = (path) => !!(path && storeDirs && storeDirs[path])
+      // `isVDir` lives with the rest of the virtual-directory model near the
+      // top of this component body (see `storeDirs`): the row renderers reach
+      // it through `dirDropEvents` BEFORE this point in the body runs, and a
+      // `const` declaration this far down is still in its temporal dead zone
+      // there — a ReferenceError that the QuietBoundary degrades into an EMPTY
+      // sidebar (the v0.2.0 regression). Keep it declared once, up there.
 
       /**
        * Flat "move into directory" list for the context menu: every directory
@@ -6408,6 +6736,18 @@ window.__ModuleLoader__.load({
         walk('', 0)
         return out
       }
+
+      /**
+       * The real host folder behind a workspace row, or '' when the registry
+       * row has none. Workspace entries carry `path` (workspace registry) and
+       * `leaf` (the basename the tree displays); only `path` is meaningful to
+       * the operating system, so the two are never interchanged.
+       */
+      const wsPathOf = (workspace) => {
+        const path = workspace && typeof workspace.path === 'string' ? workspace.path.trim() : ''
+        return path === '' ? '' : path
+      }
+
       /**
        * Folder-row menu. Virtual directories and legacy title-prefix folders
        * look alike but carry different `path` semantics, so the two families
@@ -6441,12 +6781,20 @@ window.__ModuleLoader__.load({
         if (ctx === null) return []
         if (ctx.kind === 'folder') return folderMenuItems(ctx.payload.path)
         if (ctx.kind === 'workspace') {
+          const ws = ctx.payload
+          const items = [{ id: 'rename', label: t('menu.rename') }]
+          // Host-side entries: the workspace folder as the operating system sees
+          // it. Only offered when the registry row actually carries a path — a
+          // workspace whose path never loaded would otherwise post an empty
+          // string and fail with a message about nothing.
+          if (wsPathOf(ws) !== '') {
+            items.push({ id: 'ws-open-folder', label: t('menu.openWsFolder') })
+            items.push({ id: 'ws-copy-path', label: t('menu.copyPath') })
+          }
           // The entry the upstream plugin never had: file an EXISTING real
           // workspace into a virtual directory without renaming it. The
           // workspace keeps its title and its path — only the assignment map
           // changes, so nothing about the folder on disk is touched.
-          const ws = ctx.payload
-          const items = [{ id: 'rename', label: t('menu.rename') }]
           const moves = dirMenuItems('', true)
           if (moves.length > 0) items.push({ id: 'ws-move', label: t('dir.moveTo'), children: moves })
           items.push({ id: 'delete', label: t('menu.delete'), danger: true })
@@ -6489,6 +6837,20 @@ window.__ModuleLoader__.load({
         /* ---- move a real workspace between directories ---- */
         if (kind === 'workspace' && id === 'ws-move-root') { assignWorkspaceToDir(payload.workspaceId, ''); return }
         if (kind === 'workspace' && id.indexOf('ws-move:') === 0) { assignWorkspaceToDir(payload.workspaceId, id.slice('ws-move:'.length)); return }
+        /* ---- the workspace folder as the OS sees it ---- */
+        if (kind === 'workspace' && id === 'ws-open-folder') {
+          const path = wsPathOf(payload)
+          // The host launch outlives this handler and the reply only ever feeds
+          // a notice, so a failure must not escape as an unhandled rejection.
+          requestOpenFolder(path).catch((error) => { showNotice(messageOf(error), 'error') })
+          return
+        }
+        if (kind === 'workspace' && id === 'ws-copy-path') {
+          const path = wsPathOf(payload)
+          if (path === '') { showNotice(t('path.none'), 'error'); return }
+          copyText(path).then(() => { showNotice(t('path.copied')) }, (error) => { showNotice(messageOf(error), 'error') })
+          return
+        }
         /* ---- upstream title-prefix folder actions ---- */
         if (kind === 'folder' && id === 'new-subfolder') setDialog({ kind: 'folder-new', parentPath: payload.path })
         else if (kind === 'folder' && id === 'new-subworkspace') { setFlowParent(payload.path); setFlowOpen(true) }
@@ -6791,15 +7153,35 @@ window.__ModuleLoader__.load({
         const result = await session.rename(title)
         if (!result || !result.ok) throw new Error(result && result.error ? result.error.message : 'session rename failed')
       }
+      // Switching the conversation shown in the main pane is owned by the
+      // workspace UI service, not by the raw sessions store. 0.1 exposed
+      // sessions.open(id); 0.2 dropped it in favour of sessions.retain(...),
+      // but retain alone only reserves the session — the main-view selection
+      // (what the chat pane renders) stays untouched, so the sidebar appeared
+      // to do nothing. uiWorkspace.openSession(id) is the shipped path used by
+      // dsh's own sidebar: it retains and re-points the main view in one go,
+      // and it exists in both 0.1 and 0.2.
+      const retainSession = (sessionId) => {
+        if (uiWorkspace && typeof uiWorkspace.openSession === 'function') {
+          uiWorkspace.openSession(sessionId)
+          return
+        }
+        if (typeof sessions.retain === 'function') {
+          sessions.retain(sessionId, { source: 'mainView' })
+          return
+        }
+        sessions.open(sessionId)
+      }
+
       const forkSession = (sessionId) => {
         sessions.fork({ sessionId, increaseTitle: true })
-          .then((childId) => sessions.open(childId))
+          .then((childId) => retainSession(childId))
           .catch(() => { /* keep current selection */ })
       }
 
       const browserInjected = () => ({
         startSession: (workspaceId) => { uiWorkspace.startSession(workspaceId) },
-        open: (sessionId) => { sessions.open(sessionId) },
+        open: (sessionId) => { retainSession(sessionId) },
         searchSessions,
         searchResultLimit: sessions.searchResultLimit !== undefined ? sessions.searchResultLimit : 20,
         renameSession,
@@ -6878,13 +7260,29 @@ window.__ModuleLoader__.load({
       // block). Binding is best-effort: a missing/failed bind leaves the
       // plugin fully browser-local — the pre-0.9.5 behavior.
       prefsScopeRef = null
-      try {
-        if (ctx.settingsScope && typeof ctx.settingsScope.bind === 'function') {
-          prefsScopeRef = ctx.settingsScope.bind({ namespace: 'better-workspace' })
+      // dsh 0.2 renamed settingsScope to configForms, keyed by host entry id
+      // (`virtual-workspace` in cordis.patch.yml); 0.1 hosts keep the bind.
+      const bindPrefsScope = () => {
+        if (prefsScopeRef !== null) return
+        try {
+          const forms = ctx.get('configForms')
+          if (forms && typeof forms.get === 'function') {
+            prefsScopeRef = forms.get('virtual-workspace')
+            return
+          }
+          const scope = ctx.get('settingsScope')
+          if (scope && typeof scope.bind === 'function') {
+            prefsScopeRef = scope.bind({ namespace: 'better-workspace' })
+          }
+        } catch (error) {
+          console.warn('[dsh-better-workspace] settings scope bind failed; sync stays local', error)
+          prefsScopeRef = null
         }
-      } catch (error) {
-        console.warn('[dsh-better-workspace] settings scope bind failed; sync stays local', error)
-        prefsScopeRef = null
+      }
+      bindPrefsScope()
+      if (typeof ctx.inject === 'function') {
+        ctx.inject(['configForms'], bindPrefsScope)
+        ctx.inject(['settingsScope'], bindPrefsScope)
       }
 
       // Settings → Plugins card only (the tab dispatches the intersection of
@@ -6916,9 +7314,125 @@ window.__ModuleLoader__.load({
       ))
     }
 
+    /* ==================== host actions (open folder, …) ==================== */
+
+    /**
+     * Route of the host half's "open folder" action (src/open-folder.js). A
+     * browser cannot hand a path to the operating system, so the context menu
+     * posts it here and the host launches its own file manager; under WSL that
+     * is Explorer on the Windows desktop, reached through the translated path.
+     */
+    const OPEN_FOLDER_ROUTE = '/_dsh/virtual-workspace/open-folder'
+
+    /**
+     * Short-lived notice for the outcome of a host action. It has to live
+     * outside React: the context menu closes on pick, and unless the entry
+     * opens a dialog there is no component left to carry the message. The
+     * element is keyed by attribute so a second message replaces the first
+     * instead of stacking, and it is pointer-transparent so it can never eat a
+     * click on the sidebar underneath.
+     */
+    function showNotice(message, variant) {
+      try {
+        const existing = document.querySelector('[data-bw-notice]')
+        if (existing && existing.parentNode) existing.parentNode.removeChild(existing)
+        const box = document.createElement('div')
+        box.setAttribute('data-bw-notice', '1')
+        box.setAttribute('role', variant === 'error' ? 'alert' : 'status')
+        box.textContent = String(message === undefined || message === null ? '' : message)
+        box.style.cssText = 'position:fixed;top:16px;right:16px;z-index:2147483000;max-width:420px;' +
+          'pointer-events:none;padding:10px 14px;border-radius:10px;word-break:break-all;' +
+          'font:12px/1.6 system-ui,sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.35);' +
+          (variant === 'error' ? 'background:#c34f4f;color:#fff' : 'background:rgba(28,28,32,.92);color:#fff')
+        document.body.append(box)
+        setTimeout(() => { try { box.remove() } catch (error) { /* already gone */ } }, variant === 'error' ? 6000 : 2600)
+      } catch (error) {
+        // A missing document.body (or a blocked append) must never break the
+        // pick handler that produced the message.
+        console.warn('[dsh-better-workspace] notice not shown:', message, error)
+      }
+    }
+
+    /**
+     * Ask the host to open one workspace folder in the OS file manager.
+     *
+     * The path comes from the sidebar's own workspace registry entry, i.e. the
+     * very path this DSH session runs in, so the request carries no authority
+     * the caller did not already have. The host re-validates it (absolute,
+     * existing, a directory) and answers a readable message on failure.
+     *
+     * @param path - absolute host path of the workspace folder.
+     * @returns the opener result, or a rejection carrying the host's message.
+     */
+    function requestOpenFolder(path) {
+      if (typeof path !== 'string' || path === '') {
+        return Promise.reject(new Error('this workspace has no folder path'))
+      }
+      return fetch(OPEN_FOLDER_ROUTE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path }),
+      }).then(
+        (response) => response.json().catch(() => {
+          throw new Error('open folder failed (HTTP ' + response.status + ')')
+        }).then((result) => {
+          if (!response.ok || !result || !result.ok) {
+            throw new Error((result && result.error && result.error.message) || ('open folder failed (HTTP ' + response.status + ')'))
+          }
+          return result.value
+        }),
+        // A network-level rejection means the route is not mounted at all —
+        // the host half failed to load, or this page is older than it.
+        (error) => {
+          throw new Error((error && error.message) || 'open folder route unreachable')
+        },
+      )
+    }
+
+    /**
+     * Copy one string to the clipboard.
+     *
+     * `navigator.clipboard` is the supported path (the Web surface is served
+     * from a secure context under 127.0.0.1), but the permission it asks for can
+     * be refused; the deprecated `execCommand` route then does the job from a
+     * throwaway textarea, and a refused clipboard finally turns into a readable
+     * rejection instead of a silent no-op.
+     *
+     * @param text - the string to place on the clipboard.
+     */
+    function copyText(text) {
+      const value = String(text === undefined || text === null ? '' : text)
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        return navigator.clipboard.writeText(value).catch(() => legacyCopy(value))
+      }
+      return legacyCopy(value)
+    }
+
+    /** The pre-Clipboard-API copy route, kept as the fallback. */
+    function legacyCopy(value) {
+      return new Promise((resolve, reject) => {
+        try {
+          const area = document.createElement('textarea')
+          area.value = value
+          area.setAttribute('readonly', 'readonly')
+          // Kept off-screen but inside the document: a detached node cannot be
+          // selected, so the copy would silently do nothing.
+          area.style.cssText = 'position:fixed;top:0;left:-9999px;opacity:0'
+          document.body.append(area)
+          area.select()
+          const copied = typeof document.execCommand === 'function' && document.execCommand('copy')
+          area.remove()
+          if (copied) resolve(value)
+          else reject(new Error('clipboard refused the copy'))
+        } catch (error) {
+          reject(error)
+        }
+      })
+    }
+
     return {
       name: 'dsh-virtual-workspace',
-      inject: ['slots', 'sessions', 'workspaces', 'locale', 'uiWorkspace', 'settingsScope'],
+      inject: ['slots', 'sessions', 'workspaces', 'locale', 'uiWorkspace'],
       apply,
     }
   },

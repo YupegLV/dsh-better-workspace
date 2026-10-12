@@ -4,3 +4,8 @@ node_modules/
 .npmrc
 .env
 .DS_Store
+
+# Local working-copy backups (never committed; the remote/Git history is the
+# reference from here on):
+*.orig
+*.bak-*

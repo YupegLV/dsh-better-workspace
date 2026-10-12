@@ -4,10 +4,17 @@
  * The feature lives in the client half (src/client.js): the hierarchy tree,
  * the add-workspace parent-group popup, and view state (persisted in the
  * browser through the dsh client store). This host half exists so the cordis
- * plugin row has a valid Node entry, and to give future server-side features
- * (host-persisted folder registry, a settings-page backend) a home. It is
- * intentionally side-effect free.
+ * plugin row has a valid Node entry, gives the settings namespace
+ * (`better-workspace`) its schema, and serves the two host-side actions the
+ * browser cannot perform itself:
+ *
+ *   POST /_dsh/virtual-workspace/open-folder  { path }  →  OS file manager
+ *
+ * The route lives in ./open-folder.js and only ever answers JSON.
  */
+
+import { OPEN_FOLDER_ROUTE, openFolderHandler } from './open-folder.js'
+
 export const name = 'dsh-virtual-workspace'
 
 export function apply(ctx) {
@@ -16,6 +23,24 @@ export function apply(ctx) {
     : (msg) => console.log(msg)
   log('[dsh-better-workspace] host half loaded; UI runs in the browser (client half)')
   if (!ctx || typeof ctx.inject !== 'function') return
+
+  // "Open workspace folder" — the sidebar's workspace context menu posts the
+  // real workspace path and this route hands it to the host file manager
+  // (Explorer via the Windows desktop under WSL). `webServer` is a service
+  // like `settings`: it can appear after this plugin's apply, so the route is
+  // registered from its injection, and `effect` ties the route's disposer to
+  // this plugin's lifetime.
+  ctx.inject(['webServer'], (webCtx) => {
+    webCtx.effect(() => {
+      const dispose = webCtx.webServer.register({
+        kind: 'exact',
+        path: OPEN_FOLDER_ROUTE,
+        handler: openFolderHandler,
+      })
+      log('[dsh-better-workspace] open-folder route registered: ' + OPEN_FOLDER_ROUTE)
+      return dispose
+    }, 'virtual-workspace: open-folder route')
+  })
   // Register the settings namespace so the browser card appears in
   // Settings → Plugins. The tab dispatches the intersection of served
   // namespaces and settings.plugin.item cards, and `settings` is a
@@ -78,6 +103,13 @@ export function apply(ctx) {
           //   wsDirJson:       { [workspaceId]: dirId }  (absence ⇒ root level)
           directoriesJson: Schema.string().default('{}'),
           wsDirJson: Schema.string().default('{}'),
+          // Root-level display sequence: a JSON array of tokens,
+          // "dir:<dirId>" / "ws:<workspaceId>", interleaving virtual
+          // directories with ROOT-LEVEL real workspaces (the client's
+          // orderRootEntries). A string for the same reason as the two maps
+          // above: the ids are runtime-generated, and a schemastery array/dict
+          // built from them would keep every token ever seen.
+          rootOrderJson: Schema.string().default('[]'),
         }))
         log('[dsh-better-workspace] settings namespace registered: better-workspace')
       })

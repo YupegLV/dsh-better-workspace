@@ -2,6 +2,8 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
+import { createServer } from 'node:http'
+import { tmpdir } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -74,7 +76,7 @@ test('client half registers the three expected slots', () => {
 test('client plugin exports the cordis plugin triple', () => {
   const text = read('src/client.js')
   assert.match(text, /name: 'dsh-virtual-workspace'/)
-  assert.match(text, /inject: \['slots', 'sessions', 'workspaces', 'locale', 'uiWorkspace', 'settingsScope'\]/)
+  assert.match(text, /inject: \['slots', 'sessions', 'workspaces', 'locale', 'uiWorkspace'\]/)
   assert.match(text, /function apply\(ctx\)/)
 })
 
@@ -304,7 +306,9 @@ test('title cache: persisted key, batch learning, debounced save, bounded evicti
 test('manual cross-device sync: host scope bind, dual writes, pull modes', () => {
   const text = read('src/client.js')
   // Scope bound once per activation; failures degrade to browser-local.
-  assert.match(text, /ctx\.settingsScope && typeof ctx\.settingsScope\.bind === 'function'/)
+  assert.match(text, /const bindPrefsScope =/)
+  assert.match(text, /ctx\.get\('configForms'\)/)
+  assert.match(text, /ctx\.get\('settingsScope'\)/)
   assert.match(text, /bind\(\{ namespace: 'better-workspace' \}\)/)
   // Dual-write wrappers exist and route every preference mutation through them.
   assert.match(text, /const makeSharedWrites = \(actions, stylingMap, foldersList, dirsMap, wsDirMap\)/)
@@ -662,4 +666,177 @@ test('in-app browser: full path, drive chips, click-to-select (0.11.4)', () => {
     assert.ok(text.includes("'" + key + "':"), 'missing dictionary key ' + key)
   }
 })
+
+/* ==================== open workspace folder (0.3.0) ==================== */
+/**
+ * The workspace row's context menu gained two host-backed entries: open the
+ * workspace folder in the host's file manager, and copy its path. The browser
+ * cannot launch anything, so the host half serves one JSON route and the client
+ * posts the workspace registry path to it.
+ */
+
+/** Route both halves must agree on, read out of each file's own source. */
+const routeOf = (text) => {
+  const found = /OPEN_FOLDER_ROUTE = '([^']+)'/.exec(text)
+  assert.ok(found, 'no OPEN_FOLDER_ROUTE constant')
+  return found[1]
+}
+
+test('open-folder route: both halves name the same path', () => {
+  const host = read('src/open-folder.js')
+  const client = read('src/client.js')
+  assert.equal(routeOf(host), routeOf(client), 'a drifted route is a 404 in the browser')
+  assert.match(host, /export const OPEN_FOLDER_ROUTE = '\/_dsh\/virtual-workspace\/open-folder'/)
+})
+
+test('host half mounts the open-folder route on the webServer service', () => {
+  const text = read('src/index.js')
+  assert.match(text, /import \{ OPEN_FOLDER_ROUTE, openFolderHandler \} from '\.\/open-folder\.js'/)
+  assert.match(text, /ctx\.inject\(\['webServer'\]/, 'webServer may appear after apply')
+  assert.match(text, /webCtx\.effect\(\(\) => \{/, 'the route must follow the plugin lifetime')
+  assert.match(text, /kind: 'exact',\n\s+path: OPEN_FOLDER_ROUTE,/, 'route path must be the shared constant')
+  assert.match(text, /handler: openFolderHandler/)
+})
+
+test('client half offers the entries and posts to the host route', () => {
+  const text = read('src/client.js')
+  assert.match(text, /const OPEN_FOLDER_ROUTE = '\/_dsh\/virtual-workspace\/open-folder'/)
+  assert.match(text, /items\.push\(\{ id: 'ws-open-folder', label: t\('menu\.openWsFolder'\) \}\)/)
+  assert.match(text, /items\.push\(\{ id: 'ws-copy-path', label: t\('menu\.copyPath'\) \}\)/)
+  assert.match(text, /if \(wsPathOf\(ws\) !== ''\) \{/, 'a path-less workspace must not offer the entries')
+  assert.match(text, /fetch\(OPEN_FOLDER_ROUTE, \{\n\s+method: 'POST',/, 'the action is a POST')
+  assert.match(text, /requestOpenFolder\(path\)\.catch\(\(error\) => \{ showNotice\(messageOf\(error\), 'error'\) \}\)/)
+  assert.match(text, /copyText\(path\)\.then\(\(\) => \{ showNotice\(t\('path\.copied'\)\) \}/)
+  // The notice must survive the menu close, so it cannot live in React state.
+  assert.match(text, /function showNotice\(message, variant\) \{/)
+  assert.match(text, /data-bw-notice/)
+  // Key coverage across all 21 dictionaries is asserted by the locale-parity
+  // test above; this is only the call-site half of the pair.
+  for (const key of ['menu.openWsFolder', 'menu.copyPath', 'path.copied', 'path.none']) {
+    assert.equal((text.match(new RegExp("t\\('" + key.replace('.', '\\.') + "'\\)", 'g')) || []).length >= 1, true,
+      key + ' must be used by the menu or its handler')
+  }
+})
+
+test('openFolder: argument validation happens before any launcher', async () => {
+  const { openFolder } = await import('../src/open-folder.js')
+  const calls = []
+  const run = (command, args) => { calls.push([command, args]); return Promise.resolve({ stdout: '', stderr: '' }) }
+  await assert.rejects(() => openFolder(''), /empty path/)
+  await assert.rejects(() => openFolder('relative/folder'), /must be absolute/)
+  await assert.rejects(() => openFolder('/definitely/not/here-' + process.pid), /no such folder/)
+  assert.equal(calls.length, 0, 'no launcher may run for a rejected path')
+})
+
+test('openFolder: WSL translates the path and hands it to the Windows desktop', async () => {
+  const { openFolder, isWsl } = await import('../src/open-folder.js')
+  const calls = []
+  const run = (command, args) => {
+    calls.push([command, args])
+    return Promise.resolve(command === 'wslpath'
+      ? { stdout: 'E:\\dsh测试文件夹\r\n', stderr: '' }
+      : { stdout: '', stderr: '' })
+  }
+  const result = await openFolder(tmpdir(), { platform: 'linux', env: { WSL_DISTRO_NAME: 'Ubuntu-24.04' }, run })
+  assert.equal(result.via, 'wsl')
+  assert.equal(result.windowsPath, 'E:\\dsh测试文件夹')
+  assert.deepEqual(calls[0], ['wslpath', ['-w', tmpdir()]])
+  assert.equal(calls[1][0], 'powershell.exe')
+  // The translated path must be the PowerShell literal, never a shell splice.
+  assert.match(calls[1][1][3], /^Invoke-Item -LiteralPath 'E:\\dsh测试文件夹'$/)
+  // WSL is decided by its own markers, not by process.platform.
+  assert.equal(isWsl({ platform: 'linux', env: { WSL_INTEROP: '/run/WSL/1_interop' } }), true)
+  assert.equal(isWsl({ platform: 'linux', env: {}, osRelease: '5.15.90.1-microsoft-standard-WSL2' }), true)
+  assert.equal(isWsl({ platform: 'linux', env: {}, osRelease: '6.8.0-45-generic' }), false)
+})
+
+test('openFolder: PowerShell refusal falls back to explorer, unknown exit is a hand-off', async () => {
+  const { openFolder } = await import('../src/open-folder.js')
+  const calls = []
+  const run = (command, args) => {
+    calls.push(command)
+    if (command === 'wslpath') return Promise.resolve({ stdout: 'C:\\work\r\n', stderr: '' })
+    if (command === 'powershell.exe') return Promise.reject(Object.assign(new Error('exit 1'), { code: 1 }))
+    // explorer.exe delegates to the running shell and exits 1: NOT a failure.
+    return Promise.reject(Object.assign(new Error('exit 1'), { code: 1 }))
+  }
+  const result = await openFolder(tmpdir(), { platform: 'linux', env: { WSL_DISTRO_NAME: 'x' }, run })
+  assert.deepEqual(calls, ['wslpath', 'powershell.exe', 'explorer.exe'])
+  assert.equal(result.via, 'wsl')
+  // A missing wslpath is a real, reported failure.
+  const missing = () => Promise.reject(Object.assign(new Error('spawn wslpath ENOENT'), { code: 'ENOENT' }))
+  await assert.rejects(
+    () => openFolder(tmpdir(), { platform: 'linux', env: { WSL_DISTRO_NAME: 'x' }, run: missing }),
+    /wslpath is unavailable/,
+  )
+})
+
+test('openFolder: native platforms use their own opener', async () => {
+  const { openFolder } = await import('../src/open-folder.js')
+  const seen = []
+  const run = (command, args) => { seen.push([command, args]); return Promise.resolve({ stdout: '', stderr: '' }) }
+  // `osRelease` is spelled out for the Linux cases because the suite also runs
+  // ON a WSL host, where an unset release falls back to the real kernel string
+  // and a desktop-Linux expectation would silently turn into the WSL branch.
+  const plainLinux = { env: {}, osRelease: '6.8.0-45-generic' }
+  assert.equal((await openFolder(tmpdir(), { platform: 'darwin', env: {}, run })).via, 'darwin')
+  assert.deepEqual(seen.pop(), ['open', [tmpdir()]])
+  assert.equal((await openFolder(tmpdir(), { ...plainLinux, platform: 'linux', run })).via, 'linux')
+  assert.deepEqual(seen.pop(), ['xdg-open', [tmpdir()]])
+  assert.equal((await openFolder(tmpdir(), { ...plainLinux, platform: 'win32', run })).via, 'win32')
+  assert.deepEqual(seen.pop(), ['powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', `Invoke-Item -LiteralPath '${tmpdir()}'`]])
+  await assert.rejects(() => openFolder(tmpdir(), { ...plainLinux, platform: 'aix', run }), /unsupported on aix/)
+  // The WSL check is Linux-scoped: a WSL marker leaking into a Windows or macOS
+  // host process must not divert the open through wslpath.
+  assert.equal((await openFolder(tmpdir(), { platform: 'win32', env: { WSL_DISTRO_NAME: 'Ubuntu-24.04' }, run })).via, 'win32')
+  assert.deepEqual(seen.pop(), ['powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', `Invoke-Item -LiteralPath '${tmpdir()}'`]])
+})
+
+test('open-folder handler answers JSON for every outcome', async () => {
+  const { handlerFor, OPEN_FOLDER_ROUTE } = await import('../src/open-folder.js')
+  // The launch itself is injected: a smoke suite must never open windows on the
+  // developer's desktop. What is under test here is the HTTP contract — status
+  // codes and the message the browser half renders.
+  const launched = []
+  const handler = handlerFor({
+    platform: 'linux',
+    env: {},
+    osRelease: '6.8.0-45-generic',
+    run: (command, args) => { launched.push([command, args]); return Promise.resolve({ stdout: '', stderr: '' }) },
+  })
+  const server = createServer((req, res) => {
+    if (new URL(req.url, 'http://localhost').pathname === OPEN_FOLDER_ROUTE) handler(req, res)
+    else { res.writeHead(404); res.end() }
+  })
+  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve))
+  const origin = 'http://127.0.0.1:' + server.address().port
+  const post = (body) => fetch(origin + OPEN_FOLDER_ROUTE, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  }).then(async (response) => ({ status: response.status, body: await response.json() }))
+  try {
+    assert.equal((await fetch(origin + OPEN_FOLDER_ROUTE)).status, 405, 'GET is refused')
+    assert.equal((await fetch(origin + OPEN_FOLDER_ROUTE, { method: 'POST', body: 'not json' })).status, 400)
+    const missing = await post({})
+    assert.equal(missing.status, 400)
+    assert.equal(missing.body.error.message, 'Missing path')
+    // A real absolute path that does not exist: reported, never silently opened.
+    const absent = await post({ path: '/definitely/not/here-' + process.pid })
+    assert.equal(absent.status, 500)
+    assert.equal(absent.body.ok, false)
+    assert.match(absent.body.error.message, /no such folder/)
+    assert.equal(launched.length, 0, 'a rejected path must reach no launcher')
+    // A real folder goes through and answers the same JSON envelope the browser
+    // half unwraps (`result.value`).
+    const opened = await post({ path: tmpdir() })
+    assert.equal(opened.status, 200)
+    assert.equal(opened.body.ok, true)
+    assert.equal(opened.body.value.path, tmpdir())
+    assert.deepEqual(launched, [['xdg-open', [tmpdir()]]])
+  } finally {
+    await new Promise((resolve) => server.close(resolve))
+  }
+})
+
 

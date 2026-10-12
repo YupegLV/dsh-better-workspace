@@ -27,7 +27,35 @@
 
 **移动目录**：右键目录行 →「移动到目录…」，选新的父目录（不能移进自己的子孙里，会被拒绝）。
 
+**打开工作区文件夹**（0.3.0）：右键任意**真实工作区** →「打开工作区文件夹」，由宿主（不是浏览器）用系统文件管理器打开它磁盘上的目录；同一菜单里的「复制路径」把它复制到剪贴板。虚拟目录行没有磁盘路径，因此不提供这两项。
+
 **删除目录**：右键目录行 →「删除虚拟目录」。删除整棵子树，**里面的真实工作区会回到根层级，磁盘上的文件夹不会被删**。
+
+## 打开文件夹是怎么实现的
+
+浏览器不能启动进程，所以这是**宿主半侧**的功能。宿主在 `webServer` 上挂一个精确路由，客户端把工作区注册表里的 `path` POST 过去：
+
+```
+POST /_dsh/virtual-workspace/open-folder   { "path": "/mnt/e/dsh测试文件夹" }
+```
+
+平台分派与 DSH 自带的 path opener（`@deepseek-ai/dsh-native-command`）一致：
+
+| 宿主 | 实际动作 |
+|---|---|
+| WSL（`linux` + WSL 标记） | `wslpath -w` 转成 `E:\…`，再交给 `powershell.exe Invoke-Item`（失败退回 `explorer.exe`） |
+| Windows | `powershell.exe Invoke-Item`（失败退回 `explorer.exe`） |
+| macOS | `open` |
+| Linux 桌面 | `xdg-open` |
+
+几个刻意的取舍：
+
+- **先判 WSL 再判 linux**：WSL 里 `process.platform` 报的是 `linux`，而 `xdg-open` 在那儿打不开任何东西——只有 Windows 桌面能接这个路径。
+- **路径先校验再启动**：必须是绝对路径、存在、且是目录；否则返回可读错误（例如“no such folder”），而不是弹出一个空的资源管理器窗口。中文/空格路径全程走 argv（无 shell 字符串）。
+- **explorer.exe 的退出码 1 不算失败**：它把路径交给已在运行的 shell 后就是这么退的；只有 spawn 失败（ENOENT/EACCES）才上报。
+- 失败时浏览器右上角弹一条红色提示，成功打开则不打扰。
+
+> 路由是宿主启动时注册的：**改了 `src/index.js` / `src/open-folder.js` 需要重启 dsh web 服务**才会生效；只改 `src/client.js`（界面部分）刷新页面即可。
 
 ## 数据与持久化
 
