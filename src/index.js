@@ -14,6 +14,7 @@
  */
 
 import { OPEN_FOLDER_ROUTE, openFolderHandler } from './open-folder.js'
+import { PICK_FOLDER_ROUTE, pickFolderHandler } from './pick-folder.js'
 
 export const name = 'dsh-virtual-workspace'
 
@@ -38,8 +39,20 @@ export function apply(ctx) {
         handler: openFolderHandler,
       })
       log('[dsh-better-workspace] open-folder route registered: ' + OPEN_FOLDER_ROUTE)
-      return dispose
-    }, 'virtual-workspace: open-folder route')
+      // Windows folder picker: the sidebar's "add workspace" flow asks this
+      // route to show the OS dialog on the host's desktop (WSL + interop), so
+      // the same 680x500 in-app browser is not the only way to name a folder.
+      const disposePicker = webCtx.webServer.register({
+        kind: 'exact',
+        path: PICK_FOLDER_ROUTE,
+        handler: pickFolderHandler,
+      })
+      log('[dsh-better-workspace] pick-folder route registered: ' + PICK_FOLDER_ROUTE)
+      return () => {
+        try { disposePicker() } catch (error) { /* already disposed */ }
+        dispose()
+      }
+    }, 'virtual-workspace: host action routes')
   })
   // Register the settings namespace so the browser card appears in
   // Settings → Plugins. The tab dispatches the intersection of served

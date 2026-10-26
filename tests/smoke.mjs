@@ -6,6 +6,7 @@ import { createServer } from 'node:http'
 import { tmpdir } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { createRequire } from 'node:module'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const read = (p) => readFileSync(join(root, p), 'utf8')
@@ -65,12 +66,18 @@ test('client half is a __ModuleLoader__ bundle with baseline requires only', () 
   assert.ok(requires.length > 0, 'expected at least one require')
 })
 
-test('client half registers the three expected slots', () => {
+test('client half owns the sidebar browser and leaves directory picking to the Host', () => {
   const text = read('src/client.js')
   assert.match(text, /slots\.inject\('sidebar\.workspaces'/)
   assert.match(text, /priority: -1/, 'browser shadowing needs the lowest rank')
-  assert.match(text, /slots\.inject\('conversation\.hero\.workspace\.directoryFlow'/)
-  assert.match(text, /slots\.inject\('sidebar\.workspaces\.directoryFlow'/)
+  // The two directoryFlow holes belong to the shipped picker again: taking them
+  // over replaced a 680x500 Host browser with the plugin's 380x470 hand-rolled
+  // dialog, which read as an unfinished UI. Virtual-directory filing therefore
+  // lives on the plugin's OWN surface (sidebar toolbar / directory row), never
+  // in a slot the Host also serves.
+  const injections = [...text.matchAll(/slots\.inject\('([^']+)'/g)].map((m) => m[1])
+  assert.deepEqual(injections, ['settings.plugin.item', 'sidebar.workspaces'],
+    'only the settings card and the sidebar browser may be filled')
 })
 
 test('client plugin exports the cordis plugin triple', () => {
@@ -422,7 +429,9 @@ test('outline: label keeps a bleed, meta column stays unstroked (0.10.1)', () =>
 test('icons: retired glyphs resolve to a survivor; the picker follows the host set (0.10.2)', () => {
   const text = read('src/client.js')
   const start = text.indexOf('const ICON_ALIASES =')
-  const end = text.indexOf('/** Render a primitives icon by name')
+  // The slice must stop at the withTip helper: it is host-Tooltip plumbing, not
+  // part of the pure resolution contract this test evaluates.
+  const end = text.indexOf('/**\n     * Wrap an icon-only control')
   assert.ok(start !== -1 && end !== -1 && start < end, 'icon resolution helpers not found')
   const load = (ui) => new Function('ui', text.slice(start, end) + '\nreturn { resolveIconName }')(ui)
 
@@ -433,11 +442,16 @@ test('icons: retired glyphs resolve to a survivor; the picker follows the host s
   assert.equal(load(oldUi).resolveIconName(undefined), '')
   assert.equal(load(oldUi).resolveIconName('solid'), '', 'legacy slots are not glyph names')
 
-  const added = ['IconPaperPlaneOutline14', 'IconShieldOutline16', 'IconCompactOutline16', 'IconWrapLinesOutline16', 'IconPlanOutline14']
-  const newUi = { IconSendOutline14: () => null }
+  // 0.2.0-rc.2 renamed the whole set: `Icon<Name>Outline<px>` -> `Outline<weight>`.
+  // A persisted choice naming the retired spelling must follow the alias to the
+  // shipped glyph, and the current spelling must pass through untouched.
+  const added = ['IconPaperPlaneOutlineRegular', 'IconShieldOutlineRegular', 'IconCompactOutlineRegular',
+    'IconWrapLinesOutlineRegular', 'IconPlanOutlineRegular']
+  const newUi = { IconSendOutlineRegular: () => null }
   for (const name of added) newUi[name] = () => null
-  assert.equal(load(newUi).resolveIconName('IconSendOutline16'), 'IconSendOutline14', 'a retired glyph follows its alias chain')
-  assert.equal(load(newUi).resolveIconName('IconSendOutline14'), 'IconSendOutline14')
+  assert.equal(load(newUi).resolveIconName('IconSendOutline16'), 'IconSendOutlineRegular', 'a retired 0.2.0 glyph follows its alias chain')
+  assert.equal(load(newUi).resolveIconName('IconSendOutlineRegular'), 'IconSendOutlineRegular')
+  assert.equal(load(newUi).resolveIconName('IconShieldOutline16'), 'IconShieldOutlineRegular')
   assert.equal(load({}).resolveIconName('IconSendOutline16'), '', 'an alias with no survivor stays empty rather than crashing')
 
   const choicesStart = text.indexOf('const ICON_CHOICES = [')
@@ -448,8 +462,8 @@ test('icons: retired glyphs resolve to a survivor; the picker follows the host s
   const listOf = (ui) => new Function('ui', pickerCode + '\nreturn { ICON_CHOICES, ICON_PICKER_CHOICES }')(ui)
   const onNew = listOf(newUi)
   assert.ok(!onNew.ICON_CHOICES.includes('IconSendOutline16'), 'the retired name is gone from the committed list')
-  assert.ok(onNew.ICON_CHOICES.includes('IconSendOutline14'), 'the surviving glyph is committed')
-  assert.ok(onNew.ICON_PICKER_CHOICES.includes('IconSendOutline14'), 'the surviving glyph is offered')
+  assert.ok(onNew.ICON_CHOICES.includes('IconSendOutlineRegular'), 'the surviving glyph is committed')
+  assert.ok(onNew.ICON_PICKER_CHOICES.includes('IconSendOutlineRegular'), 'the surviving glyph is offered')
   assert.equal(new Set(onNew.ICON_PICKER_CHOICES).size, onNew.ICON_PICKER_CHOICES.length, 'no duplicate cells')
   assert.ok(onNew.ICON_PICKER_CHOICES.includes('solid') && onNew.ICON_PICKER_CHOICES.includes('none'), 'legacy slots always survive')
   assert.ok(onNew.ICON_PICKER_CHOICES.length < onNew.ICON_CHOICES.length, 'glyphs this host lacks are filtered out')
@@ -458,9 +472,9 @@ test('icons: retired glyphs resolve to a survivor; the picker follows the host s
     assert.ok(onNew.ICON_PICKER_CHOICES.includes(name), name + ' is offered on a host that exports it')
   }
   // A host that lacks the newer glyphs still offers the survivors, never them.
-  const bare = listOf({ IconSendOutline14: () => null })
+  const bare = listOf({ IconSendOutlineRegular: () => null })
   for (const name of added) assert.ok(!bare.ICON_PICKER_CHOICES.includes(name), name + ' must be filtered out on a host that lacks it')
-  assert.ok(bare.ICON_PICKER_CHOICES.includes('IconSendOutline14'), 'the survivor stays offered')
+  assert.ok(bare.ICON_PICKER_CHOICES.includes('IconSendOutlineRegular'), 'the survivor stays offered')
 })
 
 /**
@@ -553,129 +567,6 @@ test('session reorder: host action preferred, browser-local order as the fallbac
     'the host channel is tried first in the drop commit')
 })
 
-/**
- * Directory-picker capability (0.11.3). The Host composes exactly ONE backend:
- * a loopback-only webserver bind on a display-bearing host gets `native` (an OS
- * chooser on the HOST's screen), every other bind — all-interfaces/LAN, SSH,
- * headless — gets `browse`, whose wire verbs are list/createDirectory only and
- * whose `pick` is refused by design. The flow used to assume the chooser, so on
- * a LAN bind "Add workspace" died with "needs the native capability" and no
- * workspace could be added. The probe rides `list` (served by browse alone) and
- * the flow keeps both interactions; this drives every branch of that decision.
- */
-test('directory picker: capability probe drives chooser or in-app browser (0.11.3)', async () => {
-  const text = read('src/client.js')
-  const start = text.indexOf('const pickerState = ')
-  const end = text.indexOf('/* ============================ flow dialog')
-  assert.ok(start !== -1 && end !== -1 && start < end, 'capability module not found')
-  const messageOf = (reason) => (reason instanceof Error ? reason.message : String(reason))
-  const load = () => new Function('messageOf', text.slice(start, end)
-    + '\nreturn { pickerState, pickerRefusal, pickerCapabilityNow, markPickerBrowse }')(messageOf)
-
-  const listing = { path: '/home/u', home: '/home/u', crumbs: [], entries: [], truncated: false }
-
-  // 1. browse: the listing answers, so the flow renders the in-app browser.
-  const browse = load()
-  browse.pickerState.api = { listDirectory: () => Promise.resolve(listing) }
-  assert.equal(await browse.pickerCapabilityNow(), 'browse')
-  // The verdict is cached: a settled page never re-probes on every open.
-  let calls = 0
-  browse.pickerState.api = { listDirectory: () => { calls += 1; return Promise.resolve(listing) } }
-  assert.equal(await browse.pickerCapabilityNow(), 'browse')
-  assert.equal(calls, 0, 'a settled verdict must not re-probe')
-
-  // 2. native: the browse verb is refused with the capability code.
-  const native = load()
-  native.pickerState.api = {
-    listDirectory: () => Promise.reject(Object.assign(new Error('refused'), {
-      rpcError: { code: 'directory-picker/unavailable' },
-    })),
-  }
-  assert.equal(await native.pickerCapabilityNow(), 'native')
-
-  // 3. unclassified failure (a carrier still connecting) is NOT cached: the
-  //    next open re-probes instead of pinning a wrong verdict for the page.
-  const retry = load()
-  let attempts = 0
-  retry.pickerState.api = {
-    listDirectory: () => { attempts += 1; return Promise.reject(new Error('carrier connecting')) },
-  }
-  assert.equal(await retry.pickerCapabilityNow(), 'unknown')
-  assert.equal(await retry.pickerCapabilityNow(), 'unknown')
-  assert.equal(attempts, 2, 'an unclassified failure must re-probe')
-  // 4. the hard way: a refused pick flips the cached verdict to browse.
-  retry.markPickerBrowse()
-  assert.equal(await retry.pickerCapabilityNow(), 'browse')
-  assert.equal(attempts, 2, 'a committed verdict stops probing')
-
-  // 5. refusal classification covers both shapes the flow can see: the raw
-  //    wire failure, and the plain Error uiWorkspace wraps it in.
-  const classify = load()
-  assert.equal(classify.pickerRefusal(new Error(
-    'directory picker failed: directoryPicker.pick needs the native capability; the composed picker serves "browse"',
-  )), true)
-  assert.equal(classify.pickerRefusal(Object.assign(new Error('x'), {
-    rpcError: { code: 'directory-picker/unavailable' },
-  })), true)
-  assert.equal(classify.pickerRefusal(new Error(
-    'directory browse failed: directory-picker/unreadable: denied',
-  )), false, 'a browse failure is not a capability refusal')
-  assert.equal(classify.pickerRefusal(new Error('connection lost')), false)
-
-  // Wiring: the dialog exists, the flow branches on the verdict, and BOTH
-  // entry surfaces (the sidebar's inlined flow + the two directoryFlow holes)
-  // inject the browse primitives the dialog drives.
-  assert.match(text, /function DirectoryBrowseDialog\(props\)/)
-  assert.match(text, /if \(phase === 'browsing'\)/)
-  assert.equal(
-    (text.match(/listDirectory: \(path, signal\) => uiWorkspace\.listDirectory\(path, signal\)/g) || []).length,
-    2,
-    'both entry surfaces inject the browse primitives',
-  )
-  assert.match(text, /pickerState\.api = uiWorkspace/, 'the probe needs the service handle')
-  assert.match(text, /pickerCapabilityNow\(\)/, 'the flow must consult the probe')
-  assert.match(text, /markPickerBrowse\(\)/, 'a refused pick must commit the browse verdict')
-  for (const key of ['browse.title', 'browse.home', 'browse.select', 'browse.newFolder', 'browse.showHidden', 'browse.truncated']) {
-    assert.ok(text.includes("'" + key + "':"), 'missing dictionary key ' + key)
-  }
-})
-
-/**
- * In-app browser usability (0.11.4). The 0.11.3 dialog rooted its breadcrumb at
- * Home (the official dialog's choice), entered on a single click, and had no
- * Windows drive entry at all — all three were real usability complaints.
- */
-test('in-app browser: full path, drive chips, click-to-select (0.11.4)', () => {
-  const text = read('src/client.js')
-  // The chain is the full ancestry now: no re-rooting at the host home.
-  assert.doesNotMatch(text, /index === 0 && at !== -1/, 'the chain must not be re-rooted at Home')
-  assert.match(text, /const crumbs = listing && Array\.isArray\(listing\.crumbs\) \? listing\.crumbs : \[\]/)
-  assert.match(text, /node\.scrollLeft = node\.scrollWidth/, 'a deep path keeps its tail in view')
-  // Rows SELECT on click; entering needs a double click or the row chevron,
-  // because a touch screen has no double click.
-  assert.match(text, /onClick: \(\) => setSelected\(\(current\) => \(current === entry\.path \? '' : entry\.path\)\)/)
-  assert.match(text, /onDoubleClick: \(\) => go\(entry\.path\)/)
-  assert.match(text, /className: 'bw-browse-open'/)
-  assert.match(text, /bw-browse-row-on/)
-  assert.match(text, /t\('browse\.selectNamed', \{ name: selectedEntry\.name \}\)/, 'the footer adopts the selected row')
-  // Windows drives: one probe per page, missing letters silent, cached module-side.
-  assert.match(text, /const browseDrives = \{ probed: false, probing: false, list: \[\] \}/)
-  assert.match(text, /const letters = \['C:', 'D:', 'E:', 'F:', 'G:', 'H:'\]/)
-  assert.match(text, /browseDrives\.probed = true/)
-  for (const key of ['browse.enter', 'browse.drives', 'browse.selectNamed']) {
-    assert.ok(text.includes("'" + key + "':"), 'missing dictionary key ' + key)
-  }
-})
-
-/* ==================== open workspace folder (0.3.0) ==================== */
-/**
- * The workspace row's context menu gained two host-backed entries: open the
- * workspace folder in the host's file manager, and copy its path. The browser
- * cannot launch anything, so the host half serves one JSON route and the client
- * posts the workspace registry path to it.
- */
-
-/** Route both halves must agree on, read out of each file's own source. */
 const routeOf = (text) => {
   const found = /OPEN_FOLDER_ROUTE = '([^']+)'/.exec(text)
   assert.ok(found, 'no OPEN_FOLDER_ROUTE constant')
@@ -840,3 +731,279 @@ test('open-folder handler answers JSON for every outcome', async () => {
 })
 
 
+
+/**
+ * Icon set rename (0.2.0-rc.2): the host retired the whole `Icon<Name>Outline<px>`
+ * generation and shipped `Icon<Name>Outline<weight>` instead. Because `icon()`
+ * degrades an unknown name to null, EVERY button in this plugin silently became
+ * an empty transparent hit area — the sidebar toolbar's three actions were
+ * invisible with nothing to hover. This test pins both halves of the repair:
+ * every glyph the client names must exist in the host set, and every retired
+ * name the alias table carries must resolve to a shipped glyph.
+ */
+test('icons: every named glyph exists in the host set after the 0.2.0 rename', () => {
+  const text = read('src/client.js')
+  let hostSet = null
+  for (const spec of ['@deepseek-ai/dsh-client-ui-primitives/lib/index.js', '@deepseek-ai/dsh-client-ui-primitives']) {
+    try {
+      hostSet = readFileSync(createRequire(import.meta.url).resolve(spec), 'utf8')
+      break
+    } catch (err) { /* try the next spec form */ }
+  }
+  if (hostSet === null) {
+    // dsh is not installed in this environment: the rename contract is not
+    // observable here, and a hard failure would be a false alarm.
+    return
+  }
+  const shipped = new Set(hostSet.match(/Icon[A-Za-z0-9]*(Outline|Fill)?(Regular|Medium|Artwork)/g) || [])
+  assert.ok(shipped.size > 100, 'the host set must be recognised, saw ' + shipped.size + ' glyphs')
+
+  // (1) Every glyph the client ACTION code names must exist as shipped.
+  const named = new Set()
+  for (const m of text.matchAll(/icon\(\s*'(Icon[A-Za-z0-9]+)'/g)) named.add(m[1])
+  assert.ok(named.size >= 5, 'expected several icon() call sites, saw ' + named.size)
+  const dead = [...named].filter((name) => !shipped.has(name))
+  assert.deepEqual(dead, [], 'icon() names missing from the host set would render as empty cells')
+
+  // (2) The demo/choice list may only advertise glyphs this host really has —
+  //     the picker already filters, and this pins that it never needs to.
+  for (const m of text.matchAll(/'(Icon[A-Za-z0-9]+)'/g)) {
+    const name = m[1]
+    if (name === 'Icona') continue // a font-family name, not a glyph
+    assert.ok(shipped.has(name), name + ' is referenced but not shipped by this host')
+  }
+
+  // (3) Every retired name in the alias table resolves to a shipped glyph.
+  const tableStart = text.indexOf('const ICON_ALIASES = {')
+  const tableEnd = text.indexOf('\n    }', tableStart)
+  assert.ok(tableStart !== -1 && tableEnd > tableStart, 'alias table not found')
+  const pairs = [...text.slice(tableStart, tableEnd).matchAll(/(Icon[A-Za-z0-9]+):\s*\['(Icon[A-Za-z0-9]+)'\]/g)]
+  assert.ok(pairs.length >= 60, 'expected the full retired-name table, saw ' + pairs.length)
+  for (const [, retired, survivor] of pairs) {
+    assert.ok(shipped.has(survivor), retired + ' aliases ' + survivor + ', which this host does not ship')
+  }
+
+  // (4) icon() must route through the alias chain, otherwise the table above is
+  //     decoration: the render call site is what silently produced empty cells.
+  assert.match(text, /const icon = \(name, size\) => \{\s*\n\s*const resolved = resolveIconName\(name\)/,
+    'icon() must resolve retired names instead of a raw ui[name] lookup')
+})
+
+test('add-workspace entry: the VENDORED official browser + virtual-directory filing', () => {
+  const text = read('src/client.js')
+
+  // (1) The entry sits next to "new virtual folder" (expanded toolbar + rail).
+  assert.match(text, /'aria-label': t\('add'\)/)
+  assert.match(text, /'aria-label': t\('rail\.add'\)/)
+  assert.match(text, /'aria-label': t\('dir\.new\.title'\)/)
+
+  // (2) The picker is the OFFICIAL component, vendored from the MIT-licensed
+  //     @deepseek-ai/dsh-client-ui-directory-picker-browse package (DSH is open
+  //     source; that package exports only apply/inject, so copying the component
+  //     is the supported way to reuse it). A hand-rolled imitation would be a
+  //     different function with different class names.
+  assert.match(text, /const OfficialDirectoryBrowser = \(\(\) => \{/)
+  assert.match(text, /function DirectoryBrowser\(\{ open, listDirectory, createDirectory, onOpen, onClose, busy, t \}\)/)
+  assert.match(text, /bwdb_/, 'the vendored stylesheet must be namespaced away from the shipped copy')
+  assert.ok(text.indexOf('ZuhsRW_') === -1, 'the shipped picker keeps its own CSS prefix')
+
+  // (3) The flow drives the component with OUR owner props and still falls back
+  //     to the OS chooser on Hosts that compose the native backend.
+  assert.match(text, /E\(OfficialDirectoryBrowser, \{[\s\S]{0,320}?onOpen: acceptPath[\s\S]{0,200}?pickTranslator\(t\)/)
+  assert.match(text, /pickerCapabilityNow\(\)/)
+  assert.match(text, /markPickerBrowse\(\)/)
+  assert.match(text, /pickDirectory\(\)/)
+  // The component speaks its own namespace; one table maps it onto ours.
+  assert.match(text, /const PICK_LABEL_KEYS = \{/)
+  assert.match(text, /'browser\.open': 'browse\.open'/)
+
+  // (4) Filing never rewrites the workspace title: createWorkspace, then wsAssign.
+  const flow = text.slice(text.indexOf('function AddWorkspaceFlow(props) {'), text.indexOf('/* ============================== rows'))
+  const virtualBranch = flow.slice(flow.indexOf('if (virtualMode) {'), flow.indexOf('const prefix = normPath(parentInput)'))
+  assert.ok(virtualBranch.length > 0, 'the virtual branch must exist')
+  assert.match(virtualBranch, /shared\.wsAssign\(workspace\.workspaceId, dirId\)/)
+  assert.ok(virtualBranch.indexOf('renameWorkspace') === -1, 'filing must never rename the workspace')
+  assert.match(virtualBranch, /setExpanded\(dirId, true\)/)
+
+  // (5) Hero picking still belongs to the Host: no directoryFlow registration.
+  assert.ok(text.indexOf("slots.inject('conversation.hero.workspace.directoryFlow'") === -1)
+  assert.ok(text.indexOf("slots.inject('sidebar.workspaces.directoryFlow'") === -1)
+
+  // (6) Everything the hand-back preserved is still there.
+  assert.match(text, /id: 'new-subworkspace'/, 'a directory row can start the flow')
+  assert.match(text, /id: 'ws-move'/, 'filing an existing workspace stays')
+  assert.match(text, /id: 'dir-new-sub'/, 'creating a sub-directory stays')
+})
+
+test('Windows folder picker: route, capability gate, path conversion (0.3.6)', async () => {
+  const host = await import(new URL('../src/pick-folder.js', import.meta.url))
+  const text = read('src/client.js')
+  const index = read('src/index.js')
+  const pkg = JSON.parse(read('package.json'))
+
+  // (1) Both halves name the same route, the route is mounted, and the file ships.
+  assert.equal(host.PICK_FOLDER_ROUTE, '/_dsh/virtual-workspace/pick-folder')
+  assert.match(text, /const PICK_FOLDER_ROUTE = '\/_dsh\/virtual-workspace\/pick-folder'/)
+  assert.match(index, /PICK_FOLDER_ROUTE/)
+  assert.match(index, /pickFolderHandler/)
+  assert.ok(pkg.files.includes('src/pick-folder.js'), 'the host module must ship')
+
+  // (2) The dialog script is a constant with no request data spliced in, asks
+  //     WinForms for the OS folder dialog, and prints machine-readable markers.
+  assert.match(host.DIALOG_SCRIPT, /System\.Windows\.Forms\.FolderBrowserDialog/)
+  assert.match(host.DIALOG_SCRIPT, /ShowDialog\(\$owner\)/)
+  assert.match(host.DIALOG_SCRIPT, /DSH-PICK:OK:/)
+  assert.match(host.DIALOG_SCRIPT, /DSH-PICK:CANCEL/)
+  assert.ok(host.launcherArgs().includes('-STA'), 'WinForms needs a single-threaded apartment')
+
+  // (3) Drive letters convert for the fallback path (wslpath needs interop too).
+  assert.equal(host.manualHostPath('D:\\code\\app'), '/mnt/d/code/app')
+  assert.equal(host.manualHostPath('E:\\'), '/mnt/e')
+  assert.equal(host.manualHostPath('\\\\wsl.localhost\\Ubuntu\\home'), '\\\\wsl.localhost\\Ubuntu\\home')
+
+  // (4) Non-WSL hosts and hosts without a Windows PowerShell are unavailable,
+  //     never an error — the client falls back to the in-app browser.
+  assert.equal(host.detectLauncher({ platform: 'darwin', env: {} }), null)
+  assert.deepEqual(await host.pickFolder({ platform: 'darwin', env: {} }), { status: 'unavailable', reason: 'not-wsl' })
+  assert.deepEqual(
+    await host.pickFolder({ platform: 'linux', env: { WSL_DISTRO_NAME: 'x' }, exists: () => false }),
+    { status: 'unavailable', reason: 'powershell-not-found' },
+  )
+
+  // (5) Missing WSLInterop is a capability fact, not a crash: without passwordless
+  //     sudo the picker reports it and the flow falls back.
+  const noSudo = {
+    platform: 'linux', env: { WSL_DISTRO_NAME: 'x' },
+    exists: (path) => path.includes('PowerShell/7') && !path.includes('binfmt'),
+    run: () => Promise.reject(new Error('sudo: a password is required')),
+  }
+  assert.deepEqual(await host.pickFolder(noSudo), { status: 'unavailable', reason: 'windows-interop-disabled' })
+
+  // (6) A cancelled dialog and a picked dialog both parse from the marker line.
+  const base = {
+    platform: 'linux', env: { WSL_DISTRO_NAME: 'x' },
+    exists: (path) => path.includes('PowerShell/7') || path.includes('WSLInterop') || path === '/mnt/d/code/app',
+    stat: () => ({ isDirectory: () => true }),
+  }
+  assert.deepEqual(
+    await host.pickFolder({ ...base, run: () => Promise.resolve({ stdout: 'noise\nDSH-PICK:CANCEL\n', stderr: '' }) }),
+    { status: 'cancelled' },
+  )
+  assert.deepEqual(
+    await host.pickFolder({
+      ...base,
+      run: (command, args) => {
+        if (command === 'wslpath') return Promise.resolve({ stdout: '/mnt/d/code/app\n', stderr: '' })
+        return Promise.resolve({ stdout: 'DSH-PICK:OK:D:\\code\\app', stderr: '' })
+      },
+    }),
+    { status: 'picked', path: '/mnt/d/code/app' },
+  )
+
+  // (7) Only loopback requests may open a dialog on the host's screen; other
+  //     clients get `unavailable` so they fall back to the web picker.
+  const respond = () => {
+    const state = { status: 0, body: '' }
+    return {
+      state,
+      res: { writeHead: (status) => { state.status = status }, end: (body) => { state.body = body } },
+    }
+  }
+  const remote = respond()
+  await host.handlerFor({ busy: { current: false } })({ method: 'POST', socket: { remoteAddress: '192.168.50.9' } }, remote.res)
+  assert.equal(remote.state.status, 200)
+  assert.match(remote.state.body, /"status":"unavailable"/)
+  assert.match(remote.state.body, /not-loopback/)
+
+  // A GET probe never spawns anything: it only reports capability.
+  const probe = respond()
+  await host.handlerFor({ busy: { current: false }, platform: 'darwin', env: {} })({ method: 'GET', socket: { remoteAddress: '127.0.0.1' } }, probe.res)
+  assert.match(probe.state.body, /"available":false/)
+})
+
+test('current session highlight: 0.2 retention marker drives the WORKSPACE row (0.3.7)', () => {
+  const text = read('src/client.js')
+
+  // (1) dsh 0.2 removed SessionListState.current; the helper must read the
+  //     retention counter the host marks on the summary, while still honouring
+  //     the 0.1 field for older hosts.
+  assert.match(text, /const currentSessionIdOf = \(list\) => \{/)
+  assert.match(text, /retainedBy\.mainView \?\? 0\) > 0/)
+  assert.match(text, /if \(typeof list\.current === 'string' && list\.current !== ''\) return list\.current/)
+
+  // (2) Nothing may keep reading the field the 0.2 host no longer sends: that
+  //     was the bug — every "current" check silently compared against undefined.
+  assert.ok(!/list\.current === session\.id/.test(text), 'the session row must use the derived id')
+  assert.ok(!/includes\(list\.current\)/.test(text), 'the workspace row must use the derived id')
+  assert.match(text, /const currentSessionId = currentSessionIdOf\(list\)/)
+  assert.match(text, /current: currentSessionId !== undefined && currentSessionId === session\.id/)
+  assert.match(text, /currentInside: !!\(currentSessionId && \(workspace\.sessionIds \|\| \[\]\)\.includes\(currentSessionId\)\)/)
+
+  // (3) The owning workspace row carries its own class on top of the session
+  //     pill, and that class has a visible accent (not just a faint tint).
+  assert.match(text, /currentInside && 'bw-ws-current'/)
+  assert.match(text, /\.bw-ws-current\{box-shadow:inset 2px 0 0 var\(--dsw-alias-brand-primary/)
+  assert.match(text, /\.bw-ws-current\{background:color-mix\(/)
+})
+
+/**
+ * Session UI status (0.3.8). dsh 0.2 moved running / pending interaction /
+ * completion unread off the session list summary into the unified status store,
+ * published to slot components as the global `useSessionStatus` hook. The
+ * plugin kept reading the 0.1 spellings (`useSessionPendingInteraction`, a
+ * summary's `completed` flag) which the current Host does not send, so the
+ * amber waiting-for-input dot, the compact waiting label and the green
+ * task-completed dot silently disappeared — only the running ring survived,
+ * because `summary.running` still exists.
+ */
+test('session status: the 0.2 unified map drives waiting and completed dots (0.3.7+)', () => {
+  const text = read('src/client.js')
+
+  // (1) The browser reads the status hook the 0.2 Host injects, keeping both
+  //     0.1 hooks as fallbacks (conditional calls on stable host-provided
+  //     functions, same pattern as the existing pending hook).
+  assert.match(text, /useSessions, useSessionPendingInteraction, useSessionStatus, useWorkspaces,/)
+  assert.match(text, /const statuses = typeof useSessionStatus === 'function' \? useSessionStatus\(s => s\) : null/)
+  assert.match(text, /const pending = useSessionPendingInteraction \? useSessionPendingInteraction\(s => s\) : null/)
+
+  // (2) Live status wins over the legacy spellings, field by field.
+  assert.match(text, /const liveStatusOf = \(statuses, id\) =>/)
+  assert.match(text, /const runningOf = \(live, summary\) => \(live && live\.running !== undefined/)
+  assert.match(text, /pending: interactionKindOf\(live && live\.pendingInteraction\) \|\| pendingKindOf\(legacyPending, id\)/)
+  assert.match(text, /completed: live \? live\.completionUnread === true : !!\(summary && summary\.completed === true\)/)
+
+  // (3) Both session row builders take their facts from that one resolver —
+  //     the two duplicated reads that went stale must be gone.
+  assert.equal((text.match(/\.\.\.sessionFactsOf\(statuses, pending, id, summary\)/g) || []).length, 2,
+    'both the ungrouped list and every workspace list must use the resolver')
+  assert.ok(!/running: !!summary\.running/.test(text), 'the row builder must not read the summary running flag directly')
+  assert.ok(!/completed: summary\.completed === true/.test(text), 'the row builder must not read a summary completed flag')
+  assert.ok(!/pending: pendingKindOf\(pending, id\)/.test(text), 'the row builder must not read the 0.1 pending hook directly')
+
+  // (4) Running subagents follow the same precedence (the ring is a second
+  //     status line, not a separate truth).
+  assert.match(text, /const subagentRunningCounts = \(byId, statuses\) =>/)
+  assert.match(text, /if \(runningOf\(liveStatusOf\(statuses, summary\.id\), summary\)\) count \+= 1/)
+  assert.match(text, /subagentRunningCounts\(list \? list\.byId : \{\}, statuses\)/)
+
+  // (5) The trailing cell shows the compact waiting label while an interaction
+  //     is pending, and the shipped dot keeps its amber state — the visible
+  //     "waiting for user input" treatment.
+  assert.match(text, /const PENDING_LABEL_KEYS = \{/)
+  for (const kind of ['approval', 'plan-review', 'question']) {
+    assert.ok(text.includes("  " + kind + ": 'status.compact.") || text.includes("'" + kind + "': 'status.compact."),
+      'missing compact label for ' + kind)
+  }
+  assert.match(text, /trailing: state === 'warning' && PENDING_LABEL_KEYS\[node\.pending\]/)
+  assert.match(text, /status && status\.trailing \? status\.trailing : timeLabel\(node\.updatedAt, now, t\)/)
+  assert.match(text, /E\(ui\.StateDot, \{ state: status\.state, size: 10 \}\)/)
+  assert.match(text, /\.bw-row-time\{flex:none;font-size:11px;color:var\(--dsw-alias-label-quaternary,#8a8a8a\);white-space:nowrap\}/)
+
+  // (6) The compact labels exist in every shipped dictionary (the locale
+  //     guard already enforces the key sets; this pins the three keys that
+  //     carry the waiting state).
+  const zhBlock = text.slice(text.indexOf('const zh = {'), text.indexOf('const en = {'))
+  for (const key of ['status.compact.approval', 'status.compact.answer', 'status.compact.planReview']) {
+    assert.ok(zhBlock.includes("'" + key + "':"), 'missing zh key ' + key)
+  }
+})

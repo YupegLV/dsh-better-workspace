@@ -29,10 +29,30 @@ window.__ModuleLoader__.load({
 
     const zh = {
       'title': '工作区',
-      'search.placeholder': '搜索工作区或会话',
       'add': '添加工作区',
-      'rail.search': '搜索',
+      'create': '创建',
       'rail.add': '添加工作区',
+      'menu.newSubWorkspace': '新增子工作区',
+      'flow.title': '添加工作区',
+      'flow.picked': '所选文件夹',
+      'flow.parent': '所属分组',
+      'flow.parentHint': '输入或下拉选择分组路径,留空表示根分组;多级用 / 分隔',
+      'flow.creating': '正在创建…',
+      'flow.parentDir': '所属虚拟目录',
+      'flow.parentDirHint': '工作区会挂到所选虚拟目录下,选「根层级」则不归类;还没有目录时,先用工具栏的「新建虚拟目录」建一个。',
+      'browse.title': '选择工作区目录',
+      'browse.home': '主目录',
+      'browse.newFolder': '新建文件夹',
+      'browse.folderName': '文件夹名称',
+      'browse.showHidden': '显示隐藏文件',
+      'browse.loading': '加载中…',
+      'browse.truncated': '文件夹过多,仅显示开头部分。',
+      'browse.editPath': '编辑路径',
+      'browse.open': '打开',
+      'browse.createIn': '在「{name}」中创建',
+      'browse.untitledFolder': '新建文件夹',
+      'search.placeholder': '搜索工作区或会话',
+      'rail.search': '搜索',
       'empty': '暂无工作区',
       'empty.search': '没有匹配的结果',
       'session.new': '新会话',
@@ -63,6 +83,9 @@ window.__ModuleLoader__.load({
       'status.planReview': '等待计划确认',
       'status.question': '等待回答',
       'status.subagents': '{n} 个子任务运行中',
+      'status.compact.approval': '待审批',
+      'status.compact.answer': '待回答',
+      'status.compact.planReview': '计划待审',
       'schedule.active': '有活动定时任务',
       'menu.rename': '重命名',
       'menu.openWsFolder': '打开工作区文件夹',
@@ -73,7 +96,6 @@ window.__ModuleLoader__.load({
       'menu.fork': '分叉',
       'menu.archive': '归档',
       'menu.newSubfolder': '新增子分组',
-      'menu.newSubWorkspace': '新增子工作区',
       'menu.renameFolder': '重命名分组',
       'menu.removeFolder': '删除分组',
       'menu.renameSgroup': '重命名会话分组',
@@ -127,28 +149,8 @@ window.__ModuleLoader__.load({
       'sync.empty': '另一端暂无数据可获取',
       'sync.off': '当前环境不支持同步(需要宿主设置服务)',
       'sync.loading': '正在连接宿主设置…',
-      'flow.title': '添加工作区',
-      'flow.picked': '所选文件夹',
-      'flow.parent': '所属分组',
-      'flow.parentHint': '输入或下拉选择分组路径,留空表示根分组;多级用 / 分隔',
-      'flow.creating': '正在创建…',
-      'browse.title': '选择工作区目录',
-      'browse.home': '主目录',
-      'browse.up': '上一层',
-      'browse.newFolder': '新建文件夹',
-      'browse.folderName': '文件夹名称',
-      'browse.empty': '此文件夹没有子文件夹',
-      'browse.loading': '加载中…',
-      'browse.truncated': '文件夹过多,仅显示开头部分。',
-      'browse.showHidden': '显示隐藏文件',
-      'browse.editPath': '编辑路径',
-      'browse.select': '选择此文件夹',
-      'browse.enter': '进入',
-      'browse.drives': '盘符',
-      'browse.selectNamed': '选择「{name}」',
       'error.title': '出错了',
       'cancel': '取消',
-      'create': '创建',
       'confirm': '确定',
       'close': '关闭',
       'ws.rename.title': '重命名工作区',
@@ -167,10 +169,30 @@ window.__ModuleLoader__.load({
 
     const en = {
       'title': 'Workspaces',
-      'search.placeholder': 'Search workspaces or sessions',
       'add': 'Add workspace',
-      'rail.search': 'Search',
+      'create': 'Create',
       'rail.add': 'Add workspace',
+      'menu.newSubWorkspace': 'New workspace here',
+      'flow.title': 'Add workspace',
+      'flow.picked': 'Chosen folder',
+      'flow.parent': 'Parent group',
+      'flow.parentHint': 'Type or pick a group path; empty means root. Nest with /',
+      'flow.creating': 'Creating…',
+      'flow.parentDir': 'Parent virtual directory',
+      'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+      'browse.title': 'Select Workspace Directory',
+      'browse.home': 'Home',
+      'browse.newFolder': 'New folder',
+      'browse.folderName': 'Folder name',
+      'browse.showHidden': 'Show hidden files',
+      'browse.loading': 'Loading…',
+      'browse.truncated': 'Too many folders to list; only the beginning is shown.',
+      'browse.editPath': 'Edit path',
+      'browse.open': 'Open',
+      'browse.createIn': 'Create in "{name}"',
+      'browse.untitledFolder': 'New folder',
+      'search.placeholder': 'Search workspaces or sessions',
+      'rail.search': 'Search',
       'empty': 'No workspaces yet',
       'empty.search': 'No matches',
       'session.new': 'New session',
@@ -200,6 +222,9 @@ window.__ModuleLoader__.load({
       'status.planReview': 'Waiting for plan review',
       'status.question': 'Waiting for answer',
       'status.subagents': '{n} subagent(s) running',
+      'status.compact.approval': 'Approval',
+      'status.compact.answer': 'Answer',
+      'status.compact.planReview': 'Plan review',
       'schedule.active': 'Has active scheduled task',
       'menu.rename': 'Rename',
       'menu.openWsFolder': 'Open workspace folder',
@@ -210,7 +235,6 @@ window.__ModuleLoader__.load({
       'menu.fork': 'Fork',
       'menu.archive': 'Archive',
       'menu.newSubfolder': 'New subfolder',
-      'menu.newSubWorkspace': 'New workspace here',
       'menu.renameFolder': 'Rename folder',
       'menu.removeFolder': 'Delete folder',
       'menu.renameSgroup': 'Rename session group',
@@ -264,28 +288,8 @@ window.__ModuleLoader__.load({
       'sync.empty': 'No data on the other surface yet',
       'sync.off': 'Sync unavailable here (requires the host settings service)',
       'sync.loading': 'Connecting to host settings…',
-      'flow.title': 'Add workspace',
-      'flow.picked': 'Chosen folder',
-      'flow.parent': 'Parent group',
-      'flow.parentHint': 'Type or pick a group path; empty means root. Nest with /',
-      'flow.creating': 'Creating…',
-      'browse.title': 'Select Workspace Directory',
-      'browse.home': 'Home',
-      'browse.up': 'Up',
-      'browse.newFolder': 'New folder',
-      'browse.folderName': 'Folder name',
-      'browse.empty': 'No subfolders here',
-      'browse.loading': 'Loading…',
-      'browse.truncated': 'Too many folders to list; only the beginning is shown.',
-      'browse.showHidden': 'Show hidden files',
-      'browse.editPath': 'Edit path',
-      'browse.select': 'Use this folder',
-      'browse.enter': 'Open',
-      'browse.drives': 'Drives',
-      'browse.selectNamed': 'Use "{name}"',
       'error.title': 'Something went wrong',
       'cancel': 'Cancel',
-      'create': 'Create',
       'confirm': 'OK',
       'close': 'Close',
       'ws.rename.title': 'Rename workspace',
@@ -312,10 +316,30 @@ window.__ModuleLoader__.load({
       /* locale: ar */
       'ar': {
         'title': 'مساحات العمل',
-        'search.placeholder': 'ابحث في مساحات العمل أو الجلسات',
         'add': 'إضافة مساحة عمل',
-        'rail.search': 'بحث',
+        'create': 'إنشاء',
         'rail.add': 'إضافة مساحة عمل',
+        'menu.newSubWorkspace': 'مساحة عمل فرعية هنا',
+        'flow.title': 'إضافة مساحة عمل',
+        'flow.picked': 'المجلد المختار',
+        'flow.parent': 'المجموعة التابعة لها',
+        'flow.parentHint': 'اكتب مسار المجموعة أو اختره؛ الفراغ يعني الجذر؛ تُفصل المستويات بـ /',
+        'flow.creating': 'جارٍ الإنشاء…',
+        'flow.parentDir': 'مجلد افتراضي أب',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'اختيار مجلد مساحة العمل',
+        'browse.home': 'المجلد الرئيسي',
+        'browse.newFolder': 'مجلد جديد',
+        'browse.folderName': 'اسم المجلد',
+        'browse.showHidden': 'إظهار الملفات المخفية',
+        'browse.loading': 'جارٍ التحميل…',
+        'browse.truncated': 'المجلدات كثيرة جدًا؛ يُعرض الجزء الأول فقط.',
+        'browse.editPath': 'تعديل المسار',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'ابحث في مساحات العمل أو الجلسات',
+        'rail.search': 'بحث',
         'empty': 'لا توجد مساحات عمل بعد',
         'empty.search': 'لا توجد نتائج مطابقة',
         'session.new': 'جلسة جديدة',
@@ -337,6 +361,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'بانتظار تأكيد الخطة',
         'status.question': 'بانتظار الرد',
         'status.subagents': '{n} من الوكلاء الفرعيين قيد التشغيل',
+        'status.compact.approval': 'الموافقة',
+        'status.compact.answer': 'الرد',
+        'status.compact.planReview': 'مراجعة الخطة',
         'schedule.active': 'توجد مهمة مجدولة نشطة',
         'menu.rename': 'إعادة التسمية',
         'menu.openWsFolder': 'فتح مجلد مساحة العمل',
@@ -347,7 +374,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'تفريع',
         'menu.archive': 'أرشفة',
         'menu.newSubfolder': 'مجلد فرعي جديد',
-        'menu.newSubWorkspace': 'مساحة عمل فرعية هنا',
         'menu.renameFolder': 'إعادة تسمية المجلد',
         'menu.removeFolder': 'حذف المجلد',
         'menu.renameSgroup': 'إعادة تسمية مجموعة الجلسات',
@@ -401,28 +427,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'لا توجد بيانات لدى الطرف الآخر بعد',
         'sync.off': 'المزامنة غير متاحة هنا (تحتاج خدمة إعدادات المضيف)',
         'sync.loading': 'الاتصال بإعدادات المضيف…',
-        'flow.title': 'إضافة مساحة عمل',
-        'flow.picked': 'المجلد المختار',
-        'flow.parent': 'المجموعة التابعة لها',
-        'flow.parentHint': 'اكتب مسار المجموعة أو اختره؛ الفراغ يعني الجذر؛ تُفصل المستويات بـ /',
-        'flow.creating': 'جارٍ الإنشاء…',
-        'browse.title': 'اختيار مجلد مساحة العمل',
-        'browse.home': 'المجلد الرئيسي',
-        'browse.up': 'المستوى الأعلى',
-        'browse.newFolder': 'مجلد جديد',
-        'browse.folderName': 'اسم المجلد',
-        'browse.empty': 'لا توجد مجلدات فرعية هنا',
-        'browse.loading': 'جارٍ التحميل…',
-        'browse.truncated': 'المجلدات كثيرة جدًا؛ يُعرض الجزء الأول فقط.',
-        'browse.showHidden': 'إظهار الملفات المخفية',
-        'browse.editPath': 'تعديل المسار',
-        'browse.select': 'استخدام هذا المجلد',
-        'browse.enter': 'فتح',
-        'browse.drives': 'الأقراص',
-        'browse.selectNamed': 'استخدام "{name}"',
         'error.title': 'حدث خطأ ما',
         'cancel': 'إلغاء',
-        'create': 'إنشاء',
         'confirm': 'موافق',
         'close': 'إغلاق',
         'ws.rename.title': 'إعادة تسمية مساحة العمل',
@@ -449,10 +455,30 @@ window.__ModuleLoader__.load({
       /* locale: de */
       'de': {
         'title': 'Arbeitsbereiche',
-        'search.placeholder': 'Arbeitsbereiche oder Sitzungen suchen',
         'add': 'Arbeitsbereich hinzufügen',
-        'rail.search': 'Suchen',
+        'create': 'Erstellen',
         'rail.add': 'Arbeitsbereich hinzufügen',
+        'menu.newSubWorkspace': 'Unterarbeitsbereich anlegen',
+        'flow.title': 'Arbeitsbereich hinzufügen',
+        'flow.picked': 'Gewählter Ordner',
+        'flow.parent': 'Übergeordnete Gruppe',
+        'flow.parentHint': 'Gruppenpfad eingeben oder auswählen, leer bedeutet Wurzel; Ebenen mit / trennen',
+        'flow.creating': 'Wird erstellt…',
+        'flow.parentDir': 'Übergeordnetes virtuelles Verzeichnis',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'Arbeitsbereichsordner wählen',
+        'browse.home': 'Home',
+        'browse.newFolder': 'Neuer Ordner',
+        'browse.folderName': 'Ordnername',
+        'browse.showHidden': 'Versteckte Dateien anzeigen',
+        'browse.loading': 'Wird geladen…',
+        'browse.truncated': 'Zu viele Ordner; nur der Anfang wird angezeigt.',
+        'browse.editPath': 'Pfad bearbeiten',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'Arbeitsbereiche oder Sitzungen suchen',
+        'rail.search': 'Suchen',
         'empty': 'Noch keine Arbeitsbereiche',
         'empty.search': 'Keine Treffer',
         'session.new': 'Neue Sitzung',
@@ -474,6 +500,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'Wartet auf Planprüfung',
         'status.question': 'Wartet auf Antwort',
         'status.subagents': '{n} Unteragenten aktiv',
+        'status.compact.approval': 'Freigabe',
+        'status.compact.answer': 'Antwort',
+        'status.compact.planReview': 'Planprüfung',
         'schedule.active': 'Aktive geplante Aufgabe',
         'menu.rename': 'Umbenennen',
         'menu.openWsFolder': 'Arbeitsbereichsordner öffnen',
@@ -484,7 +513,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'Abzweigen',
         'menu.archive': 'Archivieren',
         'menu.newSubfolder': 'Neuer Unterordner',
-        'menu.newSubWorkspace': 'Unterarbeitsbereich anlegen',
         'menu.renameFolder': 'Ordner umbenennen',
         'menu.removeFolder': 'Ordner löschen',
         'menu.renameSgroup': 'Sitzungsgruppe umbenennen',
@@ -538,28 +566,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'Auf der anderen Seite liegen noch keine Daten',
         'sync.off': 'Hier nicht verfügbar (erfordert den Host-Einstellungsdienst)',
         'sync.loading': 'Verbindung zum Host-Einstellungsspeicher…',
-        'flow.title': 'Arbeitsbereich hinzufügen',
-        'flow.picked': 'Gewählter Ordner',
-        'flow.parent': 'Übergeordnete Gruppe',
-        'flow.parentHint': 'Gruppenpfad eingeben oder auswählen, leer bedeutet Wurzel; Ebenen mit / trennen',
-        'flow.creating': 'Wird erstellt…',
-        'browse.title': 'Arbeitsbereichsordner wählen',
-        'browse.home': 'Home',
-        'browse.up': 'Übergeordnet',
-        'browse.newFolder': 'Neuer Ordner',
-        'browse.folderName': 'Ordnername',
-        'browse.empty': 'Keine Unterordner vorhanden',
-        'browse.loading': 'Wird geladen…',
-        'browse.truncated': 'Zu viele Ordner; nur der Anfang wird angezeigt.',
-        'browse.showHidden': 'Versteckte Dateien anzeigen',
-        'browse.editPath': 'Pfad bearbeiten',
-        'browse.select': 'Diesen Ordner verwenden',
-        'browse.enter': 'Öffnen',
-        'browse.drives': 'Laufwerke',
-        'browse.selectNamed': '"{name}" verwenden',
         'error.title': 'Etwas ist schiefgelaufen',
         'cancel': 'Abbrechen',
-        'create': 'Erstellen',
         'confirm': 'OK',
         'close': 'Schließen',
         'ws.rename.title': 'Arbeitsbereich umbenennen',
@@ -586,10 +594,30 @@ window.__ModuleLoader__.load({
       /* locale: fr */
       'fr': {
         'title': 'Espaces de travail',
-        'search.placeholder': 'Rechercher un espace de travail ou une session',
         'add': 'Ajouter un espace de travail',
-        'rail.search': 'Rechercher',
+        'create': 'Créer',
         'rail.add': 'Ajouter un espace de travail',
+        'menu.newSubWorkspace': 'Nouvel espace de travail ici',
+        'flow.title': 'Ajouter un espace de travail',
+        'flow.picked': 'Dossier choisi',
+        'flow.parent': 'Groupe parent',
+        'flow.parentHint': 'Saisissez ou choisissez un chemin de groupe; vide = racine; niveaux séparés par /',
+        'flow.creating': 'Création…',
+        'flow.parentDir': 'Répertoire virtuel parent',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'Choisir le dossier de l’espace de travail',
+        'browse.home': 'Dossier personnel',
+        'browse.newFolder': 'Nouveau dossier',
+        'browse.folderName': 'Nom du dossier',
+        'browse.showHidden': 'Afficher les fichiers cachés',
+        'browse.loading': 'Chargement…',
+        'browse.truncated': 'Trop de dossiers ; seul le début est affiché.',
+        'browse.editPath': 'Modifier le chemin',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'Rechercher un espace de travail ou une session',
+        'rail.search': 'Rechercher',
         'empty': 'Aucun espace de travail',
         'empty.search': 'Aucun résultat',
         'session.new': 'Nouvelle session',
@@ -611,6 +639,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'En attente de validation du plan',
         'status.question': 'En attente de réponse',
         'status.subagents': '{n} sous-agents en cours',
+        'status.compact.approval': 'Approbation',
+        'status.compact.answer': 'Réponse',
+        'status.compact.planReview': 'Plan',
         'schedule.active': 'Tâche planifiée active',
         'menu.rename': 'Renommer',
         'menu.openWsFolder': 'Ouvrir le dossier de l’espace de travail',
@@ -621,7 +652,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'Bifurquer',
         'menu.archive': 'Archiver',
         'menu.newSubfolder': 'Nouveau sous-dossier',
-        'menu.newSubWorkspace': 'Nouvel espace de travail ici',
         'menu.renameFolder': 'Renommer le dossier',
         'menu.removeFolder': 'Supprimer le dossier',
         'menu.renameSgroup': 'Renommer le groupe de sessions',
@@ -675,28 +705,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'Aucune donnée à récupérer de l\'autre côté',
         'sync.off': 'Synchronisation indisponible ici (service de réglages de l\'hôte requis)',
         'sync.loading': 'Connexion aux réglages de l\'hôte…',
-        'flow.title': 'Ajouter un espace de travail',
-        'flow.picked': 'Dossier choisi',
-        'flow.parent': 'Groupe parent',
-        'flow.parentHint': 'Saisissez ou choisissez un chemin de groupe; vide = racine; niveaux séparés par /',
-        'flow.creating': 'Création…',
-        'browse.title': 'Choisir le dossier de l’espace de travail',
-        'browse.home': 'Dossier personnel',
-        'browse.up': 'Niveau supérieur',
-        'browse.newFolder': 'Nouveau dossier',
-        'browse.folderName': 'Nom du dossier',
-        'browse.empty': 'Aucun sous-dossier ici',
-        'browse.loading': 'Chargement…',
-        'browse.truncated': 'Trop de dossiers ; seul le début est affiché.',
-        'browse.showHidden': 'Afficher les fichiers cachés',
-        'browse.editPath': 'Modifier le chemin',
-        'browse.select': 'Utiliser ce dossier',
-        'browse.enter': 'Ouvrir',
-        'browse.drives': 'Lecteurs',
-        'browse.selectNamed': 'Utiliser « {name} »',
         'error.title': 'Une erreur est survenue',
         'cancel': 'Annuler',
-        'create': 'Créer',
         'confirm': 'OK',
         'close': 'Fermer',
         'ws.rename.title': 'Renommer l\'espace de travail',
@@ -723,10 +733,30 @@ window.__ModuleLoader__.load({
       /* locale: hi */
       'hi': {
         'title': 'कार्यस्थान',
-        'search.placeholder': 'कार्यस्थान या सत्र खोजें',
         'add': 'कार्यस्थान जोड़ें',
-        'rail.search': 'खोजें',
+        'create': 'बनाएँ',
         'rail.add': 'कार्यस्थान जोड़ें',
+        'menu.newSubWorkspace': 'यहाँ उप-कार्यस्थान',
+        'flow.title': 'कार्यस्थान जोड़ें',
+        'flow.picked': 'चुना गया फ़ोल्डर',
+        'flow.parent': 'संबंधित समूह',
+        'flow.parentHint': 'समूह पथ लिखें या चुनें; खाली का अर्थ मूल है; कई स्तर / से अलग करें',
+        'flow.creating': 'बनाया जा रहा है…',
+        'flow.parentDir': 'मूल वर्चुअल निर्देशिका',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'कार्यस्थान फ़ोल्डर चुनें',
+        'browse.home': 'होम',
+        'browse.newFolder': 'नया फ़ोल्डर',
+        'browse.folderName': 'फ़ोल्डर का नाम',
+        'browse.showHidden': 'छिपी फ़ाइलें दिखाएँ',
+        'browse.loading': 'लोड हो रहा है…',
+        'browse.truncated': 'बहुत अधिक फ़ोल्डर; केवल शुरुआत दिखाई गई है।',
+        'browse.editPath': 'पथ संपादित करें',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'कार्यस्थान या सत्र खोजें',
+        'rail.search': 'खोजें',
         'empty': 'अभी कोई कार्यस्थान नहीं',
         'empty.search': 'कोई मेल खाता परिणाम नहीं',
         'session.new': 'नया सत्र',
@@ -748,6 +778,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'योजना पुष्टि की प्रतीक्षा',
         'status.question': 'उत्तर की प्रतीक्षा',
         'status.subagents': '{n} उप-एजेंट चल रहे हैं',
+        'status.compact.approval': 'स्वीकृति',
+        'status.compact.answer': 'उत्तर',
+        'status.compact.planReview': 'योजना',
         'schedule.active': 'सक्रिय निर्धारित कार्य मौजूद',
         'menu.rename': 'नाम बदलें',
         'menu.openWsFolder': 'कार्यस्थान फ़ोल्डर खोलें',
@@ -758,7 +791,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'शाखा बनाएँ',
         'menu.archive': 'संग्रह करें',
         'menu.newSubfolder': 'नया उप-फ़ोल्डर',
-        'menu.newSubWorkspace': 'यहाँ उप-कार्यस्थान',
         'menu.renameFolder': 'फ़ोल्डर का नाम बदलें',
         'menu.removeFolder': 'फ़ोल्डर हटाएँ',
         'menu.renameSgroup': 'सत्र समूह का नाम बदलें',
@@ -812,28 +844,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'दूसरे सिरे पर अभी कोई डेटा नहीं',
         'sync.off': 'यहाँ समन्वयन उपलब्ध नहीं (होस्ट सेटिंग सेवा चाहिए)',
         'sync.loading': 'होस्ट सेटिंग से जुड़ रहे हैं…',
-        'flow.title': 'कार्यस्थान जोड़ें',
-        'flow.picked': 'चुना गया फ़ोल्डर',
-        'flow.parent': 'संबंधित समूह',
-        'flow.parentHint': 'समूह पथ लिखें या चुनें; खाली का अर्थ मूल है; कई स्तर / से अलग करें',
-        'flow.creating': 'बनाया जा रहा है…',
-        'browse.title': 'कार्यस्थान फ़ोल्डर चुनें',
-        'browse.home': 'होम',
-        'browse.up': 'ऊपर',
-        'browse.newFolder': 'नया फ़ोल्डर',
-        'browse.folderName': 'फ़ोल्डर का नाम',
-        'browse.empty': 'यहाँ कोई उप-फ़ोल्डर नहीं',
-        'browse.loading': 'लोड हो रहा है…',
-        'browse.truncated': 'बहुत अधिक फ़ोल्डर; केवल शुरुआत दिखाई गई है।',
-        'browse.showHidden': 'छिपी फ़ाइलें दिखाएँ',
-        'browse.editPath': 'पथ संपादित करें',
-        'browse.select': 'यह फ़ोल्डर चुनें',
-        'browse.enter': 'खोलें',
-        'browse.drives': 'ड्राइव',
-        'browse.selectNamed': '"{name}" चुनें',
         'error.title': 'कुछ गड़बड़ हो गई',
         'cancel': 'रद्द करें',
-        'create': 'बनाएँ',
         'confirm': 'ठीक है',
         'close': 'बंद करें',
         'ws.rename.title': 'कार्यस्थान का नाम बदलें',
@@ -860,10 +872,30 @@ window.__ModuleLoader__.load({
       /* locale: id */
       'id': {
         'title': 'Ruang kerja',
-        'search.placeholder': 'Cari ruang kerja atau sesi',
         'add': 'Tambah ruang kerja',
-        'rail.search': 'Cari',
+        'create': 'Buat',
         'rail.add': 'Tambah ruang kerja',
+        'menu.newSubWorkspace': 'Ruang kerja baru di sini',
+        'flow.title': 'Tambah ruang kerja',
+        'flow.picked': 'Folder terpilih',
+        'flow.parent': 'Grup induk',
+        'flow.parentHint': 'Ketik atau pilih jalur grup; kosong = akar; tingkat dipisah dengan /',
+        'flow.creating': 'Membuat…',
+        'flow.parentDir': 'Direktori virtual induk',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'Pilih folder ruang kerja',
+        'browse.home': 'Beranda',
+        'browse.newFolder': 'Folder baru',
+        'browse.folderName': 'Nama folder',
+        'browse.showHidden': 'Tampilkan file tersembunyi',
+        'browse.loading': 'Memuat…',
+        'browse.truncated': 'Terlalu banyak folder; hanya bagian awal yang ditampilkan.',
+        'browse.editPath': 'Edit jalur',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'Cari ruang kerja atau sesi',
+        'rail.search': 'Cari',
         'empty': 'Belum ada ruang kerja',
         'empty.search': 'Tidak ada hasil yang cocok',
         'session.new': 'Sesi baru',
@@ -885,6 +917,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'Menunggu konfirmasi rencana',
         'status.question': 'Menunggu jawaban',
         'status.subagents': '{n} subagen berjalan',
+        'status.compact.approval': 'Persetujuan',
+        'status.compact.answer': 'Jawaban',
+        'status.compact.planReview': 'Rencana',
         'schedule.active': 'Ada tugas terjadwal yang aktif',
         'menu.rename': 'Ganti nama',
         'menu.openWsFolder': 'Buka folder ruang kerja',
@@ -895,7 +930,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'Cabangkan',
         'menu.archive': 'Arsipkan',
         'menu.newSubfolder': 'Subfolder baru',
-        'menu.newSubWorkspace': 'Ruang kerja baru di sini',
         'menu.renameFolder': 'Ganti nama folder',
         'menu.removeFolder': 'Hapus folder',
         'menu.renameSgroup': 'Ganti nama grup sesi',
@@ -949,28 +983,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'Sisi lain belum punya data',
         'sync.off': 'Sinkronisasi tidak tersedia di sini (perlu layanan pengaturan host)',
         'sync.loading': 'Menyambung ke pengaturan host…',
-        'flow.title': 'Tambah ruang kerja',
-        'flow.picked': 'Folder terpilih',
-        'flow.parent': 'Grup induk',
-        'flow.parentHint': 'Ketik atau pilih jalur grup; kosong = akar; tingkat dipisah dengan /',
-        'flow.creating': 'Membuat…',
-        'browse.title': 'Pilih folder ruang kerja',
-        'browse.home': 'Beranda',
-        'browse.up': 'Naik',
-        'browse.newFolder': 'Folder baru',
-        'browse.folderName': 'Nama folder',
-        'browse.empty': 'Tidak ada subfolder di sini',
-        'browse.loading': 'Memuat…',
-        'browse.truncated': 'Terlalu banyak folder; hanya bagian awal yang ditampilkan.',
-        'browse.showHidden': 'Tampilkan file tersembunyi',
-        'browse.editPath': 'Edit jalur',
-        'browse.select': 'Gunakan folder ini',
-        'browse.enter': 'Buka',
-        'browse.drives': 'Drive',
-        'browse.selectNamed': 'Gunakan "{name}"',
         'error.title': 'Terjadi kesalahan',
         'cancel': 'Batal',
-        'create': 'Buat',
         'confirm': 'OK',
         'close': 'Tutup',
         'ws.rename.title': 'Ganti nama ruang kerja',
@@ -997,10 +1011,30 @@ window.__ModuleLoader__.load({
       /* locale: it */
       'it': {
         'title': 'Aree di lavoro',
-        'search.placeholder': 'Cerca aree di lavoro o sessioni',
         'add': 'Aggiungi area di lavoro',
-        'rail.search': 'Cerca',
+        'create': 'Crea',
         'rail.add': 'Aggiungi area di lavoro',
+        'menu.newSubWorkspace': 'Nuova area di lavoro qui',
+        'flow.title': 'Aggiungi area di lavoro',
+        'flow.picked': 'Cartella scelta',
+        'flow.parent': 'Gruppo di appartenenza',
+        'flow.parentHint': 'Digita o scegli un percorso di gruppo; vuoto = radice; livelli separati da /',
+        'flow.creating': 'Creazione…',
+        'flow.parentDir': 'Cartella virtuale superiore',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'Scegli cartella dell’area di lavoro',
+        'browse.home': 'Home',
+        'browse.newFolder': 'Nuova cartella',
+        'browse.folderName': 'Nome cartella',
+        'browse.showHidden': 'Mostra file nascosti',
+        'browse.loading': 'Caricamento…',
+        'browse.truncated': 'Troppe cartelle; è mostrato solo l’inizio.',
+        'browse.editPath': 'Modifica percorso',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'Cerca aree di lavoro o sessioni',
+        'rail.search': 'Cerca',
         'empty': 'Nessuna area di lavoro',
         'empty.search': 'Nessun risultato',
         'session.new': 'Nuova sessione',
@@ -1022,6 +1056,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'In attesa di conferma del piano',
         'status.question': 'In attesa di risposta',
         'status.subagents': '{n} sotto-agenti in esecuzione',
+        'status.compact.approval': 'Approvazione',
+        'status.compact.answer': 'Risposta',
+        'status.compact.planReview': 'Piano',
         'schedule.active': 'Attività pianificata attiva',
         'menu.rename': 'Rinomina',
         'menu.openWsFolder': 'Apri cartella area di lavoro',
@@ -1032,7 +1069,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'Dirama',
         'menu.archive': 'Archivia',
         'menu.newSubfolder': 'Nuova sottocartella',
-        'menu.newSubWorkspace': 'Nuova area di lavoro qui',
         'menu.renameFolder': 'Rinomina cartella',
         'menu.removeFolder': 'Elimina cartella',
         'menu.renameSgroup': 'Rinomina gruppo di sessioni',
@@ -1086,28 +1122,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'Nessun dato da scaricare dall\'altro lato',
         'sync.off': 'Sincronizzazione non disponibile qui (serve il servizio impostazioni dell\'host)',
         'sync.loading': 'Connessione alle impostazioni dell\'host…',
-        'flow.title': 'Aggiungi area di lavoro',
-        'flow.picked': 'Cartella scelta',
-        'flow.parent': 'Gruppo di appartenenza',
-        'flow.parentHint': 'Digita o scegli un percorso di gruppo; vuoto = radice; livelli separati da /',
-        'flow.creating': 'Creazione…',
-        'browse.title': 'Scegli cartella dell’area di lavoro',
-        'browse.home': 'Home',
-        'browse.up': 'Livello superiore',
-        'browse.newFolder': 'Nuova cartella',
-        'browse.folderName': 'Nome cartella',
-        'browse.empty': 'Nessuna sottocartella qui',
-        'browse.loading': 'Caricamento…',
-        'browse.truncated': 'Troppe cartelle; è mostrato solo l’inizio.',
-        'browse.showHidden': 'Mostra file nascosti',
-        'browse.editPath': 'Modifica percorso',
-        'browse.select': 'Usa questa cartella',
-        'browse.enter': 'Apri',
-        'browse.drives': 'Unità',
-        'browse.selectNamed': 'Usa "{name}"',
         'error.title': 'Si è verificato un errore',
         'cancel': 'Annulla',
-        'create': 'Crea',
         'confirm': 'OK',
         'close': 'Chiudi',
         'ws.rename.title': 'Rinomina area di lavoro',
@@ -1134,10 +1150,30 @@ window.__ModuleLoader__.load({
       /* locale: ja */
       'ja': {
         'title': 'ワークスペース',
-        'search.placeholder': 'ワークスペースまたはセッションを検索',
         'add': 'ワークスペースを追加',
-        'rail.search': '検索',
+        'create': '作成',
         'rail.add': 'ワークスペースを追加',
+        'menu.newSubWorkspace': 'サブワークスペースを追加',
+        'flow.title': 'ワークスペースを追加',
+        'flow.picked': '選択したフォルダー',
+        'flow.parent': '所属グループ',
+        'flow.parentHint': 'グループのパスを入力または選択します,空欄はルート,階層は / で区切ります',
+        'flow.creating': '作成中…',
+        'flow.parentDir': '所属仮想ディレクトリ',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'ワークスペースのフォルダーを選択',
+        'browse.home': 'ホーム',
+        'browse.newFolder': '新しいフォルダー',
+        'browse.folderName': 'フォルダー名',
+        'browse.showHidden': '隠しファイルを表示',
+        'browse.loading': '読み込み中…',
+        'browse.truncated': 'フォルダーが多すぎます。先頭のみ表示しています。',
+        'browse.editPath': 'パスを編集',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'ワークスペースまたはセッションを検索',
+        'rail.search': '検索',
         'empty': 'ワークスペースがありません',
         'empty.search': '一致する結果がありません',
         'session.new': '新しいセッション',
@@ -1159,6 +1195,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'プラン確認待ち',
         'status.question': '回答待ち',
         'status.subagents': 'サブエージェント {n} 件が実行中',
+        'status.compact.approval': '承認待ち',
+        'status.compact.answer': '回答待ち',
+        'status.compact.planReview': 'プラン確認',
         'schedule.active': '有効なスケジュールタスクあり',
         'menu.rename': '名前を変更',
         'menu.openWsFolder': 'ワークスペースのフォルダを開く',
@@ -1169,7 +1208,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'フォーク',
         'menu.archive': 'アーカイブ',
         'menu.newSubfolder': '新しいサブフォルダー',
-        'menu.newSubWorkspace': 'サブワークスペースを追加',
         'menu.renameFolder': 'フォルダー名を変更',
         'menu.removeFolder': 'フォルダーを削除',
         'menu.renameSgroup': 'セッショングループ名を変更',
@@ -1223,28 +1261,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'もう一方に取得できるデータがありません',
         'sync.off': 'この環境では同期できません(ホスト設定サービスが必要)',
         'sync.loading': 'ホスト設定に接続中…',
-        'flow.title': 'ワークスペースを追加',
-        'flow.picked': '選択したフォルダー',
-        'flow.parent': '所属グループ',
-        'flow.parentHint': 'グループのパスを入力または選択します,空欄はルート,階層は / で区切ります',
-        'flow.creating': '作成中…',
-        'browse.title': 'ワークスペースのフォルダーを選択',
-        'browse.home': 'ホーム',
-        'browse.up': '上の階層',
-        'browse.newFolder': '新しいフォルダー',
-        'browse.folderName': 'フォルダー名',
-        'browse.empty': 'ここにサブフォルダーはありません',
-        'browse.loading': '読み込み中…',
-        'browse.truncated': 'フォルダーが多すぎます。先頭のみ表示しています。',
-        'browse.showHidden': '隠しファイルを表示',
-        'browse.editPath': 'パスを編集',
-        'browse.select': 'このフォルダーを選択',
-        'browse.enter': '開く',
-        'browse.drives': 'ドライブ',
-        'browse.selectNamed': '「{name}」を選択',
         'error.title': 'エラーが発生しました',
         'cancel': 'キャンセル',
-        'create': '作成',
         'confirm': 'OK',
         'close': '閉じる',
         'ws.rename.title': 'ワークスペース名を変更',
@@ -1271,10 +1289,30 @@ window.__ModuleLoader__.load({
       /* locale: ko */
       'ko': {
         'title': '워크스페이스',
-        'search.placeholder': '워크스페이스 또는 세션 검색',
         'add': '워크스페이스 추가',
-        'rail.search': '검색',
+        'create': '만들기',
         'rail.add': '워크스페이스 추가',
+        'menu.newSubWorkspace': '하위 워크스페이스 추가',
+        'flow.title': '워크스페이스 추가',
+        'flow.picked': '선택한 폴더',
+        'flow.parent': '소속 그룹',
+        'flow.parentHint': '그룹 경로를 입력하거나 선택하세요, 비우면 루트, 여러 단계는 / 로 구분합니다',
+        'flow.creating': '만드는 중…',
+        'flow.parentDir': '상위 가상 디렉터리',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': '워크스페이스 폴더 선택',
+        'browse.home': '홈',
+        'browse.newFolder': '새 폴더',
+        'browse.folderName': '폴더 이름',
+        'browse.showHidden': '숨김 파일 표시',
+        'browse.loading': '불러오는 중…',
+        'browse.truncated': '폴더가 너무 많습니다. 앞부분만 표시합니다.',
+        'browse.editPath': '경로 편집',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': '워크스페이스 또는 세션 검색',
+        'rail.search': '검색',
         'empty': '워크스페이스가 없습니다',
         'empty.search': '일치하는 결과가 없습니다',
         'session.new': '새 세션',
@@ -1296,6 +1334,9 @@ window.__ModuleLoader__.load({
         'status.planReview': '계획 확인 대기 중',
         'status.question': '답변 대기 중',
         'status.subagents': '하위 에이전트 {n}개 실행 중',
+        'status.compact.approval': '승인 대기',
+        'status.compact.answer': '답변 대기',
+        'status.compact.planReview': '계획 확인',
         'schedule.active': '활성 예약 작업 있음',
         'menu.rename': '이름 바꾸기',
         'menu.openWsFolder': '작업 공간 폴더 열기',
@@ -1306,7 +1347,6 @@ window.__ModuleLoader__.load({
         'menu.fork': '포크',
         'menu.archive': '보관',
         'menu.newSubfolder': '새 하위 폴더',
-        'menu.newSubWorkspace': '하위 워크스페이스 추가',
         'menu.renameFolder': '폴더 이름 바꾸기',
         'menu.removeFolder': '폴더 삭제',
         'menu.renameSgroup': '세션 그룹 이름 바꾸기',
@@ -1360,28 +1400,8 @@ window.__ModuleLoader__.load({
         'sync.empty': '반대쪽에 가져올 데이터가 없습니다',
         'sync.off': '이 환경에서는 동기화할 수 없습니다(호스트 설정 서비스 필요)',
         'sync.loading': '호스트 설정에 연결하는 중…',
-        'flow.title': '워크스페이스 추가',
-        'flow.picked': '선택한 폴더',
-        'flow.parent': '소속 그룹',
-        'flow.parentHint': '그룹 경로를 입력하거나 선택하세요, 비우면 루트, 여러 단계는 / 로 구분합니다',
-        'flow.creating': '만드는 중…',
-        'browse.title': '워크스페이스 폴더 선택',
-        'browse.home': '홈',
-        'browse.up': '상위',
-        'browse.newFolder': '새 폴더',
-        'browse.folderName': '폴더 이름',
-        'browse.empty': '여기에 하위 폴더가 없습니다',
-        'browse.loading': '불러오는 중…',
-        'browse.truncated': '폴더가 너무 많습니다. 앞부분만 표시합니다.',
-        'browse.showHidden': '숨김 파일 표시',
-        'browse.editPath': '경로 편집',
-        'browse.select': '이 폴더 선택',
-        'browse.enter': '열기',
-        'browse.drives': '드라이브',
-        'browse.selectNamed': '"{name}" 선택',
         'error.title': '문제가 발생했습니다',
         'cancel': '취소',
-        'create': '만들기',
         'confirm': '확인',
         'close': '닫기',
         'ws.rename.title': '워크스페이스 이름 바꾸기',
@@ -1408,10 +1428,30 @@ window.__ModuleLoader__.load({
       /* locale: nl */
       'nl': {
         'title': 'Werkruimten',
-        'search.placeholder': 'Werkruimten of sessies zoeken',
         'add': 'Werkruimte toevoegen',
-        'rail.search': 'Zoeken',
+        'create': 'Aanmaken',
         'rail.add': 'Werkruimte toevoegen',
+        'menu.newSubWorkspace': 'Subwerkruimte toevoegen',
+        'flow.title': 'Werkruimte toevoegen',
+        'flow.picked': 'Gekozen map',
+        'flow.parent': 'Bovenliggende groep',
+        'flow.parentHint': 'Typ of kies een groeppad; leeg betekent hoofdmap; niveaus scheiden met /',
+        'flow.creating': 'Bezig met aanmaken…',
+        'flow.parentDir': 'Bovenliggende virtuele map',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'Werkruimtemap kiezen',
+        'browse.home': 'Home',
+        'browse.newFolder': 'Nieuwe map',
+        'browse.folderName': 'Mapnaam',
+        'browse.showHidden': 'Verborgen bestanden tonen',
+        'browse.loading': 'Laden…',
+        'browse.truncated': 'Te veel mappen; alleen het begin wordt getoond.',
+        'browse.editPath': 'Pad bewerken',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'Werkruimten of sessies zoeken',
+        'rail.search': 'Zoeken',
         'empty': 'Nog geen werkruimten',
         'empty.search': 'Geen resultaten',
         'session.new': 'Nieuwe sessie',
@@ -1433,6 +1473,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'Wacht op planbevestiging',
         'status.question': 'Wacht op antwoord',
         'status.subagents': '{n} subagenten actief',
+        'status.compact.approval': 'Goedkeuring',
+        'status.compact.answer': 'Antwoord',
+        'status.compact.planReview': 'Plan',
         'schedule.active': 'Actieve geplande taak',
         'menu.rename': 'Naam wijzigen',
         'menu.openWsFolder': 'Werkruimtemap openen',
@@ -1443,7 +1486,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'Afsplitsen',
         'menu.archive': 'Archiveren',
         'menu.newSubfolder': 'Nieuwe submap',
-        'menu.newSubWorkspace': 'Subwerkruimte toevoegen',
         'menu.renameFolder': 'Mapnaam wijzigen',
         'menu.removeFolder': 'Map verwijderen',
         'menu.renameSgroup': 'Sessiegroep naam wijzigen',
@@ -1497,28 +1539,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'Aan de andere kant staan nog geen gegevens',
         'sync.off': 'Synchronisatie is hier niet beschikbaar (hostinstellingenservice nodig)',
         'sync.loading': 'Verbinden met hostinstellingen…',
-        'flow.title': 'Werkruimte toevoegen',
-        'flow.picked': 'Gekozen map',
-        'flow.parent': 'Bovenliggende groep',
-        'flow.parentHint': 'Typ of kies een groeppad; leeg betekent hoofdmap; niveaus scheiden met /',
-        'flow.creating': 'Bezig met aanmaken…',
-        'browse.title': 'Werkruimtemap kiezen',
-        'browse.home': 'Home',
-        'browse.up': 'Omhoog',
-        'browse.newFolder': 'Nieuwe map',
-        'browse.folderName': 'Mapnaam',
-        'browse.empty': 'Geen submappen hier',
-        'browse.loading': 'Laden…',
-        'browse.truncated': 'Te veel mappen; alleen het begin wordt getoond.',
-        'browse.showHidden': 'Verborgen bestanden tonen',
-        'browse.editPath': 'Pad bewerken',
-        'browse.select': 'Deze map gebruiken',
-        'browse.enter': 'Openen',
-        'browse.drives': 'Stations',
-        'browse.selectNamed': '"{name}" gebruiken',
         'error.title': 'Er is iets misgegaan',
         'cancel': 'Annuleren',
-        'create': 'Aanmaken',
         'confirm': 'OK',
         'close': 'Sluiten',
         'ws.rename.title': 'Werkruimte naam wijzigen',
@@ -1545,10 +1567,30 @@ window.__ModuleLoader__.load({
       /* locale: pl */
       'pl': {
         'title': 'Obszary robocze',
-        'search.placeholder': 'Szukaj obszarów roboczych lub sesji',
         'add': 'Dodaj obszar roboczy',
-        'rail.search': 'Szukaj',
+        'create': 'Utwórz',
         'rail.add': 'Dodaj obszar roboczy',
+        'menu.newSubWorkspace': 'Nowy podobszar roboczy',
+        'flow.title': 'Dodaj obszar roboczy',
+        'flow.picked': 'Wybrany folder',
+        'flow.parent': 'Grupa nadrzędna',
+        'flow.parentHint': 'Wpisz lub wybierz ścieżkę grupy; puste = główna; poziomy rozdziela /',
+        'flow.creating': 'Tworzenie…',
+        'flow.parentDir': 'Nadrzędny katalog wirtualny',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'Wybierz folder obszaru roboczego',
+        'browse.home': 'Katalog domowy',
+        'browse.newFolder': 'Nowy folder',
+        'browse.folderName': 'Nazwa folderu',
+        'browse.showHidden': 'Pokaż ukryte pliki',
+        'browse.loading': 'Wczytywanie…',
+        'browse.truncated': 'Zbyt wiele folderów; pokazano tylko początek.',
+        'browse.editPath': 'Edytuj ścieżkę',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'Szukaj obszarów roboczych lub sesji',
+        'rail.search': 'Szukaj',
         'empty': 'Brak obszarów roboczych',
         'empty.search': 'Brak wyników',
         'session.new': 'Nowa sesja',
@@ -1570,6 +1612,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'Czeka na potwierdzenie planu',
         'status.question': 'Czeka na odpowiedź',
         'status.subagents': '{n} podagentów w toku',
+        'status.compact.approval': 'Zatwierdzenie',
+        'status.compact.answer': 'Odpowiedź',
+        'status.compact.planReview': 'Plan',
         'schedule.active': 'Aktywne zadanie zaplanowane',
         'menu.rename': 'Zmień nazwę',
         'menu.openWsFolder': 'Otwórz folder obszaru roboczego',
@@ -1580,7 +1625,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'Rozgałęź',
         'menu.archive': 'Zarchiwizuj',
         'menu.newSubfolder': 'Nowy podfolder',
-        'menu.newSubWorkspace': 'Nowy podobszar roboczy',
         'menu.renameFolder': 'Zmień nazwę folderu',
         'menu.removeFolder': 'Usuń folder',
         'menu.renameSgroup': 'Zmień nazwę grupy sesji',
@@ -1634,28 +1678,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'Druga strona nie ma jeszcze danych',
         'sync.off': 'Synchronizacja niedostępna (wymaga usługi ustawień hosta)',
         'sync.loading': 'Łączenie z ustawieniami hosta…',
-        'flow.title': 'Dodaj obszar roboczy',
-        'flow.picked': 'Wybrany folder',
-        'flow.parent': 'Grupa nadrzędna',
-        'flow.parentHint': 'Wpisz lub wybierz ścieżkę grupy; puste = główna; poziomy rozdziela /',
-        'flow.creating': 'Tworzenie…',
-        'browse.title': 'Wybierz folder obszaru roboczego',
-        'browse.home': 'Katalog domowy',
-        'browse.up': 'W górę',
-        'browse.newFolder': 'Nowy folder',
-        'browse.folderName': 'Nazwa folderu',
-        'browse.empty': 'Brak podfolderów',
-        'browse.loading': 'Wczytywanie…',
-        'browse.truncated': 'Zbyt wiele folderów; pokazano tylko początek.',
-        'browse.showHidden': 'Pokaż ukryte pliki',
-        'browse.editPath': 'Edytuj ścieżkę',
-        'browse.select': 'Użyj tego folderu',
-        'browse.enter': 'Otwórz',
-        'browse.drives': 'Dyski',
-        'browse.selectNamed': 'Użyj "{name}"',
         'error.title': 'Coś poszło nie tak',
         'cancel': 'Anuluj',
-        'create': 'Utwórz',
         'confirm': 'OK',
         'close': 'Zamknij',
         'ws.rename.title': 'Zmień nazwę obszaru roboczego',
@@ -1682,10 +1706,30 @@ window.__ModuleLoader__.load({
       /* locale: pt */
       'pt': {
         'title': 'Espaços de trabalho',
-        'search.placeholder': 'Pesquisar espaços de trabalho ou sessões',
         'add': 'Adicionar espaço de trabalho',
-        'rail.search': 'Pesquisar',
+        'create': 'Criar',
         'rail.add': 'Adicionar espaço de trabalho',
+        'menu.newSubWorkspace': 'Novo espaço de trabalho aqui',
+        'flow.title': 'Adicionar espaço de trabalho',
+        'flow.picked': 'Pasta escolhida',
+        'flow.parent': 'Grupo pai',
+        'flow.parentHint': 'Digite ou escolha o caminho do grupo; vazio = raiz; níveis separados por /',
+        'flow.creating': 'Criando…',
+        'flow.parentDir': 'Diretório virtual pai',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'Escolher pasta da área de trabalho',
+        'browse.home': 'Início',
+        'browse.newFolder': 'Nova pasta',
+        'browse.folderName': 'Nome da pasta',
+        'browse.showHidden': 'Mostrar arquivos ocultos',
+        'browse.loading': 'Carregando…',
+        'browse.truncated': 'Pastas demais; apenas o início é exibido.',
+        'browse.editPath': 'Editar caminho',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'Pesquisar espaços de trabalho ou sessões',
+        'rail.search': 'Pesquisar',
         'empty': 'Nenhum espaço de trabalho',
         'empty.search': 'Nenhum resultado',
         'session.new': 'Nova sessão',
@@ -1707,6 +1751,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'Aguardando confirmação do plano',
         'status.question': 'Aguardando resposta',
         'status.subagents': '{n} subagentes em execução',
+        'status.compact.approval': 'Aprovação',
+        'status.compact.answer': 'Resposta',
+        'status.compact.planReview': 'Plano',
         'schedule.active': 'Tarefa agendada ativa',
         'menu.rename': 'Renomear',
         'menu.openWsFolder': 'Abrir pasta da área de trabalho',
@@ -1717,7 +1764,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'Bifurcar',
         'menu.archive': 'Arquivar',
         'menu.newSubfolder': 'Nova subpasta',
-        'menu.newSubWorkspace': 'Novo espaço de trabalho aqui',
         'menu.renameFolder': 'Renomear pasta',
         'menu.removeFolder': 'Excluir pasta',
         'menu.renameSgroup': 'Renomear grupo de sessões',
@@ -1771,28 +1817,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'O outro lado ainda não tem dados',
         'sync.off': 'Sincronização indisponível aqui (requer o serviço de configurações do host)',
         'sync.loading': 'Conectando às configurações do host…',
-        'flow.title': 'Adicionar espaço de trabalho',
-        'flow.picked': 'Pasta escolhida',
-        'flow.parent': 'Grupo pai',
-        'flow.parentHint': 'Digite ou escolha o caminho do grupo; vazio = raiz; níveis separados por /',
-        'flow.creating': 'Criando…',
-        'browse.title': 'Escolher pasta da área de trabalho',
-        'browse.home': 'Início',
-        'browse.up': 'Acima',
-        'browse.newFolder': 'Nova pasta',
-        'browse.folderName': 'Nome da pasta',
-        'browse.empty': 'Nenhuma subpasta aqui',
-        'browse.loading': 'Carregando…',
-        'browse.truncated': 'Pastas demais; apenas o início é exibido.',
-        'browse.showHidden': 'Mostrar arquivos ocultos',
-        'browse.editPath': 'Editar caminho',
-        'browse.select': 'Usar esta pasta',
-        'browse.enter': 'Abrir',
-        'browse.drives': 'Unidades',
-        'browse.selectNamed': 'Usar "{name}"',
         'error.title': 'Algo deu errado',
         'cancel': 'Cancelar',
-        'create': 'Criar',
         'confirm': 'OK',
         'close': 'Fechar',
         'ws.rename.title': 'Renomear espaço de trabalho',
@@ -1819,10 +1845,30 @@ window.__ModuleLoader__.load({
       /* locale: ru */
       'ru': {
         'title': 'Рабочие области',
-        'search.placeholder': 'Поиск рабочих областей и сессий',
         'add': 'Добавить рабочую область',
-        'rail.search': 'Поиск',
+        'create': 'Создать',
         'rail.add': 'Добавить рабочую область',
+        'menu.newSubWorkspace': 'Новая рабочая область здесь',
+        'flow.title': 'Добавить рабочую область',
+        'flow.picked': 'Выбранная папка',
+        'flow.parent': 'Родительская группа',
+        'flow.parentHint': 'Введите или выберите путь группы; пусто — корень; уровни разделяются /',
+        'flow.creating': 'Создание…',
+        'flow.parentDir': 'Родительский виртуальный каталог',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'Выбор папки рабочей области',
+        'browse.home': 'Домашняя папка',
+        'browse.newFolder': 'Новая папка',
+        'browse.folderName': 'Имя папки',
+        'browse.showHidden': 'Показывать скрытые файлы',
+        'browse.loading': 'Загрузка…',
+        'browse.truncated': 'Слишком много папок; показано только начало.',
+        'browse.editPath': 'Изменить путь',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'Поиск рабочих областей и сессий',
+        'rail.search': 'Поиск',
         'empty': 'Рабочих областей пока нет',
         'empty.search': 'Ничего не найдено',
         'session.new': 'Новая сессия',
@@ -1844,6 +1890,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'Ожидает проверки плана',
         'status.question': 'Ожидает ответа',
         'status.subagents': 'Выполняется субагентов: {n}',
+        'status.compact.approval': 'Подтверждение',
+        'status.compact.answer': 'Ответ',
+        'status.compact.planReview': 'План',
         'schedule.active': 'Есть активная задача по расписанию',
         'menu.rename': 'Переименовать',
         'menu.openWsFolder': 'Открыть папку рабочей области',
@@ -1854,7 +1903,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'Ответвить',
         'menu.archive': 'В архив',
         'menu.newSubfolder': 'Новая подпапка',
-        'menu.newSubWorkspace': 'Новая рабочая область здесь',
         'menu.renameFolder': 'Переименовать папку',
         'menu.removeFolder': 'Удалить папку',
         'menu.renameSgroup': 'Переименовать группу сессий',
@@ -1908,28 +1956,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'На другой стороне пока нет данных',
         'sync.off': 'Синхронизация недоступна (нужна служба настроек хоста)',
         'sync.loading': 'Подключение к настройкам хоста…',
-        'flow.title': 'Добавить рабочую область',
-        'flow.picked': 'Выбранная папка',
-        'flow.parent': 'Родительская группа',
-        'flow.parentHint': 'Введите или выберите путь группы; пусто — корень; уровни разделяются /',
-        'flow.creating': 'Создание…',
-        'browse.title': 'Выбор папки рабочей области',
-        'browse.home': 'Домашняя папка',
-        'browse.up': 'На уровень выше',
-        'browse.newFolder': 'Новая папка',
-        'browse.folderName': 'Имя папки',
-        'browse.empty': 'Здесь нет вложенных папок',
-        'browse.loading': 'Загрузка…',
-        'browse.truncated': 'Слишком много папок; показано только начало.',
-        'browse.showHidden': 'Показывать скрытые файлы',
-        'browse.editPath': 'Изменить путь',
-        'browse.select': 'Выбрать эту папку',
-        'browse.enter': 'Открыть',
-        'browse.drives': 'Диски',
-        'browse.selectNamed': 'Выбрать «{name}»',
         'error.title': 'Что-то пошло не так',
         'cancel': 'Отмена',
-        'create': 'Создать',
         'confirm': 'ОК',
         'close': 'Закрыть',
         'ws.rename.title': 'Переименовать рабочую область',
@@ -1956,10 +1984,30 @@ window.__ModuleLoader__.load({
       /* locale: sv */
       'sv': {
         'title': 'Arbetsytor',
-        'search.placeholder': 'Sök arbetsytor eller sessioner',
         'add': 'Lägg till arbetsyta',
-        'rail.search': 'Sök',
+        'create': 'Skapa',
         'rail.add': 'Lägg till arbetsyta',
+        'menu.newSubWorkspace': 'Ny arbetsyta här',
+        'flow.title': 'Lägg till arbetsyta',
+        'flow.picked': 'Vald mapp',
+        'flow.parent': 'Överordnad grupp',
+        'flow.parentHint': 'Skriv eller välj en gruppsökväg; tomt = rot; nivåer avgränsas med /',
+        'flow.creating': 'Skapar…',
+        'flow.parentDir': 'Överordnad virtuell mapp',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'Välj arbetsyte-mapp',
+        'browse.home': 'Hem',
+        'browse.newFolder': 'Ny mapp',
+        'browse.folderName': 'Mappnamn',
+        'browse.showHidden': 'Visa dolda filer',
+        'browse.loading': 'Laddar…',
+        'browse.truncated': 'För många mappar; endast början visas.',
+        'browse.editPath': 'Redigera sökväg',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'Sök arbetsytor eller sessioner',
+        'rail.search': 'Sök',
         'empty': 'Inga arbetsytor ännu',
         'empty.search': 'Inga träffar',
         'session.new': 'Ny session',
@@ -1981,6 +2029,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'Väntar på planbekräftelse',
         'status.question': 'Väntar på svar',
         'status.subagents': '{n} underagenter körs',
+        'status.compact.approval': 'Godkännande',
+        'status.compact.answer': 'Svar',
+        'status.compact.planReview': 'Plan',
         'schedule.active': 'Aktiv schemalagd uppgift',
         'menu.rename': 'Byt namn',
         'menu.openWsFolder': 'Öppna arbetsytans mapp',
@@ -1991,7 +2042,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'Förgrena',
         'menu.archive': 'Arkivera',
         'menu.newSubfolder': 'Ny undermapp',
-        'menu.newSubWorkspace': 'Ny arbetsyta här',
         'menu.renameFolder': 'Byt namn på mapp',
         'menu.removeFolder': 'Ta bort mapp',
         'menu.renameSgroup': 'Byt namn på sessionsgrupp',
@@ -2045,28 +2095,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'Andra sidan har inga data ännu',
         'sync.off': 'Synk är inte tillgänglig här (kräver värduppläggets inställningstjänst)',
         'sync.loading': 'Ansluter till värduppläggets inställningar…',
-        'flow.title': 'Lägg till arbetsyta',
-        'flow.picked': 'Vald mapp',
-        'flow.parent': 'Överordnad grupp',
-        'flow.parentHint': 'Skriv eller välj en gruppsökväg; tomt = rot; nivåer avgränsas med /',
-        'flow.creating': 'Skapar…',
-        'browse.title': 'Välj arbetsyte-mapp',
-        'browse.home': 'Hem',
-        'browse.up': 'Upp',
-        'browse.newFolder': 'Ny mapp',
-        'browse.folderName': 'Mappnamn',
-        'browse.empty': 'Inga undermappar här',
-        'browse.loading': 'Laddar…',
-        'browse.truncated': 'För många mappar; endast början visas.',
-        'browse.showHidden': 'Visa dolda filer',
-        'browse.editPath': 'Redigera sökväg',
-        'browse.select': 'Använd den här mappen',
-        'browse.enter': 'Öppna',
-        'browse.drives': 'Enheter',
-        'browse.selectNamed': 'Använd "{name}"',
         'error.title': 'Något gick fel',
         'cancel': 'Avbryt',
-        'create': 'Skapa',
         'confirm': 'OK',
         'close': 'Stäng',
         'ws.rename.title': 'Byt namn på arbetsyta',
@@ -2093,10 +2123,30 @@ window.__ModuleLoader__.load({
       /* locale: th */
       'th': {
         'title': 'พื้นที่ทำงาน',
-        'search.placeholder': 'ค้นหาพื้นที่ทำงานหรือเซสชัน',
         'add': 'เพิ่มพื้นที่ทำงาน',
-        'rail.search': 'ค้นหา',
+        'create': 'สร้าง',
         'rail.add': 'เพิ่มพื้นที่ทำงาน',
+        'menu.newSubWorkspace': 'พื้นที่ทำงานย่อยที่นี่',
+        'flow.title': 'เพิ่มพื้นที่ทำงาน',
+        'flow.picked': 'โฟลเดอร์ที่เลือก',
+        'flow.parent': 'กลุ่มต้นทาง',
+        'flow.parentHint': 'พิมพ์หรือเลือกเส้นทางกลุ่ม เว้นว่างคือระดับราก หลายระดับคั่นด้วย /',
+        'flow.creating': 'กำลังสร้าง…',
+        'flow.parentDir': 'ไดเรกทอรีเสมือนปลายทาง',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'เลือกโฟลเดอร์เวิร์กสเปซ',
+        'browse.home': 'โฮม',
+        'browse.newFolder': 'โฟลเดอร์ใหม่',
+        'browse.folderName': 'ชื่อโฟลเดอร์',
+        'browse.showHidden': 'แสดงไฟล์ที่ซ่อนอยู่',
+        'browse.loading': 'กำลังโหลด…',
+        'browse.truncated': 'มีโฟลเดอร์มากเกินไป แสดงเฉพาะส่วนต้น',
+        'browse.editPath': 'แก้ไขเส้นทาง',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'ค้นหาพื้นที่ทำงานหรือเซสชัน',
+        'rail.search': 'ค้นหา',
         'empty': 'ยังไม่มีพื้นที่ทำงาน',
         'empty.search': 'ไม่พบผลลัพธ์ที่ตรงกัน',
         'session.new': 'เซสชันใหม่',
@@ -2118,6 +2168,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'รอตรวจแผน',
         'status.question': 'รอคำตอบ',
         'status.subagents': 'ตัวแทนย่อย {n} รายกำลังทำงาน',
+        'status.compact.approval': 'อนุมัติ',
+        'status.compact.answer': 'ตอบ',
+        'status.compact.planReview': 'แผน',
         'schedule.active': 'มีงานตั้งเวลาใช้งานอยู่',
         'menu.rename': 'เปลี่ยนชื่อ',
         'menu.openWsFolder': 'เปิดโฟลเดอร์พื้นที่ทำงาน',
@@ -2128,7 +2181,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'แยกสาย',
         'menu.archive': 'เก็บถาวร',
         'menu.newSubfolder': 'โฟลเดอร์ย่อยใหม่',
-        'menu.newSubWorkspace': 'พื้นที่ทำงานย่อยที่นี่',
         'menu.renameFolder': 'เปลี่ยนชื่อโฟลเดอร์',
         'menu.removeFolder': 'ลบโฟลเดอร์',
         'menu.renameSgroup': 'เปลี่ยนชื่อกลุ่มเซสชัน',
@@ -2182,28 +2234,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'อีกฝั่งยังไม่มีข้อมูลให้ดึง',
         'sync.off': 'สภาพแวดล้อมนี้ไม่รองรับการซิงก์ (ต้องมีบริการการตั้งค่าของโฮสต์)',
         'sync.loading': 'กำลังเชื่อมต่อการตั้งค่าโฮสต์…',
-        'flow.title': 'เพิ่มพื้นที่ทำงาน',
-        'flow.picked': 'โฟลเดอร์ที่เลือก',
-        'flow.parent': 'กลุ่มต้นทาง',
-        'flow.parentHint': 'พิมพ์หรือเลือกเส้นทางกลุ่ม เว้นว่างคือระดับราก หลายระดับคั่นด้วย /',
-        'flow.creating': 'กำลังสร้าง…',
-        'browse.title': 'เลือกโฟลเดอร์เวิร์กสเปซ',
-        'browse.home': 'โฮม',
-        'browse.up': 'ขึ้นหนึ่งระดับ',
-        'browse.newFolder': 'โฟลเดอร์ใหม่',
-        'browse.folderName': 'ชื่อโฟลเดอร์',
-        'browse.empty': 'ไม่มีโฟลเดอร์ย่อยที่นี่',
-        'browse.loading': 'กำลังโหลด…',
-        'browse.truncated': 'มีโฟลเดอร์มากเกินไป แสดงเฉพาะส่วนต้น',
-        'browse.showHidden': 'แสดงไฟล์ที่ซ่อนอยู่',
-        'browse.editPath': 'แก้ไขเส้นทาง',
-        'browse.select': 'ใช้โฟลเดอร์นี้',
-        'browse.enter': 'เปิด',
-        'browse.drives': 'ไดรฟ์',
-        'browse.selectNamed': 'ใช้ "{name}"',
         'error.title': 'เกิดข้อผิดพลาด',
         'cancel': 'ยกเลิก',
-        'create': 'สร้าง',
         'confirm': 'ตกลง',
         'close': 'ปิด',
         'ws.rename.title': 'เปลี่ยนชื่อพื้นที่ทำงาน',
@@ -2230,10 +2262,30 @@ window.__ModuleLoader__.load({
       /* locale: tr */
       'tr': {
         'title': 'Çalışma alanları',
-        'search.placeholder': 'Çalışma alanı veya oturum ara',
         'add': 'Çalışma alanı ekle',
-        'rail.search': 'Ara',
+        'create': 'Oluştur',
         'rail.add': 'Çalışma alanı ekle',
+        'menu.newSubWorkspace': 'Buraya alt çalışma alanı',
+        'flow.title': 'Çalışma alanı ekle',
+        'flow.picked': 'Seçilen klasör',
+        'flow.parent': 'Bağlı olduğu grup',
+        'flow.parentHint': 'Grup yolunu yazın veya seçin; boş = kök; düzeyler / ile ayrılır',
+        'flow.creating': 'Oluşturuluyor…',
+        'flow.parentDir': 'Üst sanal dizin',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'Çalışma alanı klasörünü seç',
+        'browse.home': 'Ana dizin',
+        'browse.newFolder': 'Yeni klasör',
+        'browse.folderName': 'Klasör adı',
+        'browse.showHidden': 'Gizli dosyaları göster',
+        'browse.loading': 'Yükleniyor…',
+        'browse.truncated': 'Çok fazla klasör var; yalnızca başlangıç gösteriliyor.',
+        'browse.editPath': 'Yolu düzenle',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'Çalışma alanı veya oturum ara',
+        'rail.search': 'Ara',
         'empty': 'Henüz çalışma alanı yok',
         'empty.search': 'Eşleşen sonuç yok',
         'session.new': 'Yeni oturum',
@@ -2255,6 +2307,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'Plan onayı bekliyor',
         'status.question': 'Yanıt bekliyor',
         'status.subagents': '{n} alt ajan çalışıyor',
+        'status.compact.approval': 'Onay',
+        'status.compact.answer': 'Yanıt',
+        'status.compact.planReview': 'Plan',
         'schedule.active': 'Etkin zamanlanmış görev var',
         'menu.rename': 'Yeniden adlandır',
         'menu.openWsFolder': 'Çalışma alanı klasörünü aç',
@@ -2265,7 +2320,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'Çatalla',
         'menu.archive': 'Arşivle',
         'menu.newSubfolder': 'Yeni alt klasör',
-        'menu.newSubWorkspace': 'Buraya alt çalışma alanı',
         'menu.renameFolder': 'Klasörü yeniden adlandır',
         'menu.removeFolder': 'Klasörü sil',
         'menu.renameSgroup': 'Oturum grubunu yeniden adlandır',
@@ -2319,28 +2373,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'Diğer tarafta alınacak veri yok',
         'sync.off': 'Bu ortamda eşitleme yok (ana makine ayar servisi gerekir)',
         'sync.loading': 'Ana makine ayarlarına bağlanılıyor…',
-        'flow.title': 'Çalışma alanı ekle',
-        'flow.picked': 'Seçilen klasör',
-        'flow.parent': 'Bağlı olduğu grup',
-        'flow.parentHint': 'Grup yolunu yazın veya seçin; boş = kök; düzeyler / ile ayrılır',
-        'flow.creating': 'Oluşturuluyor…',
-        'browse.title': 'Çalışma alanı klasörünü seç',
-        'browse.home': 'Ana dizin',
-        'browse.up': 'Üst düzey',
-        'browse.newFolder': 'Yeni klasör',
-        'browse.folderName': 'Klasör adı',
-        'browse.empty': 'Burada alt klasör yok',
-        'browse.loading': 'Yükleniyor…',
-        'browse.truncated': 'Çok fazla klasör var; yalnızca başlangıç gösteriliyor.',
-        'browse.showHidden': 'Gizli dosyaları göster',
-        'browse.editPath': 'Yolu düzenle',
-        'browse.select': 'Bu klasörü kullan',
-        'browse.enter': 'Aç',
-        'browse.drives': 'Sürücüler',
-        'browse.selectNamed': '"{name}" kullan',
         'error.title': 'Bir şeyler ters gitti',
         'cancel': 'İptal',
-        'create': 'Oluştur',
         'confirm': 'Tamam',
         'close': 'Kapat',
         'ws.rename.title': 'Çalışma alanını yeniden adlandır',
@@ -2367,10 +2401,30 @@ window.__ModuleLoader__.load({
       /* locale: vi */
       'vi': {
         'title': 'Không gian làm việc',
-        'search.placeholder': 'Tìm không gian làm việc hoặc phiên',
         'add': 'Thêm không gian làm việc',
-        'rail.search': 'Tìm kiếm',
+        'create': 'Tạo',
         'rail.add': 'Thêm không gian làm việc',
+        'menu.newSubWorkspace': 'Không gian làm việc con tại đây',
+        'flow.title': 'Thêm không gian làm việc',
+        'flow.picked': 'Thư mục đã chọn',
+        'flow.parent': 'Nhóm trực thuộc',
+        'flow.parentHint': 'Nhập hoặc chọn đường dẫn nhóm; để trống là gốc; nhiều tầng cách nhau bằng /',
+        'flow.creating': 'Đang tạo…',
+        'flow.parentDir': 'Thư mục ảo cha',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': 'Chọn thư mục không gian làm việc',
+        'browse.home': 'Thư mục chính',
+        'browse.newFolder': 'Thư mục mới',
+        'browse.folderName': 'Tên thư mục',
+        'browse.showHidden': 'Hiện tệp ẩn',
+        'browse.loading': 'Đang tải…',
+        'browse.truncated': 'Quá nhiều thư mục; chỉ hiển thị phần đầu.',
+        'browse.editPath': 'Sửa đường dẫn',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': 'Tìm không gian làm việc hoặc phiên',
+        'rail.search': 'Tìm kiếm',
         'empty': 'Chưa có không gian làm việc',
         'empty.search': 'Không có kết quả phù hợp',
         'session.new': 'Phiên mới',
@@ -2392,6 +2446,9 @@ window.__ModuleLoader__.load({
         'status.planReview': 'Đang chờ duyệt kế hoạch',
         'status.question': 'Đang chờ trả lời',
         'status.subagents': '{n} tác nhân con đang chạy',
+        'status.compact.approval': 'Phê duyệt',
+        'status.compact.answer': 'Trả lời',
+        'status.compact.planReview': 'Kế hoạch',
         'schedule.active': 'Có tác vụ hẹn giờ đang hoạt động',
         'menu.rename': 'Đổi tên',
         'menu.openWsFolder': 'Mở thư mục không gian làm việc',
@@ -2402,7 +2459,6 @@ window.__ModuleLoader__.load({
         'menu.fork': 'Tách nhánh',
         'menu.archive': 'Lưu trữ',
         'menu.newSubfolder': 'Thư mục con mới',
-        'menu.newSubWorkspace': 'Không gian làm việc con tại đây',
         'menu.renameFolder': 'Đổi tên thư mục',
         'menu.removeFolder': 'Xóa thư mục',
         'menu.renameSgroup': 'Đổi tên nhóm phiên',
@@ -2456,28 +2512,8 @@ window.__ModuleLoader__.load({
         'sync.empty': 'Bên kia chưa có dữ liệu để lấy',
         'sync.off': 'Môi trường này không hỗ trợ đồng bộ (cần dịch vụ cài đặt của máy chủ)',
         'sync.loading': 'Đang kết nối cài đặt máy chủ…',
-        'flow.title': 'Thêm không gian làm việc',
-        'flow.picked': 'Thư mục đã chọn',
-        'flow.parent': 'Nhóm trực thuộc',
-        'flow.parentHint': 'Nhập hoặc chọn đường dẫn nhóm; để trống là gốc; nhiều tầng cách nhau bằng /',
-        'flow.creating': 'Đang tạo…',
-        'browse.title': 'Chọn thư mục không gian làm việc',
-        'browse.home': 'Thư mục chính',
-        'browse.up': 'Lên một cấp',
-        'browse.newFolder': 'Thư mục mới',
-        'browse.folderName': 'Tên thư mục',
-        'browse.empty': 'Không có thư mục con ở đây',
-        'browse.loading': 'Đang tải…',
-        'browse.truncated': 'Quá nhiều thư mục; chỉ hiển thị phần đầu.',
-        'browse.showHidden': 'Hiện tệp ẩn',
-        'browse.editPath': 'Sửa đường dẫn',
-        'browse.select': 'Dùng thư mục này',
-        'browse.enter': 'Mở',
-        'browse.drives': 'Ổ đĩa',
-        'browse.selectNamed': 'Dùng "{name}"',
         'error.title': 'Đã xảy ra lỗi',
         'cancel': 'Hủy',
-        'create': 'Tạo',
         'confirm': 'OK',
         'close': 'Đóng',
         'ws.rename.title': 'Đổi tên không gian làm việc',
@@ -2504,10 +2540,30 @@ window.__ModuleLoader__.load({
       /* locale: zh-HK */
       'zh-HK': {
         'title': '工作區',
-        'search.placeholder': '搵工作區或者對話',
         'add': '新增工作區',
-        'rail.search': '搵',
+        'create': '建立',
         'rail.add': '新增工作區',
+        'menu.newSubWorkspace': '新增子工作區',
+        'flow.title': '新增工作區',
+        'flow.picked': '揀咗嘅文件夾',
+        'flow.parent': '所屬分組',
+        'flow.parentHint': '輸入或者揀分組路徑,留空代表根分組;多級用 / 分隔',
+        'flow.creating': '建立緊…',
+        'flow.parentDir': '所屬虛擬目錄',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': '揀工作區資料夾',
+        'browse.home': '主目錄',
+        'browse.newFolder': '新增資料夾',
+        'browse.folderName': '資料夾名稱',
+        'browse.showHidden': '顯示隱藏檔案',
+        'browse.loading': '載入緊…',
+        'browse.truncated': '資料夾太多,只顯示開頭部分。',
+        'browse.editPath': '編輯路徑',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': '搵工作區或者對話',
+        'rail.search': '搵',
         'empty': '未有工作區',
         'empty.search': '搵唔到符合嘅結果',
         'session.new': '新對話',
@@ -2529,6 +2585,9 @@ window.__ModuleLoader__.load({
         'status.planReview': '等緊計劃確認',
         'status.question': '等緊回答',
         'status.subagents': '{n} 個子任務運行緊',
+        'status.compact.approval': '待批准',
+        'status.compact.answer': '待回答',
+        'status.compact.planReview': '計劃待審',
         'schedule.active': '有進行緊嘅定時任務',
         'menu.rename': '重新命名',
         'menu.openWsFolder': '開啟工作區資料夾',
@@ -2539,7 +2598,6 @@ window.__ModuleLoader__.load({
         'menu.fork': '分叉',
         'menu.archive': '封存',
         'menu.newSubfolder': '新增子分組',
-        'menu.newSubWorkspace': '新增子工作區',
         'menu.renameFolder': '重新命名分組',
         'menu.removeFolder': '刪除分組',
         'menu.renameSgroup': '重新命名對話分組',
@@ -2593,28 +2651,8 @@ window.__ModuleLoader__.load({
         'sync.empty': '另一端暫時未有資料可以獲取',
         'sync.off': '呢個環境唔支援同步(需要宿主設定服務)',
         'sync.loading': '連接緊宿主設定…',
-        'flow.title': '新增工作區',
-        'flow.picked': '揀咗嘅文件夾',
-        'flow.parent': '所屬分組',
-        'flow.parentHint': '輸入或者揀分組路徑,留空代表根分組;多級用 / 分隔',
-        'flow.creating': '建立緊…',
-        'browse.title': '揀工作區資料夾',
-        'browse.home': '主目錄',
-        'browse.up': '上一層',
-        'browse.newFolder': '新增資料夾',
-        'browse.folderName': '資料夾名稱',
-        'browse.empty': '呢個資料夾冇子資料夾',
-        'browse.loading': '載入緊…',
-        'browse.truncated': '資料夾太多,只顯示開頭部分。',
-        'browse.showHidden': '顯示隱藏檔案',
-        'browse.editPath': '編輯路徑',
-        'browse.select': '揀呢個資料夾',
-        'browse.enter': '入去',
-        'browse.drives': '磁碟',
-        'browse.selectNamed': '揀「{name}」',
         'error.title': '出咗錯',
         'cancel': '取消',
-        'create': '建立',
         'confirm': '確定',
         'close': '關閉',
         'ws.rename.title': '重新命名工作區',
@@ -2641,10 +2679,30 @@ window.__ModuleLoader__.load({
       /* locale: zh-MO */
       'zh-MO': {
         'title': '工作區',
-        'search.placeholder': '搵工作區或者對話',
         'add': '新增工作區',
-        'rail.search': '搵',
+        'create': '建立',
         'rail.add': '新增工作區',
+        'menu.newSubWorkspace': '新增子工作區',
+        'flow.title': '新增工作區',
+        'flow.picked': '揀咗嘅文件夾',
+        'flow.parent': '所屬分組',
+        'flow.parentHint': '輸入或者揀分組路徑,留空代表根分組;多級用 / 分隔',
+        'flow.creating': '建立緊…',
+        'flow.parentDir': '所屬虛擬目錄',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': '揀工作區資料夾',
+        'browse.home': '主目錄',
+        'browse.newFolder': '新增資料夾',
+        'browse.folderName': '資料夾名稱',
+        'browse.showHidden': '顯示隱藏檔案',
+        'browse.loading': '載入緊…',
+        'browse.truncated': '資料夾太多,只顯示開頭部分。',
+        'browse.editPath': '編輯路徑',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': '搵工作區或者對話',
+        'rail.search': '搵',
         'empty': '未有工作區',
         'empty.search': '搵唔到符合嘅結果',
         'session.new': '新對話',
@@ -2666,6 +2724,9 @@ window.__ModuleLoader__.load({
         'status.planReview': '等緊計劃確認',
         'status.question': '等緊回答',
         'status.subagents': '{n} 個子任務運行緊',
+        'status.compact.approval': '待批准',
+        'status.compact.answer': '待回答',
+        'status.compact.planReview': '計劃待審',
         'schedule.active': '有進行緊嘅定時任務',
         'menu.rename': '重新命名',
         'menu.openWsFolder': '開啟工作區資料夾',
@@ -2676,7 +2737,6 @@ window.__ModuleLoader__.load({
         'menu.fork': '分叉',
         'menu.archive': '封存',
         'menu.newSubfolder': '新增子分組',
-        'menu.newSubWorkspace': '新增子工作區',
         'menu.renameFolder': '重新命名分組',
         'menu.removeFolder': '刪除分組',
         'menu.renameSgroup': '重新命名對話分組',
@@ -2730,28 +2790,8 @@ window.__ModuleLoader__.load({
         'sync.empty': '另一端暫時未有資料可以獲取',
         'sync.off': '呢個環境唔支援同步(需要宿主設定服務)',
         'sync.loading': '連接緊宿主設定…',
-        'flow.title': '新增工作區',
-        'flow.picked': '揀咗嘅文件夾',
-        'flow.parent': '所屬分組',
-        'flow.parentHint': '輸入或者揀分組路徑,留空代表根分組;多級用 / 分隔',
-        'flow.creating': '建立緊…',
-        'browse.title': '揀工作區資料夾',
-        'browse.home': '主目錄',
-        'browse.up': '上一層',
-        'browse.newFolder': '新增資料夾',
-        'browse.folderName': '資料夾名稱',
-        'browse.empty': '呢個資料夾冇子資料夾',
-        'browse.loading': '載入緊…',
-        'browse.truncated': '資料夾太多,只顯示開頭部分。',
-        'browse.showHidden': '顯示隱藏檔案',
-        'browse.editPath': '編輯路徑',
-        'browse.select': '揀呢個資料夾',
-        'browse.enter': '入去',
-        'browse.drives': '磁碟',
-        'browse.selectNamed': '揀「{name}」',
         'error.title': '出咗錯',
         'cancel': '取消',
-        'create': '建立',
         'confirm': '確定',
         'close': '關閉',
         'ws.rename.title': '重新命名工作區',
@@ -2778,10 +2818,30 @@ window.__ModuleLoader__.load({
       /* locale: zh-TW */
       'zh-TW': {
         'title': '工作區',
-        'search.placeholder': '搜尋工作區或工作階段',
         'add': '新增工作區',
-        'rail.search': '搜尋',
+        'create': '建立',
         'rail.add': '新增工作區',
+        'menu.newSubWorkspace': '新增子工作區',
+        'flow.title': '新增工作區',
+        'flow.picked': '所選資料夾',
+        'flow.parent': '所屬群組',
+        'flow.parentHint': '輸入或下拉選擇群組路徑,留空表示根群組;多層用 / 分隔',
+        'flow.creating': '正在建立…',
+        'flow.parentDir': '所屬虛擬目錄',
+        'flow.parentDirHint': 'The workspace is filed under the chosen virtual directory; the root level leaves it ungrouped. With no directories yet, create one from the sidebar toolbar first.',
+        'browse.title': '選擇工作區資料夾',
+        'browse.home': '主目錄',
+        'browse.newFolder': '新增資料夾',
+        'browse.folderName': '資料夾名稱',
+        'browse.showHidden': '顯示隱藏檔案',
+        'browse.loading': '載入中…',
+        'browse.truncated': '資料夾過多,僅顯示開頭部分。',
+        'browse.editPath': '編輯路徑',
+        'browse.open': 'Open',
+        'browse.createIn': 'Create in "{name}"',
+        'browse.untitledFolder': 'New folder',
+        'search.placeholder': '搜尋工作區或工作階段',
+        'rail.search': '搜尋',
         'empty': '尚無工作區',
         'empty.search': '沒有相符的結果',
         'session.new': '新工作階段',
@@ -2803,6 +2863,9 @@ window.__ModuleLoader__.load({
         'status.planReview': '等待計畫確認',
         'status.question': '等待回答',
         'status.subagents': '{n} 個子任務執行中',
+        'status.compact.approval': '待核准',
+        'status.compact.answer': '待回答',
+        'status.compact.planReview': '計畫待審',
         'schedule.active': '有進行中的排程工作',
         'menu.rename': '重新命名',
         'menu.openWsFolder': '開啟工作區資料夾',
@@ -2813,7 +2876,6 @@ window.__ModuleLoader__.load({
         'menu.fork': '分支',
         'menu.archive': '封存',
         'menu.newSubfolder': '新增子群組',
-        'menu.newSubWorkspace': '新增子工作區',
         'menu.renameFolder': '重新命名群組',
         'menu.removeFolder': '刪除群組',
         'menu.renameSgroup': '重新命名工作階段群組',
@@ -2867,28 +2929,8 @@ window.__ModuleLoader__.load({
         'sync.empty': '另一端尚無資料可取得',
         'sync.off': '目前環境不支援同步(需要宿主設定服務)',
         'sync.loading': '正在連線宿主設定…',
-        'flow.title': '新增工作區',
-        'flow.picked': '所選資料夾',
-        'flow.parent': '所屬群組',
-        'flow.parentHint': '輸入或下拉選擇群組路徑,留空表示根群組;多層用 / 分隔',
-        'flow.creating': '正在建立…',
-        'browse.title': '選擇工作區資料夾',
-        'browse.home': '主目錄',
-        'browse.up': '上一層',
-        'browse.newFolder': '新增資料夾',
-        'browse.folderName': '資料夾名稱',
-        'browse.empty': '此資料夾沒有子資料夾',
-        'browse.loading': '載入中…',
-        'browse.truncated': '資料夾過多,僅顯示開頭部分。',
-        'browse.showHidden': '顯示隱藏檔案',
-        'browse.editPath': '編輯路徑',
-        'browse.select': '選擇此資料夾',
-        'browse.enter': '進入',
-        'browse.drives': '磁碟',
-        'browse.selectNamed': '選擇「{name}」',
         'error.title': '發生錯誤',
         'cancel': '取消',
-        'create': '建立',
         'confirm': '確定',
         'close': '關閉',
         'ws.rename.title': '重新命名工作區',
@@ -2993,8 +3035,93 @@ window.__ModuleLoader__.load({
      * preference order. dsh 0.1.6-alpha.1 replaced IconSendOutline16 with
      * IconPaperPlaneOutline14 and deleted the old export, so a saved custom
      * icon naming it must land on something real rather than an empty cell.
+     *
+     * dsh 0.2.0-rc.2 retired the whole `Icon<Name>Outline<px>` generation and
+     * shipped `Icon<Name>Outline<weight>` (Regular / Medium / Artwork) instead:
+     * all 75 glyph names this plugin renders vanished from the primitives
+     * export in one upgrade, and since `icon()` degrades an unknown name to
+     * null, every button silently became an empty transparent hit area — the
+     * sidebar toolbar's three actions were invisible, with nothing to hover.
+     * The table below is the complete rewrite (`Outline<px>` → `OutlineRegular`,
+     * which preserves each glyph's meaning) plus the four fill-era names that
+     * had no Outline<px> sibling.
      */
-    const ICON_ALIASES = { IconSendOutline16: ['IconSendOutline14'] }
+    const ICON_ALIASES = {
+      IconAgentPresetOutline16: ['IconAgentPresetOutlineRegular'],
+      IconAlarmClockOutline16: ['IconAlarmClockOutlineRegular'],
+      IconApiOutline14: ['IconApiOutlineRegular'],
+      IconArchiveOutline20: ['IconArchiveOutlineRegular'],
+      IconBranchOutline16: ['IconBranchOutlineRegular'],
+      IconBrowseOutline16: ['IconBrowseOutlineRegular'],
+      IconCheckOutline14: ['IconCheckOutlineRegular'],
+      IconCheckOutline16: ['IconCheckOutlineRegular'],
+      IconChecklistOutline14: ['IconChecklistOutlineRegular'],
+      IconChevronDownOutline14: ['IconChevronDownOutlineRegular'],
+      IconChevronLeftOutline14: ['IconChevronLeftOutlineRegular'],
+      IconChevronRightOutline14: ['IconChevronRightOutlineRegular'],
+      IconChevronUpOutline14: ['IconChevronUpOutlineRegular'],
+      IconClockOutline16: ['IconClockOutlineRegular'],
+      IconCloseOutline16: ['IconCloseOutlineRegular'],
+      IconCodeOutline16: ['IconCodeOutlineRegular'],
+      IconCompactOutline16: ['IconCompactOutlineRegular'],
+      IconContextInjectionOutline16: ['IconContextInjectionOutlineRegular'],
+      IconCopyOutline16: ['IconCopyOutlineRegular'],
+      IconCordisPluginOutline14: ['IconCordisPluginOutlineRegular'],
+      IconDarkOutline16: ['IconDarkOutlineRegular'],
+      IconDataOutline16: ['IconDataOutlineRegular'],
+      IconDatabaseOutline16: ['IconDatabaseOutlineRegular'],
+      IconDislikeOutline16: ['IconDislikeOutlineRegular'],
+      IconDownloadOutline16: ['IconDownloadOutlineRegular'],
+      IconEditOutline16: ['IconEditOutlineRegular'],
+      IconEllipsisOutline16: ['IconEllipsisOutlineRegular'],
+      IconEnhanceOutline16: ['IconEnhanceOutlineRegular'],
+      IconFolderOpen16: ['IconFolderOpenOutlineRegular'],
+      IconFolderOpenOutline16: ['IconFolderOpenOutlineRegular'],
+      IconFollowsystemOutline16: ['IconFollowsystemOutlineRegular'],
+      IconFullscreenOutline16: ['IconFullscreenOutlineRegular'],
+      IconGlobeOutline14: ['IconGlobeOutlineRegular'],
+      IconGoalOutline16: ['IconGoalOutlineRegular'],
+      IconInspectOutline12: ['IconInspectOutlineRegular'],
+      IconLightOutline16: ['IconLightOutlineRegular'],
+      IconLikeOutline16: ['IconLikeOutlineRegular'],
+      IconLinkOutline14: ['IconLinkOutlineRegular'],
+      IconLinkOutline16: ['IconLinkOutlineRegular'],
+      IconListPenOutline16: ['IconListPenOutlineRegular'],
+      IconLoadingOutline16: ['IconLoadingOutlineRegular'],
+      IconNewChatOutline16: ['IconNewChatOutlineRegular'],
+      IconPanelLeftOutline16: ['IconPanelLeftOutlineRegular'],
+      IconPaperPlaneOutline14: ['IconPaperPlaneOutlineRegular'],
+      IconPaperclipOutline16: ['IconPaperclipOutlineRegular'],
+      IconPauseOutline16: ['IconPauseOutlineRegular'],
+      IconPersonalizationOutline16: ['IconPersonalizationOutlineRegular'],
+      IconPlanOutline14: ['IconPlanOutlineRegular'],
+      IconPlayOutline16: ['IconPlayOutlineRegular'],
+      IconPlusOutline16: ['IconPlusOutlineRegular'],
+      IconProjectAddOutline16: ['IconProjectAddOutlineRegular'],
+      IconQuestionOutline14: ['IconQuestionOutlineRegular'],
+      IconQueueOutline14: ['IconQueueOutlineRegular'],
+      IconRefreshOutline14: ['IconRefreshOutlineRegular'],
+      IconRefreshOutline16: ['IconRefreshOutlineRegular'],
+      IconRightUpOutline14: ['IconRightUpOutlineRegular'],
+      IconSearchOutline16: ['IconSearchOutlineRegular'],
+      IconSendOutline14: ['IconSendOutlineRegular'],
+      IconSendOutline16: ['IconSendOutlineRegular'],
+      IconSettingsOutline14: ['IconSettingsOutlineRegular'],
+      IconSettingsOutline16: ['IconSettingsOutlineRegular'],
+      IconShareOutline16: ['IconShareOutlineRegular'],
+      IconShieldOutline16: ['IconShieldOutlineRegular'],
+      IconSkillOutline16: ['IconSkillOutlineRegular'],
+      IconThinkOutline14: ['IconThinkOutlineRegular'],
+      IconThinkOutline16: ['IconThinkOutlineRegular'],
+      IconTrashOutline16: ['IconTrashOutlineRegular'],
+      IconUserOutline16: ['IconUserOutlineRegular'],
+      IconWarningOutline16: ['IconWarningOutlineRegular'],
+      IconWrapLinesOutline16: ['IconWrapLinesOutlineRegular'],
+      IconFolderClose16: ['IconFolderCloseRegular'],
+      IconSparkle16: ['IconSparkleRegular'],
+      IconStopFill16: ['IconStopFillRegular'],
+      IconTriangleRightFill14: ['IconTriangleRightFillRegular'],
+    }
 
     /**
      * Resolve one configured icon value to a glyph the LOADED primitives
@@ -3010,10 +3137,30 @@ window.__ModuleLoader__.load({
       return ''
     }
 
-    /** Render a primitives icon by name; unknown names degrade to null, never crash. */
+    /**
+     * Render a primitives icon by name; unknown names degrade to null, never
+     * crash. Resolution goes through resolveIconName so a retired name (see
+     * ICON_ALIASES) still draws its surviving equivalent instead of an empty
+     * cell — the alias table only helps call sites that actually consult it.
+     */
     const icon = (name, size) => {
-      const C = ui[name]
+      const resolved = resolveIconName(name)
+      const C = resolved === '' ? undefined : ui[resolved]
       return C ? E(C, { size: size || 16 }) : null
+    }
+
+    /**
+     * Wrap an icon-only control in the host's Tooltip so hovering names it —
+     * `aria-label` alone serves screen readers and shows NOTHING on hover, so
+     * a bare glyph button is unlabelled for anyone with a mouse. The host
+     * Tooltip clones its child (ref + mouse/focus handlers, no wrapper DOM),
+     * so the button keeps its own layout box; when a host ships no Tooltip the
+     * native `title` fallback keeps the hint reachable.
+     */
+    const withTip = (child, label) => {
+      if (!child || typeof label !== 'string' || label === '') return child
+      if (typeof ui.Tooltip === 'function') return E(ui.Tooltip, { label: label, side: 'bottom', delayMs: 300 }, child)
+      try { return React.cloneElement(child, { title: label }) } catch (err) { return child }
     }
 
     const FALLBACK_UNITS = { minutes: 'm', hours: 'h', days: 'd', months: 'mo', years: 'y' }
@@ -3033,6 +3180,44 @@ window.__ModuleLoader__.load({
       const p = typeof pending.get === 'function' ? pending.get(id) : pending[id]
       if (!p) return undefined
       return p.kind || p.status || p.type || 'pending'
+    }
+
+    /**
+     * Session UI status across host generations.
+     *
+     * dsh 0.2 moved the status facts OFF the session list summary into the
+     * unified UI status store, published to every slot component as the global
+     * `useSessionStatus` standard hook (`ReadonlyMap<SessionId, SessionStatus>`):
+     * `running`, `pendingInteraction` and `completionUnread`. The 0.1-era
+     * `useSessionPendingInteraction` hook and the summary's `completed` flag no
+     * longer exist on current hosts — with them, the amber waiting-for-input dot,
+     * the "待回答/待审批" row label and the green task-completed dot silently
+     * vanished from this browser (the plugin still rendered the shipped dots for
+     * a running session, because `summary.running` survived).
+     *
+     * Resolution order mirrors the shipped browser: live status first, then the
+     * legacy spellings, so a 0.1 host keeps working too.
+     */
+    const interactionKindOf = (value) => {
+      if (!value || typeof value !== 'object') return undefined
+      return value.kind || value.status || value.type || undefined
+    }
+
+    const liveStatusOf = (statuses, id) => (statuses && typeof statuses.get === 'function'
+      ? statuses.get(id)
+      : undefined)
+
+    const runningOf = (live, summary) => (live && live.running !== undefined
+      ? live.running === true
+      : !!(summary && summary.running))
+
+    const sessionFactsOf = (statuses, legacyPending, id, summary) => {
+      const live = liveStatusOf(statuses, id)
+      return {
+        running: runningOf(live, summary),
+        pending: interactionKindOf(live && live.pendingInteraction) || pendingKindOf(legacyPending, id),
+        completed: live ? live.completionUnread === true : !!(summary && summary.completed === true),
+      }
     }
 
     const sessionTitleOf = (summary, t, rememberedTitle) => {
@@ -3060,6 +3245,29 @@ window.__ModuleLoader__.load({
       && (!summary.blank || summary.id === current)
 
     /**
+     * The session the main view is showing right now.
+     *
+     * dsh 0.2 dropped `SessionListState.current` — the list no longer carries a
+     * selection field at all; the host marks the retained session on the summary
+     * itself (`retainedBy.mainView`, a retention counter, > 0 = shown by the
+     * main view). This plugin kept reading `list.current`, which is simply
+     * `undefined` on 0.2 hosts, so nothing was ever highlighted as current.
+     * Read the old field first so 0.1 hosts keep working, then fall back to the
+     * 0.2 retention marker.
+     */
+    const currentSessionIdOf = (list) => {
+      if (!list) return undefined
+      if (typeof list.current === 'string' && list.current !== '') return list.current
+      const byId = list.byId
+      if (!byId || typeof byId !== 'object') return undefined
+      for (const id of Object.keys(byId)) {
+        const row = byId[id]
+        if (row && row.retainedBy && (row.retainedBy.mainView ?? 0) > 0) return row.id || id
+      }
+      return undefined
+    }
+
+    /**
      * Active-schedule marker, mirroring the official tree's
      * hasActiveSchedule(): the list projection carries one entry per active
      * Schedule record, and a non-empty projection is the badge's only gate.
@@ -3078,7 +3286,7 @@ window.__ModuleLoader__.load({
      * parentId on the wire); the old parentSessionId spelling is kept as a
      * fallback for profiles serving the pre-rename shape.
      */
-    const subagentRunningCounts = (byId) => {
+    const subagentRunningCounts = (byId, statuses) => {
       const children = new Map()
       for (const id of Object.keys(byId || {})) {
         const summary = byId[id]
@@ -3096,7 +3304,9 @@ window.__ModuleLoader__.load({
           const summary = queue.shift()
           if (!summary || seen.has(summary.id)) continue
           seen.add(summary.id)
-          if (summary.running) count += 1
+          // The status map carries the live fact first; the summary's own flag
+          // is only the 0.1 fallback (same order as the shipped browser).
+          if (runningOf(liveStatusOf(statuses, summary.id), summary)) count += 1
           const kids = children.get(summary.id)
           if (kids) for (const kid of kids) queue.push(kid)
         }
@@ -3297,6 +3507,12 @@ window.__ModuleLoader__.load({
       '.bw-input{width:100%;box-sizing:border-box;height:26px;background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.1));border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:6px;color:inherit;padding:0 8px;font-size:12px;outline:none;font-family:inherit}',
       '.bw-input:focus{border-color:var(--dsw-alias-brand-primary,#5b8def)}',
       '.bw-input::placeholder{color:var(--dsw-alias-label-quaternary,#8a8a8a)}',
+      // A native <select> reuses the input chrome; tighter padding keeps the value
+      // clear of the host's dropdown arrow.
+      '.bw-select{appearance:auto;padding:0 6px;cursor:pointer}',
+      '.bw-path-echo{font-size:11px;color:var(--dsw-alias-label-tertiary,#9a9a9a);word-break:break-all;max-width:380px}',
+      // A native <select> reuses the input chrome; its own padding is tighter so
+      // the value never slides under the host's dropdown arrow.
       '.bw-tree{flex:1;overflow-y:auto;overflow-x:hidden;padding:2px 6px 12px;min-height:0}',
       '.bw-row{display:flex;align-items:center;gap:6px;min-height:28px;padding:0 6px;border-radius:6px;cursor:pointer;user-select:none;font-size:13px;color:var(--dsw-alias-label-primary,#e6e6e6);position:relative}',
       '.bw-drop-before::after{content:"";position:absolute;left:8px;right:8px;top:-1px;height:2px;border-radius:1px;background:var(--dsw-alias-brand-primary,#5b8def);pointer-events:none}',
@@ -3305,7 +3521,13 @@ window.__ModuleLoader__.load({
       '.bw-row:hover{background:var(--dsw-specific-sidebar-nav-item-hover,var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12)))}',
       '.bw-row:hover{background:color-mix(in srgb,var(--dsw-specific-sidebar-nav-item-hover,rgba(127,127,127,.14)) 50%,transparent)}',
       '.bw-row-current{background:var(--dsw-specific-sidebar-nav-item-active,rgba(91,141,239,.15))}',
-      '.bw-row-current{background:color-mix(in srgb,var(--dsw-specific-sidebar-nav-item-active,rgba(91,141,239,.16)) 40%,transparent)}',
+      // The workspace (project) row that owns the session on screen: the session
+      // pill alone is easy to miss when the tree is long, so the owning row also
+      // carries a brand-tinted background and a 2px inset accent bar. Token-first
+      // so it follows the host theme (and any theme plug-in that redefines it).
+      '.bw-ws-current{background:color-mix(in srgb,var(--dsw-specific-sidebar-nav-item-active,rgba(91,141,239,.35)) 55%,transparent)}',
+      '.bw-ws-current{box-shadow:inset 2px 0 0 var(--dsw-alias-brand-primary,#5b8def)}',
+      '.bw-ws-current .bw-row-icon svg{color:var(--dsw-alias-brand-primary,#5b8def)}',
       '.bw-row-icon{flex:none;display:grid;place-items:center;color:var(--dsw-alias-label-tertiary,#9a9a9a)}',
       '.bw-chevron{flex:none;display:grid;place-items:center;color:var(--dsw-alias-label-tertiary,#9a9a9a);transition:transform .15s ease}',
       '.bw-chevron-open{transform:rotate(90deg)}',
@@ -3314,7 +3536,9 @@ window.__ModuleLoader__.load({
       // cancels it, so text still starts and truncates where it did.
       '.bw-row-label{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:3px;margin:-3px}',
       '.bw-row-count{flex:none;font-size:11px;color:var(--dsw-alias-label-quaternary,#8a8a8a)}',
-      '.bw-row-time{flex:none;font-size:11px;color:var(--dsw-alias-label-quaternary,#8a8a8a)}',
+      // The trailing cell carries either the relative time or the compact
+      // waiting label ("待回答"); neither may wrap into a second line.
+      '.bw-row-time{flex:none;font-size:11px;color:var(--dsw-alias-label-quaternary,#8a8a8a);white-space:nowrap}',
       // The outline is inherited from the row: the 11px meta column (session
       // count / relative time) opts out — stroked meta text outshines the title
       // it is supposed to support.
@@ -3393,7 +3617,6 @@ window.__ModuleLoader__.load({
       '.bw-appearance{display:flex;flex-direction:column;gap:10px}',
       '.bw-appearance-box{margin-top:8px;padding:10px 12px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.22));border-radius:8px;background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.06))}',
       '.bw-hint{font-size:11px;color:var(--dsw-alias-label-quaternary,#8a8a8a);line-height:1.5;white-space:normal;word-break:break-word}',
-      '.bw-path-echo{font-size:11px;color:var(--dsw-alias-label-tertiary,#9a9a9a);word-break:break-all;max-width:380px}',
       '.bw-modal-actions{display:flex;justify-content:flex-end;gap:8px}',
       '.bw-btn{height:28px;padding:0 14px;border-radius:6px;font-size:12.5px;cursor:pointer;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:transparent;color:var(--dsw-alias-label-primary,#e6e6e6);font-family:inherit}',
       '.bw-btn:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12))}',
@@ -3426,39 +3649,6 @@ window.__ModuleLoader__.load({
        * list panel uses bg-layer-2 so a transparent/background plugin still
        * reads correctly; nothing may hard-code an opaque background.
        */
-      '.bw-browse-body{min-width:360px;max-width:460px}',
-      '.bw-browse-bar{display:flex;align-items:center;gap:4px}',
-      '.bw-browse-crumbs{display:flex;align-items:center;gap:2px;flex:1;min-width:0;overflow-x:auto}',
-      '.bw-browse-crumb{border:none;background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);font:inherit;font-size:12px;padding:2px 5px;border-radius:4px;cursor:pointer;white-space:nowrap;max-width:150px;overflow:hidden;text-overflow:ellipsis;flex:none}',
-      '.bw-browse-crumb:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
-      '.bw-browse-crumb:disabled{opacity:.4;cursor:default}',
-      '.bw-browse-current{color:var(--dsw-alias-label-primary,#e6e6e6);font-size:12px;padding:2px 5px;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
-      '.bw-browse-nav{font-size:13px;line-height:1}',
-      '.bw-browse-edit{flex:none;display:grid;place-items:center;width:24px;height:24px;padding:0;border:none;border-radius:5px;background:transparent;color:var(--dsw-alias-label-tertiary,#9a9a9a);cursor:pointer}',
-      '.bw-browse-edit:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
-      '.bw-browse-edit svg{width:14px;height:14px}',
-      '.bw-browse-edit-row{display:flex;gap:6px;align-items:center}',
-      '.bw-browse-list{display:flex;flex-direction:column;gap:1px;height:240px;overflow:auto;padding:4px;box-sizing:border-box;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.22));border-radius:8px;background:var(--dsw-alias-bg-layer-2,rgba(127,127,127,.06))}',
-      '.bw-browse-row{display:flex;align-items:center;gap:8px;width:100%;flex:none;text-align:left;border:none;background:transparent;color:var(--dsw-alias-label-primary,#e6e6e6);font:inherit;font-size:12.5px;padding:5px 8px;border-radius:6px;cursor:pointer;user-select:none}',
-      '.bw-browse-row:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12))}',
-      '.bw-browse-row:focus-visible{outline:2px solid var(--dsw-alias-brand-primary,#5b8def);outline-offset:-2px}',
-      '.bw-browse-row svg{width:15px;height:15px;flex:none;color:var(--dsw-alias-label-secondary,#b8b8b8)}',
-      '.bw-browse-row-on{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));box-shadow:inset 0 0 0 1px var(--dsw-alias-brand-primary,#5b8def)}',
-      '.bw-browse-open{flex:none;width:22px;height:22px;padding:0;border:none;border-radius:5px;background:transparent;color:var(--dsw-alias-label-tertiary,#9a9a9a);font:inherit;font-size:15px;line-height:1;cursor:pointer}',
-      '.bw-browse-open:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.16));color:var(--dsw-alias-label-primary,#e6e6e6)}',
-      '.bw-browse-drives{display:flex;align-items:center;gap:4px;margin-left:auto}',
-      '.bw-browse-drive{min-width:30px;padding:3px 6px;border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));border-radius:5px;background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);font:inherit;font-size:11.5px;cursor:pointer}',
-      '.bw-browse-drive:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
-      '.bw-browse-drive-on{border-color:var(--dsw-alias-brand-primary,#5b8def);color:var(--dsw-alias-label-primary,#e6e6e6)}',
-      '.bw-browse-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
-      '.bw-browse-note{font-size:12px;color:var(--dsw-alias-label-tertiary,#9a9a9a);padding:10px 8px;text-align:center}',
-      '.bw-browse-new-row{display:flex;gap:6px;align-items:center}',
-      '.bw-browse-tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap}',
-      '.bw-browse-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px}',
-      '.bw-browse-tool{border:1px solid var(--dsw-alias-border-l1,rgba(127,127,127,.25));background:transparent;color:var(--dsw-alias-label-secondary,#b8b8b8);font:inherit;font-size:12px;padding:4px 10px;border-radius:6px;cursor:pointer;white-space:nowrap}',
-      '.bw-browse-tool:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,#e6e6e6)}',
-      '.bw-browse-tool:disabled{opacity:.45;cursor:default}',
-      '.bw-browse-tool-on{border-color:var(--dsw-alias-brand-primary,#5b8def);color:var(--dsw-alias-label-primary,#e6e6e6)}',
     ].join('')
 
     const StyleNode = () => E('style', null, CSS_TEXT)
@@ -4087,65 +4277,6 @@ window.__ModuleLoader__.load({
       },
     })
 
-    /* ==================== directory-picker capability ================== */
-
-    // The host composes exactly ONE directory-picking backend
-    // (@deepseek-ai/dsh-host-directory-picker-auto): a loopback-only webserver
-    // bind on a display-bearing host gets `native` — one OS chooser on the
-    // HOST's own screen — while every other bind (all-interfaces/LAN, SSH,
-    // headless) gets `browse`, whose wire verbs are list/createDirectory ONLY
-    // and whose `pick` is refused BY DESIGN with `directory-picker/unavailable`
-    // ("... needs the native capability; the composed picker serves browse").
-    // A flow that hard-assumed the OS chooser therefore dies on every LAN bind
-    // and no workspace can be added at all. Probe the composed backend once per
-    // page and keep BOTH interactions: the OS chooser, and an in-app browser
-    // driven by the browse primitives (see DirectoryBrowseDialog).
-    const pickerState = { kind: 'unknown', probe: null, api: null }
-    /**
-     * True for the refusal a Host serving the OTHER capability throws: the wire
-     * code when the caller still carries it, the Host's fixed sentence
-     * otherwise (uiWorkspace.pickDirectory wraps the RPC failure in a plain
-     * Error, so the code is gone by the time the flow sees it).
-     */
-    const pickerRefusal = (error) => {
-      if (error && typeof error === 'object' && error.rpcError
-        && error.rpcError.code === 'directory-picker/unavailable') return true
-      const message = messageOf(error)
-      return message.indexOf('needs the native capability') !== -1
-        || message.indexOf('directory-picker/unavailable') !== -1
-    }
-    /**
-     * Resolve which backend this page's Host composes. `list` succeeds exactly
-     * on `browse` and is refused with the capability code on `native`, so one
-     * call answers both worlds without ever opening a chooser or creating a
-     * directory. An unclassified failure (a carrier still connecting at boot)
-     * is NOT cached: the next open re-probes, and the flow falls back to trying
-     * the chooser itself.
-     */
-    const pickerCapabilityNow = () => {
-      if (pickerState.kind !== 'unknown') return Promise.resolve(pickerState.kind)
-      if (pickerState.probe !== null) return pickerState.probe
-      const api = pickerState.api
-      if (!api || typeof api.listDirectory !== 'function') return Promise.resolve('unknown')
-      const probe = Promise.resolve()
-        .then(() => api.listDirectory(undefined, undefined))
-        .then(
-          () => 'browse',
-          (error) => (pickerRefusal(error) ? 'native' : 'unknown'),
-        )
-      pickerState.probe = probe.then((kind) => {
-        if (kind === 'unknown') { pickerState.probe = null; return kind }
-        pickerState.kind = kind
-        return kind
-      })
-      return pickerState.probe
-    }
-    /** Commit a browse verdict the flow discovered the hard way (a refused pick). */
-    const markPickerBrowse = () => {
-      pickerState.kind = 'browse'
-      pickerState.probe = Promise.resolve('browse')
-    }
-
     /* ============================ flow dialog ========================= */
 
     const BTN = (props) => (
@@ -4220,425 +4351,1135 @@ window.__ModuleLoader__.load({
       }
     }
 
+    /* ============ official directory browser (vendored, MIT) ============ */
     /**
-     * The in-app directory browser: the interaction a `browse`-composed Host can
-     * actually serve. It appears when the probe (or a refused pick) proves the
-     * OS chooser is not this Host's backend — a LAN/all-interfaces bind, an SSH
-     * launch, a headless host — where `pick` is refused by design and
-     * list/createDirectory are the only wire verbs. One level at a time: a
-     * clickable Home-rooted breadcrumb chain, an editable path, an inline
-     * new-folder row and the hidden-entry toggle; the listed level (or any
-     * ancestor crumb) is the pick. Browse failures stay inside the dialog — the
-     * owner's error surface belongs to the pick/create conversation, and a
-     * denied listing must never close the flow.
+     * MIT-licensed `DirectoryBrowser` from `@deepseek-ai/dsh-client-ui-directory-picker-browse`
+     * (Copyright (c) 2026 DeepSeek), vendored verbatim. DSH is open source, but
+     * that package's `./client` surface exports only `apply`/`inject`, so the
+     * component is not reachable through the module loader; reusing it is what
+     * lets the sidebar's "add workspace" button open the SAME 680x500 Miller
+     * browser the hero menu shows, instead of a hand-rolled lookalike.
+     *
+     * Only these alias bindings differ from upstream (the bundle's own
+     * `require` shims and its inline clsx shim are replaced by the `React` /
+     * `ui` / `cls` this module already has), and the CSS-module prefix is
+     * renamed to `bwdb_` so the vendored stylesheet can never collide with the
+     * shipped plugin's own injection (both live in the same document).
      */
+    const OfficialDirectoryBrowser = (() => {
+      const react = React
+      const clsx = cls
+      const _deepseek_ai_dsh_client_ui_primitives = ui
+      const jsxShim = (type, props, key) => {
+        const next = Object.assign({}, props)
+        const children = next.children
+        delete next.children
+        if (key !== undefined) next.key = key
+        if (children === undefined) return E(type, next)
+        return Array.isArray(children) ? E(type, next, ...children) : E(type, next, children)
+      }
+      const react_jsx_runtime = { Fragment: React.Fragment, jsx: jsxShim, jsxs: jsxShim }
+      /* ---- vendored body begins ---- */
+		//#region \0dsh-css:/home/runner/work/deepseek-harness/deepseek-harness/packages/client/ui-directory-picker-browse/src/client/DirectoryBrowser.module.css.mjs
+		const css = ".bwdb_dialog.bwdb_dialog{--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);gap:0;width:min(680px,100%);height:min(500px,100dvh - 32px);padding:0}.bwdb_editorScope{display:contents}.bwdb_header{border-bottom:.5px solid var(--dsw-alias-border-l3);flex-direction:column;flex:none;gap:8px;padding:16px 14px 8px 24px;display:flex}.bwdb_title{min-height:28px;color:var(--dsw-alias-label-primary);align-items:flex-end;margin:0;font-size:16px;font-weight:510;line-height:24px;display:flex}.bwdb_crumbBar{box-sizing:border-box;border-radius:var(--dsw-radius-sm);border:1px solid #0000;align-items:center;gap:4px;min-height:24px;margin-left:-9px;padding:0 8px;display:flex}.bwdb_crumbBar:has(.bwdb_crumbEditZone:enabled:hover),.bwdb_crumbBar:has(.bwdb_crumbEditZone:focus-visible),.bwdb_crumbBar:has(.bwdb_pathInput){border-color:var(--dsw-alias-border-l2)}.bwdb_millerRow{scrollbar-width:none;flex:1 1 0;align-items:stretch;gap:12px;min-height:0;display:flex;overflow-x:auto}.bwdb_crumbTrail{scrollbar-width:none;flex:0 auto;align-items:center;gap:4px;min-width:0;display:flex;overflow-x:auto}.bwdb_crumbSeat{flex:none;align-items:center;gap:4px;min-width:0;display:inline-flex}.bwdb_crumb{text-overflow:ellipsis;white-space:nowrap;max-width:160px;color:var(--dsw-alias-label-tertiary);cursor:pointer;background:0 0;border:none;padding:0;font-size:13px;font-weight:500;line-height:20px;overflow:hidden}.bwdb_crumb:focus-visible{outline:var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color,var(--dsw-alias-state-business-primary));outline-offset:-2px}.bwdb_crumb:hover{color:var(--dsw-alias-label-primary)}.bwdb_crumbChevron{color:var(--dsw-alias-label-tertiary);flex:none}.bwdb_crumbEditZone{cursor:text;background:0 0;border:none;outline:none;flex:1 0 34px;justify-content:flex-end;align-items:center;min-width:34px;height:22px;padding:0;display:flex}.bwdb_crumbEditGlyph{color:var(--dsw-alias-label-tertiary);flex:none}.bwdb_crumbEditZone:enabled:hover .bwdb_crumbEditGlyph,.bwdb_crumbEditZone:focus-visible .bwdb_crumbEditGlyph{color:var(--dsw-alias-label-primary)}.bwdb_crumbEditZone:disabled{cursor:default}.bwdb_crumbEditZone:disabled .bwdb_crumbEditGlyph{color:var(--dsw-alias-label-caption)}.bwdb_pathInput{box-sizing:border-box;min-width:0;height:22px;color:var(--dsw-alias-label-primary);background:0 0;border:none;outline:none;flex:1 1 0;padding:0;font-size:13px;line-height:20px}.bwdb_content{flex-direction:column;flex:1 1 0;min-height:0;padding:16px 16px 16px 24px;display:flex;position:relative}.bwdb_column{flex-direction:column;flex:1 1 0;gap:2px;min-width:256px;padding-right:8px;display:flex;overflow-y:auto}.bwdb_divider{background:var(--dsw-alias-border-l3);flex:none;width:.5px}.bwdb_rowSeat{flex:none;display:flex}.bwdb_row{border-radius:var(--dsw-radius-sm);text-align:left;cursor:pointer;background:0 0;border:none;flex:none;align-items:center;gap:4px;width:100%;height:28px;padding:4px;display:flex}.bwdb_row:focus-visible{outline:var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color,var(--dsw-alias-state-business-primary));outline-offset:-2px}.bwdb_row:hover{background:var(--dsw-alias-interactive-bg-hover)}.bwdb_rowSelected,.bwdb_rowSelected:hover{background:var(--dsw-alias-interactive-bg-active,var(--dsw-alias-interactive-bg-hover))}.bwdb_rowIcon{color:var(--dsw-alias-label-secondary);flex:none}.bwdb_rowIconSelected{color:var(--dsw-alias-button-info-fill);flex:none}.bwdb_rowName{text-overflow:ellipsis;white-space:nowrap;min-width:0;color:var(--dsw-alias-label-primary);flex:1 1 0;font-size:13px;font-weight:500;line-height:20px;overflow:hidden}.bwdb_rowChevron{color:var(--dsw-alias-label-tertiary);flex:none}.bwdb_status,.bwdb_error{padding:4px 120px 4px 4px;font-size:12px;line-height:18px}.bwdb_status{color:var(--dsw-alias-label-secondary)}.bwdb_error{color:var(--dsw-alias-state-error-primary)}.bwdb_loadingFloat{background:var(--dsw-alias-bg-layer-2);padding:2px 8px;position:absolute;bottom:8px;right:16px}.bwdb_footerBar{border-top:.5px solid var(--dsw-alias-border-l3);flex-wrap:wrap;flex:none;align-items:center;gap:8px;padding:16px 24px;display:flex}.bwdb_showHiddenToggle{color:var(--dsw-alias-label-secondary);cursor:pointer;white-space:nowrap;background:0 0;border:none;align-items:center;gap:4px;padding:0;font-size:13px;font-weight:500;line-height:20px;display:inline-flex}.bwdb_showHiddenToggle:hover{color:var(--dsw-alias-label-primary)}.bwdb_showHiddenToggle:disabled{color:var(--dsw-alias-label-caption);cursor:default}.bwdb_showHiddenToggleActive{color:var(--dsw-alias-label-primary)}.bwdb_footerGap{flex:1 1 0}.bwdb_footerAction{min-width:72px}.bwdb_createDialog.bwdb_createDialog{gap:0;width:min(380px,100%);padding:0}.bwdb_createBody{flex-direction:column;gap:12px;padding:22px 24px 20px;display:flex}.bwdb_createTitle{color:var(--dsw-alias-label-primary);margin:0;font-size:16px;font-weight:510;line-height:24px}.bwdb_createIn{color:var(--dsw-alias-label-primary);margin:0;font-size:14px;line-height:22px}.bwdb_createInput{box-sizing:border-box;border:.5px solid var(--dsw-alias-border-l4);border-radius:var(--dsw-radius-lg);width:100%;height:44px;color:var(--dsw-alias-label-primary);background:0 0;outline:none;padding:7px 14px;font-size:14px;line-height:22px}.bwdb_createInput::placeholder{color:var(--dsw-alias-label-caption)}.bwdb_createActions{justify-content:flex-end;align-items:center;gap:8px;margin-top:8px;display:flex}";
+		const tagId = "dsh-virtual-workspace/OfficialDirectoryBrowser.css";
+		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId) + "]") === null) {
+			const tag = document.createElement("style");
+			tag.dataset.plugin = "dsh-virtual-workspace";
+			tag.dataset.pluginCss = tagId;
+			tag.textContent = css;
+			document.head.appendChild(tag);
+		}
+		var DirectoryBrowser_module_css_default = {
+			"column": "bwdb_column",
+			"content": "bwdb_content",
+			"createActions": "bwdb_createActions",
+			"createBody": "bwdb_createBody",
+			"createDialog": "bwdb_createDialog",
+			"createIn": "bwdb_createIn",
+			"createInput": "bwdb_createInput",
+			"createTitle": "bwdb_createTitle",
+			"crumb": "bwdb_crumb",
+			"crumbBar": "bwdb_crumbBar",
+			"crumbChevron": "bwdb_crumbChevron",
+			"crumbEditGlyph": "bwdb_crumbEditGlyph",
+			"crumbEditZone": "bwdb_crumbEditZone",
+			"crumbSeat": "bwdb_crumbSeat",
+			"crumbTrail": "bwdb_crumbTrail",
+			"dialog": "bwdb_dialog",
+			"divider": "bwdb_divider",
+			"editorScope": "bwdb_editorScope",
+			"error": "bwdb_error",
+			"footerAction": "bwdb_footerAction",
+			"footerBar": "bwdb_footerBar",
+			"footerGap": "bwdb_footerGap",
+			"header": "bwdb_header",
+			"loadingFloat": "bwdb_loadingFloat",
+			"millerRow": "bwdb_millerRow",
+			"pathInput": "bwdb_pathInput",
+			"row": "bwdb_row",
+			"rowChevron": "bwdb_rowChevron",
+			"rowIcon": "bwdb_rowIcon",
+			"rowIconSelected": "bwdb_rowIconSelected",
+			"rowName": "bwdb_rowName",
+			"rowSeat": "bwdb_rowSeat",
+			"rowSelected": "bwdb_rowSelected",
+			"showHiddenToggle": "bwdb_showHiddenToggle",
+			"showHiddenToggleActive": "bwdb_showHiddenToggleActive",
+			"status": "bwdb_status",
+			"title": "bwdb_title"
+		};
+		//#endregion
+		//#region lib/types/client/DirectoryBrowser.js
+		/**
+		* The in-app workspace-directory browser (figma Harness 813-23126 family): a
+		* 680×500 dialog (clamped to short/narrow viewports — the Miller row scrolls
+		* sideways, the columns scroll down) whose header carries the title, the selection-path
+		* breadcrumb, and a click-to-edit path zone; below it a Miller view — one
+		* full-width level until a row is selected, then two columns splitting the
+		* row evenly (256px floor; level | selected folder's children) around a
+		* hairline divider. Navigations land selection-anchored and quiet: the
+		* previous view keeps rendering while a crumb jump or a submitted path is
+		* scanned, then target and parent legs land as one two-pane frame (a slow
+		* parent leg falls back to landing the target alone and upgrading in
+		* place), so stepping back keeps two panes away from the display root and
+		* navigation never flashes an intermediate frame. Selecting in the
+		* right column shifts the view one level deeper. "New folder" opens a nested
+		* create dialog targeting the selected folder (or the level itself) and
+		* selects the created folder. Open adopts the selected folder, falling back
+		* to the listed level. Pure consumer of the injected browse calls — the
+		* owning flow decides what "Open" means and owns the workspace-creation
+		* error surface. Hidden entries are host-flagged and hidden by default; the
+		* footer's fixed-label "Show hidden files" toggle (aria-pressed, check when
+		* on) reveals them (client-side only). The path editor announces itself with
+		* a pencil glyph and a bar-wide hover-lit outline, opens seeded with a
+		* trailing separator, and keeps the panes under the draft: the final segment
+		* prefix-filters the LAST pane while that pane's level is the one the draft's
+		* directory part names (a dot-led prefix also reveals the hidden entries it
+		* names, and a prefix nobody matches releases the filter), while any other
+		* directory part is scanned after a short debounce and lands like any other
+		* navigation — selection-anchored and two-pane away from the display root,
+		* both legs waited out so one keystroke moves the view once. The pane arity
+		* holds throughout: the last pane is the level the path names and the one
+		* beside it is its parent, so typing deeper descends and erasing segments
+		* walks back up, moving the Miller view without leaving the editor. Panes the
+		* draft walked to stay put when the editor closes (cancellation included):
+		* the crumbs name where the walk ended, and Open's fallback target follows
+		* them.
+		*/
+		/** Failure text from the injected directory operation. */
+		function failureText(error) {
+			if (error !== null && typeof error === "object" && "rpcError" in error) {
+				const rpcError = error.rpcError;
+				if (rpcError !== null && typeof rpcError === "object" && "message" in rpcError && typeof rpcError.message === "string") return rpcError.message;
+			}
+			return error instanceof Error ? error.message : String(error);
+		}
+		/**
+		* How long a scan may stay visually silent before the floating "Loading…"
+		* pill appears. The stale view keeps rendering while a scan is in flight, so
+		* a listing that settles inside this window swaps the panes with no
+		* intermediate frame at all; only a genuinely slow host (a network mount, a
+		* cold disk) surfaces the indicator.
+		*/
+		const SLOW_SCAN_DELAY_MS = 300;
+		/**
+		* How long a navigation landing waits for its parent leg before committing
+		* the target alone. Inside the window both legs land as ONE two-pane frame —
+		* no single-pane flash between them; past it the target commits single-pane
+		* at once (an Enter-submitted navigation is never held hostage by a stalled
+		* parent) and the late parent leg upgrades the landing in place.
+		*/
+		const PARENT_LEG_WAIT_MS = 200;
+		/**
+		* How long a typed draft rests before the panes follow it to a directory no
+		* pane lists. The window absorbs the keystrokes that walk through
+		* intermediate directory parts (every character of `/usr/lo` past the
+		* separator would otherwise be its own scan) while staying short enough that
+		* a pause reads as "the list moved with me".
+		*/
+		const DRAFT_PREVIEW_DEBOUNCE_MS = 250;
+		/**
+		* Breadcrumb rows for display: inside the home subtree the chain starts at a
+		* localized Home crumb; outside it the full ancestry shows, the root labeled
+		* by its own path.
+		*/
+		function displayCrumbs(listing, homeLabel) {
+			const homeIndex = listing.crumbs.findIndex((crumb) => crumb.path === listing.home);
+			if (homeIndex === -1) return listing.crumbs;
+			const tail = listing.crumbs.slice(homeIndex + 1);
+			return [{
+				name: homeLabel,
+				path: listing.home,
+				hidden: false
+			}, ...tail];
+		}
+		/**
+		* The listing's platform separator, inferred from the home path the host
+		* stamped — never from typed text or entry paths, where a backslash is a
+		* legal POSIX name character. Still a heuristic at the last step: a POSIX
+		* home directory whose own name contains a backslash would misread.
+		* TODO: replace with a host-stamped `separator` field on the wire
+		* DirectoryListing so the platform fact travels verbatim (the trade-off is
+		* recorded in the directory-picker capability seam Agent Note).
+		*/
+		function separatorOf(listing) {
+			return listing.home.includes("\\") ? "\\" : "/";
+		}
+		/** The listed level as a directory part: its own path, separator-terminated (the root already is). */
+		function levelDirectory(listing) {
+			const sep = separatorOf(listing);
+			return listing.path.endsWith(sep) ? listing.path : `${listing.path}${sep}`;
+		}
+		/**
+		* The draft's directory part — everything through its last separator — or
+		* null while no separator has been typed at all (nothing addresses a
+		* directory yet). The platform comes from `listing`: on Windows a forward
+		* slash separates too (the host's `resolve` accepts either), while on POSIX a
+		* backslash is a legal name character and never separates.
+		*/
+		function draftDirectory(listing, draft) {
+			const cut = separatorOf(listing) === "\\" ? Math.max(draft.lastIndexOf("\\"), draft.lastIndexOf("/")) : draft.lastIndexOf("/");
+			return cut === -1 ? null : draft.slice(0, cut + 1);
+		}
+		/**
+		* How the draft reads against one level: the directory part it names, and —
+		* when `listing` is the level that directory part addresses — the final
+		* segment that prefix-filters it while the user types (case-insensitively,
+		* downstream). A level answers a directory part when its own path is that
+		* part, or when it is the level that very text just produced (`scanned`): the
+		* host resolves what it is given, so `..` segments and Windows forward
+		* slashes reach a level whose path spells the request differently.
+		* @param listing - the level to read the draft against.
+		* @param draft - the current path draft.
+		* @param scanned - the last draft-following scan's directory and landing.
+		* @returns the draft's directory part (null with no separator typed) and its
+		* filtering tail (null when this level does not answer that directory).
+		*/
+		function readDraft(listing, draft, scanned) {
+			const directory = draftDirectory(listing, draft);
+			if (directory === null) return {
+				directory: null,
+				tail: null
+			};
+			return {
+				directory,
+				tail: directory === levelDirectory(listing) || scanned !== null && scanned.directory === directory && scanned.landed === listing.path ? draft.slice(directory.length) : null
+			};
+		}
+		/**
+		* The rows one column renders. The selection is exempt from every filter: it
+		* anchors the two-pane view (crumbs and the child pane point at it), so
+		* neither the hidden filter after a dot-reveal pick nor a prefix miss may
+		* orphan it. A prefix narrows the level only while some row it would actually
+		* show matches — a tail nobody matches is a name being spelled, not a demand
+		* for an empty pane, so the level shows whole and its hidden rows return to
+		* obeying the toggle. Counting only displayable rows keeps that true because
+		* every hidden name is dot-prefixed, and a matching prefix therefore reveals
+		* it; otherwise the level could narrow to nothing.
+		*/
+		function visibleEntries(entries, selectedPath, showHidden, filterPrefix) {
+			const needle = filterPrefix === null ? "" : filterPrefix.toLowerCase();
+			const displayable = (entry) => showHidden || !entry.hidden || needle.startsWith(".");
+			const matches = (entry) => displayable(entry) && entry.name.toLowerCase().startsWith(needle);
+			const narrowing = needle !== "" && entries.some(matches);
+			return entries.filter((entry) => {
+				if (entry.path === selectedPath) return true;
+				if (narrowing) return matches(entry);
+				return showHidden || !entry.hidden;
+			});
+		}
+		/** One column of folder rows (the Miller view renders one or two of these). */
+		function LevelColumn({ entries, selectedPath, busy, onPick, showHidden, filterPrefix, pathEditing }) {
+			const visible = visibleEntries(entries, selectedPath, showHidden, filterPrefix);
+			return (0, react_jsx_runtime.jsx)("div", {
+				className: DirectoryBrowser_module_css_default.column,
+				role: "list",
+				children: visible.map((entry) => {
+					const selected = entry.path === selectedPath;
+					return (0, react_jsx_runtime.jsx)("span", {
+						role: "listitem",
+						className: DirectoryBrowser_module_css_default.rowSeat,
+						children: (0, react_jsx_runtime.jsxs)("button", {
+							type: "button",
+							"aria-current": selected || void 0,
+							className: clsx(DirectoryBrowser_module_css_default.row, selected && DirectoryBrowser_module_css_default.rowSelected),
+							disabled: busy,
+							onMouseDown: pathEditing ? (event) => {
+								event.preventDefault();
+							} : void 0,
+							onClick: () => {
+								onPick(entry);
+							},
+							children: [
+								selected ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderOpenRegular, {
+									size: 16,
+									className: DirectoryBrowser_module_css_default.rowIconSelected
+								}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderCloseRegular, {
+									size: 16,
+									className: DirectoryBrowser_module_css_default.rowIcon
+								}),
+								(0, react_jsx_runtime.jsx)("span", {
+									className: DirectoryBrowser_module_css_default.rowName,
+									children: entry.name
+								}),
+								(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronRightOutlineRegular, {
+									size: 12,
+									className: DirectoryBrowser_module_css_default.rowChevron
+								})
+							]
+						})
+					}, entry.path);
+				})
+			});
+		}
+		/**
+		* Render the directory-browser dialog.
+		* @param props - owner-controlled browser props.
+		* @returns the dialog element (null while closed, via Modal).
+		*/
+		function DirectoryBrowser({ open, listDirectory, createDirectory, onOpen, onClose, busy, t }) {
+			const [parent, setParent] = (0, react.useState)(null);
+			const [selected, setSelected] = (0, react.useState)(null);
+			const [child, setChild] = (0, react.useState)(null);
+			const [loading, setLoading] = (0, react.useState)(false);
+			const [slowScan, setSlowScan] = (0, react.useState)(false);
+			const [scanWindow, setScanWindow] = (0, react.useState)(0);
+			const [error, setError] = (0, react.useState)(null);
+			const [pathDraft, setPathDraft] = (0, react.useState)(null);
+			const [showHidden, setShowHidden] = (0, react.useState)(false);
+			const [folderDraft, setFolderDraft] = (0, react.useState)(null);
+			const [creatingFolder, setCreatingFolder] = (0, react.useState)(false);
+			const [createError, setCreateError] = (0, react.useState)(null);
+			const requestSeq = (0, react.useRef)(0);
+			const scanController = (0, react.useRef)(null);
+			const openGeneration = (0, react.useRef)(0);
+			const crumbTrailRef = (0, react.useRef)(null);
+			const composingRef = (0, react.useRef)(false);
+			(0, react.useEffect)(() => () => {
+				requestSeq.current += 1;
+				openGeneration.current += 1;
+				scanController.current?.abort();
+			}, []);
+			const compositionGuard = {
+				onCompositionStart: () => {
+					composingRef.current = true;
+				},
+				onCompositionEnd: () => {
+					composingRef.current = false;
+				}
+			};
+			/** Newer intent wins: invalidate the pending listing's settlement AND abort its wire request. */
+			const supersede = (0, react.useCallback)(() => {
+				scanController.current?.abort();
+				scanController.current = null;
+				return ++requestSeq.current;
+			}, []);
+			/** Hide any prior indicator and start a fresh silence window for one listing call. */
+			const restartSlowScanWindow = (0, react.useCallback)(() => {
+				setSlowScan(false);
+				setScanWindow((value) => value + 1);
+			}, []);
+			/** Launch one listing under a fresh controller so a later supersession can abort it. */
+			const launchListing = (0, react.useCallback)((path) => {
+				const seq = supersede();
+				const controller = new AbortController();
+				scanController.current = controller;
+				restartSlowScanWindow();
+				return {
+					seq,
+					scan: listDirectory(path, controller.signal)
+				};
+			}, [
+				supersede,
+				restartSlowScanWindow,
+				listDirectory
+			]);
+			/**
+			* Launch a follow-up listing under the CURRENT supersession seq: a newer
+			* intent aborts it like the leg it continues, and it supersedes nothing.
+			*/
+			const continueScan = (0, react.useCallback)((path) => {
+				const controller = new AbortController();
+				scanController.current = controller;
+				restartSlowScanWindow();
+				return listDirectory(path, controller.signal);
+			}, [restartSlowScanWindow, listDirectory]);
+			/**
+			* Enter owns the view from submission until its navigation lands, so the
+			* debounce timer the same keystrokes armed must not supersede it. Cleared
+			* by the next edit (and by opening the editor); a failed submission leaves
+			* it set until the operator edits again, so the rejected path is not
+			* immediately re-scanned as a preview.
+			*/
+			const previewSuspended = (0, react.useRef)(false);
+			const viewRef = (0, react.useRef)({
+				parent: null,
+				child: null
+			});
+			(0, react.useEffect)(() => {
+				viewRef.current = {
+					parent,
+					child
+				};
+			}, [parent, child]);
+			const scanned = (0, react.useRef)(null);
+			/**
+			* A landed preview replaced the pane a keyboard operator may have Tabbed
+			* onto, so the focus it drops is re-parked on the still-open editor (the
+			* Modal has no focus trap). Consumed by the refocus effect below.
+			*/
+			const refocusPathInput = (0, react.useRef)(false);
+			/**
+			* Replace the whole view with a freshly scanned level. Away from the
+			* display root — the same collapse the crumb header renders, so crumbs and
+			* pane shape never disagree — the landing is two-pane: the target's ACTUAL
+			* parent-level entry re-selected (left pane = parent, right pane = the
+			* target), so a crumb jump reads as stepping back one pane. Both legs land
+			* as one frame when the parent leg settles within
+			* {@link PARENT_LEG_WAIT_MS}; past that bound (or at the display root) the
+			* target commits alone — single wide level, loading ends — and a late
+			* parent leg still upgrades the landing in place. A failed parent leg, or a
+			* truncated parent window that lacks the target, leaves the single-pane
+			* landing — the upgrade must never orphan the selection it exists to
+			* anchor. Until whichever commit comes first, the previous view keeps
+			* rendering: a landing swaps the panes, it never blanks them.
+			*
+			* Two callers, one landing shape. A submitted path (Enter, a crumb) closes
+			* the editor on arrival, announces its failure, and takes the wait bound —
+			* it is answering a gesture, so it may not hang on a stalled parent. The
+			* editor's own draft-following scan keeps all three to itself: it is
+			* speculative, nothing waits on it, and the stale view keeps rendering, so
+			* it waits for BOTH legs rather than flashing a single pane it would then
+			* upgrade — one keystroke must move the view once. A failure leaves the
+			* last readable panes standing and says nothing, while an arrival clears
+			* the stale message and re-parks focus the swap dropped.
+			* @param path - the level to list; absent lists the Host home directory.
+			* @param options - `closeEditor` retires the path draft on arrival and
+			* bounds the wait for the parent leg; `announce` surfaces a failure as the
+			* dialog's alert.
+			*/
+			const land = (0, react.useCallback)((path, options) => {
+				const { seq, scan } = launchListing(path);
+				setLoading(true);
+				if (options.announce) setError(null);
+				const settle = () => {
+					setLoading(false);
+					if (options.closeEditor) {
+						setPathDraft(null);
+						return;
+					}
+					setError(null);
+					refocusPathInput.current = true;
+				};
+				scan.then((target) => {
+					if (seq !== requestSeq.current) return;
+					if (!options.closeEditor && path !== void 0) scanned.current = {
+						directory: path,
+						landed: target.path
+					};
+					let landed = false;
+					const landSingle = () => {
+						if (landed || seq !== requestSeq.current) return;
+						landed = true;
+						setParent(target);
+						setSelected(null);
+						setChild(null);
+						settle();
+					};
+					if (displayCrumbs(target, "").length < 2) {
+						landSingle();
+						return;
+					}
+					const parentCrumb = target.crumbs.at(-2);
+					/* v8 ignore next -- narrowing: a two-deep display chain implies a parent crumb (root-to-target inclusive). */
+					if (parentCrumb === void 0) {
+						landSingle();
+						return;
+					}
+					continueScan(parentCrumb.path).then((parentLevel) => {
+						if (seq !== requestSeq.current) return;
+						const sep = separatorOf(parentLevel);
+						const fold = (value) => sep === "\\" ? value.toLowerCase() : value;
+						const match = parentLevel.entries.find((entry) => fold(entry.path) === fold(target.path));
+						if (match === void 0) {
+							landSingle();
+							return;
+						}
+						landed = true;
+						setParent(parentLevel);
+						setSelected(match);
+						setChild(target);
+						settle();
+					}, () => {
+						landSingle();
+					});
+					if (options.closeEditor) window.setTimeout(landSingle, PARENT_LEG_WAIT_MS);
+				}, (reason) => {
+					if (seq !== requestSeq.current) return;
+					setLoading(false);
+					if (options.announce) setError(failureText(reason));
+				});
+			}, [launchListing, continueScan]);
+			/** Commit a submitted path (Enter, a crumb, the initial home listing): the editor closes, failures surface. */
+			const navigate = (0, react.useCallback)((path) => {
+				land(path, {
+					closeEditor: true,
+					announce: true
+				});
+			}, [land]);
+			const refocusPick = (0, react.useRef)(false);
+			const refocusEditZone = (0, react.useRef)(false);
+			const pathInputRef = (0, react.useRef)(null);
+			const editZoneRef = (0, react.useRef)(null);
+			/**
+			* Select a row of the listed level and preview its children on the right.
+			* Deliberately NOT one-frame like navigate(): a pick's first duty is the
+			* immediate selected state on the clicked row, and the pane split IS that
+			* feedback (aria-current pill, crumbs following the selection) — holding
+			* it back for the child listing would make clicks feel dropped. The quiet
+			* rule governs whole-view replacement, where nothing acknowledges the
+			* click but the swap itself.
+			*/
+			const select = (0, react.useCallback)((entry) => {
+				const { seq, scan } = launchListing(entry.path);
+				if (pathDraft !== null) refocusPick.current = true;
+				setPathDraft(null);
+				setSelected(entry);
+				setChild(null);
+				setLoading(true);
+				setError(null);
+				scan.then((next) => {
+					if (seq !== requestSeq.current) return;
+					setChild(next);
+					setLoading(false);
+				}, (reason) => {
+					if (seq !== requestSeq.current) return;
+					setLoading(false);
+					setError(failureText(reason));
+					setSelected(null);
+					refocusEditZone.current = true;
+				});
+			}, [launchListing, pathDraft]);
+			/**
+			* Walk the panes to the directory the draft addresses, WITHOUT closing the
+			* editor. The landing is an ordinary one — selection-anchored and two-pane
+			* away from the display root — so typing a path moves the Miller view
+			* exactly as a crumb jump does, and the draft's final segment
+			* prefix-filters the arrival from the next render on.
+			*/
+			const previewDraftLevel = (0, react.useCallback)((directory) => {
+				land(directory, {
+					closeEditor: false,
+					announce: false
+				});
+			}, [land]);
+			/** Abandon path editing (Escape or clicking away) and restore the crumb view. */
+			const cancelPathEdit = (0, react.useCallback)(() => {
+				supersede();
+				setLoading(false);
+				setPathDraft(null);
+				setError(null);
+				if (child === null) setSelected(null);
+				if (parent === null) navigate();
+			}, [
+				supersede,
+				child,
+				parent,
+				navigate
+			]);
+			/** A right-column pick advances the view one level: child becomes the level. */
+			const advance = (0, react.useCallback)((entry) => {
+				/* v8 ignore next -- narrowing guard: the right column only renders with a child listing. */
+				if (child === null) return;
+				setParent(child);
+				select(entry);
+			}, [child, select]);
+			(0, react.useEffect)(() => {
+				openGeneration.current += 1;
+				if (open) {
+					setParent(null);
+					setSelected(null);
+					setChild(null);
+					setCreatingFolder(false);
+					setShowHidden(false);
+					navigate();
+					return;
+				}
+				supersede();
+				setLoading(false);
+				setError(null);
+				setPathDraft(null);
+				setFolderDraft(null);
+				setCreateError(null);
+				refocusPick.current = false;
+				refocusEditZone.current = false;
+			}, [
+				open,
+				navigate,
+				supersede
+			]);
+			/** The folder a create or Open acts on: the selection, else the listed level. */
+			const targetPath = selected?.path ?? parent?.path ?? null;
+			const targetName = selected?.name ?? (parent === null ? "" : displayCrumbs(parent, t("browser.home")).at(-1)?.name ?? parent.path);
+			const confirmCreate = () => {
+				/* v8 ignore next -- reentry fence: the nested dialog only renders with a target and disables while creating. */
+				if (targetPath === null || folderDraft === null || creatingFolder) return;
+				const name = folderDraft;
+				if (name.trim() === "") return;
+				setCreatingFolder(true);
+				setCreateError(null);
+				const generation = openGeneration.current;
+				createDirectory(targetPath, name).then((createdPath) => {
+					if (generation !== openGeneration.current) return;
+					setCreatingFolder(false);
+					setFolderDraft(null);
+					const { seq, scan } = launchListing(targetPath);
+					setLoading(true);
+					setError(null);
+					scan.then((level) => {
+						/* v8 ignore next -- same fence as navigate/select; the modal blocks superseding input */
+						if (seq !== requestSeq.current) return;
+						setParent(level);
+						setLoading(false);
+						select({
+							name,
+							path: createdPath,
+							hidden: false
+						});
+					}, (reason) => {
+						/* v8 ignore next -- same fence as navigate/select; the modal blocks superseding input */
+						if (seq !== requestSeq.current) return;
+						setLoading(false);
+						setError(failureText(reason));
+					});
+				}, (reason) => {
+					if (generation !== openGeneration.current) return;
+					setCreatingFolder(false);
+					setCreateError(failureText(reason));
+				});
+			};
+			(0, react.useEffect)(() => {
+				if (!loading) {
+					setSlowScan(false);
+					return;
+				}
+				const timer = window.setTimeout(() => {
+					setSlowScan(true);
+				}, SLOW_SCAN_DELAY_MS);
+				return () => {
+					window.clearTimeout(timer);
+				};
+			}, [loading, scanWindow]);
+			(0, react.useEffect)(() => {
+				if (pathDraft === null) return;
+				const timer = window.setTimeout(() => {
+					if (previewSuspended.current) return;
+					const current = viewRef.current.child ?? viewRef.current.parent;
+					if (current === null) return;
+					const { directory, tail } = readDraft(current, pathDraft, scanned.current);
+					if (directory === null || tail !== null) return;
+					previewDraftLevel(directory);
+				}, DRAFT_PREVIEW_DEBOUNCE_MS);
+				return () => {
+					window.clearTimeout(timer);
+				};
+			}, [pathDraft, previewDraftLevel]);
+			const crumbSource = child ?? parent;
+			const typedPrefix = crumbSource === null || pathDraft === null ? null : readDraft(crumbSource, pathDraft, scanned.current).tail;
+			const crumbs = crumbSource === null ? [] : displayCrumbs(crumbSource, t("browser.home"));
+			const crumbTail = crumbs.at(-1)?.path;
+			(0, react.useEffect)(() => {
+				const trail = crumbTrailRef.current;
+				if (trail !== null) trail.scrollLeft = trail.scrollWidth;
+			}, [crumbTail]);
+			const millerRowRef = (0, react.useRef)(null);
+			const childPath = child?.path;
+			(0, react.useEffect)(() => {
+				const row = millerRowRef.current;
+				if (row !== null && childPath !== void 0) row.scrollLeft = row.scrollWidth;
+			}, [childPath]);
+			(0, react.useEffect)(() => {
+				if (refocusPathInput.current) {
+					refocusPathInput.current = false;
+					if (document.activeElement === document.body) pathInputRef.current?.focus();
+				}
+				if (pathDraft !== null) return;
+				if (refocusPick.current) {
+					refocusPick.current = false;
+					refocusEditZone.current = false;
+					const rowHost = millerRowRef.current;
+					/* v8 ignore next -- narrowing guard: the miller row is mounted whenever a pick just committed. */
+					if (rowHost === null) return;
+					const row = rowHost.querySelector("button[aria-current=\"true\"]");
+					/* v8 ignore next -- narrowing guard: the pick that set the flag just rendered its aria-current row. */
+					if (row === null) return;
+					row.focus();
+					return;
+				}
+				if (refocusEditZone.current) {
+					refocusEditZone.current = false;
+					if (document.activeElement !== document.body) return;
+					const zone = editZoneRef.current;
+					/* v8 ignore next -- narrowing guard: crumb mode renders the edit zone whenever the editor just closed. */
+					if (zone === null) return;
+					zone.focus();
+				}
+			});
+			if (!open) return null;
+			const twoPane = selected !== null;
+			const parentInert = busy || folderDraft !== null;
+			const draftPending = pathDraft !== null;
+			return (0, react_jsx_runtime.jsxs)(_deepseek_ai_dsh_client_ui_primitives.Modal, {
+				open,
+				onClose: () => {
+					if (folderDraft === null && !busy) onClose();
+				},
+				title: t("browser.title"),
+				className: clsx(DirectoryBrowser_module_css_default.dialog),
+				headless: true,
+				children: [(0, react_jsx_runtime.jsxs)("div", {
+					className: DirectoryBrowser_module_css_default.editorScope,
+					onKeyDown: (event) => {
+						if (event.key !== "Escape" || pathDraft === null) return;
+						event.stopPropagation();
+						refocusEditZone.current = document.activeElement === pathInputRef.current;
+						cancelPathEdit();
+					},
+					onBlur: (event) => {
+						if (pathDraft === null) return;
+						if (!document.hasFocus()) return;
+						const card = event.currentTarget.closest("[role=\"dialog\"]");
+						/* v8 ignore next -- narrowing guard: this scope always renders inside the Modal card. */
+						if (card === null) return;
+						if (event.relatedTarget instanceof Node && card.contains(event.relatedTarget)) return;
+						refocusEditZone.current = false;
+						cancelPathEdit();
+					},
+					children: [
+						(0, react_jsx_runtime.jsxs)("div", {
+							className: DirectoryBrowser_module_css_default.header,
+							children: [(0, react_jsx_runtime.jsx)("h2", {
+								className: DirectoryBrowser_module_css_default.title,
+								children: t("browser.title")
+							}), (0, react_jsx_runtime.jsx)("div", {
+								className: DirectoryBrowser_module_css_default.crumbBar,
+								children: pathDraft === null ? (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("span", {
+									className: DirectoryBrowser_module_css_default.crumbTrail,
+									role: "navigation",
+									ref: crumbTrailRef,
+									children: crumbs.map((crumb, index) => (0, react_jsx_runtime.jsxs)("span", {
+										className: DirectoryBrowser_module_css_default.crumbSeat,
+										children: [index > 0 && (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronRightOutlineRegular, {
+											size: 12,
+											className: DirectoryBrowser_module_css_default.crumbChevron
+										}), (0, react_jsx_runtime.jsx)("button", {
+											type: "button",
+											className: DirectoryBrowser_module_css_default.crumb,
+											disabled: parentInert,
+											onClick: () => {
+												navigate(crumb.path);
+											},
+											children: crumb.name
+										})]
+									}, crumb.path))
+								}), (0, react_jsx_runtime.jsx)("button", {
+									type: "button",
+									className: DirectoryBrowser_module_css_default.crumbEditZone,
+									"aria-label": t("browser.editPath"),
+									title: t("browser.editPath"),
+									disabled: parentInert,
+									ref: editZoneRef,
+									onClick: () => {
+										supersede();
+										setLoading(false);
+										previewSuspended.current = false;
+										if (parent === null) {
+											setPathDraft("");
+											return;
+										}
+										const base = selected?.path ?? parent.path;
+										const sep = separatorOf(parent);
+										setPathDraft(base.endsWith(sep) ? base : `${base}${sep}`);
+									},
+									children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconEditOutlineRegular, {
+										size: 14,
+										className: DirectoryBrowser_module_css_default.crumbEditGlyph
+									})
+								})] }) : (0, react_jsx_runtime.jsx)("input", {
+									className: DirectoryBrowser_module_css_default.pathInput,
+									value: pathDraft,
+									"aria-label": t("browser.editPath"),
+									autoFocus: true,
+									ref: pathInputRef,
+									disabled: parentInert,
+									onChange: (event) => {
+										supersede();
+										setLoading(false);
+										previewSuspended.current = false;
+										setPathDraft(event.target.value);
+									},
+									...compositionGuard,
+									onKeyDown: (event) => {
+										if (event.key === "Enter" && !composingRef.current) {
+											event.preventDefault();
+											if (pathDraft.trim() !== "") {
+												refocusEditZone.current = true;
+												previewSuspended.current = true;
+												navigate(pathDraft);
+											}
+										}
+									}
+								})
+							})]
+						}),
+						(0, react_jsx_runtime.jsxs)("div", {
+							className: DirectoryBrowser_module_css_default.content,
+							children: [
+								(0, react_jsx_runtime.jsxs)("div", {
+									className: DirectoryBrowser_module_css_default.millerRow,
+									ref: millerRowRef,
+									children: [
+										parent !== null && (0, react_jsx_runtime.jsx)(LevelColumn, {
+											entries: parent.entries,
+											selectedPath: selected?.path ?? null,
+											busy: parentInert,
+											onPick: select,
+											showHidden,
+											filterPrefix: child === null ? typedPrefix : null,
+											pathEditing: draftPending
+										}),
+										twoPane && (0, react_jsx_runtime.jsx)("span", { className: DirectoryBrowser_module_css_default.divider }),
+										twoPane && child !== null && (0, react_jsx_runtime.jsx)(LevelColumn, {
+											entries: child.entries,
+											selectedPath: null,
+											busy: parentInert,
+											onPick: advance,
+											showHidden,
+											filterPrefix: typedPrefix,
+											pathEditing: draftPending
+										})
+									]
+								}),
+								loading && slowScan && (0, react_jsx_runtime.jsx)("div", {
+									className: clsx(DirectoryBrowser_module_css_default.status, DirectoryBrowser_module_css_default.loadingFloat),
+									role: "status",
+									children: t("browser.loading")
+								}),
+								(parent?.truncated === true || child?.truncated === true) && (0, react_jsx_runtime.jsx)("div", {
+									className: DirectoryBrowser_module_css_default.status,
+									role: "status",
+									children: t("browser.truncated")
+								}),
+								error !== null && (0, react_jsx_runtime.jsx)("div", {
+									className: DirectoryBrowser_module_css_default.error,
+									role: "alert",
+									children: error
+								})
+							]
+						}),
+						(0, react_jsx_runtime.jsxs)("div", {
+							className: DirectoryBrowser_module_css_default.footerBar,
+							children: [
+								(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
+									variant: "outline",
+									icon: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconPlusOutlineRegular, { size: 14 }),
+									disabled: parent === null || loading || parentInert || draftPending,
+									onClick: () => {
+										setFolderDraft("");
+										setCreateError(null);
+									},
+									children: t("browser.newFolder")
+								}),
+								(0, react_jsx_runtime.jsxs)("button", {
+									type: "button",
+									className: clsx(DirectoryBrowser_module_css_default.showHiddenToggle, showHidden && DirectoryBrowser_module_css_default.showHiddenToggleActive),
+									"aria-pressed": showHidden,
+									disabled: parentInert,
+									onMouseDown: draftPending ? (event) => {
+										event.preventDefault();
+									} : void 0,
+									onClick: () => {
+										setShowHidden((prev) => !prev);
+									},
+									children: [t("browser.showHidden"), showHidden && (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCheckOutlineRegular, { size: 14 })]
+								}),
+								(0, react_jsx_runtime.jsx)("span", { className: DirectoryBrowser_module_css_default.footerGap }),
+								(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
+									variant: "outline",
+									className: clsx(DirectoryBrowser_module_css_default.footerAction),
+									disabled: parentInert,
+									onClick: onClose,
+									children: t("browser.cancel")
+								}),
+								(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
+									variant: "primary",
+									className: clsx(DirectoryBrowser_module_css_default.footerAction),
+									disabled: targetPath === null || loading || parentInert || draftPending,
+									/* v8 ignore next -- narrowing guard: Open disables while no target exists. */
+									onClick: () => {
+										if (targetPath !== null) onOpen(targetPath);
+									},
+									children: t("browser.open")
+								})
+							]
+						})
+					]
+				}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Modal, {
+					open: folderDraft !== null,
+					onClose: () => {
+						if (!creatingFolder) setFolderDraft(null);
+					},
+					title: t("browser.newFolder"),
+					className: clsx(DirectoryBrowser_module_css_default.createDialog),
+					headless: true,
+					children: (0, react_jsx_runtime.jsxs)("div", {
+						className: DirectoryBrowser_module_css_default.createBody,
+						children: [
+							(0, react_jsx_runtime.jsx)("h3", {
+								className: DirectoryBrowser_module_css_default.createTitle,
+								children: t("browser.newFolder")
+							}),
+							(0, react_jsx_runtime.jsx)("p", {
+								className: DirectoryBrowser_module_css_default.createIn,
+								children: t("browser.createIn", { name: targetName })
+							}),
+							(0, react_jsx_runtime.jsx)("input", {
+								className: DirectoryBrowser_module_css_default.createInput,
+								value: folderDraft ?? "",
+								"aria-label": t("browser.folderName"),
+								placeholder: t("browser.untitledFolder"),
+								"data-modal-autofocus": true,
+								disabled: creatingFolder,
+								onChange: (event) => {
+									setFolderDraft(event.target.value);
+								},
+								...compositionGuard,
+								onKeyDown: (event) => {
+									if (event.key === "Enter" && !composingRef.current) {
+										event.preventDefault();
+										confirmCreate();
+									}
+									if (event.key === "Escape") {
+										event.stopPropagation();
+										if (!creatingFolder) setFolderDraft(null);
+									}
+								}
+							}),
+							createError !== null && (0, react_jsx_runtime.jsx)("div", {
+								className: DirectoryBrowser_module_css_default.error,
+								role: "alert",
+								children: createError
+							}),
+							(0, react_jsx_runtime.jsxs)("div", {
+								className: DirectoryBrowser_module_css_default.createActions,
+								children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
+									variant: "outline",
+									disabled: creatingFolder,
+									onClick: () => {
+										setFolderDraft(null);
+									},
+									children: t("browser.cancel")
+								}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
+									variant: "primary",
+									disabled: creatingFolder || folderDraft === null || folderDraft.trim() === "",
+									onClick: confirmCreate,
+									children: t("browser.create")
+								})]
+							})
+						]
+					})
+				})]
+			});
+		}
+      /* ---- vendored body ends ---- */
+      return DirectoryBrowser
+    })()
+
+
+    /* ==================== directory-picker capability ================== */
+
+    // The host composes exactly ONE picking backend
+    // (@deepseek-ai/dsh-host-directory-picker-auto): a loopback-only bind on a
+    // display-bearing host gets `native` (the OS chooser), every other bind
+    // (LAN, SSH, headless — and this WSL box, which has no zenity/kdialog) gets
+    // `browse`, whose wire verbs are list/createDirectory only and whose `pick`
+    // is refused BY DESIGN. Probe once per page so the flow can choose between
+    // the OS chooser and the vendored browser instead of hard-assuming either.
+    const pickerState = { kind: 'unknown', probe: null, api: null }
     /**
-     * Page-lifetime cache of the Windows drive letters this Host actually
-     * serves. The browse API can only list a path, so the first open probes the
-     * usual letters once (six cheap listings, a missing drive fails silently)
-     * and every later open renders the chips straight from here.
+     * True for the refusal a Host serving the OTHER capability throws: the wire
+     * code when the caller still carries it, the Host's fixed sentence
+     * otherwise (uiWorkspace.pickDirectory wraps the RPC failure in a plain
+     * Error, so the code is gone by the time the flow sees it).
      */
-    const browseDrives = { probed: false, probing: false, list: [] }
-
-    function DirectoryBrowseDialog(props) {
-      const { open, busy, listDirectory, createDirectory, onPick, onClose, t } = props
-      const [listing, setListing] = React.useState(null)
-      const [loading, setLoading] = React.useState(false)
-      const [error, setError] = React.useState('')
-      const [showHidden, setShowHidden] = React.useState(false)
-      const [editing, setEditing] = React.useState(false)
-      const [draft, setDraft] = React.useState('')
-      const [creating, setCreating] = React.useState(false)
-      const [createName, setCreateName] = React.useState('')
-      const [createBusy, setCreateBusy] = React.useState(false)
-      const [createError, setCreateError] = React.useState('')
-      const [selected, setSelected] = React.useState('')
-      const [drives, setDrives] = React.useState(browseDrives.list)
-      // Guards a superseded scan: a slow level must not overwrite a newer one.
-      const seqRef = React.useRef(0)
-      const crumbsRef = React.useRef(null)
-
-      const go = (path, keepSelected) => {
-        const seq = seqRef.current + 1
-        seqRef.current = seq
-        setLoading(true)
-        setError('')
-        if (keepSelected !== true) setSelected('')
-        Promise.resolve()
-          .then(() => listDirectory(path, undefined))
-          .then((next) => {
-            if (seqRef.current !== seq) return
-            setListing(next || null)
-            setLoading(false)
-          })
-          .catch((reason) => {
-            if (seqRef.current !== seq) return
-            setLoading(false)
-            setError(messageOf(reason))
-          })
-      }
-
-      React.useEffect(() => {
-        if (!open) return undefined
-        seqRef.current += 1
-        setListing(null)
-        setError('')
-        setEditing(false)
-        setCreating(false)
-        setCreateName('')
-        setCreateBusy(false)
-        setCreateError('')
-        setShowHidden(false)
-        setSelected('')
-        go(undefined)
-        return () => { seqRef.current += 1 }
-      }, [open])
-
-      const currentPath = listing && typeof listing.path === 'string' ? listing.path : ''
-      const homePath = listing && typeof listing.home === 'string' ? listing.home : ''
-      const windowsHost = homePath.indexOf('\\') !== -1
-      const hasListing = listing !== null
-
-      // Windows drives are separate filesystem roots and the browse API can only
-      // list a path, so probe the usual letters once per page (cached above) and
-      // offer the ones that answered. A drive nobody probed is still reachable
-      // through the path editor, which is the only general answer anyway.
-      React.useEffect(() => {
-        if (!open || !hasListing || !windowsHost) return undefined
-        if (browseDrives.probed || browseDrives.probing) {
-          if (browseDrives.list.length > 0) setDrives(browseDrives.list)
-          return undefined
-        }
-        browseDrives.probing = true
-        let alive = true
-        const letters = ['C:', 'D:', 'E:', 'F:', 'G:', 'H:']
-        Promise.all(letters.map((letter) => Promise.resolve()
-          .then(() => listDirectory(letter + '\\', undefined))
-          .then(() => letter, () => null)))
-          .then((found) => {
-            browseDrives.list = found.filter(Boolean)
-            browseDrives.probed = true
-            browseDrives.probing = false
-            if (alive) setDrives(browseDrives.list)
-          }, () => { browseDrives.probing = false })
-        return () => { alive = false }
-      }, [open, hasListing, windowsHost])
-
-      // A deep path must show its TAIL — that is where you are — so the chain
-      // keeps its right edge in view instead of cutting the last crumb off.
-      React.useEffect(() => {
-        const node = crumbsRef.current
-        if (node) node.scrollLeft = node.scrollWidth
-      }, [listing])
-
-      if (!open) return null
-
-      // The whole ancestry from the filesystem ROOT: rooting the chain at Home
-      // (the official dialog's choice) hides where the listed level actually is,
-      // and the drive crumb answers "which disk am I on" at a glance.
-      const crumbs = listing && Array.isArray(listing.crumbs) ? listing.crumbs : []
-      const parentPath = crumbs.length > 1 ? crumbs[crumbs.length - 2].path : ''
-      const entries = (listing && Array.isArray(listing.entries) ? listing.entries : [])
-        .filter((entry) => showHidden || !entry.hidden)
-      const selectedEntry = entries.find((entry) => entry.path === selected) || null
-      const targetPath = selectedEntry ? selectedEntry.path : currentPath
-
-      const submitDraft = () => {
-        const path = draft.trim()
-        setEditing(false)
-        if (path === '') { go(undefined); return }
-        go(path)
-      }
-      const submitCreate = () => {
-        const name = createName.trim()
-        if (name === '' || createBusy || currentPath === '') return
-        setCreateBusy(true)
-        setCreateError('')
-        Promise.resolve()
-          .then((created) => {
-            setCreateBusy(false)
-            setCreating(false)
-            setCreateName('')
-            // Land on the folder just made: it is almost always the one the
-            // operator wants to adopt next.
-            if (typeof created === 'string' && created !== '') setSelected(created)
-            go(currentPath, true)
-          })
-          .catch((reason) => {
-            setCreateBusy(false)
-            setCreateError(messageOf(reason))
-          })
-      }
-
-      const head = editing
-        ? E('div', { className: 'bw-browse-edit-row' },
-          E('input', {
-            className: 'bw-input',
-            value: draft,
-            autoFocus: true,
-            spellCheck: false,
-            placeholder: currentPath,
-            onChange: (e) => setDraft(e.target.value),
-            onKeyDown: (e) => {
-              if (e.key === 'Enter') submitDraft()
-              else if (e.key === 'Escape') setEditing(false)
-            },
-          }),
-          E(BTN, { variant: 'outline', onClick: () => setEditing(false) }, t('cancel')),
+    const pickerRefusal = (error) => {
+      if (error && typeof error === 'object' && error.rpcError
+        && error.rpcError.code === 'directory-picker/unavailable') return true
+      const message = messageOf(error)
+      return message.indexOf('needs the native capability') !== -1
+        || message.indexOf('directory-picker/unavailable') !== -1
+    }
+    /** Resolve which backend this page's Host composes (list succeeds on browse only). */
+    const pickerCapabilityNow = () => {
+      if (pickerState.kind !== 'unknown') return Promise.resolve(pickerState.kind)
+      if (pickerState.probe !== null) return pickerState.probe
+      const api = pickerState.api
+      if (!api || typeof api.listDirectory !== 'function') return Promise.resolve('unknown')
+      const probe = Promise.resolve()
+        .then(() => api.listDirectory(undefined, undefined))
+        .then(
+          () => 'browse',
+          (error) => (pickerRefusal(error) ? 'native' : 'unknown'),
         )
-        : E('div', { className: 'bw-browse-bar' },
-          E('button', {
-            type: 'button',
-            className: 'bw-browse-crumb bw-browse-nav',
-            title: t('browse.up'),
-            'aria-label': t('browse.up'),
-            disabled: parentPath === '',
-            onClick: () => { if (parentPath !== '') go(parentPath) },
-          }, '↑'),
-          E('div', { className: 'bw-browse-crumbs', ref: crumbsRef },
-            crumbs.map((crumb, index) => (index === crumbs.length - 1
-              ? E('span', { key: crumb.path, className: 'bw-browse-crumb bw-browse-current', title: crumb.path }, crumb.name)
-              : E('button', {
-                key: crumb.path,
-                type: 'button',
-                className: 'bw-browse-crumb',
-                title: crumb.path,
-                onClick: () => go(crumb.path),
-              }, crumb.name))),
-          ),
-          E('button', {
-            type: 'button',
-            className: 'bw-browse-edit',
-            title: t('browse.editPath'),
-            'aria-label': t('browse.editPath'),
-            onClick: () => { setDraft(currentPath); setEditing(true) },
-          }, icon('IconEditOutline16')),
-        )
+      pickerState.probe = probe.then((kind) => {
+        if (kind === 'unknown') { pickerState.probe = null; return kind }
+        pickerState.kind = kind
+        return kind
+      })
+      return pickerState.probe
+    }
+    /** Commit a browse verdict the flow discovered the hard way (a refused pick). */
+    const markPickerBrowse = () => {
+      pickerState.kind = 'browse'
+      pickerState.probe = Promise.resolve('browse')
+    }
 
-      // One click SELECTS a row (the footer button then adopts it — no need to
-      // step inside just to pick a folder), a double click or the row's chevron
-      // enters it. Touch needs the chevron: a double tap is not a gesture.
-      const rows = entries.map((entry) => E('div', {
-        key: entry.path,
-        className: cls('bw-browse-row', selected === entry.path && 'bw-browse-row-on'),
-        title: entry.path,
-        role: 'button',
-        tabIndex: 0,
-        onClick: () => setSelected((current) => (current === entry.path ? '' : entry.path)),
-        onDoubleClick: () => go(entry.path),
-        onKeyDown: (event) => {
-          if (event.key === 'Enter') go(entry.path)
-          else if (event.key === ' ') { event.preventDefault(); setSelected((current) => (current === entry.path ? '' : entry.path)) }
-        },
-      },
-        icon('IconFolderClose16'),
-        E('span', { className: 'bw-browse-name' }, entry.name),
-        E('button', {
-          type: 'button',
-          className: 'bw-browse-open',
-          title: t('browse.enter'),
-          'aria-label': t('browse.enter'),
-          onClick: (event) => { event.stopPropagation(); go(entry.path) },
-        }, '›'),
-      ))
+    /* ====================== add-workspace flow ======================== */
 
-      const body = loading
-        ? E('div', { className: 'bw-browse-note' }, t('browse.loading'))
-        : rows.length > 0
-          ? rows
-          : E('div', { className: 'bw-browse-note' }, t('browse.empty'))
-
-      const newRow = creating
-        ? E('div', { className: 'bw-browse-new-row' },
-          E('input', {
-            className: 'bw-input',
-            value: createName,
-            autoFocus: true,
-            spellCheck: false,
-            placeholder: t('browse.folderName'),
-            disabled: createBusy,
-            onChange: (e) => setCreateName(e.target.value),
-            onKeyDown: (e) => {
-              if (e.key === 'Enter') submitCreate()
-              else if (e.key === 'Escape') { setCreating(false); setCreateError('') }
-            },
-          }),
-          E(BTN, {
-            variant: 'outline',
-            disabled: createBusy,
-            onClick: () => { setCreating(false); setCreateError('') },
-          }, t('cancel')),
-          E(BTN, { variant: 'primary', onClick: submitCreate, disabled: createBusy },
-            createBusy ? t('flow.creating') : t('create')),
-        )
-        : null
-
-      // The dialog is deliberately narrower than the official browser, so the
-      // two browsing tools sit on their own row above the list instead of
-      // sharing the footer with the commit pair (they used to wrap there).
-      const tools = E('div', { className: 'bw-browse-tools' },
-        E('button', {
-          type: 'button',
-          className: cls('bw-browse-tool', currentPath !== '' && currentPath === homePath && 'bw-browse-tool-on'),
-          disabled: homePath === '' || currentPath === homePath,
-          onClick: () => { if (homePath !== '') go(homePath) },
-        }, t('browse.home')),
-        E('button', {
-          type: 'button',
-          className: cls('bw-browse-tool', showHidden && 'bw-browse-tool-on'),
-          'aria-pressed': showHidden ? 'true' : 'false',
-          onClick: () => setShowHidden((value) => !value),
-        }, t('browse.showHidden')),
-        E('button', {
-          type: 'button',
-          className: 'bw-browse-tool',
-          disabled: creating || currentPath === '',
-          onClick: () => { setCreating(true); setCreateName(''); setCreateError('') },
-        }, t('browse.newFolder')),
-        drives.length > 1
-          ? E('div', {
-            className: 'bw-browse-drives',
-            title: t('browse.drives'),
-            role: 'group',
-            'aria-label': t('browse.drives'),
-          }, drives.map((drive) => E('button', {
-            key: drive,
-            type: 'button',
-            className: cls('bw-browse-drive', currentPath.slice(0, 2).toUpperCase() === drive && 'bw-browse-drive-on'),
-            title: drive + '\\',
-            onClick: () => go(drive + '\\'),
-          }, drive)))
-          : null,
-      )
-
-      const footer = E('div', { className: 'bw-browse-actions' },
-        E(BTN, { variant: 'outline', onClick: onClose, disabled: busy === true }, t('cancel')),
-        E(BTN, {
-          variant: 'primary',
-          disabled: busy === true || targetPath === '',
-          onClick: () => { if (targetPath !== '') onPick(targetPath) },
-        }, selectedEntry !== null ? t('browse.selectNamed', { name: selectedEntry.name }) : t('browse.select')),
-      )
-
-      return E(ui.Modal, {
-        open: true,
-        onClose: () => { if (busy !== true) onClose() },
-        closeLabel: t('close'),
-        title: t('browse.title'),
-        footer,
-      },
-        E('div', { className: 'bw-modal-body bw-browse-body' },
-          head,
-          createError !== '' ? E('div', { className: 'bw-error-text', role: 'alert' }, createError) : null,
-          tools,
-          newRow,
-          E('div', { className: 'bw-browse-list', role: 'list' }, body),
-          listing && listing.truncated === true ? E('div', { className: 'bw-hint' }, t('browse.truncated')) : null,
-          error !== '' ? E('div', { className: 'bw-error-text', role: 'alert' }, error) : null,
-        ),
-        StyleNode())
+    /**
+     * The vendored official browser is bound to its own locale namespace
+     * ("directory-browser"); this seat is bound to ours. One table maps the keys
+     * it asks for onto the keys this plugin ships, so the shared dictionary
+     * (21 languages) drives the dialog without a second locale registration.
+     */
+    const PICK_LABEL_KEYS = {
+      'browser.title': 'browse.title',
+      'browser.home': 'browse.home',
+      'browser.newFolder': 'browse.newFolder',
+      'browser.folderName': 'browse.folderName',
+      'browser.showHidden': 'browse.showHidden',
+      'browser.loading': 'browse.loading',
+      'browser.truncated': 'browse.truncated',
+      'browser.editPath': 'browse.editPath',
+      'browser.open': 'browse.open',
+      'browser.create': 'create',
+      'browser.createIn': 'browse.createIn',
+      'browser.untitledFolder': 'browse.untitledFolder',
+      'browser.cancel': 'cancel',
+    }
+    const pickTranslator = (t) => (key, params) => {
+      const mapped = PICK_LABEL_KEYS[key]
+      return mapped === undefined ? key : t(mapped, params)
     }
 
     /**
-     * The add-workspace picking interaction: whichever directory interaction the
-     * Host composes (OS chooser or in-app browser), then a small parent-group
-     * popup, then create + rename with the chosen prefix. Works as a
-     * directoryFlow occupant (owner conversation props) and as the browser's
-     * directly composed flow (same props, owner state lives above).
+     * Add one real workspace from the sidebar toolbar.
+     *
+     * Step 1 is directory picking: the OS chooser when the Host composes
+     * `native`, otherwise the vendored official browser driven here with our own
+     * owner props. Step 2 (virtual model only) files the new workspace into a
+     * virtual directory — one `wsDir` entry, the workspace title and path stay
+     * exactly as the Host created them, which is the whole difference from the
+     * upstream title-prefix model kept below for `useTree: false` installs.
      */
-    function BetterFlow(props) {
-      const { open, busy, onPicked, onCancel, onError, createWorkspace, renameWorkspace, pickDirectory, listDirectory, createDirectory, useWorkspaces, useStore, t } = props
-      const initialParent = props.initialParent || ''
-      const actions = props.actions
-      const [phase, setPhase] = React.useState('idle') // idle | picking | browsing | picked | submitting
+    function AddWorkspaceFlow(props) {
+      const { open, initialParent, onCancel, onError, createWorkspace, renameWorkspace, pickDirectory, listDirectory, createDirectory, pickFolder, useStore, actions, t } = props
+      const [phase, setPhase] = React.useState('picking') // picking | browsing | parent | submitting
       const [pickedPath, setPickedPath] = React.useState('')
+      const [parentDirId, setParentDirId] = React.useState('')
       const [parentInput, setParentInput] = React.useState('')
-      // All hooks run before any early return: the flow unmounts its dialog
-      // while closed, but its hook sequence must stay stable.
-      const snapshotItems = typeof useWorkspaces === 'function' ? useWorkspaces(s => s.items) : []
-      const storeFolders = typeof useStore === 'function' ? (useStore(s => s.folders) || []) : []
+      // All hooks before any early return: the flow unmounts while closed.
+      const storeDirs = typeof useStore === 'function' ? (useStore(s => dirMapOf(s)) || {}) : {}
+      const storeFolders = typeof useStore === 'function' ? (useStore(s => s.folders) || []) : {}
       const storeStyling = typeof useStore === 'function' ? (useStore(s => s.styling) || {}) : {}
-      // Virtual-directory maps: BetterFlow only creates REAL workspaces, so it
-      // never drives a vdir write itself — but the shared-write wrapper is
-      // built here too, and a missing map would turn a stray call into a
-      // TypeError. Read them for completeness.
-      const storeDirsForWrites = typeof useStore === 'function' ? (useStore(s => dirMapOf(s)) || {}) : {}
-      const storeWsDirForWrites = typeof useStore === 'function' ? (useStore(s => wsDirMapOf(s)) || {}) : {}
-      const shared = makeSharedWrites(actions, storeStyling, storeFolders, storeDirsForWrites, storeWsDirForWrites)
+      const storeWsDir = typeof useStore === 'function' ? (useStore(s => wsDirMapOf(s)) || {}) : {}
+      const storeUseTree = typeof useStore === 'function' ? useStore(s => s.useTree !== false) : true
+      const virtualMode = storeUseTree !== false
+      const shared = makeSharedWrites(actions, storeStyling, storeFolders, storeDirs, storeWsDir)
+
+      const primeParent = () => {
+        setParentInput(initialParent)
+        setParentDirId(virtualMode && storeDirs[initialParent] ? initialParent : '')
+      }
 
       React.useEffect(() => {
         if (!open) {
-          setPhase('idle')
+          setPhase('picking')
           setPickedPath('')
+          setParentDirId('')
           setParentInput('')
-          return
+          return undefined
         }
         let alive = true
         setPhase('picking')
-        // Which backend this Host composes decides the whole interaction: a
-        // `browse` Host renders the in-app browser directly (its `pick` is
-        // refused by design, so trying the chooser first would only surface an
-        // error), a `native` Host opens the OS chooser, and an unresolved
-        // verdict still tries the chooser so a silent probe never changes the
-        // behavior this plugin had before the probe existed.
-        pickerCapabilityNow()
-          .then((kind) => {
+        // Preference order: the operating system's own dialog (best on a WSL
+        // Host — it can browse the whole Windows drive tree), then whatever the
+        // Host composed (native chooser), then the vendored in-app browser.
+        Promise.resolve()
+          .then(() => (typeof pickFolder === 'function' ? pickFolder() : { status: 'unavailable' }))
+          .then((result) => {
             if (!alive) return undefined
-            if (kind === 'browse') { setPhase('browsing'); return undefined }
-            return Promise.resolve()
-              .then(() => pickDirectory())
-              .then((path) => {
-                if (!alive) return
-                if (!path) { onCancel(); return }
-                setPickedPath(String(path))
-                setParentInput(initialParent)
-                setPhase('picked')
+            if (result && result.status === 'picked' && typeof result.path === 'string' && result.path !== '') {
+              setPickedPath(String(result.path))
+              primeParent()
+              setPhase('parent')
+              return undefined
+            }
+            if (result && result.status === 'cancelled') { onCancel(); return undefined }
+            return pickerCapabilityNow()
+              .then((kind) => {
+                if (!alive) return undefined
+                if (kind === 'browse') { setPhase('browsing'); return undefined }
+                return Promise.resolve()
+                  .then(() => pickDirectory())
+                  .then((path) => {
+                    if (!alive) return
+                    if (!path) { onCancel(); return }
+                    setPickedPath(String(path))
+                    primeParent()
+                    setPhase('parent')
+                  })
               })
           })
           .catch((reason) => {
             if (!alive) return
-            // A refusal is a backend fact, not a failure: this Host serves the
-            // browse verbs, so switch interactions instead of erroring out.
             if (pickerRefusal(reason)) { markPickerBrowse(); setPhase('browsing'); return }
-            setPhase('idle')
+            setPhase('picking')
             onError(messageOf(reason))
           })
+          .then(() => undefined)
         return () => { alive = false }
       }, [open])
 
-      if (!open) return null
-      if (phase === 'browsing') {
-        return E(DirectoryBrowseDialog, {
-          open: true,
-          busy: busy === true,
-          listDirectory,
-          createDirectory,
-          onPick: (path) => {
-            setPickedPath(String(path))
-            setParentInput(initialParent)
-            setPhase('picked')
-          },
-          onClose: onCancel,
-          t,
-        })
-      }
-      if (phase !== 'picked' && phase !== 'submitting') return null
 
-      const folderOptions = (() => {
-        const set = new Set(storeFolders)
-        for (const w of snapshotItems || []) {
-          const segs = splitTitleSegs(w.title)
-          for (let i = 1; i < segs.length; i++) set.add(segs.slice(0, i).join('/'))
-        }
-        return Array.from(set).sort((a, b) => a.localeCompare(b, 'zh'))
-      })()
+
+      const acceptPath = (path) => {
+        setPickedPath(String(path))
+        primeParent()
+        setPhase('parent')
+      }
 
       const confirm = () => {
         if (phase === 'submitting') return
+        setPhase('submitting')
+        if (virtualMode) {
+          const dirId = parentDirId !== '' && storeDirs[parentDirId] ? parentDirId : ''
+          Promise.resolve()
+            .then(() => createWorkspace({ path: pickedPath }))
+            .then((workspace) => {
+              if (dirId !== '' && workspace && workspace.workspaceId) {
+                shared.wsAssign(workspace.workspaceId, dirId)
+                if (actions && typeof actions.setExpanded === 'function') actions.setExpanded(dirId, true)
+              }
+              onCancel()
+            })
+            .catch((reason) => { onError(messageOf(reason)); onCancel() })
+          return
+        }
         const prefix = normPath(parentInput)
         const base = basename(pickedPath)
         const fullTitle = prefix !== '' ? prefix + '/' + base : base
-        setPhase('submitting')
         Promise.resolve()
           .then(() => createWorkspace({ path: pickedPath }))
           .then(async (workspace) => {
@@ -4652,38 +5493,71 @@ window.__ModuleLoader__.load({
             if (prefix !== '') shared.addFolder(prefix)
             onCancel()
           })
-          .catch((reason) => {
-            onError(messageOf(reason))
-            onCancel()
-          })
+          .catch((reason) => { onError(messageOf(reason)); onCancel() })
       }
 
-      const submitting = phase === 'submitting' || busy === true
-      const datalistId = 'bw-folder-options'
+      if (!open) return null
+      if (phase === 'browsing') {
+        return E(OfficialDirectoryBrowser, {
+          open: true,
+          busy: false,
+          listDirectory,
+          createDirectory,
+          onOpen: acceptPath,
+          onClose: onCancel,
+          t: pickTranslator(t),
+        })
+      }
+      if (phase !== 'parent' && phase !== 'submitting') return null
+
+      const dirOptions = (() => {
+        if (!virtualMode) return []
+        const out = []
+        const walk = (parentId) => {
+          for (const dir of childDirsOf(storeDirs, parentId)) {
+            out.push({ id: dir.id, path: dirPathOf(storeDirs, dir.id) })
+            walk(dir.id)
+          }
+        }
+        walk(ROOT_DIR)
+        return out
+      })()
+
+      const submitting = phase === 'submitting'
       const body = E('div', { className: 'bw-modal-body' },
         E('div', { className: 'bw-field' },
           t('flow.picked'),
           E('div', { className: 'bw-path-echo' }, pickedPath),
         ),
-        E('div', { className: 'bw-field' },
-          t('flow.parent'),
-          E('div', { className: 'bw-dialog-input-row' },
-            E('input', {
-              className: 'bw-input',
-              list: datalistId,
-              value: parentInput,
-              autoFocus: true,
-              placeholder: 'web/frontend',
+        virtualMode
+          ? E('div', { className: 'bw-field' },
+            t('flow.parentDir'),
+            E('select', {
+              className: 'bw-input bw-select',
+              value: parentDirId,
               disabled: submitting,
-              onChange: (e) => setParentInput(e.target.value),
-              onKeyDown: (e) => { if (e.key === 'Enter') confirm() },
-            }),
-            E('datalist', { id: datalistId },
-              folderOptions.map((option) => E('option', { key: option, value: option })),
+              onChange: (e) => setParentDirId(e.target.value),
+            },
+              E('option', { value: '' }, t('dir.rootLevel')),
+              dirOptions.map((option) => E('option', { key: option.id, value: option.id }, option.path)),
             ),
+            E('div', { className: 'bw-hint' }, t('flow.parentDirHint')),
+          )
+          : E('div', { className: 'bw-field' },
+            t('flow.parent'),
+            E('div', { className: 'bw-dialog-input-row' },
+              E('input', {
+                className: 'bw-input',
+                value: parentInput,
+                autoFocus: true,
+                placeholder: 'web/frontend',
+                disabled: submitting,
+                onChange: (e) => setParentInput(e.target.value),
+                onKeyDown: (e) => { if (e.key === 'Enter') confirm() },
+              }),
+            ),
+            E('div', { className: 'bw-hint' }, t('flow.parentHint')),
           ),
-          E('div', { className: 'bw-hint' }, t('flow.parentHint')),
-        ),
       )
       const footer = E('div', { className: 'bw-modal-actions' },
         E(BTN, { variant: 'outline', onClick: onCancel, disabled: submitting }, t('cancel')),
@@ -4702,8 +5576,8 @@ window.__ModuleLoader__.load({
      */
     const iconOf = (mode, expanded) => {
       if (!mode || mode === 'none') return null
-      if (mode === 'solid') return icon(expanded ? 'IconFolderOpen16' : 'IconFolderClose16')
-      if (mode === 'outline') return icon('IconFolderOpenOutline16')
+      if (mode === 'solid') return icon(expanded ? 'IconFolderOpenOutlineRegular' : 'IconFolderCloseRegular')
+      if (mode === 'outline') return icon('IconFolderOpenOutlineRegular')
       return icon(resolveIconName(mode))
     }
 
@@ -4846,7 +5720,7 @@ window.__ModuleLoader__.load({
         'aria-expanded': expanded,
         ...(dragEvents || {}),
       },
-        E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFill14', 14)),
+        E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
         E('span', { className: 'bw-row-icon' }, iconChild),
         // A row that already carries a custom label glow breathes in sync.
         E('span', { className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text') }, node.name),
@@ -4860,7 +5734,7 @@ window.__ModuleLoader__.load({
         ? E(PulseGlow, { state: pulse }, iconEl || (typeof ui.StateDot === 'function' ? E(ui.StateDot, { state: pulse, size: 10 }) : null))
         : iconEl
       return E('div', {
-        className: cls('bw-row', currentInside && 'bw-row-current', dropHalf === 'before' && 'bw-drop-before', dropHalf === 'after' && 'bw-drop-after'),
+        className: cls('bw-row', currentInside && 'bw-row-current', currentInside && 'bw-ws-current', dropHalf === 'before' && 'bw-drop-before', dropHalf === 'after' && 'bw-drop-after'),
         style: { paddingLeft: 6 + depth * 12, ...(custStyle || {}), ...(pulse ? { '--bw-pulse-color': PULSE_COLORS[pulse] || PULSE_COLORS.ongoing } : null) },
         onClick: onToggle,
         onContextMenu: onContextMenu,
@@ -4868,12 +5742,12 @@ window.__ModuleLoader__.load({
         'aria-expanded': sessionsOpen,
         ...(dragEvents || {}),
       },
-        E('span', { className: cls('bw-chevron', sessionsOpen && 'bw-chevron-open') }, icon('IconTriangleRightFill14', 14)),
+        E('span', { className: cls('bw-chevron', sessionsOpen && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
         E('span', { className: 'bw-row-icon' }, iconChild),
         E('span', { className: cls('bw-row-label', pulse && custStyle && custStyle.textShadow && 'bw-pulse-text'), title: workspace.title || workspace.leaf }, workspace.leaf),
         count > 0 ? E('span', { className: 'bw-row-count' }, String(count)) : null,
         E('span', { className: 'bw-row-actions', onClick: (e) => e.stopPropagation() },
-          E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('session.new'), onClick: (e) => { e.stopPropagation(); onStart() } }, icon('IconPlusOutline16')),
+          withTip(E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('session.new'), onClick: (e) => { e.stopPropagation(); onStart() } }, icon('IconPlusOutlineRegular')), t('session.new')),
         ),
       )
     }
@@ -4901,6 +5775,18 @@ window.__ModuleLoader__.load({
     const PULSE_COLORS = { warning: '#d29922', ongoing: '#5b8def', done: '#3fb950' }
     const pulseRank = (state) => (state ? (PULSE_RANK[state] || 0) : 0)
 
+    /**
+     * Trailing cell copy for a pending interaction, mirroring the shipped
+     * browser: while the Agent waits for the operator the row's relative time
+     * is replaced by a compact label ("待回答" / "待审批" / "计划待审"), so the
+     * waiting state reads without parsing a colour.
+     */
+    const PENDING_LABEL_KEYS = {
+      approval: 'status.compact.approval',
+      'plan-review': 'status.compact.planReview',
+      question: 'status.compact.answer',
+    }
+
     function PulseGlow({ state, children }) {
       return E('span', {
         className: 'bw-pulse',
@@ -4925,6 +5811,11 @@ window.__ModuleLoader__.load({
           : state === 'ongoing'
             ? (node.running ? t('status.running') : t('status.subagents', { n: node.subagents }))
             : t('status.completed'),
+        // Only the waiting states own the trailing cell; running and done keep
+        // their relative time, exactly like the shipped browser.
+        trailing: state === 'warning' && PENDING_LABEL_KEYS[node.pending]
+          ? t(PENDING_LABEL_KEYS[node.pending])
+          : undefined,
       }
       return E('div', {
         className: cls('bw-row', 'bw-session-row', current && 'bw-row-current', dropHalf === 'before' && 'bw-drop-before', dropHalf === 'after' && 'bw-drop-after'),
@@ -4945,9 +5836,10 @@ window.__ModuleLoader__.load({
         ),
         E('span', { className: 'bw-row-label' }, node.leaf || node.title),
         node.hasActiveSchedule
-          ? E('span', { className: 'bw-schedule-badge', role: 'img', 'aria-label': t('schedule.active'), title: t('schedule.active') }, icon('IconAlarmClockOutline16', 14))
+          ? E('span', { className: 'bw-schedule-badge', role: 'img', 'aria-label': t('schedule.active'), title: t('schedule.active') }, icon('IconAlarmClockOutlineRegular', 14))
           : null,
-        E('span', { className: 'bw-row-time' }, timeLabel(node.updatedAt, now, t)),
+        E('span', { className: 'bw-row-time', title: status && status.trailing ? status.title : undefined },
+          status && status.trailing ? status.trailing : timeLabel(node.updatedAt, now, t)),
       )
     }
 
@@ -4966,7 +5858,7 @@ window.__ModuleLoader__.load({
         'aria-expanded': expanded,
         ...(dragEvents || {}),
       },
-        E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFill14', 14)),
+        E('span', { className: cls('bw-chevron', expanded && 'bw-chevron-open') }, icon('IconTriangleRightFillRegular', 14)),
         // Session groups have no icon slot: a collapsed group with hidden
         // status relays through a breathing official StateDot instead.
         pulse ? E(PulseGlow, { state: pulse }, typeof ui.StateDot === 'function' ? E(ui.StateDot, { state: pulse, size: 10 }) : null) : null,
@@ -4985,28 +5877,28 @@ window.__ModuleLoader__.load({
     const GLOW_MAX = 14
     const ICON_CHOICES = [
       'solid', 'outline', 'none',
-      'IconProjectAddOutline16', 'IconBranchOutline16', 'IconArchiveOutline20', 'IconCodeOutline16',
-      'IconDataOutline16', 'IconGoalOutline16', 'IconGlobeOutline14', 'IconInspectOutline12',
-      'IconCopyOutline16', 'IconLinkOutline16', 'IconListPenOutline16', 'IconChecklistOutline14',
-      'IconBrowseOutline16', 'IconDownloadOutline16', 'IconContextInjectionOutline16',
-      'IconCordisPluginOutline14', 'IconApiOutline14', 'IconAgentPresetOutline16', 'IconEnhanceOutline16',
-      'IconSkillOutline16', 'IconSparkle16', 'IconNewChatOutline16',
-      'IconCheckOutline14', 'IconCheckOutline16', 'IconChevronDownOutline14', 'IconChevronLeftOutline14',
-      'IconChevronRightOutline14', 'IconChevronUpOutline14', 'IconCloseOutline16', 'IconDarkOutline16',
-      'IconEditOutline16', 'IconEllipsisOutline16', 'IconFolderClose16', 'IconFolderOpen16',
-      'IconFolderOpenOutline16', 'IconFullscreenOutline16', 'IconLightOutline16', 'IconLinkOutline14',
-      'IconLoadingOutline16', 'IconPanelLeftOutline16', 'IconPaperclipOutline16', 'IconPersonalizationOutline16',
-      'IconPlayOutline16', 'IconPauseOutline16', 'IconPlusOutline16', 'IconQuestionOutline14',
-      'IconQueueOutline14', 'IconRefreshOutline14', 'IconRefreshOutline16', 'IconRightUpOutline14',
-      'IconSearchOutline16', 'IconSendOutline14', 'IconSettingsOutline14',
-      'IconSettingsOutline16', 'IconShareOutline16', 'IconStopFill16', 'IconThinkOutline14',
-      'IconThinkOutline16', 'IconTrashOutline16', 'IconUserOutline16', 'IconWarningOutline16',
-      'IconLikeOutline16', 'IconDislikeOutline16', 'IconFollowsystemOutline16',
-      'IconAlarmClockOutline16', 'IconClockOutline16', 'IconDatabaseOutline16',
+      'IconProjectAddOutlineRegular', 'IconBranchOutlineRegular', 'IconArchiveOutlineRegular', 'IconCodeOutlineRegular',
+      'IconDataOutlineRegular', 'IconGoalOutlineRegular', 'IconGlobeOutlineRegular', 'IconInspectOutlineRegular',
+      'IconCopyOutlineRegular', 'IconLinkOutlineRegular', 'IconListPenOutlineRegular', 'IconChecklistOutlineRegular',
+      'IconBrowseOutlineRegular', 'IconDownloadOutlineRegular', 'IconContextInjectionOutlineRegular',
+      'IconCordisPluginOutlineRegular', 'IconApiOutlineRegular', 'IconAgentPresetOutlineRegular', 'IconEnhanceOutlineRegular',
+      'IconSkillOutlineRegular', 'IconSparkleRegular', 'IconNewChatOutlineRegular',
+      'IconCheckOutlineRegular', 'IconCheckOutlineRegular', 'IconChevronDownOutlineRegular', 'IconChevronLeftOutlineRegular',
+      'IconChevronRightOutlineRegular', 'IconChevronUpOutlineRegular', 'IconCloseOutlineRegular', 'IconDarkOutlineRegular',
+      'IconEditOutlineRegular', 'IconEllipsisOutlineRegular', 'IconFolderCloseRegular', 'IconFolderOpenOutlineRegular',
+      'IconFolderOpenOutlineRegular', 'IconFullscreenOutlineRegular', 'IconLightOutlineRegular', 'IconLinkOutlineRegular',
+      'IconLoadingOutlineRegular', 'IconPanelLeftOutlineRegular', 'IconPaperclipOutlineRegular', 'IconPersonalizationOutlineRegular',
+      'IconPlayOutlineRegular', 'IconPauseOutlineRegular', 'IconPlusOutlineRegular', 'IconQuestionOutlineRegular',
+      'IconQueueOutlineRegular', 'IconRefreshOutlineRegular', 'IconRefreshOutlineRegular', 'IconRightUpOutlineRegular',
+      'IconSearchOutlineRegular', 'IconSendOutlineRegular', 'IconSettingsOutlineRegular',
+      'IconSettingsOutlineRegular', 'IconShareOutlineRegular', 'IconStopFillRegular', 'IconThinkOutlineRegular',
+      'IconThinkOutlineRegular', 'IconTrashOutlineRegular', 'IconUserOutlineRegular', 'IconWarningOutlineRegular',
+      'IconLikeOutlineRegular', 'IconDislikeOutlineRegular', 'IconFollowsystemOutlineRegular',
+      'IconAlarmClockOutlineRegular', 'IconClockOutlineRegular', 'IconDatabaseOutlineRegular',
       // Added with dsh 0.1.6-alpha.1 — absent on older hosts, where the picker
       // filters them out (see ICON_PICKER_CHOICES).
-      'IconPaperPlaneOutline14', 'IconShieldOutline16', 'IconPlanOutline14',
-      'IconWrapLinesOutline16', 'IconCompactOutline16',
+      'IconPaperPlaneOutlineRegular', 'IconShieldOutlineRegular', 'IconPlanOutlineRegular',
+      'IconWrapLinesOutlineRegular', 'IconCompactOutlineRegular',
     ]
 
     /**
@@ -5425,10 +6317,10 @@ window.__ModuleLoader__.load({
     function BetterBrowser(props) {
       const {
         wide, expandSidebar,
-        useSessions, useSessionPendingInteraction, useWorkspaces,
+        useSessions, useSessionPendingInteraction, useSessionStatus, useWorkspaces,
         useStore, actions,
         startSession, open, renameSession, forkSession, renameWorkspace, deleteWorkspace,
-        archiveSession, createWorkspace, pickDirectory, listDirectory, createDirectory,
+        archiveSession, createWorkspace, pickDirectory, listDirectory, createDirectory, pickFolder,
         insertWorkspaceBefore, insertSessionBefore,
         t,
       } = props
@@ -5442,6 +6334,11 @@ window.__ModuleLoader__.load({
       const phase = useWorkspaces(s => s.phase)
       const archivedSessionIds = useWorkspaces(s => s.archivedSessionIds) || []
       const list = useSessions(s => s)
+      // dsh 0.2: the ONE source of session UI status (running / pending
+      // interaction / completion unread). Both hooks are stable for the life of
+      // a host, so the conditional call order never changes between renders; a
+      // 0.1 host simply has the second one undefined and falls back to the first.
+      const statuses = typeof useSessionStatus === 'function' ? useSessionStatus(s => s) : null
       const pending = useSessionPendingInteraction ? useSessionPendingInteraction(s => s) : null
       const storeFolders = useStore ? (useStore(s => s.folders) || []) : []
       // Virtual directory model (see buildTreeVirtual): explicit folder
@@ -5526,7 +6423,13 @@ window.__ModuleLoader__.load({
       const compactChains = prefsMap.compactChains !== false
       const statusPulse = prefsMap.statusPulse !== false
       const archivedSet = React.useMemo(() => new Set(archivedSessionIds), [archivedSessionIds])
-      const subCounts = React.useMemo(() => subagentRunningCounts(list ? list.byId : {}), [list ? list.byId : null])
+      // Which session is on screen — drives BOTH the session row's active pill
+      // and the owning workspace row's highlight (0.2 hosts: retainedBy.mainView).
+      const currentSessionId = currentSessionIdOf(list)
+      const subCounts = React.useMemo(
+        () => subagentRunningCounts(list ? list.byId : {}, statuses),
+        [list ? list.byId : null, statuses],
+      )
       // Last-known real titles for the cold-restart fallback window (see
       // the title-cache block). Read per render via getSnapshot: no
       // subscription, because a cache write only happens when summary.title
@@ -5595,7 +6498,7 @@ window.__ModuleLoader__.load({
       const [query, setQuery] = React.useState('')
       const [searchOpen, setSearchOpen] = React.useState(false)
       const [flowOpen, setFlowOpen] = React.useState(false)
-      const [flowParent, setFlowParent] = React.useState('') // parent path prefill for the add-workspace flow (context menu entry)
+      const [flowParent, setFlowParent] = React.useState('')
       const [dialog, setDialog] = React.useState(null) // { kind, ... }
       // Highlighted virtual directory (the row a click last selected). '' means
       // "no directory selected", matching ROOT_DIR.
@@ -5746,18 +6649,18 @@ window.__ModuleLoader__.load({
       if (list && Array.isArray(list.ids)) {
         for (const id of list.ids) {
           const summary = list.byId[id]
-          if (accounted.has(id) || !sessionVisible(summary, list.current, archivedSet)) continue
+          if (accounted.has(id) || !sessionVisible(summary, currentSessionId, archivedSet)) continue
           ungrouped.push({
             id,
             title: sessionTitleOf(summary, t, rememberedTitleOf(id)),
             leaf: sessionTitleOf(summary, t, rememberedTitleOf(id)),
             blank: !!summary.blank,
-            running: !!summary.running,
-            completed: summary.completed === true,
+            // running / pending kind / completion unread, live status first
+            // (see sessionFactsOf): the shipped dots and the waiting label.
+            ...sessionFactsOf(statuses, pending, id, summary),
             hasActiveSchedule: hasActiveScheduleOf(summary),
             subagents: subCounts.get(id) || 0,
             updatedAt: summary.updatedAt || 0,
-            pending: pendingKindOf(pending, id),
           })
         }
         ungrouped.sort((a, b) => b.updatedAt - a.updatedAt)
@@ -5799,18 +6702,18 @@ window.__ModuleLoader__.load({
         const rows = []
         for (const id of workspace.sessionIds || []) {
           const summary = list && list.byId ? list.byId[id] : undefined
-          if (!sessionVisible(summary, list ? list.current : undefined, archivedSet)) continue
+          if (!sessionVisible(summary, currentSessionId, archivedSet)) continue
           rows.push({
             id,
             title: sessionTitleOf(summary, t, rememberedTitleOf(id)),
             leaf: sessionTitleOf(summary, t, rememberedTitleOf(id)),
             blank: !!summary.blank,
-            running: !!summary.running,
-            completed: summary.completed === true,
+            // running / pending kind / completion unread, live status first
+            // (see sessionFactsOf): the shipped dots and the waiting label.
+            ...sessionFactsOf(statuses, pending, id, summary),
             hasActiveSchedule: hasActiveScheduleOf(summary),
             subagents: subCounts.get(id) || 0,
             updatedAt: summary.updatedAt || 0,
-            pending: pendingKindOf(pending, id),
           })
         }
         // Browser-local reorder fallback (dsh 0.1.6-alpha.1 stopped injecting
@@ -6594,7 +7497,7 @@ window.__ModuleLoader__.load({
         key: session.id,
         node: session,
         depth,
-        current: list && list.current === session.id,
+        current: currentSessionId !== undefined && currentSessionId === session.id,
         now,
         onOpen: (id) => open(id),
         onContextMenu: (e) => openCtx('session', session, e),
@@ -6614,7 +7517,7 @@ window.__ModuleLoader__.load({
           depth,
           count,
           sessionsOpen: searching ? true : sessionsOpenOf(workspace.workspaceId),
-          currentInside: !!(list && list.current && (workspace.sessionIds || []).includes(list.current)),
+          currentInside: !!(currentSessionId && (workspace.sessionIds || []).includes(currentSessionId)),
           onToggle: () => { if (!searching) actions.setSessionsExpanded(workspace.workspaceId, !sessionsOpenOf(workspace.workspaceId)) },
           // Starting a session force-expands the workspace row: the user must
           // SEE the new session appear, even if the row was collapsed.
@@ -6758,6 +7661,7 @@ window.__ModuleLoader__.load({
         if (isVDir(path)) {
           const items = [
             { id: 'dir-new-sub', label: t('menu.newSubfolder') },
+            { id: 'new-subworkspace', label: t('menu.newSubWorkspace') },
             { id: 'dir-rename', label: t('menu.renameFolder') },
             { id: 'dir-move', label: t('dir.moveTo'), children: dirMenuItems(path, true) },
             { id: 'dir-delete', label: t('dir.delete.title'), danger: true },
@@ -6852,8 +7756,8 @@ window.__ModuleLoader__.load({
           return
         }
         /* ---- upstream title-prefix folder actions ---- */
-        if (kind === 'folder' && id === 'new-subfolder') setDialog({ kind: 'folder-new', parentPath: payload.path })
-        else if (kind === 'folder' && id === 'new-subworkspace') { setFlowParent(payload.path); setFlowOpen(true) }
+        if (kind === 'folder' && id === 'new-subworkspace') { setFlowParent(payload.path); setFlowOpen(true) }
+        else if (kind === 'folder' && id === 'new-subfolder') setDialog({ kind: 'folder-new', parentPath: payload.path })
         else if (kind === 'folder' && id === 'rename-folder') setDialog({ kind: 'folder-rename', path: payload.path })
         else if (kind === 'folder' && id === 'remove-folder') setDialog({ kind: 'folder-delete', path: payload.path })
         else if (kind === 'workspace' && id === 'rename') setDialog({ kind: 'ws-rename', workspace: payload })
@@ -6873,12 +7777,12 @@ window.__ModuleLoader__.load({
       if (!wide) {
         return E('div', { className: 'bw-rail' },
           StyleNode(),
-          E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('rail.search'), onClick: () => { expandSidebar(); setSearchOpen(true) } }, icon('IconSearchOutline16', 18)),
-          E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('rail.add'), onClick: () => { expandSidebar(); setFlowParent(''); setFlowOpen(true) } }, icon('IconProjectAddOutline16', 18)),
+          withTip(E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('rail.search'), onClick: () => { expandSidebar(); setSearchOpen(true) } }, icon('IconSearchOutlineRegular', 18)), t('rail.search')),
+          withTip(E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('rail.add'), onClick: () => { expandSidebar(); setFlowParent(''); setFlowOpen(true) } }, icon('IconProjectAddOutlineRegular', 18)), t('rail.add')),
           // The collapsed rail needs its own entry point: the header buttons
           // only exist in the expanded branch, so without this row the rail is
           // the one state where no virtual directory can be created at all.
-          E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('dir.new.title'), title: t('dir.new.title'), onClick: () => { expandSidebar(); setDialog({ kind: 'dir-new', parentId: '' }) } }, icon('IconFolderOpenOutline16', 18)),
+          withTip(E('button', { type: 'button', className: 'bw-rail-btn', 'aria-label': t('dir.new.title'), onClick: () => { expandSidebar(); setDialog({ kind: 'dir-new', parentId: '' }) } }, icon('IconFolderOpenOutlineRegular', 18)), t('dir.new.title')),
         )
       }
 
@@ -6985,14 +7889,6 @@ window.__ModuleLoader__.load({
         return null
       })()
 
-      const flowOwner = {
-        open: flowOpen,
-        busy: false,
-        onPicked: () => {},
-        onCancel: () => setFlowOpen(false),
-        onError: fail,
-      }
-
       return E('div', { className: 'bw-root' },
         StyleNode(),
         E('div', { className: 'bw-header' },
@@ -7007,28 +7903,26 @@ window.__ModuleLoader__.load({
             onKeyDown: (e) => { if (e.key === 'Escape') { setQuery(''); setSearchOpen(false) } },
             onBlur: () => { if (query === '') setSearchOpen(false) },
           }) : null,
-          E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('search.placeholder'), onClick: () => setSearchOpen(v => !v) }, icon('IconSearchOutline16')),
-          // Create a REAL workspace: picks a machine folder, then (optionally)
-          // files it under a virtual directory.
-          E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('add'), onClick: () => { setFlowParent(''); setFlowOpen(true) } }, icon('IconProjectAddOutline16')),
+          withTip(E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('search.placeholder'), onClick: () => setSearchOpen(v => !v) }, icon('IconSearchOutlineRegular')), t('search.placeholder')),
+          // Add a REAL workspace next to "new virtual folder": the flow uses the
+          // vendored official browser (or the OS chooser on native hosts).
+          withTip(E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('add'), onClick: () => { setFlowParent(''); setFlowOpen(true) } }, icon('IconProjectAddOutlineRegular')), t('add')),
           // Create a VIRTUAL directory: no folder is picked, nothing on disk is
           // touched, the directory exists only as a grouping record.
-          E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('dir.new.title'), title: t('dir.new.title'), onClick: () => { setSearchOpen(false); setDialog({ kind: 'dir-new', parentId: '' }) } }, icon('IconFolderOpenOutline16')),
+          withTip(E('button', { type: 'button', className: 'bw-icon-btn', 'aria-label': t('dir.new.title'), onClick: () => { setSearchOpen(false); setDialog({ kind: 'dir-new', parentId: '' }) } }, icon('IconFolderOpenOutlineRegular')), t('dir.new.title')),
         ),
         E('div', { ref: treeRef, className: 'bw-tree', role: 'tree', 'aria-label': t('title') }, bodyRows),
-        E(BetterFlow, {
+        E(AddWorkspaceFlow, {
           open: flowOpen,
-          busy: false,
           initialParent: flowParent,
-          onPicked: flowOwner.onPicked,
-          onCancel: flowOwner.onCancel,
-          onError: flowOwner.onError,
+          onCancel: () => setFlowOpen(false),
+          onError: fail,
           createWorkspace,
           renameWorkspace,
           pickDirectory,
           listDirectory,
           createDirectory,
-          useWorkspaces,
+          pickFolder,
           actions,
           useStore,
           t,
@@ -7101,15 +7995,6 @@ window.__ModuleLoader__.load({
     // cross-pollinate one localStorage entry.
     let titleCacheRef = null
 
-    const flowSource = (slots, hole) => ({
-      getSnapshot: () => {
-        try { return slots.entries(hole).length > 0 } catch { return false }
-      },
-      subscribe: (listener) => {
-        try { return slots.subscribe(hole, listener) } catch { return () => {} }
-      },
-    })
-
     function apply(ctx) {
       const slots = ctx.get('slots')
       if (slots === undefined || typeof slots.register !== 'function') {
@@ -7125,11 +8010,6 @@ window.__ModuleLoader__.load({
         })
         return
       }
-      // The capability probe talks to the composed backend through this
-      // service (list is served by browse alone), so the state module needs
-      // the handle before any flow can open.
-      pickerState.api = uiWorkspace
-
       if (ctx.locale && typeof ctx.locale.register === 'function') {
         ctx.effect(() => {
           try {
@@ -7200,25 +8080,12 @@ window.__ModuleLoader__.load({
         archiveSession: (sessionId) => uiWorkspace.archiveSession(sessionId),
         createWorkspace: (input) => workspaces.create(input),
         pickDirectory: () => uiWorkspace.pickDirectory(),
-        // Browse-side primitives: the fallback interaction whenever the Host
-        // composes the browse backend instead of the OS chooser.
+        // Browse-side primitives: what the vendored official browser drives when
+        // this Host composes the `browse` backend instead of the OS chooser.
         listDirectory: (path, signal) => uiWorkspace.listDirectory(path, signal),
         createDirectory: (path, name) => uiWorkspace.createDirectory(path, name),
-        hooks: {
-          directoryFlow: flowSource(slots, 'sidebar.workspaces.directoryFlow'),
-        },
+        pickFolder: () => requestPickFolder(),
       })
-      const flowInjected = (hole) => () => ({
-        createWorkspace: (input) => workspaces.create(input),
-        renameWorkspace: (workspaceId, title) => workspaces.rename(workspaceId, title),
-        pickDirectory: () => uiWorkspace.pickDirectory(),
-        // Same browse-side primitives as the sidebar flow: the two holes and
-        // the inlined dialog must agree on which interaction they can run.
-        listDirectory: (path, signal) => uiWorkspace.listDirectory(path, signal),
-        createDirectory: (path, name) => uiWorkspace.createDirectory(path, name),
-        hooks: { directoryFlow: flowSource(slots, hole) },
-      })
-
       // Registration helper: a thrown register (semantics drift, vanishing
       // hole declaration mid-transition) degrades this one seat, never the
       // plugin fiber — the whole web boot is all-or-nothing.
@@ -7231,24 +8098,37 @@ window.__ModuleLoader__.load({
         }
       }
 
-      // 1+2. the two directory-flow holes (hero picker, shipped sidebar browser).
-      // Since dsh 0.1.2-alpha.1 the shell's own directory picker occupies each
-      // hole at priority 0, so shadow at -1 (ascending, lowest renders) exactly
-      // like the sidebar.workspaces browser below.
-      slots.inject('conversation.hero.workspace.directoryFlow', guarded(
-        'conversation.hero.workspace.directoryFlow',
-        { name: 'conversation.hero.workspace.directoryFlow', inject: flowInjected('conversation.hero.workspace.directoryFlow'), locale: NS, priority: -1 },
-        BetterFlow,
-      ))
-      slots.inject('sidebar.workspaces.directoryFlow', guarded(
-        'sidebar.workspaces.directoryFlow',
-        { name: 'sidebar.workspaces.directoryFlow', inject: flowInjected('sidebar.workspaces.directoryFlow'), locale: NS, priority: -1 },
-        BetterFlow,
-      ))
-
       // One shared store handle: the browser and the settings page must see the
-      // same persisted state (expansion, folder list, prefs, styling).
+      // SAME persisted state (expansion, directories, assignments, prefs,
+      // styling). One handle per activation — two instances on one persist key
+      // cross-pollinate the same localStorage entry.
       const viewStore = createViewStore()
+      // The capability probe rides the browse verbs, so it needs this handle
+      // before any flow can open.
+      pickerState.api = uiWorkspace
+
+      /* ------------------- directory picking: not ours at all ----------------
+       * The plugin draws NO directory picker and adds NO workspace. Both the
+       * `directoryFlow` holes (`conversation.hero.workspace.directoryFlow`,
+       * `sidebar.workspaces.directoryFlow`) and the "add a machine folder"
+       * action belong to the Host: "Add workspace…" in the conversation
+       * hero opens the shipped picker (`dsh-client-ui-directory-picker-browse`,
+       * 680x500, Miller columns, status/error lines, create-folder sub-dialog)
+       * and the Host creates the workspace itself.
+       *
+       * 0.3.x used to draw its own 380x470 single-column browser for this and
+       * shadow the shipped one at priority -1; users compared the two and the
+       * plugin's copy read as a half-finished UI. The picking interaction
+       * cannot be borrowed either: `uiWorkspace` exposes the picker VERBS
+       * (pick a folder / list it / make a subfolder) but no "open the Host's add flow", a slot
+       * cannot re-declare another entry's child key ("already declared"), and
+       * the `workspace.add` shortcut drives the SHIPPED sidebar browser's own
+       * state — which this plugin replaces. So the plugin keeps only what it
+       * can own: the virtual-directory tree, its context menus ("Move into
+       * folder…" files an existing workspace without touching its title) and
+       * "New virtual folder". A newly added workspace lands at the root level
+       * and is filed afterwards from its row menu.
+       */
 
       // Cold-restart title fallback (see the title-cache block). Hydration
       // reads localStorage synchronously here, before the first render, so a
@@ -7325,6 +8205,13 @@ window.__ModuleLoader__.load({
     const OPEN_FOLDER_ROUTE = '/_dsh/virtual-workspace/open-folder'
 
     /**
+     * The host half's Windows folder picker (src/pick-folder.js). This rides
+     * `POST` because it opens a dialog; GET is the capability probe. The route
+     * answers `{ status: 'picked' | 'cancelled' | 'unavailable', path?, reason? }`.
+     */
+    const PICK_FOLDER_ROUTE = '/_dsh/virtual-workspace/pick-folder'
+
+    /**
      * Short-lived notice for the outcome of a host action. It has to live
      * outside React: the context menu closes on pick, and unless the entry
      * opens a dialog there is no component left to carry the message. The
@@ -7385,6 +8272,36 @@ window.__ModuleLoader__.load({
         // the host half failed to load, or this page is older than it.
         (error) => {
           throw new Error((error && error.message) || 'open folder route unreachable')
+        },
+      )
+    }
+
+    /**
+     * Ask the host for the operating system's own folder dialog.
+     *
+     * A missing route (host half older than this page) or a non-WSL host is NOT
+     * an error: the caller falls back to the host's picker backend, then to the
+     * vendored in-app browser. Only a genuine pick is reported as `picked`.
+     * @returns `{ status, path?, reason? }`.
+     */
+    function requestPickFolder() {
+      return fetch(PICK_FOLDER_ROUTE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}',
+      }).then(
+        (response) => response.json().then(
+          (result) => {
+            if (!response.ok || !result || !result.ok || !result.value) {
+              return { status: 'unavailable', reason: 'route-error' }
+            }
+            return result.value
+          },
+          () => ({ status: 'unavailable', reason: 'route-error' }),
+        ),
+        (error) => {
+          console.warn('[dsh-better-workspace] pick-folder route unreachable:', error && error.message)
+          return { status: 'unavailable', reason: 'route-unreachable' }
         },
       )
     }

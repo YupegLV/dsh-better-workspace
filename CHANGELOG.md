@@ -3,6 +3,91 @@
 > 倒序排列,新版本条目在最上面。条目格式:`## vX.Y.Z — YYYY-MM-DD` + 类型(feat / fix / docs / chore)+ 要点 + 相关链接。
 > 纪律见 AGENTS.md「变更记录纪律」:发版前先更新本文件并随版本提交;事故复盘、复现与真机验证记录也记在这里。
 
+## v0.3.7 — 2026-10-22
+
+**类型**:fix(当前对话所在的工作区不显示高亮:宿主 0.2 已删除 `SessionListState.current`)
+
+- **用户需求**:「在工作区高亮当前正在对话的项目」。
+- **根因**:插件判断「当前会话」一直读 `list.current`。dsh 0.2 的 `SessionListState` 已经没有这个字段(`ids` / `byId` / `phase` / `projectionsBySession`,见 `@deepseek-ai/dsh-api-session-controller` 的 `sessions/service.d.ts`),所以 `list.current` 恒为 `undefined`:会话行的高亮、工作区行的高亮、以及"空会话仅当前可见"的可见性规则**全部静默失效**。官方 0.2 的判定方式是摘要上的保留计数 `retainedBy.mainView > 0`。
+- **修法**:新增 `currentSessionIdOf(list)` —— 0.1 宿主仍读 `list.current`,否则遍历 `byId` 找 `retainedBy.mainView > 0` 的那一行;每个渲染只算一次 `currentSessionId`,四处消费点(会话行 `current`、工作区行 `currentInside`、两处 `sessionVisible`)统一改用它。
+- **视觉**:工作区行额外挂 `bw-ws-current`(会话行仍只挂 `bw-row-current` 的官方淡底)——主题活动色混合背景 + 2px 内嵌左侧强调条(品牌色)+ 图标品牌色;全部走主题 token,跟随宿主主题与主题类插件。
+- **验证**:`npm test` **33/33 全绿**(新增用例钉住:helper 读 `retainedBy.mainView`、保留 0.1 字段、源码里不得再有 `list.current === session.id` / `includes(list.current)`、工作区类与 accent 样式存在)。真机:打开当前会话后 `dsh测试文件夹` 行同时带 `bw-row-current bw-ws-current`,背景为品牌色混合、左侧 2px 强调条,控制台零 error/warn。
+
+## v0.3.6 — 2026-10-22
+
+**类型**:feat(侧栏「添加工作区」可走 Windows 原生文件夹选择器,WSL 内可直接驱动)
+
+- **用户的需求**:「有办法实现windows的文件夹选择器吗？不知道wsl里运行的能不能实现」。
+- **先修好的环境事实**:这台机器的 WSL **Windows 互操作之前是坏的** —— `systemd=true` 让 systemd 重挂了 `binfmt_misc`,`WSLInterop` 处理器消失,从 WSL 跑任何 `.exe` 都报 `Exec format error`(顺带说明:插件原有的「打开工作区文件夹」一直因此失败)。补注册 `:WSLInterop:M::MZ::/init:PF` 后恢复。
+- **可行性已实测**:`user=yupeg`、`SessionId=1`、`UserInteractive=True`(console 活动会话);`pwsh 7.6.7` / `.NET 10`;`System.Windows.Forms.FolderBrowserDialog` + `-STA` 可用;真实模态框能弹出并正确返回结果(测试时自动关闭,`ShowDialog` 返回 `Cancel`);`wslpath -u 'D:\Downloads'` → `/mnt/d/Downloads`。
+- **新增宿主模块 `src/pick-folder.js`**(挂在 `/_dsh/virtual-workspace/pick-folder`):
+  - `GET` = 能力探测(绝不弹窗);`POST` = 弹出对话框,返回 `{status: picked|cancelled|unavailable, path?, reason?}`。
+  - 脚本是**常量**,不接受任何请求数据 → 没有注入面;`-NoProfile -NonInteractive -STA`,TopMost 无主窗体保证对话框浮在浏览器上面;stdout 用 `DSH-PICK:OK:` / `DSH-PICK:CANCEL` 标记解析。
+  - **interop 自愈**:`/proc/sys/fs/binfmt_misc/WSLInterop` 缺失时用免密 `sudo -n` 补注册;没有 sudo 就报 `windows-interop-disabled` 回退,不报错。
+  - **只服务回环请求**:非回环一律 `unavailable/not-loopback`,避免对话框弹在没人看着的服务器桌面上。
+  - 路径转换 `wslpath -u` 优先,失败退回纯 JS 的盘符映射;选中的必须是**存在且是目录**。
+  - 同一时刻只允许一个对话框(`busy` 标志),超时 5 分钟(超时按取消处理)。
+- **客户端**:`AddWorkspaceFlow` 的优先顺序改为 **OS 对话框 → 宿主 native 后端 → vendored 官方 web 浏览器**;路由缺失(宿主半侧是旧版)或非 WSL 时静默回退,不影响现有体验。
+- **验证**:`npm test` **32/32 全绿**(新增一条:路由常量两半一致、脚本含 `FolderBrowserDialog`/标记、`-STA`、盘符转换、非 WSL/无 PowerShell/无 sudo/取消/选中/非回环六种分支);真机跑生产路径 `pickFolder({timeoutMs:4000})` → 对话框出现、4s 后被杀,返回 `{"status":"cancelled","reason":"timeout"}`(4015ms)。
+- **注意**:宿主路由在 `dsh web` 启动时挂载,**需要重启一次 dsh web 才生效**。
+
+## v0.3.5 — 2026-10-22
+
+**类型**:feat(侧栏新增工作区入口 + 直接复用官方目录选择器组件)
+
+- **用户的要求与质疑**:「不好，还是在创建虚拟目录旁边有个更好」,随后追问「dsh是开源的，为什么你说没有开源api？」。第二问是对的:0.3.4 的结论「只能自绘」只针对**运行时 API**,漏掉了开源代码本身可复用。
+- **重新查证(开源侧)**:`@deepseek-ai/dsh-client-ui-directory-picker-browse` 是 **MIT**(Copyright (c) 2026 DeepSeek);它的 `./client` 只导出 `apply`/`inject`,组件本体不在导出面,但**整份转译代码随包分发**。所以正确做法是**vendor 官方组件**,而不是重写一个像它的。
+- **实现**:
+  - 把官方 `DirectoryBrowser`(含其 CSS 模块、Miller 两列、状态/错误行、新建文件夹子对话框)原样 vendor 进 `src/client.js`,只替换三处:模块内的 `require` 垫片 → 本插件已绑定的 `React` / `ui` / `cls`;CSS 前缀 `ZuhsRW_` → `bwdb_`(避免与同页加载的官方插件样式互踩);内置 clsx 垫片删除(用本插件 `cls`)。
+  - 新增 `AddWorkspaceFlow`:先探测宿主后端——`native` 走系统选择器,`browse` 渲染上面这份官方组件;选完目录后若是虚拟模型,再弹「所属虚拟目录」选择,确认时 `createWorkspace` + `wsAssign` + 展开目录,**标题与路径仍由宿主决定、绝不改写**;`useTree:false` 回退路径保留旧的前缀行为。
+  - 入口放在「新建虚拟目录」旁边:展开态工具栏与 rail 收起态各一个按钮;虚拟目录行右键恢复「新增子工作区」(带上该目录预选)。
+  - 官组件的文案走它自己的 namespace(`browser.*`),用一张映射表转成本插件已有的 21 门词典键(`browse.*`),不重复注册语言。
+- **两个 picker 的关系**:hero 菜单仍然用宿主自己的官方 picker(插件不占 `directoryFlow` 洞);侧栏按钮用同一份官方组件,分叉只在「谁当 owner」——这正是宿主契约里 owner 与 occupant 的分工。
+- **验证**:`npm test` **31/31 全绿**(替换掉 0.3.4 的「不得有 picker」用例,新增一条钉住:入口在工具栏/rail、vendored 组件与 `bwdb_` 前缀、`ZuhsRW_` 不得出现、flow 用 `pickTranslator` 驱动、虚拟分支只 `wsAssign` 不 `renameWorkspace`、两个 directoryFlow 洞仍不占)。真机:侧栏三个按钮(sort/add/folder),点 add 弹出**与 hero 完全相同的 680×500 官方浏览器**,选目录后出现「所属虚拟目录」步骤,取消/确认路径正常,控制台零 error/warn。
+
+## v0.3.4 — 2026-10-22
+
+**类型**:fix(目录选择彻底交还宿主:删掉插件自己的添加工作区入口与整套自绘选择器)
+
+- **用户的决策**:「用官方的」。0.3.3 只把两个 `directoryFlow` 洞还给了宿主，侧栏工具栏那颗「添加工作区」按钮仍是插件自绘 —— 用户刷新后点的正是它，所以看到的仍是 380×470 那个「不全」的弹窗。核实过三条替代路都不通:`uiWorkspace` 只有 picker 动词（pick / list / 建子目录），没有「打开宿主添加流程」的 API；slot 的 `children` 不能重复声明同一个 key（直接抛 `slot "…" is already declared`）；宿主 `workspace.add` 快捷键（Ctrl+Alt+O）的 `controls.add` 指向被本插件替换掉的官方侧栏浏览器内部 state，触发了也没有 UI。**只要入口在插件自己的界面上，就只能自带选择 UI** —— 于是按要求把入口一并去掉。
+- **删掉的**:侧栏「添加工作区」按钮（展开态与 rail 收起态各一个）、虚拟目录行/旧式前缀行右键的「新增子工作区」、`BetterFlow`、`DirectoryBrowseDialog`（含盘符探测）、目录选择器能力探测（`pickerState` / `pickerCapabilityNow` / `pickerRefusal` / `markPickerBrowse`）、`browserInjected` 里的 `createWorkspace` / `pickDirectory` / `listDirectory` / `createDirectory` 与 `directoryFlow` hook、35 条 `.bw-browse*` / `.bw-select` / `.bw-path-echo` CSS，以及随之失效的 25 个词典键 × 21 门（`flow.*`、`browse.*`、`add`、`create`、`rail.add`、`menu.newSubWorkspace`，共 525 行）。
+- **一行没动的**:虚拟目录的创建（工具栏「新建虚拟目录」+ 目录行「新增子分组」）、重命名/删除/拖动排序/移入目录、工作区行的重命名 / 打开工作区文件夹 / 复制路径 / **移动到目录…**（含「（根层级）」）/ 删除 / 自定义外观、会话行与会话分组行的全部右键项、全部拖拽 —— 归类工作区的能力完整保留，且「移动到目录…」本来就不改标题。
+- **新的路径**:建项目走对话空态的官方 picker（`Add workspace…`，680×500），建完落在根层级，再右键「移动到目录…」归类。
+- **验证**:`npm test` **31/31 全绿**（删掉 3 条针对已删代码的用例，新增 1 条钉住这次交接：插件不得再出现任何自绘选择器/添加工作区入口/新增工作区菜单项、注入面不得再有 picker 动词、`flow.*`/`browse.*` 词典键必须清零；同时断言「移动到目录…」、打开文件夹、复制路径、目录增删仍在）。真机（web profile，browse 后端，刷新即生效）：侧栏工具栏只剩搜索与「新建虚拟目录」，rail 收起态同样；右键菜单项与拖拽全部正常；hero 的「Add workspace…」是官方 680×500 弹窗；控制台零 error/warn。
+
+## v0.3.3 — 2026-10-22
+
+**类型**:fix(目录选择弹窗交还宿主:插件不再自绘那个 380×470 的「不全」对话框)
+
+- **用户的实测反馈**:「选择工作区目录的功能被这个插件修改过吗？目前感觉弹窗UI显示的不够完整」。核实:**是**。插件把 `conversation.hero.workspace.directoryFlow` 与 `sidebar.workspaces.directoryFlow` 两个洞都以 `priority: -1` 覆盖了（官方 `@deepseek-ai/dsh-client-ui-directory-picker-browse` 其实一直在 boot graph 里），本机又是 `browse` 后端（127.0.0.1 + 非 SSH + linux 但 PATH 无 zenity/kdialog），于是看到的是插件手写的 `DirectoryBrowseDialog`。实测对比:**官方 680×500**（`min(680px,100%)` / `min(500px,100dvh-32px)`、28px 行、文件夹图标 + 行尾 `›`、进目录多列、底栏 + New folder/Show hidden files + Cancel/Open、status/error 行、新建文件夹独立子对话框）；**插件 380×470**（正文 390、列表固定 240 高带边框、工具三连按钮、无状态行）——宽度只有官方的 56%，观感就像半成品。
+- **改法:两个 directoryFlow 洞一律还给宿主。** 删掉两处 `slots.inject(...)` 与只为它们存在的 `flowInjected`；hero 菜单的「Add workspace…」现在走官方 picker，工作区由宿主自己创建（落在根层级）。**虚拟目录这一步保留在插件自己的面上**:侧栏工具栏的添加按钮、以及目录行右键的「新增子工作区」走内联 `BetterFlow` —— 宿主只暴露 picker 的**动词**（pick/list/createDirectory），没有「打开官方添加流程」的 API，所以一个必须再追问目录的入口只能自带选择 UI。
+- **代价（明说）**:hero 那条路不再能在创建时选虚拟目录；新项目先落到根层级，再右键「移动到目录…」归类（该能力 0.3.0 就有，不改标题）。若要「创建即归类」，只能从侧栏添加按钮或目录行右键发起。
+- **验证**（真机,已还原临时的 priority 实验）:把两处 `priority` 临时抬到 `+1` 让官方组件渲染并截图取证（680×500,标题 `Select Workspace Directory`,底栏 `+ New folder / Show hidden files / Cancel / Open`）——该实验已回滚,工作区未创建。改完后 hero 入口直接就是官方弹窗、侧栏按钮仍是插件弹窗、控制台零 error/warn。
+- **冒烟测试 33 项全绿**:slot 用例改为「只允许 `settings.plugin.item` 与 `sidebar.workspaces` 两处 inject,两个 directoryFlow 必须一个都不占」；picker 用例的注入计数 2 → 1，并注明宿主自家 flow 不再注入。
+
+## v0.3.2 — 2026-10-22
+
+**类型**:fix(引入新项目时,「所属分组」看不到已有的虚拟目录,新项目也进不去)
+
+- **用户的实测反馈**:「当我引入一个新的项目的时候,选择虚拟工作区看不到现有的工作区」。
+- **根因:0.3 的虚拟目录模型只改到了树和菜单,漏掉了「添加工作区」这条流程。** `BetterFlow` 仍是 0.11 那套**标题前缀**实现:候选分组 `folderOptions` 只由旧的 `folders` 列表 + 工作区标题里的 `/` 拼出来,**从不读 `state.directories`**;`confirm()` 也只是把新工作区**改名**成 `前缀/名字` 并顺手 `addFolder(前缀)`,而虚拟模型里目录是一条独立记录、真正需要写的是 `wsDir[workspaceId] = dirId`。于是:目录行里明明有目录,流程里却一个都选不到(真机实测:输入框的 datalist **只有 1 条**,来自一个带 `/` 的老标题;点开输入框浏览器也不弹任何提示);即便手打目录名,建出来的也是同名**旧式前缀分组**,新项目还落在根层级 —— 看起来就像"引入的项目不见了"。
+- **第二个缺口**:两个 `directoryFlow` 座位(`conversation.hero.workspace.directoryFlow` / `sidebar.workspaces.directoryFlow`)注册时**没有传 `store`**,宿主渲染器因此不绑 `useStore`/`actions`。就算流程代码会读目录,从对话空态「Choose workspace → Add workspace…」进去时读到的也是空表 —— 必须把 `viewStore` 的创建提前到注册之前,并把同一个 handle 传给这两处(与 `sidebar.workspaces`、设置卡片共享,仍是**一个** handle)。
+- **修法**:虚拟模型下「所属分组」改成**可见的 `<select>`**:`(根层级)` + 深度优先的全部目录(按 `dirPathOf` 显示完整路径,值用稳定的目录 id);确认时走新的 `confirmVirtual()` —— `createWorkspace` 之后只写 `shared.wsAssign(workspaceId, dirId)` 并展开目标目录,**绝不碰标题、不建旧式分组**。`useTree:false` 的回退路径保留原样(`confirmLegacy()`,标题前缀 + `addFolder`)。虚拟目录行右键新增「新增子工作区」,从该目录直接发起引入流程(目录已预选)。新增 2 个词典键(`flow.parentDir` / `flow.parentDirHint`)× 21 门语言。
+- **真机实录**(web profile,browse 后端,headless Chrome over CDP;测完删掉工作区登记、临时目录与临时虚拟目录,`workspace.json` 无残留):新建目录「验证目录」→「添加工作区」→ 选 `/tmp/dvw-verify-project` → 弹窗出现 `Parent virtual directory`,下拉里正是 `(root level)` + `验证目录` → 选它 → 创建:侧栏「验证目录」下出现子行 `dvw-verify-project`,`wsDir` 写入、`folders` 保持 `[]`、宿主登记仍是 `{"path":"/tmp/dvw-verify-project","title":"dvw-verify-project"}`(标题未被改写);`useTree:false` 时同一入口仍是旧输入框 + datalist(未回归);对话空态的同一流程也列得出该目录;控制台零 error/warn。
+- **冒烟测试 32 → 33 项**:新增用例钉住五件事——`dirOptions` 必须走 `childDirsOf`/`dirPathOf`、虚拟模型必须渲染 `<select>`、`confirmVirtual` 必须 `wsAssign` 且**不得**出现 `renameWorkspace`/`addFolder`、回退分支仍在、两个 slot 必须带 `store: viewStore` 且 store 先于注册创建。
+
+## v0.3.1 — 2026-10-14
+
+**类型**:fix(全套图标静默失效:侧栏工作区三个按钮看不见、也悬停不出提示)
+
+- **用户的实测反馈**:「工作区有是有,但是目前是看不到的,我知道这 3 个块存在,但是他们没有特殊标记,并且鼠标悬浮上去看不到提示」。三个热区确实存在、也能点,但**里面是空的**——不含任何 SVG,所以既看不见图形,也没有可悬停的实体。
+- **根因:dsh 0.2.0-rc.2 把整套图标改名了。** 旧世代 `Icon<Name>Outline<边长>`(`IconSearchOutline16` 一类)在 0.2 被换成 `Icon<Name>Outline<字重>`(`IconSearchOutlineRegular` 等 79 个);当前 primitives bundle 里 `Outline16` 这个名字形态**出现 0 次**,也没有兼容层。本插件 `src/client.js` 当时引用的 **75 个图标名在新集合里全部不存在**,而 `icon()` 对未知名字的既定降级是「返回 null,绝不抛错」——于是每一处图标都静静地变成了空按钮。这不是布局或主题问题:计算样式是 `opacity:1 / visibility:visible / display:grid`,只是里面什么都没有。
+- **修法一(图标,治本)**:把**调用点**的图标名直接改成新集合里真实存在的名字(73 种;`Outline<px>` → `Outline<字重>` 保持每个字形的语义不变),另把 `ICON_ALIASES` 从 1 条扩成 **74 条**——它现在的职责是**兼容层**:用户持久化过的旧图标偏好(设置里的自定义图标是存名字的)仍能沿别名链落到在售字形,而不是渲染成空格子。四个旧世代 fill 变体在新集合里没有 `Outline<px>` 兄弟,按字重形态落地:`IconFolderClose16` → `IconFolderCloseRegular`、`IconSparkle16` → `IconSparkleRegular`、`IconStopFill16` → `IconStopFillRegular`、`IconTriangleRightFill14` → `IconTriangleRightFillRegular`。`icon()` 改为先过 `resolveIconName` 再取组件,别名表才真正对渲染生效(此前只有自定义图标选择器查它)。
+- **修法二(提示)**:新增 `withTip(child, label)`,用**宿主 Tooltip** 包住纯图标按钮(官方侧栏的做法)。宿主 Tooltip 是 `cloneElement`,只挂 ref 与鼠标/焦点处理器,**不额外产生 DOM**,按钮的布局盒子不变;没有 Tooltip 的老宿主退回原生 `title`。已接入:侧栏工具栏 3 个(搜索 / 添加工作区 / 新建虚拟目录)、rail 收起态 3 个、工作区行内联「新会话」。此前全插件 `title=` 按钮 0 处、`aria-label=` 17 处——`aria-label` 只服务读屏器,**鼠标悬浮什么都不会显示**。
+- **真机实录**(本实例 web profile,1600×900 与 <1024px 两种布局,刷新页面即生效):修复前 `.bw-header` 三个按钮 `svgPresent:false / pathCount:0`;修复后 `svg:true / width=16 / pathCount 2~3`,全页 19 个 `.bw-icon-btn`/`.bw-rail-btn` **零空按钮**。悬浮「添加工作区」弹出 `role="tooltip"` 气泡,`label` 为「添加工作区」,`side=bottom`(展开态 y=246、rail 态 y=302 均实测可见);rail 态三个 36×36 图标按钮同样有图形 + 气泡。控制台零 error/warn。
+- **冒烟测试 31 → 32 项**:原 0.10.2 图标用例的切片锚点改到 `withTip` 之前(工具提示属宿主管线,不在纯解析契约内),断言升级到新世代名字;新增一项 `icons: every named glyph exists in the host set after the 0.2.0 rename`,直接读**宿主 primitives bundle**,钉死三件事——`icon()` 点名的每个字形都真实存在、源文件里引用的每个字形都在售(字体名 `Icona` 除外)、别名表里每条「退役名 → 在售名」的落点都真实存在;当环境里没有 dsh 时该用例自动跳过而不是误报。这条测试的意义在于:**下次宿主再改图标名,会是测试红,而不是侧栏悄悄变空**。
+- 相关:上游图标集来自 `@deepseek-ai/dsh-client-ui-primitives`(0.2.0-rc.2,79 个 `Outline<字重>` 字形)。
+
 ## v0.11.4 — 2026-09-16
 
 **类型**:fix(应用内目录浏览器的可用性:路径、盘符、选文件夹)
