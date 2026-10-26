@@ -5427,6 +5427,18 @@ window.__ModuleLoader__.load({
               return undefined
             }
             if (result && result.status === 'cancelled') { onCancel(); return undefined }
+            // A pick can be dropped AFTER the operator chose (the Host could not
+            // turn the answer into a visible path: console-encoding mojibake, an
+            // unmounted drive, a UNC target). Fall back to the in-app browser —
+            // but say why, so a vanished selection is diagnosable instead of
+            // looking like the click did nothing.
+            if (result && result.status === 'unavailable') {
+              console.warn(
+                '[dsh-better-workspace] OS folder picker unavailable; falling back:',
+                result.reason || 'unknown',
+                result.detail || '',
+              )
+            }
             return pickerCapabilityNow()
               .then((kind) => {
                 if (!alive) return undefined

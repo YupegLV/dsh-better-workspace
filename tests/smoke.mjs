@@ -900,6 +900,51 @@ test('Windows folder picker: route, capability gate, path conversion (0.3.6)', a
     { status: 'picked', path: '/mnt/d/code/app' },
   )
 
+  // (6b) The mojibake regression (0.3.8): `[Console]::Out.Write` re-encodes the
+  //      answer with the Windows OEM code page (CP936 on zh-CN), so a Chinese
+  //      folder name reached the host garbled, failed the existence check and
+  //      the whole pick was dropped — the flow then opened a SECOND picker and
+  //      only the second choice worked. The answer now leaves as UTF-8 bytes.
+  const cnWin = 'E:\\dsh测试文件夹'
+  const cnHost = '/mnt/e/dsh测试文件夹'
+  assert.match(host.ANSWER_HELPER, /\[System\.Text\.Encoding\]::UTF8\.GetBytes/)
+  assert.match(host.ANSWER_HELPER, /\[Console\]::OpenStandardOutput\(\)/)
+  assert.match(host.DIALOG_SCRIPT, /function Write-Answer\(\[string\]\$text\)/)
+  assert.match(host.DIALOG_SCRIPT, /Write-Answer \('DSH-PICK:OK:' \+ \$dlg\.SelectedPath\)/)
+  assert.ok(
+    !host.DIALOG_SCRIPT.includes("[Console]::Out.Write('DSH-PICK:OK:'"),
+    'the picked answer must not pass through the console encoder',
+  )
+  assert.deepEqual(host.parseAnswer('DSH-PICK:OK:' + cnWin), { status: 'path', windowsPath: cnWin })
+  assert.deepEqual(host.parseAnswer('DSH-PICK:CANCEL'), { status: 'cancelled' })
+  assert.deepEqual(host.parseAnswer('noise'), { status: 'unrecognised' })
+  assert.equal(host.manualHostPath(cnWin), cnHost)
+  // A decoded Chinese path is picked like any other when the host can see it …
+  assert.deepEqual(
+    await host.pickFolder({
+      ...base,
+      exists: (path) => path.includes('PowerShell/7') || path.includes('WSLInterop') || path === cnHost,
+      run: (command) => Promise.resolve({
+        stdout: command === 'wslpath' ? cnHost + '\n' : 'DSH-PICK:OK:' + cnWin,
+        stderr: '',
+      }),
+    }),
+    { status: 'picked', path: cnHost },
+  )
+  // … and a path the host cannot see stays a diagnosable "not visible" answer
+  // (the client logs it before falling back) instead of a silent reset.
+  assert.deepEqual(
+    await host.pickFolder({
+      ...base,
+      run: (command) => Promise.resolve({
+        stdout: command === 'wslpath' ? cnHost + '\n' : 'DSH-PICK:OK:' + cnWin,
+        stderr: '',
+      }),
+    }),
+    { status: 'unavailable', reason: 'selected-path-not-visible', detail: cnWin },
+  )
+  assert.match(text, /OS folder picker unavailable; falling back:/)
+
   // (7) Only loopback requests may open a dialog on the host's screen; other
   //     clients get `unavailable` so they fall back to the web picker.
   const respond = () => {

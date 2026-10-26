@@ -54,6 +54,35 @@ const MARKER_OK = MARKER + 'OK:'
 const MARKER_CANCEL = MARKER + 'CANCEL'
 
 /**
+ * Emit one answer as RAW UTF-8 bytes on the standard output stream.
+ *
+ * `[Console]::Out.Write` cannot be used for the answer: the script runs from
+ * WSL interop with no attached console, so the PowerShell host re-encodes text
+ * through the Windows OEM code page (CP936 on a zh-CN machine) — a picked
+ * folder such as `E:\dsh测试文件夹` then reached this host as mojibake, failed
+ * the existence check below, and the whole pick was reported `unavailable`.
+ * The flow fell back to the in-app browser, which looked like "the selection
+ * did nothing, a second picker opened, and only the second choice worked".
+ *
+ * Writing the bytes ourselves keeps the answer UTF-8 regardless of the console
+ * code page. The catch is a last resort for a host without a standard output
+ * handle; it sets the encoding first so even that path stays UTF-8.
+ */
+export const ANSWER_HELPER = [
+  'function Write-Answer([string]$text) {',
+  '  try {',
+  '    $bytes = [System.Text.Encoding]::UTF8.GetBytes($text)',
+  '    $stdout = [Console]::OpenStandardOutput()',
+  '    $stdout.Write($bytes, 0, $bytes.Length)',
+  '    $stdout.Flush()',
+  '  } catch {',
+  '    try { [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false) } catch { }',
+  '    [Console]::Out.Write($text)',
+  '  }',
+  '}',
+].join('\n')
+
+/**
  * The dialog script. A constant on purpose: no request data reaches it, so
  * there is no quoting or injection surface. The topmost owner form keeps the
  * dialog above the browser window; closing the owner is also what lets a parent
@@ -70,10 +99,11 @@ export const DIALOG_SCRIPT = [
   "$dlg.Description = 'Select a workspace folder for DeepSeek Harness'",
   '$dlg.ShowNewFolderButton = $true',
   'try { $result = $dlg.ShowDialog($owner) } finally { $owner.Dispose() }',
+  ANSWER_HELPER,
   "if ($result -eq [System.Windows.Forms.DialogResult]::OK -and $dlg.SelectedPath) {",
-  "  [Console]::Out.Write('" + MARKER_OK + "' + $dlg.SelectedPath)",
+  "  Write-Answer ('" + MARKER_OK + "' + $dlg.SelectedPath)",
   '} else {',
-  "  [Console]::Out.Write('" + MARKER_CANCEL + "')",
+  "  Write-Answer '" + MARKER_CANCEL + "'",
   '}',
 ].join('\n')
 
@@ -170,6 +200,26 @@ export function manualHostPath(windowsPath) {
 }
 
 /**
+ * Parse one marker line into the dialog's answer.
+ *
+ * Kept pure and exported so the wire form (an ASCII marker followed by a UTF-8
+ * Windows path) is testable without a Windows desktop: the marker itself never
+ * carries non-ASCII, which is what made the CP936 answer look valid until the
+ * path was checked.
+ * @param line - the trimmed line that starts with the marker, if any.
+ * @returns `{ status: 'path', windowsPath }` | `{ status: 'cancelled' }` |
+ *          `{ status: 'unrecognised' }`.
+ */
+export function parseAnswer(line) {
+  const text = String(line ?? '').trim()
+  if (text === MARKER_CANCEL) return { status: 'cancelled' }
+  if (!text.startsWith(MARKER_OK)) return { status: 'unrecognised' }
+  const windowsPath = text.slice(MARKER_OK.length).trim()
+  if (windowsPath === '') return { status: 'cancelled' }
+  return { status: 'path', windowsPath }
+}
+
+/**
  * Open the OS folder dialog once and report what happened.
  * @returns `{ status: 'picked', path }` | `{ status: 'cancelled' }` |
  *          `{ status: 'unavailable', reason }`.
@@ -202,11 +252,11 @@ export async function pickFolder(internals = {}) {
   }
 
   const line = stdout.split(/\r?\n/).map((part) => part.trim()).find((part) => part.startsWith(MARKER)) ?? ''
-  if (line === MARKER_CANCEL) return { status: 'cancelled' }
-  if (!line.startsWith(MARKER_OK)) return { status: 'unavailable', reason: 'unrecognised-output' }
+  const answer = parseAnswer(line)
+  if (answer.status === 'cancelled') return { status: 'cancelled' }
+  if (answer.status === 'unrecognised') return { status: 'unavailable', reason: 'unrecognised-output' }
 
-  const windowsPath = line.slice(MARKER_OK.length).trim()
-  if (windowsPath === '') return { status: 'cancelled' }
+  const windowsPath = answer.windowsPath
   const hostPath = await toHostPath(windowsPath, internals)
   const stat = internals.stat ?? statSync
   const exists = internals.exists ?? existsSync
